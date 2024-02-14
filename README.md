@@ -7,7 +7,7 @@ Welcome to the home of .NET AI Samples
 | # | Topic                                      | Documentation |
 |---|--------------------------------------------|---------------|
 REF  | Creating GPT 4 Resource in Azure          | [Creating GPT 4 Resource in Azure](.)
-REF  | Creating GPT 4 Resource in Open AI        | [Creating GPT 4 Resource in Open AI](.)
+REF  | Creating GPT 4 Resource in OpenAI        | [Creating GPT 4 Resource in OpenAI](.)
 
 ### Getting Started Series using Azure Open AI SDK
 
