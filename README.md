@@ -41,7 +41,7 @@ REF | Phi                                        | [Console App](.) or [Notebook
 REF | Llama                                      | [Console App](.) or [Notebook](.)
 
 ### Local Embedding Models
-| # | Topic                                      | Github Link |
+| # | Topic                                      | GitHub Link |
 |---|--------------------------------------------|-------------|
 REF | Clip                                        | [Console App](.) or [Notebook](.)
 
