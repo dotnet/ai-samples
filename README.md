@@ -59,7 +59,7 @@ REF | Milvus                                     | [Console App](.) or [Notebook
 REF | Qdrant                                     | [Console App](.) or [Notebook](.)
 
 ### Reference Examples
-| # | Topic                                      | Github Link |
+| # | Topic                                      | GitHub Link |
 |---|--------------------------------------------|-------------|
 REF | Vector\<T\>                                  | [Console App](.) or [Notebook](.)
 
