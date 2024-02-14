@@ -30,7 +30,7 @@ REF  |  Using Mivus                              |  [Console App](.) or [Noteboo
 REF  |  Using Qdrant                             |  [Console App](.) or [Notebook](.)
 
 ### End to End Examples
-| # | Topic                                      |  Github Link |
+| # | Topic                                      |  GitHub Link |
 |---|--------------------------------------------|--------------|
 E2E | Azure Search .. |  [Project Source](.)
 
