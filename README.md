@@ -53,6 +53,8 @@ REF | TikToken                                   | [Console App](.) or [Notebook
 ### Vector Databases
 | # | Topic                                      | Github Link |
 |---|--------------------------------------------|-------------|
+REF | Azure AI Search                      | [Console App](.) or [Notebook](.)
+REF | PostgreSQL + pgvector          | [Console App](.) or [Notebook](.)
 REF | Milvus                                     | [Console App](.) or [Notebook](.)
 REF | Qdrant                                     | [Console App](.) or [Notebook](.)
 
