@@ -35,7 +35,7 @@ REF  |  Using Qdrant                             |  [Console App](.) or [Noteboo
 E2E | Azure Search . |  [Project Source](.)
 
 ### Local Models
-| # | Topic                                      | Github Link |
+| # | Topic                                      | GitHub Link |
 |---|--------------------------------------------|-------------|
 REF | Phi                                        | [Console App](.) or [Notebook](.)
 REF | Llama                                      | [Console App](.) or [Notebook](.)
