@@ -32,7 +32,7 @@ REF  |  Using Qdrant                             |  [Console App](.) or [Noteboo
 ### End to End Examples
 | # | Topic                                      |  GitHub Link |
 |---|--------------------------------------------|--------------|
-E2E | Azure Search .. |  [Project Source](.)
+E2E | Azure Search . |  [Project Source](.)
 
 ### Local Models
 | # | Topic                                      | Github Link |
