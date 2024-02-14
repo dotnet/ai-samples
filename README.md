@@ -46,7 +46,7 @@ REF | Llama                                      | [Console App](.) or [Notebook
 REF | Clip                                        | [Console App](.) or [Notebook](.)
 
 ### Tokenizers
-| # | Topic                                      | Github Link |
+| # | Topic                                      | GitHub Link |
 |---|--------------------------------------------|-------------|
 REF | TikToken                                   | [Console App](.) or [Notebook](.)
 
