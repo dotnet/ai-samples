@@ -17,7 +17,7 @@ The process of getting the sample up and running locally is somewhat simple, pro
 1. Clone/ Download the repository
 1. From a terminal or command prompt, navigate to the `HikerAI` directory.
 1. To avoid an error message "*postprovision.ps1 is not digitally signed. The script will not execute on the system*" after the deployment, execute the command `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass`. The script "postprovision" is executed locally after the deployment to create .NET secret that will be used in the application.
-1. Create the Azure resources using the Azure Developer CLI:
+1. Create the Azure resources (Azure OpenAI service, gpt-35-turbo model, Azure KeyVault) using the Azure Developer CLI:
 	```bash
 	azd up
 	```

@@ -6,11 +6,11 @@ hooks:
   postprovision:
     windows:
       shell: pwsh
-      run: ./postprovision.ps1
+      run: ./infra/postprovision.ps1
       interactive: true
       continueOnError: true
     posix:
       shell: sh
-      run: ./postprovision.sh
+      run: ./infra/postprovision.sh
       interactive: true
       continueOnError: true

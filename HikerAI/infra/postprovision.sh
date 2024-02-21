@@ -23,5 +23,5 @@ function set_dotnet_user_secrets() {
 }
 
 lines=$(azd env get-values)
-set_dotnet_user_secrets "." "$lines"
+set_dotnet_user_secrets "./" "$lines"
 
