@@ -1,0 +1,16 @@
+name: HikerAI
+metadata:
+  template: HikerAI@1.0.0-beta
+
+hooks:
+  postprovision:
+    windows:
+      shell: pwsh
+      run: ./postprovision.ps1
+      interactive: true
+      continueOnError: true
+    posix:
+      shell: sh
+      run: ./postprovision.sh
+      interactive: true
+      continueOnError: true
