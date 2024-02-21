@@ -16,16 +16,16 @@ The process of getting the sample up and running locally is somewhat simple, pro
 
 1. Clone/ Download the repository
 1. From a terminal or command prompt, navigate to the `HikerAI` directory.
-1. To avoid an error message "postprovision.ps1 is not digitally signed. The script will not execute on the system" after the deployment, execute the command `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass`. The script "postprovision" is executed locally after the deployment to create .NET secret that will be used in the application.
+1. To avoid an error message "*postprovision.ps1 is not digitally signed. The script will not execute on the system*" after the deployment, execute the command `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass`. The script "postprovision" is executed locally after the deployment to create .NET secret that will be used in the application.
 1. Create the Azure resources using the Azure Developer CLI:
 	```bash
 	azd up
 	```
-1. It's now time to try the console application. Depending on your Azure subscription it's possible that a few (~5) minutes more minute are required before the model deployed in Azure OpenAI get available. It's it not yet you will get an error message.
+2. It's now time to try the console application. Depending on your Azure subscription it's possible that a few (~5) minutes more minute are required before the model deployed in Azure OpenAI get available. If you get an error message about this, wait a few minutes and try again.
 	```bash
 	dotnet run
 	```
-1. Once you are done delete the Azure recourse with the following command.
+3. Once you are done delete the Azure recourse with the following command.
 	```bash
 	azd down
 	```
