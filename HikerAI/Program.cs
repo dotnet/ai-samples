@@ -27,7 +27,7 @@ var completionOptions = new ChatCompletionsOptions
     FrequencyPenalty=0.0f,
     PresencePenalty=0.0f,
     NucleusSamplingFactor = 0.95f, // Top P
-	DeploymentName = openAIDeploymentName
+    DeploymentName = openAIDeploymentName
 };
 
 // == Providing context for the AI model ==========
