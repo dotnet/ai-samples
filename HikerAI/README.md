@@ -12,7 +12,7 @@ Everything will be deployed automatically using the Azure Developer CLI.
 
 ## Getting Started
 
-The process of getting the sample up and running locally is somewhat simple, provided you have an Azure subscription with OpenAI enablement, and you've the Azure Developer CLI.
+Ensure that you follow the prerequisites to have access to Azure OpenAI Service as well as the Azure Developer CLI, and then follow the following guide to set started with the sample application.
 
 1. Clone/ Download the repository
 1. From a terminal or command prompt, navigate to the `HikerAI` directory.
