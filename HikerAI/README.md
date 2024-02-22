@@ -8,7 +8,7 @@ Everything will be deployed automatically using the Azure Developer CLI.
 
 - .NET 8.0 SDK - [Install the .NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0?WT.mc_id=dotnet-0000)
 - An Azure subscription - [Create one for free](https://azure.microsoft.com/free/?WT.mc_id=dotnet-0000)
-- Azure Developer CLI - [Install or update the Azure Developer CLI](https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/install-azd?WT.mc_id=dotnet-0000)
+- Azure Developer CLI - [Install or update the Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd?WT.mc_id=dotnet-0000)
 
 ## Getting Started
 
