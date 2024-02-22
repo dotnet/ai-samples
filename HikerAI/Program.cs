@@ -58,7 +58,7 @@ Console.WriteLine($"\n\nUser >>> {userGreeting}");
 
 ChatCompletions response = await openAIClient.GetChatCompletionsAsync(completionOptions);
 ChatResponseMessage assistantResponse = response.Choices[0].Message;
-Console.WriteLine($"\n\nAI >>> {assistantResponse.Content}");
+Console.WriteLine($"\n\nAssistant >>> {assistantResponse.Content}");
 completionOptions.Messages.Add(new ChatRequestSystemMessage(assistantResponse.Content)); 
 
 
