@@ -22,10 +22,10 @@ var openAIClient = new OpenAIClient(endpoint, credentials);
 
 var completionOptions = new ChatCompletionsOptions
 {
-    MaxTokens=400,
-    Temperature=1f,
-    FrequencyPenalty=0.0f,
-    PresencePenalty=0.0f,
+    MaxTokens = 400,
+    Temperature = 1f,
+    FrequencyPenalty = 0.0f,
+    PresencePenalty = 0.0f,
     NucleusSamplingFactor = 0.95f, // Top P
     DeploymentName = openAIDeploymentName
 };
