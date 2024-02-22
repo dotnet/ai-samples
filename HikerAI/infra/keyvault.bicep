@@ -9,9 +9,11 @@ param principalId string = ''
 
 var resourceToken = uniqueString(resourceGroup().id)
 
+var abbrs = loadJsonContent('./abbreviations.json')
+
 // create a keyvault to store openai secrets
 module keyvault 'core/security/keyvault.bicep' = {
-    name: 'kv${resourceToken}'
+    name: '${abbrs.keyVaultVaults}${resourceToken}'
     scope: resourceGroup()
     params: {
         name: 'kv${resourceToken}'

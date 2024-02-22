@@ -9,6 +9,8 @@ param openAIKeyName string = 'AZURE-OPEN-AI-KEY'
 
 var resourceToken = uniqueString(resourceGroup().id)
 
+var abbrs = loadJsonContent('./abbreviations.json')
+
 // the openai deployments to create
 var openaiDeployment = [
   {
@@ -30,7 +32,7 @@ module openAi './core/ai/cognitiveservices.bicep' = {
   name: 'openai'
   scope: resourceGroup()
   params: {
-    name: 'ai${resourceToken}'
+    name: '${abbrs.cognitiveServicesAccounts}${resourceToken}'
     location: location
     tags: tags
     deployments: openaiDeployment
