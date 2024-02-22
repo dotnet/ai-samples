@@ -78,4 +78,4 @@ completionOptions.Messages.Add(new ChatRequestUserMessage(hikeRequest));
 response = await openAIClient.GetChatCompletionsAsync(completionOptions);
 assistantResponse = response.Choices[0].Message;
 
-Console.WriteLine($"\n\nAI >>> {assistantResponse.Content}");
+Console.WriteLine($"\n\nAssistant >>> {assistantResponse.Content}");
