@@ -6,9 +6,9 @@ Everything will be deployed automatically using the Azure Developer CLI.
 
 ## Requirements
 
-- .NET 8.0 SDK - [Install the .NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0?WT.mc_id=dotnet-0000)
-- An Azure subscription - [Create one for free](https://azure.microsoft.com/free/?WT.mc_id=dotnet-0000)
-- Azure Developer CLI - [Install or update the Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd?WT.mc_id=dotnet-0000)
+- .NET 8.0 SDK - [Install the .NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+- An Azure subscription - [Create one for free](https://azure.microsoft.com/free)
+- Azure Developer CLI - [Install or update the Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd)
 
 ## Getting Started
 
@@ -16,17 +16,20 @@ Ensure that you follow the prerequisites to have access to Azure OpenAI Service 
 
 1. Clone/ Download the repository
 1. From a terminal or command prompt, navigate to the `HikerAI` directory.
-1. To avoid an error message "*postprovision.ps1 is not digitally signed. The script will not execute on the system*" after the deployment, execute the command `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass`. The script "postprovision" is executed locally after the deployment to create .NET secret that will be used in the application.
+
 1. Create the Azure resources (Azure OpenAI service, gpt-35-turbo model, Azure KeyVault) using the Azure Developer CLI:
 	```bash
 	azd up
 	```
-2. It's now time to try the console application. Depending on your Azure subscription it's possible that a few (~5) minutes more minute are required before the model deployed in Azure OpenAI get available. If you get an error message about this, wait a few minutes and try again.
+1. It's now time to try the console application. Depending on your Azure subscription it's possible that a few (~5) minutes more minute are required before the model deployed in Azure OpenAI get available. If you get an error message about this, wait a few minutes and try again.
 	```bash
 	dotnet run
 	```
-3. Once you are done delete the Azure recourse with the following command.
+4. Once you are done delete the Azure recourse with the following command.
 	```bash
 	azd down
 	```
 
+## Troubleshooting
+
+On Windows, you may get an error message: "*postprovision.ps1 is not digitally signed. The script will not execute on the system*" after the deployment. This is cause by the script "postprovision" being executed locally after the deployment to create .NET secret that will be used in the application. To avoid this error, execute the command `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass`. And re-run the `azd up` command.
