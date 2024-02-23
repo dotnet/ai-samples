@@ -15,13 +15,13 @@ Everything will be deployed automatically using the Azure Developer CLI.
 Ensure that you follow the prerequisites to have access to Azure OpenAI Service as well as the Azure Developer CLI, and then follow the following guide to set started with the sample application.
 
 1. Clone/ Download the repository
-1. From a terminal or command prompt, navigate to the `HikerAI` directory.
+1. From a terminal or command prompt, navigate to the `01-HikerAI` directory.
 
-1. Create the Azure resources (Azure OpenAI service, gpt-35-turbo model, Azure KeyVault) using the Azure Developer CLI:
+2. Create the Azure resources (Azure OpenAI service, gpt-35-turbo model) using the Azure Developer CLI:
 	```bash
 	azd up
 	```
-1. It's now time to try the console application. Depending on your Azure subscription it's possible that a few (~5) minutes more minute are required before the model deployed in Azure OpenAI get available. If you get an error message about this, wait a few minutes and try again.
+3. It's now time to try the console application. Depending on your Azure subscription it's possible that a few (~5) minutes more minute are required before the model deployed in Azure OpenAI get available. If you get an error message about this, wait a few minutes and try again.
 	```bash
 	dotnet run
 	```

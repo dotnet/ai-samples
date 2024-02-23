@@ -1,23 +1,16 @@
 ﻿using Azure;
 using Azure.AI.OpenAI;
-using Azure.Identity;
-using Azure.Security.KeyVault.Secrets;
 using Microsoft.Extensions.Configuration;
 
 // == Retrieve the local secrets saved during the Azure deployment ==========
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 string openAIEndpoint = config["AZURE_OPENAI_ENDPOINT"];
 string openAIDeploymentName = config["AZURE_OPENAI_GPT_NAME"];
-string keyVaultEndpoint = config["AZURE_KEY_VAULT_ENDPOINT"];
-string openAiKeyName = config["AZURE_OPENAI_KEY_NAME"];
-
-SecretClient client = new(new Uri(keyVaultEndpoint), new DefaultAzureCredential());
-var openaikey = await client.GetSecretAsync(openAiKeyName);
-var openAIAPIKey = openaikey.Value.Value;
+string openAiKey = config["AZURE_OPENAI_KEY"];
 
 // == Creating the AIClient ==========
 var endpoint = new Uri(openAIEndpoint);
-var credentials = new AzureKeyCredential(openAIAPIKey);
+var credentials = new AzureKeyCredential(openAiKey);
 var openAIClient = new OpenAIClient(endpoint, credentials);
 
 var completionOptions = new ChatCompletionsOptions

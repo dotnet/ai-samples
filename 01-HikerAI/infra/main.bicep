@@ -12,9 +12,6 @@ param location string
 @description('String representing the ID of the logged-in user')
 param principalId string = ''
 
-@description('Name of the openai key secret in the keyvault')
-param openAIKeyName string = 'AZURE-OPEN-AI-KEY'
-
 @description('Whether the deployment is running on GitHub Actions')
 param runningOnGh string = ''
  
@@ -39,19 +36,9 @@ module ai 'ai.bicep' = {
   params: {
       location: location
       tags: tags
-      openAIKeyName: openAIKeyName
   }
 }
 
-module keyvault 'keyvault.bicep' = {
-  scope: rg
-  name: 'keyvault'
-  params: {
-      location: location
-      tags: tags
-      principalId: principalId
-  }
-}
 
 module resources 'resources.bicep' = {
   scope: rg
@@ -60,9 +47,6 @@ module resources 'resources.bicep' = {
       location: location
       tags: tags
       principalId: principalId
-      keyvaultName: keyvault.outputs.AZURE_KEY_VAULT_NAME
-      openAIKeyName: openAIKeyName
-      openAIName: ai.outputs.AZURE_OPENAI_NAME
       runningOnAdo: runningOnAdo
       runningOnGh: runningOnGh
   }
@@ -70,7 +54,6 @@ module resources 'resources.bicep' = {
 
 output AZURE_CLIENT_ID string = resources.outputs.MANAGED_IDENTITY_CLIENT_ID
 output MANAGED_IDENTITY_CLIENT_ID string = resources.outputs.MANAGED_IDENTITY_CLIENT_ID
-output AZURE_KEY_VAULT_ENDPOINT string = keyvault.outputs.AZURE_KEY_VAULT_ENDPOINT
-output AZURE_OPENAI_KEY_NAME string = ai.outputs.AZURE_OPENAI_KEY_NAME
 output AZURE_OPENAI_ENDPOINT string = ai.outputs.AZURE_OPENAI_ENDPOINT
 output AZURE_OPENAI_GPT_NAME string = ai.outputs.AZURE_OPENAI_GPT_NAME
+output AZURE_OPENAI_KEY string = ai.outputs.AZURE_OPENAI_KEY
