@@ -22,6 +22,16 @@ Welcome to the official home for .NET samples demonstrating how to use AI in you
 | REF |  Using Mivus                                |  [Coming Soon](.)
 | REF |  Using Qdrant                               |  [Coming Soon](.)
 
+### LLM Core Cocepts
+
+|  #  | Topic                                       | GitHub Link                               | 
+|-----|---------------------------------------------|-------------------------------------------|  
+| REF | Tokenizer                                   |  [Coming Soon](.)
+| REF | Embeddings                                  |  [Coming Soon](.)
+| REF | RAG                                         |  [Coming Soon](.)
+| REF | Prompts / Prompt Engineering                |  [Coming Soon](.)
+
+
 ### End to End Examples
 |  #  | Topic                                       |  GitHub Link |
 |-----|---------------------------------------------|--------------|
