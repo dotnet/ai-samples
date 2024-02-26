@@ -25,7 +25,8 @@ Welcome to the official home for .NET samples demonstrating how to use AI in you
 ### End to End Examples
 |  #  | Topic                                       |  GitHub Link |
 |-----|---------------------------------------------|--------------|
-| E2E | Azure Search . |  [Project Source](.)
+| E2E | Azure Search .                              |  [Coming Soon](.)
+| E2E | E-Shop Sample                               |  [Coming Soon](.)
 
 ### Local Models
 |  #  | Topic                                       | GitHub Link |
