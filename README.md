@@ -19,7 +19,7 @@ Welcome to the official home for .NET samples demonstrating how to use AI in you
 |  2  | Adding Context/Data                         |  [Coming Soon](.)
 |  3  | Adding Chat History                         |  [Coming Soon](.)
 |  4  | Adding Tools (Functions)                    |  [Coming Soon](.)
-| REF |  Using Mivus                                |  [Coming Soon](.)
+| REF |  Using Milvus                               |  [Coming Soon](.)
 | REF |  Using Qdrant                               |  [Coming Soon](.)
 
 ### LLM Core Cocepts
