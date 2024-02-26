@@ -71,8 +71,6 @@ Welcome to the official home for .NET samples demonstrating how to use AI in you
 
 ## .NET Foundation
 
-.NET Interative Notebooks for C# is a [.NET Foundation](https://www.dotnetfoundation.org/projects) project.
-
 There are many .NET related projects on GitHub.
 
 - [.NET home repo](https://github.com/Microsoft/dotnet) - links to 100s of .NET projects, from Microsoft and the community.
