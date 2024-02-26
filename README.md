@@ -1,13 +1,6 @@
 # AI Samples for .NET
 
-Welcome to the home of .NET AI Samples
-
-## How to get access to APIs
-
-|  #  | Topic                                       | Documentation |
-|-----|---------------------------------------------|---------------|
-| REF | Creating GPT 4 Resource in Azure            | [Coming Soon](.)
-| REF | Creating GPT 4 Resource in OpenAI           | [Coming Soon](.)
+Welcome to the official home for .NET samples demonstrating how to use AI in your .NET applications. If you're new to AI, start at the top and work your way down. Otherwise, jump in wherever suits your interests.
 
 ### Getting Started Series using Azure OpenAI SDK
 
