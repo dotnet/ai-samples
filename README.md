@@ -13,7 +13,7 @@ Welcome to the home of .NET AI Samples
 
 |  #  | Topic                                       | GitHub Link                               | 
 |-----|---------------------------------------------|-------------------------------------------|  
-|  1  | Hello LLM                                   |  [Coming Soon](.)
+|  1  | Hiker AI                                    |  [Hike AI Project](./src/getting-started/01-HikerAI/README.md)
 |  2  | Adding Chat History                         |  [Coming Soon](.)
 |  3  | Adding Context/Data                         |  [Coming Soon](.)
 |  4  | Adding Function Call                        |  [Coming Soon](.)
