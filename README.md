@@ -41,31 +41,31 @@ Welcome to the official home for .NET samples demonstrating how to use AI in you
 ### Local Models
 |  #  | Topic                                       | GitHub Link |
 |-----|---------------------------------------------|-------------|
-| REF | Phi                                         | [Coming Soon](.)
-| REF | Llama                                       | [Coming Soon](.)
+| REF | Phi                                         |  [Coming Soon](.)
+| REF | Llama                                       |  [Coming Soon](.)
 
 ### Local Embedding Models
 | # | Topic                                         | GitHub Link |
 |-----|---------------------------------------------|-------------|
-| REF | Clip                                        | [Coming Soon](.)
+| REF | Clip                                        |  [Coming Soon](.)
 
 ### Tokenizers
 | # | Topic                                         | GitHub Link |
 |-----|---------------------------------------------|-------------|
-| REF | TikToken                                    | [Coming Soon](.)
+| REF | TikToken                                    |  [Coming Soon](.)
 
 ### Vector Databases
 | # | Topic                                         | GitHub Link |
 |-----|---------------------------------------------|-------------|
-| REF | Azure AI Search                             | [Coming Soon](.)
-| REF | PostgreSQL + pgvector                       | [Coming Soon](.)
-| REF | Milvus                                      | [Coming Soon](.)
-| REF | Qdrant                                      | [Coming Soon](.)
+| REF | Azure AI Search                             |  [Coming Soon](.)
+| REF | PostgreSQL + pgvector                       |  [Coming Soon](.)
+| REF | Milvus                                      |  [Coming Soon](.)
+| REF | Qdrant                                      |  [Coming Soon](.)
 
 ### Reference Examples
 | # | Topic                                         | GitHub Link |
 |-----|---------------------------------------------|-------------|
-| REF | Vector\<T\>                                 | [Coming Soon](.)
+| REF | Vector\<T\>                                 |  [Coming Soon](.)
 
 
 
