@@ -7,18 +7,18 @@ Welcome to the official home for .NET samples demonstrating how to use AI in you
 |  #  | Topic                                       | GitHub Link                               | 
 |-----|---------------------------------------------|-------------------------------------------|  
 |  1  | Hiker AI                                    |  [Hike AI Project](./src/getting-started/01-HikerAI/README.md)
-|  2  | Adding Chat History                         |  [Coming Soon](.)
-|  3  | Adding Context/Data                         |  [Coming Soon](.)
-|  4  | Adding Function Call                        |  [Coming Soon](.)
+|  2  | Adding Context/Data                         |  [Coming Soon](.)
+|  3  | Adding Chat History                         |  [Coming Soon](.)
+|  4  | Adding Tools (Functions)                    |  [Coming Soon](.)
 
 ### Getting Started Series using Semantic Kernel
 
 |  #  | Topic                                       | GitHub Link                               | 
 |-----|---------------------------------------------|-------------------------------------------|  
 |  1  | Hello LLM                                   |  [Coming Soon](.)
-|  2  | Adding Chat History                         |  [Coming Soon](.)
-|  3  | Adding Context/Data                         |  [Coming Soon](.)
-|  4  | Adding Function Call                        |  [Coming Soon](.)
+|  2  | Adding Context/Data                         |  [Coming Soon](.)
+|  3  | Adding Chat History                         |  [Coming Soon](.)
+|  4  | Adding Tools (Functions)                    |  [Coming Soon](.)
 | REF |  Using Mivus                                |  [Coming Soon](.)
 | REF |  Using Qdrant                               |  [Coming Soon](.)
 
