@@ -4,64 +4,64 @@ Welcome to the home of .NET AI Samples
 
 ## How to get access to APIs
 
-| # | Topic                                      | Documentation |
-|---|--------------------------------------------|---------------|
-REF  | Creating GPT 4 Resource in Azure          | [Creating GPT 4 Resource in Azure](.)
-REF  | Creating GPT 4 Resource in OpenAI        | [Creating GPT 4 Resource in OpenAI](.)
+|  #  | Topic                                       | Documentation |
+|-----|---------------------------------------------|---------------|
+| REF | Creating GPT 4 Resource in Azure            | [Coming Soon](.)
+| REF | Creating GPT 4 Resource in OpenAI           | [Coming Soon](.)
 
 ### Getting Started Series using Azure OpenAI SDK
 
-| # | Topic                                      | GitHub Link                               | 
-|---|--------------------------------------------|------------------------------------------------|  
-| 1  | Hello LLM                                 |  [Console App](.) or [Notebook](.)
-| 2  | Adding Chat History                       |  [Console App](.) or [Notebook](.)
-| 3  | Adding Context/Data                       |  [Console App](.) or [Notebook](.)
-| 4  | Adding Function Call                      |  [Console App](.) or [Notebook](.)
+|  #  | Topic                                       | GitHub Link                               | 
+|-----|---------------------------------------------|-------------------------------------------|  
+|  1  | Hello LLM                                   |  [Coming Soon](.)
+|  2  | Adding Chat History                         |  [Coming Soon](.)
+|  3  | Adding Context/Data                         |  [Coming Soon](.)
+|  4  | Adding Function Call                        |  [Coming Soon](.)
 
 ### Getting Started Series using Semantic Kernel
 
-| # | Topic                                      | GitHub Link                               | 
-|---|--------------------------------------------|------------------------------------------------|  
-| 1  | Hello LLM                                 |  [Console App](.) or [Notebook](.)
-| 2  | Adding Chat History                       |  [Console App](.) or [Notebook](.)
-| 3  | Adding Context/Data                       |  [Console App](.) or [Notebook](.)
-| 4  | Adding Function Call                      |  [Console App](.) or [Notebook](.)
-REF  |  Using Mivus                              |  [Console App](.) or [Notebook](.)
-REF  |  Using Qdrant                             |  [Console App](.) or [Notebook](.)
+|  #  | Topic                                       | GitHub Link                               | 
+|-----|---------------------------------------------|-------------------------------------------|  
+|  1  | Hello LLM                                   |  [Coming Soon](.)
+|  2  | Adding Chat History                         |  [Coming Soon](.)
+|  3  | Adding Context/Data                         |  [Coming Soon](.)
+|  4  | Adding Function Call                        |  [Coming Soon](.)
+| REF |  Using Mivus                                |  [Coming Soon](.)
+| REF |  Using Qdrant                               |  [Coming Soon](.)
 
 ### End to End Examples
-| # | Topic                                      |  GitHub Link |
-|---|--------------------------------------------|--------------|
-E2E | Azure Search . |  [Project Source](.)
+|  #  | Topic                                       |  GitHub Link |
+|-----|---------------------------------------------|--------------|
+| E2E | Azure Search . |  [Project Source](.)
 
 ### Local Models
-| # | Topic                                      | GitHub Link |
-|---|--------------------------------------------|-------------|
-REF | Phi                                        | [Console App](.) or [Notebook](.)
-REF | Llama                                      | [Console App](.) or [Notebook](.)
+|  #  | Topic                                       | GitHub Link |
+|-----|---------------------------------------------|-------------|
+| REF | Phi                                         | [Coming Soon](.)
+| REF | Llama                                       | [Coming Soon](.)
 
 ### Local Embedding Models
-| # | Topic                                      | GitHub Link |
-|---|--------------------------------------------|-------------|
-REF | Clip                                        | [Console App](.) or [Notebook](.)
+| # | Topic                                         | GitHub Link |
+|-----|---------------------------------------------|-------------|
+| REF | Clip                                        | [Coming Soon](.)
 
 ### Tokenizers
-| # | Topic                                      | GitHub Link |
-|---|--------------------------------------------|-------------|
-REF | TikToken                                   | [Console App](.) or [Notebook](.)
+| # | Topic                                         | GitHub Link |
+|-----|---------------------------------------------|-------------|
+| REF | TikToken                                    | [Coming Soon](.)
 
 ### Vector Databases
-| # | Topic                                      | GitHub Link |
-|---|--------------------------------------------|-------------|
-REF | Azure AI Search                      | [Console App](.) or [Notebook](.)
-REF | PostgreSQL + pgvector          | [Console App](.) or [Notebook](.)
-REF | Milvus                                     | [Console App](.) or [Notebook](.)
-REF | Qdrant                                     | [Console App](.) or [Notebook](.)
+| # | Topic                                         | GitHub Link |
+|-----|---------------------------------------------|-------------|
+| REF | Azure AI Search                             | [Coming Soon](.)
+| REF | PostgreSQL + pgvector                       | [Coming Soon](.)
+| REF | Milvus                                      | [Coming Soon](.)
+| REF | Qdrant                                      | [Coming Soon](.)
 
 ### Reference Examples
-| # | Topic                                      | GitHub Link |
-|---|--------------------------------------------|-------------|
-REF | Vector\<T\>                                  | [Console App](.) or [Notebook](.)
+| # | Topic                                         | GitHub Link |
+|-----|---------------------------------------------|-------------|
+| REF | Vector\<T\>                                 | [Coming Soon](.)
 
 
 
