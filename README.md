@@ -6,7 +6,7 @@ Welcome to the official home for .NET samples demonstrating how to use AI in you
 
 |  #  | Topic                                       | GitHub Link                               | 
 |-----|---------------------------------------------|-------------------------------------------|  
-|  1  | Hiker AI                                    |  [Hike AI Project](./src/getting-started/01-HikerAI/README.md)
+|  1  | Hiker AI                                    |  [Hiker AI Project](./src/getting-started/01-HikerAI/README.md)
 |  2  | Adding Context/Data                         |  [Coming Soon](.)
 |  3  | Adding Chat History                         |  [Coming Soon](.)
 |  4  | Adding Tools (Functions)                    |  [Coming Soon](.)
