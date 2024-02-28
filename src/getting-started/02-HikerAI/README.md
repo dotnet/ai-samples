@@ -5,12 +5,14 @@ This sample demonstrates how to use the Azure OpenAI with a `gpt-35-turbo` model
 ## Getting Started
 
 1. If it's not already done, follow the [Getting-started](../README.md#getting-started) to deploy the Azure OpenAI service and the `gpt-35-turbo` model.
+
+2. From a terminal or command prompt, navigate to the `02-HikerAI` directory.
    
-2. It's now time to try the console application. Depending on your Azure subscription it's possible that a few (~5) minutes more minute are required before the model deployed in Azure OpenAI get available. If you get an error message about this, wait a few minutes and try again.
+3. It's now time to try the console application. Depending on your Azure subscription it's possible that a few (~5) minutes more minute are required before the model deployed in Azure OpenAI get available. If you get an error message about this, wait a few minutes and try again.
 	```bash
 	dotnet run
 	```
-3. Once you are done delete the Azure recourse with the following command.
+4. Once you are done delete the Azure recourse with the following command.
 	```bash
 	azd down
 	```

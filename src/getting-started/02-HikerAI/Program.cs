@@ -52,7 +52,7 @@ Console.WriteLine($"\n\nUser >>> {userGreeting}");
 ChatCompletions response = await openAIClient.GetChatCompletionsAsync(completionOptions);
 ChatResponseMessage assistantResponse = response.Choices[0].Message;
 Console.WriteLine($"\n\nAssistant >>> {assistantResponse.Content}");
-completionOptions.Messages.Add(new ChatRequestSystemMessage(assistantResponse.Content)); 
+completionOptions.Messages.Add(new ChatRequestAssistantMessage(assistantResponse.Content)); 
 
 
 // == Providing the user's request ==========
