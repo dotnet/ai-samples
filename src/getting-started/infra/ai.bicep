@@ -21,7 +21,18 @@ var openaiDeployment = [
       name: 'gpt-35-turbo'
       version: '0613'
     }
+  },{
+    name: 'dal3${resourceToken}'
+    sku: {
+      name: 'Standard'
+      capacity: 1
+    }
+    model: {
+      format: 'OpenAI'
+      name: 'dall-e-3'
+    }
   }
+
 ]
 
 // create the openai resources
@@ -38,6 +49,7 @@ module openAi './core/ai/cognitiveservices.bicep' = {
 
 output AZURE_OPENAI_ENDPOINT string = openAi.outputs.endpoint
 output AZURE_OPENAI_GPT_NAME string = 'gpt35${resourceToken}'
+output AZURE_OPENAI_DALLE_NAME string = 'dal3${resourceToken}'
 output AZURE_OPENAI_NAME string = 'ai${resourceToken}'
 output AZURE_OPENAI_TEXT_EMBEDDING_NAME string = 'text${resourceToken}'
 output AZURE_OPENAI_KEY string = openAi.outputs.key1

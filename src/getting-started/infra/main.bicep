@@ -56,4 +56,5 @@ output AZURE_CLIENT_ID string = resources.outputs.MANAGED_IDENTITY_CLIENT_ID
 output MANAGED_IDENTITY_CLIENT_ID string = resources.outputs.MANAGED_IDENTITY_CLIENT_ID
 output AZURE_OPENAI_ENDPOINT string = ai.outputs.AZURE_OPENAI_ENDPOINT
 output AZURE_OPENAI_GPT_NAME string = ai.outputs.AZURE_OPENAI_GPT_NAME
+output AZURE_OPENAI_DALLE_NAME string = ai.outputs.AZURE_OPENAI_DALLE_NAME
 output AZURE_OPENAI_KEY string = ai.outputs.AZURE_OPENAI_KEY
