@@ -12,7 +12,10 @@ This sample demonstrates how to use the Azure OpenAI with a `gpt-35-turbo` model
 	```bash
 	dotnet run
 	```
-4. Once you are done delete the Azure recourse with the following command.
+
+4. (Optional) Try modifying the `hikeRequest` changing the location so something you know, or the type of hike you like  to see the differences in the responses.
+
+5. Once you are done delete the Azure recourse with the following command.
 	```bash
 	azd down
 	```
