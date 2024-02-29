@@ -21,6 +21,8 @@ Ensure that you follow the prerequisites to have access to Azure OpenAI Service 
 	```bash
 	azd up
 	```
+	> 💡 If you already have an Azure OpenAI service available, you can skip the deployment and use hardcoded value in the `program.cs`.
+	
 4. Now that your Azure OpenAI Service is deployed, It's time to select one of our sample to experiment different scenarios:
 	- [Hike Summary](01-HikeSummary/README.md)
 	- [Hiker AI](02-HikerAI/README.md)
