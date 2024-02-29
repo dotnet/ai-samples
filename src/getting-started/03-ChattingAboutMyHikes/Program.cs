@@ -7,6 +7,10 @@ var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 string openAIEndpoint = config["AZURE_OPENAI_ENDPOINT"];
 string openAIDeploymentName = config["AZURE_OPENAI_GPT_NAME"];
 string openAiKey = config["AZURE_OPENAI_KEY"];
+// == If you skipped the deployment because you already have an Azure OpenAI available,
+// == edit the previous lines to use hardcoded values.
+// == ex: string openAIEndpoint = "https://cog-demo123.openai.azure.com/";
+
 
 // == Creating the AIClient ==========
 var endpoint = new Uri(openAIEndpoint);
@@ -29,21 +33,17 @@ string markdown = System.IO.File.ReadAllText("hikes.md");
 // == Providing context for the AI model ==========
 var systemPrompt = 
 """
-You are upbeat and friendly. You introduce yourself when first saying hello. When helping people out, you always ask them 
-for this information:
-1. What information are they looking for
-2. Provide 2 example of questions they might ask
+You are upbeat and friendly. You introduce yourself when first saying hello. 
+Provide a short answer only based on the user hiking records below:  
 
-You will then provide a short answer only based in the following information: 
 """ + markdown;
-
 completionOptions.Messages.Add(new ChatRequestSystemMessage(systemPrompt));
 
-
+Console.WriteLine($"\n\n\t\t-=-=- Hiking History -=-=--\n{markdown}");
 
 // == Starting the conversation ==========
 string userGreeting = """
-Hi! 
+Hi!
 """;
 
 completionOptions.Messages.Add(new ChatRequestUserMessage(userGreeting));
@@ -52,14 +52,15 @@ Console.WriteLine($"\n\nUser >>> {userGreeting}");
 ChatCompletions response = await openAIClient.GetChatCompletionsAsync(completionOptions);
 ChatResponseMessage assistantResponse = response.Choices[0].Message;
 Console.WriteLine($"\n\nAssistant >>> {assistantResponse.Content}");
- completionOptions.Messages.Add(new ChatRequestAssistantMessage(assistantResponse.Content)); 
+completionOptions.Messages.Add(new ChatRequestAssistantMessage(assistantResponse.Content)); 
 
 
 // == Providing the user's request ==========
 var hikeRequest = 
 """
-I would like to know the ration of hike I did in Canada.
+I would like to know the ration of hike I did in Canada compare to hikes done in other countries.
 """;
+
 
 Console.WriteLine($"\n\nUser >>> {hikeRequest}");
 completionOptions.Messages.Add(new ChatRequestUserMessage(hikeRequest));
