@@ -4,9 +4,9 @@ This sample demonstrates how to use the Azure OpenAI with a `gpt-35-turbo` model
 
 ## Deploying the Azure resources
 
-1. If it's not already done, follow the [Getting-started: Deploying the Azure resources](../README.md#deploying-the-azure-resources) to deploy the Azure OpenAI service with the models.
+If it's not already done, follow the [Getting-started: Deploying the Azure resources](../README.md#deploying-the-azure-resources) to deploy the Azure OpenAI service with the models.
 
-## Trying the sample
+## Trying HikerAI
 
 1. From a terminal or command prompt, navigate to the `02-HikerAI` directory.
    
@@ -14,19 +14,12 @@ This sample demonstrates how to use the Azure OpenAI with a `gpt-35-turbo` model
 	```bash
 	dotnet run
 	```
-<<<<<<< HEAD
 
-4. (Optional) Try modifying the `hikeRequest` changing the location so something you know, or the type of hike you like  to see the differences in the responses.
-
-5. Once you are done delete the Azure recourse with the following command.
-	```bash
-	azd down
-	```
-=======
 3. (Optional) Try modifying the `hikeRequest` changing the location so something you know, or the type of hike you like  to see the differences in the responses.
 
 4. (Optional) Try another samples from the [Getting-started: Trying the samples](../README.md#trying-the-samples) to experiment different scenarios.
 
-5. Once you are done experimenting with the samples, follow the instructions from the [Getting-started: Clean up resources](../README.md#clean-up-resources) to delete the Azure resources created using the Azure Developer CLI.
+## Clean up resources
 
->>>>>>> change-folder-order
+Once you are done experimenting with the samples, follow the instructions from the [Getting-started: Clean up resources](../README.md#clean-up-resources) to delete the Azure resources created using the Azure Developer CLI.
+
