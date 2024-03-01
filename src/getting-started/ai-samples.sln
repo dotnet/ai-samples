@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HikeBenefitsSummary", "01-HikeBenefitsSummary\Hiking-Benefits.csproj", "{33EF16E1-A012-4F0A-9545-3EA65EE2FD9A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HikeBenefitsSummary", "01-HikeBenefitsSummary\HikeBenefitsSummary.csproj", "{33EF16E1-A012-4F0A-9545-3EA65EE2FD9A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HikerAI", "02-HikerAI\HikerAI.csproj", "{9DE74988-B019-4276-A99D-28999FC14D03}"
 EndProject
