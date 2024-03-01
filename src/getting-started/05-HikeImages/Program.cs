@@ -42,11 +42,3 @@ if (!string.IsNullOrEmpty(generatedImage.RevisedPrompt))
     Console.WriteLine($"\n\nInput prompt automatically revised to:\n {generatedImage.RevisedPrompt}");
 }
 Console.WriteLine($"\n\nThe generated image is ready at:\n {generatedImage.Url.AbsoluteUri}");
-
-
-
-
-
-
-
-

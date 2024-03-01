@@ -33,7 +33,7 @@ Ensure that you follow the [Prerequisites](#prerequisites) to have access to Azu
 
 Now that your Azure OpenAI Service is deployed, It's time to select one of our sample to experiment different scenarios:
 
-- [Hike Summary](01-HikeBenefitsSummary/README.md): Summarize a long to a few words.
+- [Hike Benefits Summary](01-HikeBenefitsSummary/README.md): Summarize a long text to a few words.
 - [Hiker AI](02-HikerAI/README.md): Chat with the AI and get hike recommendation.
 - [Chatting About my Previous Hikes](03-ChattingAboutMyHikes/README.md): Chat with the AI about your previous hikes.
 - [AI and Native .NET](04-AiAndNative/README.md): TBD
