@@ -1,6 +1,6 @@
 # Getting Started
 
-These samples demonstrates how to use the Azure OpenAI with a `gpt-35-turbo` model, from a simple .NET 8.0 console application. It consists of a simple console applications, running locally, that will send request to an Azure OpenAI service deployed in your Azure subscription. 
+These samples demonstrates how to use the Azure OpenAI with a `gpt-35-turbo` and `dall-e-3` models, from a simple .NET 8.0 console application. It consists of a simple console applications, running locally, that will send request to an Azure OpenAI service deployed in your Azure subscription. 
 
 Everything will be deployed automatically using the Azure Developer CLI.
 
@@ -12,7 +12,7 @@ Everything will be deployed automatically using the Azure Developer CLI.
 
 ## Deploying the Azure resources
 
-Ensure that you follow the [prerequisites](#prerequisites) to have access to Azure OpenAI Service as well as the Azure Developer CLI, and then follow the following guide to set started with the sample application.
+Ensure that you follow the [Prerequisites](#prerequisites) to have access to Azure OpenAI Service as well as the Azure Developer CLI, and then follow the following guide to set started with the sample application.
 
 1. Clone/ Download the repository
 2. From a terminal or command prompt, navigate to the `Getting-Started` directory.
@@ -37,9 +37,10 @@ Now that your Azure OpenAI Service is deployed, It's time to select one of our s
 ## Clean up resources
 
 When you are done experimenting with the samples, you can delete the Azure resources created using the Azure Developer CLI.
-	```bash
-	azd down
-	```
+
+```bash
+azd down
+```
 
 ## Troubleshooting
 
