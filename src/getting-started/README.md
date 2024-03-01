@@ -17,7 +17,7 @@ Ensure that you follow the prerequisites to have access to Azure OpenAI Service 
 1. Clone/ Download the repository
 2. From a terminal or command prompt, navigate to the `Getting-Started` directory.
 
-3. Create the Azure resources (Azure OpenAI service, gpt-35-turbo model) using the Azure Developer CLI:
+3. Create the Azure resources (Azure OpenAI service, gpt-35-turbo and dall-e-3 models) using the Azure Developer CLI. Only the regions that support the Azure OpenAI service with the models will be displayed. 
 	```bash
 	azd up
 	```

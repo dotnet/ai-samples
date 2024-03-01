@@ -7,6 +7,7 @@ param environmentName string
 
 @minLength(1)
 @description('The location used for all deployed resources')
+@allowed(['swedencentral', 'eastus'])
 param location string
 
 @description('String representing the ID of the logged-in user')
