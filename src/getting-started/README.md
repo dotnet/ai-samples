@@ -4,23 +4,28 @@ These samples demonstrates how to use the Azure OpenAI with a `gpt-35-turbo` and
 
 Everything will be deployed automatically using the Azure Developer CLI.
 
+
 ## Prerequisites
 
 - .NET 8.0 SDK - [Install the .NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - An Azure subscription - [Create one for free](https://azure.microsoft.com/free)
 - Azure Developer CLI - [Install or update the Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd)
+- Access to [Azure OpenAI service](https://learn.microsoft.com/azure/ai-services/openai/overview#how-do-i-get-access-to-azure-openai).
+
 
 ## Deploying the Azure resources
 
 Ensure that you follow the [Prerequisites](#prerequisites) to have access to Azure OpenAI Service as well as the Azure Developer CLI, and then follow the following guide to set started with the sample application.
 
 1. Clone/ Download the repository
+   
 2. From a terminal or command prompt, navigate to the `Getting-Started` directory.
 
 3. Create the Azure resources (Azure OpenAI service, gpt-35-turbo and dall-e-3 models) using the Azure Developer CLI. Only the regions that support the Azure OpenAI service with the models will be displayed. 
 	```bash
 	azd up
 	```
+
 	> 💡 If you already have an Azure OpenAI service available, you can skip the deployment and use hardcoded value in the `program.cs`.
 	
 
@@ -34,6 +39,7 @@ Now that your Azure OpenAI Service is deployed, It's time to select one of our s
 - [AI and Native .NET](04-AiAndNative/README.md): TBD
 - [Hike Images](05-HikeImages/README.md): Generate postal card images to invite your friends for a hike.
 
+
 ## Clean up resources
 
 When you are done experimenting with the samples, you can delete the Azure resources created using the Azure Developer CLI.
@@ -41,6 +47,7 @@ When you are done experimenting with the samples, you can delete the Azure resou
 ```bash
 azd down
 ```
+
 
 ## Troubleshooting
 
