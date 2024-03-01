@@ -1,0 +1,22 @@
+# HikerAI
+
+This sample demonstrates how to use the Azure OpenAI with a `gpt-35-turbo` model, from a simple .NET 8.0 console application. Get a hiking recommendation from the AI model. It consists of a simple console application,running locally, that will send request to an Azure OpenAI service deployed in your Azure subscription. 
+
+## Deploying the Azure resources
+
+1. If it's not already done, follow the [Getting-started: Deploying the Azure resources](../README.md#deploying-the-azure-resources) to deploy the Azure OpenAI service with the models.
+
+## Trying the sample
+
+1. From a terminal or command prompt, navigate to the `02-HikerAI` directory.
+   
+2. It's now time to try the console application. Depending on your Azure subscription it's possible that a few minutes more minute are required before the model deployed in Azure OpenAI get available. If you get an error message about this, wait a few (~5) minutes and try again.
+	```bash
+	dotnet run
+	```
+3. (Optional) Try modifying the `hikeRequest` changing the location so something you know, or the type of hike you like  to see the differences in the responses.
+
+4. (Optional) Try another samples from the [Getting-started: Trying the samples](../README.md#trying-the-samples) to experiment different scenarios.
+
+5. Once you are done experimenting with the samples, follow the instructions from the [Getting-started: Clean up resources](../README.md#clean-up-resources) to delete the Azure resources created using the Azure Developer CLI.
+

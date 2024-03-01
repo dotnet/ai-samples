@@ -23,5 +23,12 @@ function set_dotnet_user_secrets() {
 }
 
 lines=$(azd env get-values)
-set_dotnet_user_secrets "./" "$lines"
+# set_dotnet_user_secrets "./01-HikeSummary/" "$lines"
+set_dotnet_user_secrets "./02-HikerAI/" "$lines"
+# set_dotnet_user_secrets "./03-HikePlanner/" "$lines"
+# set_dotnet_user_secrets "./04-HikeTracker/" "$lines"
+# set_dotnet_user_secrets "./05-HikeWeather/" "$lines"
+
+
+
 

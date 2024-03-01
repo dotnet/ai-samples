@@ -7,6 +7,10 @@ var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 string openAIEndpoint = config["AZURE_OPENAI_ENDPOINT"];
 string openAIDeploymentName = config["AZURE_OPENAI_GPT_NAME"];
 string openAiKey = config["AZURE_OPENAI_KEY"];
+// == If you skipped the deployment because you already have an Azure OpenAI available,
+// == edit the previous lines to use hardcoded values.
+// == ex: string openAIEndpoint = "https://cog-demo123.openai.azure.com/";
+
 
 // == Creating the AIClient ==========
 var endpoint = new Uri(openAIEndpoint);
@@ -52,7 +56,7 @@ Console.WriteLine($"\n\nUser >>> {userGreeting}");
 ChatCompletions response = await openAIClient.GetChatCompletionsAsync(completionOptions);
 ChatResponseMessage assistantResponse = response.Choices[0].Message;
 Console.WriteLine($"\n\nAssistant >>> {assistantResponse.Content}");
-completionOptions.Messages.Add(new ChatRequestSystemMessage(assistantResponse.Content)); 
+completionOptions.Messages.Add(new ChatRequestAssistantMessage(assistantResponse.Content)); 
 
 
 // == Providing the user's request ==========
