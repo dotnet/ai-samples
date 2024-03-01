@@ -20,4 +20,4 @@ Set-DotnetUserSecrets -path "./01-HikeSummary/" -lines $lines
 Set-DotnetUserSecrets -path "./02-HikerAI/"     -lines $lines
 Set-DotnetUserSecrets -path "./03-ChattingAboutMyHikes/" -lines $lines
 # Set-DotnetUserSecrets -path "./04-HikeTracker/" -lines $lines
-# Set-DotnetUserSecrets -path "./05-HikeWeather/" -lines $lines
+Set-DotnetUserSecrets -path "./05-HikeImages/" -lines $lines
