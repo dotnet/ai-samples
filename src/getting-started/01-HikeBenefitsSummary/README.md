@@ -12,7 +12,7 @@ If it's not already done, follow the [Getting-started: Deploying the Azure resou
 
 ## Trying Hiking Benefits
 
-1. From a terminal or command prompt, navigate to the `01-HikeSummary` directory.
+1. From a terminal or command prompt, navigate to the `01-HikeBenefitsSummary` directory.
    
 2. It's now time to try the console application. Depending on your Azure subscription it's possible that a few minutes more minute are required before the model deployed in Azure OpenAI get available. If you get an error message about this, wait a few (~5) minutes and try again.
 	```bash
