@@ -4,7 +4,7 @@ This sample demonstrates how to use the Azure OpenAI with a `gpt-35-turbo` model
 
 ## Getting Started
 
-1. If it's not already done, follow the [Getting-started](../README.md#getting-started) to deploy the Azure OpenAI service and the `gpt-35-turbo` model.
+1. If it's not already done, follow the [Getting-started](../README.md#getting-started-1) to deploy the Azure OpenAI service and the `gpt-35-turbo` model.
 
 2. From a terminal or command prompt, navigate to the `02-HikerAI` directory.
    
