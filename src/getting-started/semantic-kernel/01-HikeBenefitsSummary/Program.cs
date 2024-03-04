@@ -43,6 +43,7 @@ Please summarize the the following text in 20 words or less:
 
 
 
+// == Render the prompt and display it ==========
 var promptTemplateConfig = new PromptTemplateConfig(userRequest);
 
 var promptTemplateFactory = new KernelPromptTemplateFactory();
@@ -53,6 +54,7 @@ var renderedPrompt = await promptTemplate.RenderAsync(kernel, new() { ["input"] 
 Console.WriteLine($"\n\nUser >>> {renderedPrompt}");
 
 
+// == Create the function from the prompt ==========
 var summaryFunction = kernel.CreateFunctionFromPrompt(userRequest, executionSettings);
 
 
