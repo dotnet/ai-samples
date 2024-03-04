@@ -15,9 +15,7 @@ string openAiKey = config["AZURE_OPENAI_KEY"];
 // == ex: string openAIEndpoint = "https://cog-demo123.openai.azure.com/";
 
 
-// == Creating the AIClient ==========
-
-//Create Kernel builder
+// == Create the Kernel ==========
 var builder = Kernel.CreateBuilder();
 builder.AddAzureOpenAIChatCompletion(openAIDeploymentName, openAIEndpoint, openAiKey);
 
