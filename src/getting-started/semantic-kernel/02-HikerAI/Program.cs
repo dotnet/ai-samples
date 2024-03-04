@@ -42,8 +42,7 @@ You will also share an interesting fact about the local nature on the hikes when
 
 {{$history}}
 User: {{$userInput}}
-ChatBot:";
-
+ChatBot:
 """;
 
 
