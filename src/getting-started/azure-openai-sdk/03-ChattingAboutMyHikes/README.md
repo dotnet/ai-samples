@@ -1,6 +1,6 @@
 # Chatting About My Previous Hikes
 
-This sample demonstrates how to use the Azure OpenAI with a `gpt-35-turbo` model, from a simple .NET 8.0 console application. Use the AI model to get analytics and information about your previous hikes. It consists of a simple console application, running locally, that will read the file `hikes.md` and send request to an Azure OpenAI service deployed in your Azure subscription and provide the result in the console. 
+This sample demonstrates how to use the Azure OpenAI with a `gpt-35-turbo` model, from a .NET 8.0 console application. Use the AI model to get analytics and information about your previous hikes. It consists of a console application, running locally, that will read the file `hikes.md` and send request to an Azure OpenAI Service deployed in your Azure subscription and provide the result in the console. 
 
 Everything will be deployed automatically using the Azure Developer CLI.
 
