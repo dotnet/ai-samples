@@ -1,6 +1,6 @@
-﻿using Azure;
-using Azure.AI.OpenAI;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.SemanticKernel.ChatCompletion;
+using Microsoft.SemanticKernel.Connectors.OpenAI;
 
 // == Retrieve the local secrets saved during the Azure deployment ==========
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
@@ -12,23 +12,21 @@ string openAiKey = config["AZURE_OPENAI_KEY"];
 // == ex: string openAIEndpoint = "https://cog-demo123.openai.azure.com/";
 
 
-// == Creating the AIClient ==========
-var endpoint = new Uri(openAIEndpoint);
-var credentials = new AzureKeyCredential(openAiKey);
-var openAIClient = new OpenAIClient(endpoint, credentials);
+// == Create the Azure Open AI Chat Completion Service ==========
+AzureOpenAIChatCompletionService chatCompletionService = new(
+            deploymentName: openAIDeploymentName,
+            endpoint: openAIEndpoint,
+            apiKey: openAiKey);
 
-var completionOptions = new ChatCompletionsOptions
+var executionSettings = new OpenAIPromptExecutionSettings
 {
     MaxTokens = 400,
     Temperature = 1f,
-    FrequencyPenalty = 0.0f,
-    PresencePenalty = 0.0f,
-    NucleusSamplingFactor = 0.95f, // Top P
-    DeploymentName = openAIDeploymentName
+    TopP = 0.95f,
 };
 
 // == Providing context for the AI model ==========
-var systemPrompt = 
+var systemPrompt =
 """
 You are a hiking enthusiast who helps people discover fun hikes in their area. You are upbeat and friendly. 
 You introduce yourself when first saying hello. When helping people out, you always ask them 
@@ -41,7 +39,14 @@ You will then provide three suggestions for nearby hikes that vary in length aft
 You will also share an interesting fact about the local nature on the hikes when making a recommendation.
 """;
 
-completionOptions.Messages.Add(new ChatRequestSystemMessage(systemPrompt));
+
+var chatHistory = new ChatHistory(systemPrompt);
+Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last().Content}");
+
+
+// == Get the response and display it ==========
+chatHistory.Add(await chatCompletionService.GetChatMessageContentAsync(chatHistory, executionSettings));
+Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last().Content}");
 
 // == Starting the conversation ==========
 string userGreeting = """
@@ -49,17 +54,16 @@ Hi!
 Apparently you can help me find a hike that I will like?
 """;
 
-completionOptions.Messages.Add(new ChatRequestUserMessage(userGreeting));
-Console.WriteLine($"\n\nUser >>> {userGreeting}");
 
-ChatCompletions response = await openAIClient.GetChatCompletionsAsync(completionOptions);
-ChatResponseMessage assistantResponse = response.Choices[0].Message;
-Console.WriteLine($"\n\nAssistant >>> {assistantResponse.Content}");
-completionOptions.Messages.Add(new ChatRequestAssistantMessage(assistantResponse.Content)); 
+chatHistory.AddUserMessage(userGreeting);
+Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last().Content}");
+
+chatHistory.Add(await chatCompletionService.GetChatMessageContentAsync(chatHistory, executionSettings));
+Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last().Content}");
 
 
 // == Providing the user's request ==========
-var hikeRequest = 
+var hikeRequest =
 """
 I live in the greater Montreal area and would like an easy hike. I don't mind driving a bit to get there.
 I don't want the hike to be over 10 miles round trip. I'd consider a point-to-point hike.
@@ -67,11 +71,10 @@ I want the hike to be as isolated as possible. I don't want to see many people.
 I would like it to be as bug free as possible.
 """;
 
-Console.WriteLine($"\n\nUser >>> {hikeRequest}");
-completionOptions.Messages.Add(new ChatRequestUserMessage(hikeRequest));
+chatHistory.AddUserMessage(hikeRequest);
+Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last().Content}");
+
 
 // == Retrieve the answer from HikeAI ==========
-response = await openAIClient.GetChatCompletionsAsync(completionOptions);
-assistantResponse = response.Choices[0].Message;
-
-Console.WriteLine($"\n\nAssistant >>> {assistantResponse.Content}");
+chatHistory.Add(await chatCompletionService.GetChatMessageContentAsync(chatHistory, executionSettings));
+Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last().Content}");

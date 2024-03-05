@@ -1,22 +1,23 @@
-﻿using Azure;
-using Azure.AI.OpenAI;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.SemanticKernel.Connectors.OpenAI;
 
 // == Retrieve the local secrets saved during the Azure deployment ==========
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 string openAIEndpoint = config["AZURE_OPENAI_ENDPOINT"];
-string openAIDeploymentName = config["AZURE_OPENAI_GPT_NAME"];
 string openAiKey = config["AZURE_OPENAI_KEY"];
 string openAIDalleName = config["AZURE_OPENAI_DALLE_NAME"];
 // == If you skipped the deployment because you already have an Azure OpenAI available,
 // == edit the previous lines to use hardcoded values.
 // == ex: string openAIEndpoint = "https://cog-demo123.openai.azure.com/";
 
-
-// == Creating the AIClient ==========
-var endpoint = new Uri(openAIEndpoint);
-var credentials = new AzureKeyCredential(openAiKey);
-var openAIClient = new OpenAIClient(endpoint, credentials);
+// == Create the Azure Open AI Text to Image Service ==========
+#pragma warning disable SKEXP0012 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
+AzureOpenAITextToImageService textToImageService = new(
+            deploymentName: openAIDalleName,
+            endpoint: openAIEndpoint,
+            apiKey: openAiKey,
+            null);
+#pragma warning restore SKEXP0012 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
 
 
 // == Define the image ==========
@@ -26,19 +27,9 @@ There is a trail visible in the foreground.
 The postal card has text in red saying: 'You are invited for a hike!'
 """;
 
+#pragma warning disable SKEXP0002 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
 
-Response<ImageGenerations> response = await openAIClient.GetImageGenerationsAsync(
-    new ImageGenerationOptions()
-    {
-        DeploymentName = openAIDalleName,
-        Prompt = imagePrompt,
-        Size = ImageSize.Size1024x1024,
-        Quality = ImageGenerationQuality.Standard
-    });
+var imageUrl = await textToImageService.GenerateImageAsync(imagePrompt.Trim(), 1024, 1024);
+#pragma warning restore SKEXP0002 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
 
-ImageGenerationData generatedImage = response.Value.Data[0];
-if (!string.IsNullOrEmpty(generatedImage.RevisedPrompt))
-{
-    Console.WriteLine($"\n\nInput prompt automatically revised to:\n {generatedImage.RevisedPrompt}");
-}
-Console.WriteLine($"\n\nThe generated image is ready at:\n {generatedImage.Url.AbsoluteUri}");
+Console.WriteLine($"\n\nThe generated image is ready at:\n {imageUrl}");

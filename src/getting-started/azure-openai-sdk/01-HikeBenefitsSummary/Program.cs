@@ -1,6 +1,6 @@
-﻿using Azure;
-using Azure.AI.OpenAI;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.SemanticKernel.ChatCompletion;
+using Microsoft.SemanticKernel.Connectors.OpenAI;
 
 // == Retrieve the local secrets saved during the Azure deployment ==========
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
@@ -12,19 +12,18 @@ string openAiKey = config["AZURE_OPENAI_KEY"];
 // == ex: string openAIEndpoint = "https://cog-demo123.openai.azure.com/";
 
 
-// == Creating the AIClient ==========
-var endpoint = new Uri(openAIEndpoint);
-var credentials = new AzureKeyCredential(openAiKey);
-var openAIClient = new OpenAIClient(endpoint, credentials);
+// == Create the Azure Open AI Chat Completion Service ==========
+AzureOpenAIChatCompletionService chatCompletionService = new(
+            deploymentName: openAIDeploymentName,
+            endpoint: openAIEndpoint,
+            apiKey: openAiKey);
 
-var completionOptions = new ChatCompletionsOptions
+
+var executionSettings = new OpenAIPromptExecutionSettings
 {
     MaxTokens = 400,
     Temperature = 1f,
-    FrequencyPenalty = 0.0f,
-    PresencePenalty = 0.0f,
-    NucleusSamplingFactor = 0.95f, // Top P
-    DeploymentName = openAIDeploymentName
+    TopP = 0.95f,
 };
 
 
@@ -37,13 +36,11 @@ string userRequest = """
 Please summarize the the following text in 20 words or less:
 """ + markdown;
 
-completionOptions.Messages.Add(new ChatRequestUserMessage(userRequest));
-Console.WriteLine($"\n\nUser >>> {userRequest}");
+
+var chatHistory = new ChatHistory(userRequest);
+Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last().Content}");
+
 
 // == Get the response and display it ==========
-
-ChatCompletions response = await openAIClient.GetChatCompletionsAsync(completionOptions);
-ChatResponseMessage assistantResponse = response.Choices[0].Message;
-Console.WriteLine($"\n\nAssistant >>> {assistantResponse.Content}");
-
-
+chatHistory.Add(await chatCompletionService.GetChatMessageContentAsync(chatHistory, executionSettings));
+Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last().Content}");
