@@ -1,8 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
-
-using Microsoft.SemanticKernel;
+using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
-using Kernel = Microsoft.SemanticKernel.Kernel;
 
 // == Retrieve the local secrets saved during the Azure deployment ==========
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
@@ -14,9 +12,12 @@ string openAiKey = config["AZURE_OPENAI_KEY"];
 // == ex: string openAIEndpoint = "https://cog-demo123.openai.azure.com/";
 
 
-// == Create the Kernel ==========
-var builder = Kernel.CreateBuilder();
-builder.AddAzureOpenAIChatCompletion(openAIDeploymentName, openAIEndpoint, openAiKey);
+// == Create the Azure Open AI Chat Completion Service ==========
+AzureOpenAIChatCompletionService chatCompletionService = new(
+            deploymentName: openAIDeploymentName,
+            endpoint: openAIEndpoint,
+            apiKey: openAiKey);
+
 
 var executionSettings = new OpenAIPromptExecutionSettings
 {
@@ -24,8 +25,6 @@ var executionSettings = new OpenAIPromptExecutionSettings
     Temperature = 1f,
     TopP = 0.95f,
 };
-
-var kernel = builder.Build();
 
 //== Read markdown file  ==========
 string markdown = System.IO.File.ReadAllText("hikes.md");
@@ -36,38 +35,26 @@ var systemPrompt =
 You are upbeat and friendly. You introduce yourself when first saying hello. 
 Provide a short answer only based on the user hiking records below:  
 
-{{$hikingRecords}}
+""" + markdown;
 
-{{$history}}
-User: {{$userInput}}
-ChatBot:
-""";
-
-var chatFunction = kernel.CreateFunctionFromPrompt(systemPrompt, executionSettings);
-
-var history = "";
-var arguments = new KernelArguments()
-{
-    ["history"] = history,
-    ["hikingRecords"] = markdown
-};
+var chatHistory = new ChatHistory(systemPrompt);
+Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last().Content}");
 
 Console.WriteLine($"\n\n\t\t-=-=- Hiking History -=-=--\n{markdown}");
 
 // == Starting the conversation ==========
+
+
+
 string userGreeting = """
 Hi!
 """;
 
-arguments["userInput"] = userGreeting;
+chatHistory.AddUserMessage(userGreeting);
+Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last().Content}");
 
-Console.WriteLine($"\n\nUser >>> {userGreeting}");
-
-var bot_answer = await chatFunction.InvokeAsync(kernel, arguments);
-Console.WriteLine($"\n\nAssistant >>> {bot_answer}");
-
-history += $"\nUser: {userGreeting}\nAI: {bot_answer}\n";
-arguments["history"] = history;
+chatHistory.Add(await chatCompletionService.GetChatMessageContentAsync(chatHistory, executionSettings));
+Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last().Content}");
 
 
 // == Providing the user's request ==========
@@ -77,12 +64,8 @@ I would like to know the ration of hike I did in Canada compare to hikes done in
 """;
 
 
-arguments["userInput"] = hikeRequest;
+chatHistory.AddUserMessage(hikeRequest);
+Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last().Content}");
 
-Console.WriteLine($"\n\nUser >>> {hikeRequest}");
-
-bot_answer = await chatFunction.InvokeAsync(kernel, arguments);
-Console.WriteLine($"\n\nAssistant >>> {bot_answer}");
-
-history += $"\nUser: {hikeRequest}\nAI: {bot_answer}\n";
-arguments["history"] = history;
+chatHistory.Add(await chatCompletionService.GetChatMessageContentAsync(chatHistory, executionSettings));
+Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last().Content}");

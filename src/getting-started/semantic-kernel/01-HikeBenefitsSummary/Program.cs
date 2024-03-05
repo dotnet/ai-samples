@@ -12,7 +12,7 @@ string openAiKey = config["AZURE_OPENAI_KEY"];
 // == ex: string openAIEndpoint = "https://cog-demo123.openai.azure.com/";
 
 
-// == Create the Kernel ==========
+// == Create the Azure Open AI Chat Completion Service ==========
 AzureOpenAIChatCompletionService chatCompletionService = new(
             deploymentName: openAIDeploymentName,
             endpoint: openAIEndpoint,
@@ -38,7 +38,7 @@ Please summarize the the following text in 20 words or less:
 
 
 var chatHistory = new ChatHistory(userRequest);
-Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last().Content}"); ;
+Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last().Content}");
 
 
 // == Get the response and display it ==========
