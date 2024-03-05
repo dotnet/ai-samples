@@ -1,8 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
-
-using Microsoft.SemanticKernel;
+using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
-using Kernel = Microsoft.SemanticKernel.Kernel;
 
 // == Retrieve the local secrets saved during the Azure deployment ==========
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
@@ -15,8 +13,11 @@ string openAiKey = config["AZURE_OPENAI_KEY"];
 
 
 // == Create the Kernel ==========
-var builder = Kernel.CreateBuilder();
-builder.AddAzureOpenAIChatCompletion(openAIDeploymentName, openAIEndpoint, openAiKey);
+AzureOpenAIChatCompletionService chatCompletionService = new(
+            deploymentName: openAIDeploymentName,
+            endpoint: openAIEndpoint,
+            apiKey: openAiKey);
+
 
 var executionSettings = new OpenAIPromptExecutionSettings
 {
@@ -25,39 +26,21 @@ var executionSettings = new OpenAIPromptExecutionSettings
     TopP = 0.95f,
 };
 
-var kernel = builder.Build();
 
 //== Read markdown file  ==========
-string markdown = File.ReadAllText("benefits.md");
+string markdown = System.IO.File.ReadAllText("benefits.md");
 
 
 // == Starting the conversation ==========
 string userRequest = """
 Please summarize the the following text in 20 words or less:
-
-{{$input}}
-""";
+""" + markdown;
 
 
-
-// == Render the prompt and display it ==========
-var promptTemplateConfig = new PromptTemplateConfig(userRequest);
-
-var promptTemplateFactory = new KernelPromptTemplateFactory();
-var promptTemplate = promptTemplateFactory.Create(promptTemplateConfig);
-
-var renderedPrompt = await promptTemplate.RenderAsync(kernel, new() { ["input"] = markdown });
-
-Console.WriteLine($"\n\nUser >>> {renderedPrompt}");
-
-
-// == Create the function from the prompt ==========
-var summaryFunction = kernel.CreateFunctionFromPrompt(userRequest, executionSettings);
+var chatHistory = new ChatHistory(userRequest);
+Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last().Content}"); ;
 
 
 // == Get the response and display it ==========
-var result = await kernel.InvokeAsync(summaryFunction, new() { ["input"] = markdown });
-
-Console.WriteLine($"\n\nAssistant >>> {result}");
-
-
+chatHistory.Add(await chatCompletionService.GetChatMessageContentAsync(chatHistory, executionSettings));
+Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last().Content}");
