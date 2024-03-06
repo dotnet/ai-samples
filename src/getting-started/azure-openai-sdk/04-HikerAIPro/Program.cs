@@ -15,7 +15,7 @@ var credentials = new AzureKeyCredential(openAiKey);
 var openAIClient = new OpenAIClient(endpoint, credentials);
 
 
-// == Definding a Tool to extend the AI model ==========
+// == Defining a Tool to extend the AI model ==========
 var getWeather = new ChatCompletionsFunctionToolDefinition()
 {
     Name = "get_current_weather",
