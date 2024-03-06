@@ -36,7 +36,7 @@ Now that your Azure OpenAI Service is deployed, It's time to select one of our s
 - [Hike Benefits Summary](01-HikeBenefitsSummary/README.md): Summarize long text to a few words.
 - [Hiker AI](02-HikerAI/README.md): Chat with the AI and get hike recommendation.
 - [Chatting About my Previous Hikes](03-ChattingAboutMyHikes/README.md): Chat with the AI about your previous hikes.
-- [AI and Native .NET](04-AiAndNative/README.md): TBD
+- [AI and Native .NET](04-HikerAIPro/README.md): Extending the AI model with a local function using Function Tool.
 - [Hike Images](05-HikeImages/README.md): Generate postal card images to invite your friends for a hike.
 
 

@@ -26,7 +26,7 @@ lines=$(azd env get-values)
 set_dotnet_user_secrets "./azure-openai-sdk/01-HikeBenefitsSummary/" "$lines"
 set_dotnet_user_secrets "./azure-openai-sdk/02-HikerAI/" "$lines"
 set_dotnet_user_secrets "./azure-openai-sdk/03-ChattingAboutMyHikes/" "$lines"
-# set_dotnet_user_secrets "./azure-openai-sdk/04-HikeTracker/" "$lines"
+set_dotnet_user_secrets "./azure-openai-sdk/04-HikerAIPro/" "$lines"
 set_dotnet_user_secrets "./azure-openai-sdk/05-HikeImages/" "$lines"
 
 set_dotnet_user_secrets "./semantic-kernel/01-HikeBenefitsSummary/" "$lines"
