@@ -6,7 +6,7 @@ Welcome to the official home for .NET samples demonstrating how to use AI in you
 
 |  #  | Topic                                       | GitHub Link                               | 
 |-----|---------------------------------------------|-------------------------------------------|  
-|  1  | Text Summary                       			|  [Hike Benefits Summary Project](./src/getting-started/semantic-kernel/02-HikerAI/README.md)
+|  1  | Text Summary                       			|  [Hike Benefits Summary Project](./src/getting-started/semantic-kernel/01-HikeBenefitsSummary/README.md)
 |  2  | Hiker AI                                    |  [Hiker AI Project](./src/getting-started/semantic-kernel/02-HikerAI/README.md)
 |  3  | Chat Context/Data                         	|  [Chatting About my Previous Hikes Project](./src/getting-started/semantic-kernel/03-ChattingAboutMyHikes/README.md)
 |  4  | Adding Tools (Functions)                    |  [Coming Soon](.)
@@ -20,7 +20,7 @@ Welcome to the official home for .NET samples demonstrating how to use AI in you
 
 |  #  | Topic                                       | GitHub Link                               | 
 |-----|---------------------------------------------|-------------------------------------------|  
-|  1  | Text Summary                       			|  [Hike Benefits Summary Project](./src/getting-started/azure-openai-sdk/02-HikerAI/README.md)
+|  1  | Text Summary                       			|  [Hike Benefits Summary Project](./src/getting-started/azure-openai-sdk/01-HikeBenefitsSummary/README.md)
 |  2  | Hiker AI                                    |  [Hiker AI Project](./src/getting-started/azure-openai-sdk/02-HikerAI/README.md)
 |  3  | Chat Context/Data                         	|  [Chatting About my Previous Hikes Project](./src/getting-started/azure-openai-sdk/03-ChattingAboutMyHikes/README.md)
 |  4  | Adding Tools (Functions)                    |  [Coming Soon](.)
