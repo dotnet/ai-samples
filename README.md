@@ -41,8 +41,8 @@ Welcome to the official home for .NET samples demonstrating how to use AI in you
 ### End to End Examples
 |  #  | Topic                                       |  GitHub Link |
 |-----|---------------------------------------------|--------------|
-| E2E | Azure Search .                              |  [Coming Soon](.)
-| E2E | E-Shop Sample                               |  [Coming Soon](.)
+| E2E | Azure Search .                              |  [Azure Search Repository](https://github.com/Azure-Samples/azure-search-openai-demo-csharp)
+| E2E | E-Shop Sample                               |  [E-Shop Repository](https://github.com/dotnet/eshop)
 
 ### Local Models
 |  #  | Topic                                       | GitHub Link |
