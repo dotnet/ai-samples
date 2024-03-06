@@ -2,26 +2,31 @@
 
 Welcome to the official home for .NET samples demonstrating how to use AI in your .NET applications. If you're new to AI, start at the top and work your way down. Otherwise, jump in wherever suits your interests.
 
+### Getting Started Series using Semantic Kernel
+
+|  #  | Topic                                       | GitHub Link                               | 
+|-----|---------------------------------------------|-------------------------------------------|  
+|  1  | Text Summary                       			|  [Hike Benefits Summary Project](./src/getting-started/semantic-kernel/01-HikeBenefitsSummary/README.md)
+|  2  | Hiker AI                                    |  [Hiker AI Project](./src/getting-started/semantic-kernel/02-HikerAI/README.md)
+|  3  | Chat Context/Data                         	|  [Chatting About my Previous Hikes Project](./src/getting-started/semantic-kernel/03-ChattingAboutMyHikes/README.md)
+|  4  | Adding Tools (Functions)                    |  [Coming Soon](.)
+|  5  | Generating images                    		|  [Hike Images Project](./src/getting-started/semantic-kernel/05-HikeImages/README.md)
+| REF |  Using Milvus                               |  [Coming Soon](.)
+| REF |  Using Qdrant                               |  [Coming Soon](.)
+
+
+
 ### Getting Started Series using Azure OpenAI SDK
 
 |  #  | Topic                                       | GitHub Link                               | 
 |-----|---------------------------------------------|-------------------------------------------|  
-|  1  | Text Summary                       			|  [Hike Benefits Summary Project](./src/getting-started/azure-openai-sdk/02-HikerAI/README.md)
+|  1  | Text Summary                       			|  [Hike Benefits Summary Project](./src/getting-started/azure-openai-sdk/01-HikeBenefitsSummary/README.md)
 |  2  | Hiker AI                                    |  [Hiker AI Project](./src/getting-started/azure-openai-sdk/02-HikerAI/README.md)
 |  3  | Chat Context/Data                         	|  [Chatting About my Previous Hikes Project](./src/getting-started/azure-openai-sdk/03-ChattingAboutMyHikes/README.md)
 |  4  | Adding Tools (Functions)                    |  [Coming Soon](.)
 |  5  | Generating images                    		|  [Hike Images Project](./src/getting-started/azure-openai-sdk/05-HikeImages/README.md)
 
-### Getting Started Series using Semantic Kernel
 
-|  #  | Topic                                       | GitHub Link                               | 
-|-----|---------------------------------------------|-------------------------------------------|  
-|  1  | Hello LLM                                   |  [Coming Soon](.)
-|  2  | Adding Context/Data                         |  [Coming Soon](.)
-|  3  | Adding Chat History                         |  [Coming Soon](.)
-|  4  | Adding Tools (Functions)                    |  [Coming Soon](.)
-| REF |  Using Milvus                               |  [Coming Soon](.)
-| REF |  Using Qdrant                               |  [Coming Soon](.)
 
 ### LLM Core Cocepts
 
