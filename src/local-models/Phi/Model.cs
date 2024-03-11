@@ -1,3 +1,7 @@
+﻿// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
 using System.Text.Json.Serialization;
 using FluentAssertions;
 using TorchSharp;
@@ -165,7 +169,7 @@ public class PhiAttention : nn.Module<
     )>
 {
     private readonly int? layerIdx;
-    private PhiConfig config;
+    private readonly PhiConfig config;
     private readonly double attentionDropout;
     private readonly int hiddenSize;
     private readonly int numAttentionHeads;
@@ -187,15 +191,15 @@ public class PhiAttention : nn.Module<
     private readonly PhiRotaryEmbedding phiRotaryEmbedding;
 
     // cache_k, cache_v
-    private Tensor? cache_k;
-    private Tensor? cache_v;
+    private readonly Tensor? cache_k;
+    private readonly Tensor? cache_v;
 
     public PhiAttention(PhiConfig config, int? layerIdx = null, int maxBatch = 4, int maxLength = 2048)
         : base(nameof(PhiAttention))
     {
         this.layerIdx = layerIdx;
         this.config = config;
-        
+
         this.attentionDropout = config.AttentionDropout;
         this.hiddenSize = config.HiddenSize;
         this.numAttentionHeads = config.NumAttentionHeads;
@@ -258,11 +262,11 @@ public class PhiAttention : nn.Module<
         // shape: [batch_size, num_heads, seq_len, head_dim]
         // queryRot: [batch_size, num_heads, seq_len, :head_dim * partial_rotary_factor]
         // queryPass: [batch_size, num_heads, seq_len, head_dim * partial_rotary_factor:]
-        
+
         var keyRot = keyStates[.., .., .., ..this.phiRotaryEmbedding.Dim];
         var keyPass = keyStates[.., .., .., this.phiRotaryEmbedding.Dim..];
         var queryRot = queryStates[.., .., .., ..this.phiRotaryEmbedding.Dim];
-        var queryPass = queryStates[..,..,.., this.phiRotaryEmbedding.Dim..];
+        var queryPass = queryStates[.., .., .., this.phiRotaryEmbedding.Dim..];
         (var qRot, var kRot) = Utils.ApplyRotaryPosEmb(queryRot, keyRot, cos, sin, positionIds);
 
         queryStates = torch.cat([qRot, queryPass], dim: -1);
@@ -305,10 +309,10 @@ public class PhiDecoderLayer : nn.Module<
     )>
 {
     private readonly int? layerIdx;
-    private PhiAttention self_attn;
-    private PhiMLP mlp;
-    private LayerNorm input_layernorm;
-    private Dropout resid_dropout;
+    private readonly PhiAttention self_attn;
+    private readonly PhiMLP mlp;
+    private readonly LayerNorm input_layernorm;
+    private readonly Dropout resid_dropout;
 
     public PhiDecoderLayer(PhiConfig config, int? layerIdx = null)
         : base(nameof(PhiDecoderLayer))
@@ -397,7 +401,7 @@ public class PhiModel : nn.Module<
         {
             throw new NotImplementedException("inputEmbeddings is not supported");
         }
-        
+
         inputEmbeddings = this.embed_tokens.forward(inputIds);
         inputEmbeddings = this.embed_dropout.forward(inputEmbeddings);
         var batchSize = inputIds.shape[0];
@@ -535,4 +539,3 @@ public class PhiModelInferenceWrapper : nn.Module<
         return (lm_logits, output.Item2, output.Item3);
     }
 }
-  

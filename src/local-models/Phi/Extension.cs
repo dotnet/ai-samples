@@ -1,3 +1,7 @@
+﻿// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
 using TorchSharp;
 using static TorchSharp.torch;
 
@@ -15,7 +19,7 @@ public static class Extension
         var inputIds = tokenizer.Encode(prompt);
         var inputTensor = torch.tensor(inputIds.ToArray(), dtype: ScalarType.Int64, device: phi.Device).unsqueeze(0);
         var attentionMask = torch.ones_like(inputTensor);
-        var stopTokenIds = stopSequences == null ? [[ tokenizer.EosId ]] : stopSequences.Select(x => tokenizer.Encode(x)).ToArray();
+        var stopTokenIds = stopSequences == null ? [[tokenizer.EosId]] : stopSequences.Select(x => tokenizer.Encode(x)).ToArray();
         (var token, var _) = phi.Generate(inputTensor, attentionMask, temperature: temperature, maxLen: maxLen, topP: topP, stopTokenSequence: stopTokenIds);
 
         var tokenIds = token[0].to_type(ScalarType.Int32).data<int>().ToArray();
@@ -67,7 +71,7 @@ public static class Extension
             }
 
             TensorExtensionMethods.Load(ref tensor, reader, skip: false);
-            
+
             // convert type to bf16 if type is float
             tensor = tensor!.to_type(originalType);
             dict[key] = tensor;

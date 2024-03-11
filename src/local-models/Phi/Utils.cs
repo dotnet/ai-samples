@@ -1,11 +1,15 @@
-﻿using FluentAssertions;
+﻿// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TorchSharp.Modules;
+using FluentAssertions;
 using TorchSharp;
+using TorchSharp.Modules;
 using static TorchSharp.torch;
 
 public static class Utils
@@ -39,26 +43,26 @@ public static class Utils
         return rotated_reshaped.type_as(input);
     }
 
-//    def precompute_theta_pos_frequencies(head_dim: int, seq_len: int, device: str, theta: float = 10000.0):
-//    # As written in the paragraph 3.2.2 of the paper
-//    # >> In order to generalize our results in 2D to any xi ∈ Rd where **d is even**, [...]
-//    assert head_dim % 2 == 0, "Dimension must be divisible by 2"
-//    # Build the theta parameter
-//    # According to the formula theta_i = 10000^(-2(i-1)/dim) for i = [1, 2, ... dim/2]
-//    # Shape: (Head_Dim / 2)
-//    theta_numerator = torch.arange(0, head_dim, 2).float ()
-//# Shape: (Head_Dim / 2)
-//    theta = 1.0 / (theta * *(theta_numerator / head_dim)).to(device) # (Dim / 2)
-//    # Construct the positions (the "m" parameter)
-//    # Shape: (Seq_Len)
-//    m = torch.arange(seq_len, device=device)
-//    # Multiply each theta by each position using the outer product.
-//    # Shape: (Seq_Len) outer_product* (Head_Dim / 2) -> (Seq_Len, Head_Dim / 2)
-//    freqs = torch.outer(m, theta).float ()
-//# We can compute complex numbers in the polar form c = R * exp(m * theta), where R = 1 as follows:
-//# (Seq_Len, Head_Dim / 2) -> (Seq_Len, Head_Dim / 2)
-//    freqs_complex = torch.polar(torch.ones_like(freqs), freqs)
-//    return freqs_complex
+    //    def precompute_theta_pos_frequencies(head_dim: int, seq_len: int, device: str, theta: float = 10000.0):
+    //    # As written in the paragraph 3.2.2 of the paper
+    //    # >> In order to generalize our results in 2D to any xi ∈ Rd where **d is even**, [...]
+    //    assert head_dim % 2 == 0, "Dimension must be divisible by 2"
+    //    # Build the theta parameter
+    //    # According to the formula theta_i = 10000^(-2(i-1)/dim) for i = [1, 2, ... dim/2]
+    //    # Shape: (Head_Dim / 2)
+    //    theta_numerator = torch.arange(0, head_dim, 2).float ()
+    //# Shape: (Head_Dim / 2)
+    //    theta = 1.0 / (theta * *(theta_numerator / head_dim)).to(device) # (Dim / 2)
+    //    # Construct the positions (the "m" parameter)
+    //    # Shape: (Seq_Len)
+    //    m = torch.arange(seq_len, device=device)
+    //    # Multiply each theta by each position using the outer product.
+    //    # Shape: (Seq_Len) outer_product* (Head_Dim / 2) -> (Seq_Len, Head_Dim / 2)
+    //    freqs = torch.outer(m, theta).float ()
+    //# We can compute complex numbers in the polar form c = R * exp(m * theta), where R = 1 as follows:
+    //# (Seq_Len, Head_Dim / 2) -> (Seq_Len, Head_Dim / 2)
+    //    freqs_complex = torch.polar(torch.ones_like(freqs), freqs)
+    //    return freqs_complex
 
     public static Tensor PrecomputeThetaPosFrequencies(int headDim, int seqLen, string device, float theta = 10000.0f)
     {
@@ -104,34 +108,34 @@ public static class Utils
     }
 
     // python
-//     # Copied from transformers.models.llama.modeling_llama.apply_rotary_pos_emb
-// def apply_rotary_pos_emb(q, k, cos, sin, position_ids, unsqueeze_dim=1):
-//     """Applies Rotary Position Embedding to the query and key tensors.
+    //     # Copied from transformers.models.llama.modeling_llama.apply_rotary_pos_emb
+    // def apply_rotary_pos_emb(q, k, cos, sin, position_ids, unsqueeze_dim=1):
+    //     """Applies Rotary Position Embedding to the query and key tensors.
 
-//     Args:
-//         q (`torch.Tensor`): The query tensor.
-//         k (`torch.Tensor`): The key tensor.
-//         cos (`torch.Tensor`): The cosine part of the rotary embedding.
-//         sin (`torch.Tensor`): The sine part of the rotary embedding.
-//         position_ids (`torch.Tensor`):
-//             The position indices of the tokens corresponding to the query and key tensors. For example, this can be
-//             used to pass offsetted position ids when working with a KV-cache.
-//         unsqueeze_dim (`int`, *optional*, defaults to 1):
-//             The 'unsqueeze_dim' argument specifies the dimension along which to unsqueeze cos[position_ids] and
-//             sin[position_ids] so that they can be properly broadcasted to the dimensions of q and k. For example, note
-//             that cos[position_ids] and sin[position_ids] have the shape [batch_size, seq_len, head_dim]. Then, if q and
-//             k have the shape [batch_size, heads, seq_len, head_dim], then setting unsqueeze_dim=1 makes
-//             cos[position_ids] and sin[position_ids] broadcastable to the shapes of q and k. Similarly, if q and k have
-//             the shape [batch_size, seq_len, heads, head_dim], then set unsqueeze_dim=2.
-//     Returns:
-//         `tuple(torch.Tensor)` comprising of the query and key tensors rotated using the Rotary Position Embedding.
-//     """
-//     cos = cos[position_ids].unsqueeze(unsqueeze_dim)
-//     sin = sin[position_ids].unsqueeze(unsqueeze_dim)
-//     q_embed = (q * cos) + (rotate_half(q) * sin)
-//     k_embed = (k * cos) + (rotate_half(k) * sin)
-//     return q_embed, k_embed
-    
+    //     Args:
+    //         q (`torch.Tensor`): The query tensor.
+    //         k (`torch.Tensor`): The key tensor.
+    //         cos (`torch.Tensor`): The cosine part of the rotary embedding.
+    //         sin (`torch.Tensor`): The sine part of the rotary embedding.
+    //         position_ids (`torch.Tensor`):
+    //             The position indices of the tokens corresponding to the query and key tensors. For example, this can be
+    //             used to pass offsetted position ids when working with a KV-cache.
+    //         unsqueeze_dim (`int`, *optional*, defaults to 1):
+    //             The 'unsqueeze_dim' argument specifies the dimension along which to unsqueeze cos[position_ids] and
+    //             sin[position_ids] so that they can be properly broadcasted to the dimensions of q and k. For example, note
+    //             that cos[position_ids] and sin[position_ids] have the shape [batch_size, seq_len, head_dim]. Then, if q and
+    //             k have the shape [batch_size, heads, seq_len, head_dim], then setting unsqueeze_dim=1 makes
+    //             cos[position_ids] and sin[position_ids] broadcastable to the shapes of q and k. Similarly, if q and k have
+    //             the shape [batch_size, seq_len, heads, head_dim], then set unsqueeze_dim=2.
+    //     Returns:
+    //         `tuple(torch.Tensor)` comprising of the query and key tensors rotated using the Rotary Position Embedding.
+    //     """
+    //     cos = cos[position_ids].unsqueeze(unsqueeze_dim)
+    //     sin = sin[position_ids].unsqueeze(unsqueeze_dim)
+    //     q_embed = (q * cos) + (rotate_half(q) * sin)
+    //     k_embed = (k * cos) + (rotate_half(k) * sin)
+    //     return q_embed, k_embed
+
     public static (Tensor, Tensor) ApplyRotaryPosEmb(Tensor q, Tensor k, Tensor cos, Tensor sin, Tensor positionIds, int unsqueezeDim = 1)
     {
         // The 'unsqueeze_dim' argument specifies the dimension along which to unsqueeze cos[position_ids] and

@@ -1,3 +1,7 @@
+﻿// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
 using System.Reflection.PortableExecutable;
 using System.Text.Json;
 using Microsoft.ML.Tokenizers;
@@ -37,8 +41,8 @@ public class TokenizeDecoder : Microsoft.ML.Tokenizers.TokenizerDecoder
     private const char newlineReplacement = 'Ċ';
 
     private const char carriageReturnReplacement = 'č';
-    private string bos = "<s>";
-    private string eos = "</s>";
+    private readonly string bos = "<s>";
+    private readonly string eos = "</s>";
 
     public TokenizeDecoder(string bos = "<s>", string eos = "</s>")
     {
@@ -69,8 +73,8 @@ public class TokenizeDecoder : Microsoft.ML.Tokenizers.TokenizerDecoder
 
 public class BPETokenizer
 {
-    private Tokenizer tokenizer;
-    private bool addPrecedingSpace;
+    private readonly Tokenizer tokenizer;
+    private readonly bool addPrecedingSpace;
 
     public BPETokenizer(
         string vocabPath,

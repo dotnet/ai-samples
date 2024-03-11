@@ -1,4 +1,8 @@
-﻿using System.Runtime.InteropServices;
+﻿// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+using System.Runtime.InteropServices;
 using FluentAssertions;
 using TorchSharp;
 using static TorchSharp.torch;
@@ -40,7 +44,7 @@ Bob: Well, have you tried creating a study schedule and sticking to it?
 Alice: Yes, I have, but it doesn't seem to help much.
 Bob: Hmm, maybe you should try studying in a quiet environment, like the library.
 Alice:";
-var chatOutput = phi2.Generate(tokenizer, chatPrompt, maxLen: 256, temperature: 0.3f, stopSequences: [ "Bob:"]);
+var chatOutput = phi2.Generate(tokenizer, chatPrompt, maxLen: 256, temperature: 0.3f, stopSequences: ["Bob:"]);
 Console.WriteLine(chatOutput);
 
 // Code Format
@@ -49,6 +53,6 @@ var codePrompt = @"Complete the following code
 ```python
 def print_prime(n):
     # print all prime numbers less than n";
-var codeOutput = phi2.Generate(tokenizer, codePrompt, maxLen: 1024, temperature: 0f, stopSequences: [ "```"]);
+var codeOutput = phi2.Generate(tokenizer, codePrompt, maxLen: 1024, temperature: 0f, stopSequences: ["```"]);
 Console.WriteLine(codeOutput);
 
