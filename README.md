@@ -48,7 +48,7 @@ Welcome to the official home for .NET samples demonstrating how to use AI in you
 |  #  | Topic                                       | GitHub Link |
 |-----|---------------------------------------------|-------------|
 | REF | Phi                                         |  [Phi](./src/local-models/Phi)
-| REF | Llama 2                                     |  [Llama 2](./src/local-models/LLaMA2)
+| REF | Llama 2                                     |  [Coming Soon](.)
 
 ### Local Embedding Models
 | # | Topic                                         | GitHub Link |
