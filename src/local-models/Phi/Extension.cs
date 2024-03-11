@@ -50,33 +50,4 @@ public static class Extension
             value.Peek(key);
         }
     }
-
-    //
-    // 摘要:
-    //     Decode a long value from a binary reader
-    //
-    // 参数:
-    //   reader:
-    //     A BinaryReader instance used for input.
-    //
-    // 返回结果:
-    //     The decoded value
-    public static long Decode(this BinaryReader reader)
-    {
-        long num = 0L;
-        int num2 = 0;
-        while (true)
-        {
-            long num3 = reader.ReadByte();
-            num += (num3 & 0x7F) << num2 * 7;
-            if ((num3 & 0x80) == 0L)
-            {
-                break;
-            }
-
-            num2++;
-        }
-
-        return num;
-    }
 }
