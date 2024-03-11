@@ -1,4 +1,8 @@
-﻿using Azure;
+﻿// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+using Azure;
 using Azure.AI.OpenAI;
 using Microsoft.Extensions.Configuration;
 
@@ -28,7 +32,7 @@ var completionOptions = new ChatCompletionsOptions
 };
 
 // == Providing context for the AI model ==========
-var systemPrompt = 
+var systemPrompt =
 """
 You are a hiking enthusiast who helps people discover fun hikes in their area. You are upbeat and friendly. 
 You introduce yourself when first saying hello. When helping people out, you always ask them 
@@ -55,11 +59,11 @@ Console.WriteLine($"\n\nUser >>> {userGreeting}");
 ChatCompletions response = await openAIClient.GetChatCompletionsAsync(completionOptions);
 ChatResponseMessage assistantResponse = response.Choices[0].Message;
 Console.WriteLine($"\n\nAssistant >>> {assistantResponse.Content}");
-completionOptions.Messages.Add(new ChatRequestAssistantMessage(assistantResponse.Content)); 
+completionOptions.Messages.Add(new ChatRequestAssistantMessage(assistantResponse.Content));
 
 
 // == Providing the user's request ==========
-var hikeRequest = 
+var hikeRequest =
 """
 I live in the greater Montreal area and would like an easy hike. I don't mind driving a bit to get there.
 I don't want the hike to be over 10 miles round trip. I'd consider a point-to-point hike.
