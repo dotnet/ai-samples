@@ -144,9 +144,6 @@ print_prime(10)
 #### BFloat16 doesn't work
 Model doesn't work properly when setting default dtype to bfloat16. This could due to precision loss in linear layer and I'm still investigate it.
 
-### See also
-- [Torchsharp-llama](https://github.com/LittleLittleCloud/Torchsharp-llama): A torchsharp implementation for llama 2 model
-
 ## Further reading: What's Phi?
 Phi model is a suite of small language models developed by Microsoft Research. Until January 2024, there are three models available as follows:
 - [Phi-2](https://huggingface.co/microsoft/phi-2), A 2.7B parameter model trained using the same data source with Phi-1.5 and augmented with a new data source that consists of various NLP synthetic texts and filtered websites (for safety and educational value).
