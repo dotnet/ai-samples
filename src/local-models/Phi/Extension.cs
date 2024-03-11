@@ -51,33 +51,6 @@ public static class Extension
         }
     }
 
-    public static void LoadStateDict(this Dictionary<string, Tensor> dict, string location)
-    {
-        using FileStream stream = File.OpenRead(location);
-        using BinaryReader reader = new BinaryReader(stream);
-        var num = reader.Decode();
-        Console.WriteLine($"num: {num}");
-        for (int i = 0; i < num; i++)
-        {
-            var key = reader.ReadString();
-            Tensor tensor = dict[key];
-            Console.WriteLine($"load key: {key} tensor: {tensor}");
-
-            var originalDevice = tensor.device;
-            var originalType = tensor.dtype;
-            if (tensor.dtype == ScalarType.BFloat16)
-            {
-                tensor = tensor.to_type(ScalarType.Float32);
-            }
-
-            TensorExtensionMethods.Load(ref tensor, reader, skip: false);
-
-            // convert type to bf16 if type is float
-            tensor = tensor!.to_type(originalType);
-            dict[key] = tensor;
-        }
-    }
-
     //
     // 摘要:
     //     Decode a long value from a binary reader
