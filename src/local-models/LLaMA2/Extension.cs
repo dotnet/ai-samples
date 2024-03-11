@@ -38,14 +38,14 @@ public static class Extension
     }
 
     //
-    // 摘要:
+    // Summary:
     //     Decode a long value from a binary reader
     //
-    // 参数:
+    // Parameter:
     //   reader:
     //     A BinaryReader instance used for input.
     //
-    // 返回结果:
+    // Return:
     //     The decoded value
     public static long Decode(this BinaryReader reader)
     {
