@@ -5,58 +5,21 @@ This repo contains a torchsharp implementation for phi model.
 ## Quick Start (Use Phi-2 model as an example)
 To run the Phi model on your local machine, the following prerequisites are required:
 - dotnet 6 or above
-- python 3.8 or above, this is to convert hf model to pytorch format
 - git lfs, this is to download the model file from hugging face
 
 ### Step 1: Get the model weight from huggingface
-To get Phi-2 model weight, run the following command to download model weight from huggingface:
+To get Phi-2 model weight, run the following command to download model weight from huggingface. Be sure to have git lfs installed.
 ```bash
 git clone https://huggingface.co/microsoft/phi-2
 ```
 > [!Note]
-> Make sure you have git lfs installed
-
-> [!Note]
-> To run Phi-2 model on GPU, you need to have at least 12GB GPU memory.
+> To run Phi-2 model on GPU, it's recommended to use a machine with at least 8GB of GPU memory.
 
 > [!Note]
 > Loading other Phi model should be similar but I haven't test them yet. Please create an issue if you have trouble loading other Phi models.
 
-### Step 2: Convert the model weight to pytorch format
-Use the following script to convert the model weight to pytorch format. This is because the model weight from huggingface is in `.safetensor` format and we need to convert it to `torch` format for torchsharp model to load
-```python
-from transformers import PhiForCausalLM
-import torch
-
-model = PhiForCausalLM.from_pretrained("microsoft/phi-2")
-model = model.eval()
-# save model
-with open("phi-2.pt", "wb") as f:
-    torch.save(model.state_dict(keep_vars=False), f)
-```
-> [!Note]
-> You need to install `torch` and `transformer` in your python environment before running script above.
-> ```
-> pip install torch
-> pip uninstall -y transformers && pip install git+https://github.com/huggingface/transformers # install transformer from source to include PhiForCasualLM
-> ```
-
-
-And move the `phi-2.pt` file to the huggingface model weight folder.
-After that, your huggingface model weight folder should look like this:
-
-```
-hugginface model weight folder
-├── config.json # phi model config
-├── phi-2.pt # converted pytorch model
-├── vocab.json # vocab for tokenizer
-├── merges.txt # merges file for tokenizer
-└── special_tokens_map.json # tokenizer config
-... # other files
-```
-
-### Step 3: Run the model
-Clone this repo and replace the `phi2Folder` folder with huggingface model weight folder in [Program.cs](./Program.cs#L13)
+### Step 2: Run the model
+Clone this repo and replace the `phi2Folder` folder with where you download huggingface model weight in [Program.cs](./Program.cs#L13)
 
 Then run the following command to start the model:
 ```bash
@@ -139,10 +102,6 @@ def print_prime(n):
 
 print_prime(10)
 ```
-
-### Known issue
-#### BFloat16 doesn't work
-Model doesn't work properly when setting default dtype to bfloat16. This could due to precision loss in linear layer and I'm still investigate it.
 
 ## Further reading: What's Phi?
 Phi model is a suite of small language models developed by Microsoft Research. Until January 2024, there are three models available as follows:

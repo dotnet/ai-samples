@@ -170,7 +170,6 @@ public class BPETokenizer
         {
             tokens = tokens.Concat(new int[] { this.EosId }).ToArray();
         }
-        Console.WriteLine($"tokens: {string.Join(',', tokens)}");
         return tokens;
     }
 }

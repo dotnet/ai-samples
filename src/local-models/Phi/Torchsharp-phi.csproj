@@ -7,19 +7,21 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <LangVersion>preview</LangVersion>
+    <NoWarn>CS0414</NoWarn>
   </PropertyGroup>
 
   
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="7.0.0-alpha.3" />
     <PackageReference Include="Microsoft.ML.Tokenizers" Version="0.21.1" />
-    <!-- <PackageReference Include="TorchSharp-cuda-linux" Version="0.101.5" /> -->
+    <!-- <PackageReference Include="TorchSharp-cuda-linux" Version="0.100.7" /> -->
     <PackageReference Include="TorchSharp" Version="0.101.5" />
+    <PackageReference Include="ShellProgressBar" Version="5.2.0" />
     <!-- use the following package if you are on windows -->
     <!-- <PackageReference Include="TorchSharp-cuda-windows" Version="0.101.5" /> -->
     <!-- If you don't have GPU, use the following package -->
-    <PackageReference Include="TorchSharp-cpu" Version="0.101.5" />
-    <PackageReference Include="TorchSharp.PyBridge" Version="1.1.0" />
+    <!-- <PackageReference Include="TorchSharp-cpu" Version="0.101.5" /> -->
+    <PackageReference Include="TorchSharp.PyBridge" Version="1.2.0" />
   </ItemGroup>
 
 </Project>

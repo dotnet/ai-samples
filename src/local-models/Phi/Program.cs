@@ -11,48 +11,38 @@ using static TorchSharp.torch;
 // And I can't upgrade GPU driver because it's a cloud machine.
 
 // Comment out the following two line if your machine support Cuda 12
-// var libTorch = "path/to/libtorch.so";
-// NativeLibrary.Load(libTorch);
+var libTorch = "/path/to/libtorch.so";
+NativeLibrary.Load(libTorch);
 
-var phi2Folder = "../phi-2";
-var device = "cpu";
+var phi2Folder = "/path/to/phi-2";
+var device = "cuda";
 
 if (device == "cuda")
 {
     torch.InitializeDeviceType(DeviceType.CUDA);
     torch.cuda.is_available().Should().BeTrue();
 }
-var defaultType = ScalarType.Float32;
+
+var defaultType = ScalarType.Float16;
 torch.set_default_dtype(defaultType);
 torch.manual_seed(1);
 
-var tokenizer = BPETokenizer.FromPretrained(phi2Folder);
-var phi2 = PhiForCasualLM.FromPretrained(phi2Folder, device: device, defaultDType: defaultType, weightsName: "phi-2.pt");
+Console.WriteLine("Loading Phi2 from huggingface model weight folder");
+var timer = System.Diagnostics.Stopwatch.StartNew();
+var phi2 = PhiForCasualLM.FromPretrained(phi2Folder, device: device, defaultDType: defaultType, checkPointName: "model.safetensors.index.json");
 
+timer.Stop();
+Console.WriteLine($"Phi2 loaded in {timer.ElapsedMilliseconds / 1000} s");
 
 // QA Format
-Console.WriteLine("QA Format");
-var prompt = @"Instruction: A skier slides down a frictionless slope of height 40m and length 80m, what's the skier's speed at the bottom?
-Output:";
-var output = phi2.Generate(tokenizer, prompt, maxLen: 512, temperature: 0.3f);
-Console.WriteLine(output);
+int maxLen = 512;
+float temperature = 0.0f;
+Console.WriteLine($"QA Format: maxLen: {maxLen} temperature: {temperature}");
+var prompt = "Instruct: A skier slides down a frictionless slope of height 40m and length 80m, what's the skier's speed at the bottom, think step by step.\nOutput:";
+// wait for user to press enter
+Console.WriteLine($"Prompt: {prompt}");
+Console.WriteLine("Press enter to continue inferencing QA format");
+Console.ReadLine();
 
-// Chat Format
-Console.WriteLine("Chat Format");
-var chatPrompt = @"Alice: I don't know why, I'm struggling to maintain focus while studying. Any suggestions?
-Bob: Well, have you tried creating a study schedule and sticking to it?
-Alice: Yes, I have, but it doesn't seem to help much.
-Bob: Hmm, maybe you should try studying in a quiet environment, like the library.
-Alice:";
-var chatOutput = phi2.Generate(tokenizer, chatPrompt, maxLen: 256, temperature: 0.3f, stopSequences: ["Bob:"]);
-Console.WriteLine(chatOutput);
-
-// Code Format
-Console.WriteLine("Code Format");
-var codePrompt = @"Complete the following code
-```python
-def print_prime(n):
-    # print all prime numbers less than n";
-var codeOutput = phi2.Generate(tokenizer, codePrompt, maxLen: 1024, temperature: 0f, stopSequences: ["```"]);
-Console.WriteLine(codeOutput);
-
+Console.WriteLine(prompt);
+phi2.Generate(prompt, maxLen: maxLen, temperature: temperature);

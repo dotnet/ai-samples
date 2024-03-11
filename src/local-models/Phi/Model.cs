@@ -76,6 +76,49 @@ public class PhiConfig
     public ScalarType Dtype { get; set; } = ScalarType.Float32;
 }
 
+public class PhiLinear : nn.Module<Tensor, Tensor>
+{
+    private readonly Tensor weight;
+    private readonly Tensor? bias;
+    private readonly int inFeatures;
+    private readonly int outFeatures;
+
+    public PhiLinear(int inFeatures, int outFeatures, bool hasBias = true, ScalarType dtype = ScalarType.Float32)
+        : base(nameof(PhiLinear))
+    {
+        this.inFeatures = inFeatures;
+        this.outFeatures = outFeatures;
+        this.weight = torch.randn(outFeatures, inFeatures, dtype: dtype);
+
+        if (hasBias)
+        {
+            this.bias = torch.randn(outFeatures, dtype: dtype);
+            this.RegisterComponents();
+        }
+        else
+        {
+            this.RegisterComponents();
+        }
+    }
+
+    public override Tensor forward(Tensor input)
+    {
+        using var dispose = torch.NewDisposeScope();
+
+        // use float32
+        var input2 = input.to_type(ScalarType.Float32);
+        var weight2 = this.weight.to_type(ScalarType.Float32);
+        var result = torch.matmul(input2, weight2.t());
+
+        if (this.bias is not null)
+        {
+            result = result + this.bias.to_type(ScalarType.Float32);
+        }
+
+        return result.to_type(input.dtype).MoveToOuterDisposeScope();
+    }
+}
+
 public class NewGELUActivation : torch.nn.Module<Tensor, Tensor>
 {
     public NewGELUActivation()
@@ -85,7 +128,6 @@ public class NewGELUActivation : torch.nn.Module<Tensor, Tensor>
 
     public override Tensor forward(Tensor input)
     {
-        // return 0.5 * input * (1.0 + torch.tanh(math.sqrt(2.0 / math.pi) * (input + 0.044715 * torch.pow(input, 3.0))))
         using var result = 0.044715 * torch.pow(input, 3.0);
         using var result2 = result + input;
         using var result3 = Math.Sqrt(2.0 / Math.PI) * result2;
@@ -180,10 +222,10 @@ public class PhiAttention : nn.Module<
     private readonly double ropeTheta;
     private readonly double partialRotaryFactor;
     private readonly bool isCausal;
-    private readonly Linear q_proj;
-    private readonly Linear k_proj;
-    private readonly Linear v_proj;
-    private readonly Linear dense;
+    private readonly PhiLinear q_proj;
+    private readonly PhiLinear k_proj;
+    private readonly PhiLinear v_proj;
+    private readonly PhiLinear dense;
     private readonly bool qk_layernorm;
     private readonly LayerNorm? q_layernorm;
     private readonly LayerNorm? k_layernorm;
@@ -191,10 +233,10 @@ public class PhiAttention : nn.Module<
     private readonly PhiRotaryEmbedding phiRotaryEmbedding;
 
     // cache_k, cache_v
-    private readonly Tensor? cache_k;
-    private readonly Tensor? cache_v;
+    private Tensor cache_k;
+    private Tensor cache_v;
 
-    public PhiAttention(PhiConfig config, int? layerIdx = null, int maxBatch = 4, int maxLength = 2048)
+    public PhiAttention(PhiConfig config, int? layerIdx = null, int maxBatch = 2, int maxLength = 1024)
         : base(nameof(PhiAttention))
     {
         this.layerIdx = layerIdx;
@@ -212,10 +254,10 @@ public class PhiAttention : nn.Module<
         this.isCausal = true;
 
         (this.headDim * this.numAttentionHeads).Should().Be(this.hiddenSize, "hidden_size must be divisible by num_attention_heads");
-        this.q_proj = nn.Linear(this.hiddenSize, this.numAttentionHeads * this.headDim, hasBias: true, dtype: config.Dtype);
-        this.k_proj = nn.Linear(this.hiddenSize, this.numKeyValueHeads * this.headDim, hasBias: true, dtype: config.Dtype);
-        this.v_proj = nn.Linear(this.hiddenSize, this.numKeyValueHeads * this.headDim, hasBias: true, dtype: config.Dtype);
-        this.dense = nn.Linear(this.numAttentionHeads * this.headDim, this.hiddenSize, hasBias: true, dtype: config.Dtype);
+        this.q_proj = new PhiLinear(this.hiddenSize, this.numAttentionHeads * this.headDim, hasBias: true, dtype: config.Dtype);
+        this.k_proj = new PhiLinear(this.hiddenSize, this.numKeyValueHeads * this.headDim, hasBias: true, dtype: config.Dtype);
+        this.v_proj = new PhiLinear(this.hiddenSize, this.numKeyValueHeads * this.headDim, hasBias: true, dtype: config.Dtype);
+        this.dense = new PhiLinear(this.numAttentionHeads * this.headDim, this.hiddenSize, hasBias: true, dtype: config.Dtype);
 
         this.qk_layernorm = config.QkLayernorm;
         if (this.qk_layernorm)
@@ -240,6 +282,12 @@ public class PhiAttention : nn.Module<
         int pastKeyValueLength = 0,
         bool outputAttentions = false)
     {
+        // move cache to the same device as hiddenStates
+        if (this.cache_k.device != hiddenStates.device)
+        {
+            this.cache_k = this.cache_k.to(hiddenStates.device, disposeAfter: true).DetachFromDisposeScope();
+            this.cache_v = this.cache_v.to(hiddenStates.device, disposeAfter: true).DetachFromDisposeScope();
+        }
         using var _ = torch.NewDisposeScope();
         var batchSize = (int)hiddenStates.shape[0];
         var seqLen = (int)hiddenStates.shape[1];
@@ -274,20 +322,20 @@ public class PhiAttention : nn.Module<
         keyStates = torch.cat([kRot, keyPass], dim: -1);
         this.cache_k[..batchSize, .., pastKeyValueLength..kvSeqLen, ..] = keyStates;
         this.cache_v[..batchSize, .., pastKeyValueLength..kvSeqLen, ..] = valueStates;
-        keyStates = this.cache_k[..batchSize, .., ..kvSeqLen, ..].to(hiddenStates.device);
-        valueStates = this.cache_v[..batchSize, .., ..kvSeqLen, ..].to(hiddenStates.device);
+        keyStates = this.cache_k[..batchSize, .., ..kvSeqLen, ..];
+        valueStates = this.cache_v[..batchSize, .., ..kvSeqLen, ..];
         var keyStates2 = Utils.RepeatKV(keyStates, this.numKeyValueGroups).transpose(2, 3);
         var valueStates2 = Utils.RepeatKV(valueStates, this.numKeyValueGroups);
         // Queries and keys upcast to fp32 is required by Phi-2 to avoid overflow
-        var attnWeights = torch.matmul(queryStates, keyStates2);
+        var attnWeights = torch.matmul(queryStates.to_type(float32), keyStates2.to_type(float32));
         attnWeights = attnWeights / Math.Sqrt(this.headDim);
         if (attentionMask is not null)
         {
             attnWeights = attnWeights + attentionMask;
         }
         attnWeights = nn.functional.softmax(attnWeights, dim: -1);
-        attnWeights = nn.functional.dropout(attnWeights, p: this.attentionDropout, training: true);
-        var attnOutput = torch.matmul(attnWeights, valueStates2);
+        attnWeights = nn.functional.dropout(attnWeights, p: this.attentionDropout);
+        var attnOutput = torch.matmul(attnWeights, valueStates2.to_type(float32)).to_type(hiddenStates.dtype);
         attnOutput = attnOutput.transpose_(1, 2).contiguous();
         attnOutput = attnOutput.reshape(batchSize, seqLen, this.hiddenSize);
         var result = this.dense.forward(attnOutput);

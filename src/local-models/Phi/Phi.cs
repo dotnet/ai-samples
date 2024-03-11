@@ -6,6 +6,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using FluentAssertions;
 using Microsoft.ML.Tokenizers;
+using ShellProgressBar;
 using TorchSharp;
 using TorchSharp.Modules;
 using TorchSharp.PyBridge;
@@ -15,19 +16,23 @@ public class PhiForCasualLM
 {
     private readonly PhiModelInferenceWrapper model;
     private readonly string device = "cpu";
+    private readonly BPETokenizer tokenizer;
 
-    public PhiForCasualLM(PhiModelInferenceWrapper model, string device = "cpu")
+    public PhiForCasualLM(PhiModelInferenceWrapper model, BPETokenizer tokenizer, string device = "cpu")
     {
         this.model = model;
         this.device = device;
+        this.tokenizer = tokenizer;
     }
 
     public PhiModelInferenceWrapper Model => this.model;
 
+    public BPETokenizer Tokenizer => this.tokenizer;
+
     public static PhiForCasualLM FromPretrained(
         string modelFolder,
         string configName = "config.json",
-        string weightsName = "phi-2.pt",
+        string checkPointName = "phi-2.pt",
         ScalarType defaultDType = ScalarType.Float32,
         string device = "cpu")
     {
@@ -36,13 +41,12 @@ public class PhiForCasualLM
         modelConfig.Dtype = defaultDType;
         var phi = new PhiModel(modelConfig);
         var wrapper = new PhiModelInferenceWrapper(phi);
-        var weightPath = Path.Join(modelFolder, weightsName);
         var loadedParameters = new Dictionary<string, bool>();
-        wrapper.load_py(weightPath, strict: true, loadedParameters: loadedParameters);
+        wrapper.load_checkpoint(path: modelFolder, checkpointName: checkPointName, strict: true, loadedParameters: loadedParameters);
         wrapper = wrapper.to(device);
         wrapper.eval();
-
-        return new PhiForCasualLM(wrapper, device);
+        var tokenzier = BPETokenizer.FromPretrained(modelFolder);
+        return new PhiForCasualLM(wrapper, tokenzier, device);
     }
 
     public string Device => this.device;
@@ -73,11 +77,6 @@ public class PhiForCasualLM
             stopTokenSequence = stopTokenSequence.Append([50256]).Distinct().ToArray();
         }
 
-        foreach (var stopSequence in stopTokenSequence)
-        {
-            Console.WriteLine($"stopSequence: {string.Join(',', stopSequence)}");
-        }
-
         using (var _ = torch.no_grad())
         {
             var prevPos = 0;
@@ -87,7 +86,6 @@ public class PhiForCasualLM
             {
                 (logits, var _, var _) = this.model.forward(inputIds, attentionMask, prevPos);
             }
-
             for (int curPos = minPromptLen; curPos != totalLen; curPos++)
             {
                 (logits, var _, var _) = this.model.forward(inputIds[.., prevPos..curPos], attentionMask[.., prevPos..curPos], prevPos);
@@ -112,11 +110,18 @@ public class PhiForCasualLM
                     var lastNMatch = lastN == torch.tensor(stopSequence, device: device);
                     eosReached |= lastNMatch.all(dim: -1);
                 }
-                Console.WriteLine($"curPos: {curPos}");
                 if (eosReached.all().item<bool>())
                 {
+                    // pBar.WriteLine("EOS reached");
+                    // pBar.Tick(maxLen);
                     break;
                 }
+
+                var message = $"Generating Token {curPos}/{maxLen}";
+                // pBar.Tick(curPos, message);
+                var nextTokenIds = nextToken.to_type(ScalarType.Int32).data<int>().ToArray();
+                var nextTokenStr = this.tokenizer.Decode(nextTokenIds);
+                Console.Write(nextTokenStr);
 
                 prevPos = curPos;
 
