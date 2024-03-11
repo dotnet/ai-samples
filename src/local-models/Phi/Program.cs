@@ -7,7 +7,7 @@ using static TorchSharp.torch;
 // And I can't upgrade GPU driver because it's a cloud machine.
 
 // Comment out the following two line if your machine support Cuda 12
-// var libTorch = "/home/xiaoyuz/llama/venv/lib/python3.8/site-packages/torch/lib/libtorch.so";
+// var libTorch = "path/to/libtorch.so";
 // NativeLibrary.Load(libTorch);
 
 var phi2Folder = "../phi-2";

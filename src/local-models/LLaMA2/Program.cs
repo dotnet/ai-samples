@@ -6,7 +6,7 @@ using TorchSharp;
 var vocabPath = @"vocab.json";
 var mergesPath = @"merges.txt";
 var tokenizer = new BPETokenizer(vocabPath, mergesPath);
-var checkpointDirectory = @"C:\Users\xiaoyuz\source\repos\llama\llama-2-7b";
+var checkpointDirectory = @"path/to/llama-2-7b";
 var device = "cuda";
 
 if (device == "cuda")
