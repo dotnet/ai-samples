@@ -1,4 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+using Microsoft.Extensions.Configuration;
 using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
 
@@ -58,7 +62,7 @@ Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last().Content}")
 
 
 // == Providing the user's request ==========
-var hikeRequest = 
+var hikeRequest =
 """
 I would like to know the ration of hike I did in Canada compare to hikes done in other countries.
 """;
