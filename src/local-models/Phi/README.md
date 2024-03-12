@@ -19,7 +19,7 @@ git clone https://huggingface.co/microsoft/phi-2
 > Loading other Phi model should be similar but I haven't test them yet. Please create an issue if you have trouble loading other Phi models.
 
 ### Step 2: Run the model
-Clone this repo and replace the `phi2Folder` folder with where you download huggingface model weight in [Program.cs](./Program.cs#L13)
+Clone this repo and replace the `phi2Folder` folder with where you download huggingface model weight in [Program.cs](./Program.cs#L17)
 
 Then run the following command to start the model:
 ```bash
