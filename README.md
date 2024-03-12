@@ -9,11 +9,8 @@ Welcome to the official home for .NET samples demonstrating how to use AI in you
 |  1  | Text Summary                       			|  [Hike Benefits Summary Project](./src/getting-started/semantic-kernel/01-HikeBenefitsSummary/README.md)
 |  2  | Hiker AI                                    |  [Hiker AI Project](./src/getting-started/semantic-kernel/02-HikerAI/README.md)
 |  3  | Chat Context/Data                         	|  [Chatting About my Previous Hikes Project](./src/getting-started/semantic-kernel/03-ChattingAboutMyHikes/README.md)
-|  4  | Adding Tools (Functions)                    |  [Coming Soon](.)
+|  4  | Adding Tools (Functions)                    |  Coming Soon
 |  5  | Generating images                    		|  [Hike Images Project](./src/getting-started/semantic-kernel/05-HikeImages/README.md)
-| REF |  Using Milvus                               |  [Coming Soon](.)
-| REF |  Using Qdrant                               |  [Coming Soon](.)
-
 
 
 ### Getting Started Series using Azure OpenAI SDK
@@ -27,17 +24,6 @@ Welcome to the official home for .NET samples demonstrating how to use AI in you
 |  5  | Generating images                    		|  [Hike Images Project](./src/getting-started/azure-openai-sdk/05-HikeImages/README.md)
 
 
-
-### LLM Core Cocepts
-
-|  #  | Topic                                       | GitHub Link                               | 
-|-----|---------------------------------------------|-------------------------------------------|  
-| REF | Tokenizer                                   |  [Coming Soon](.)
-| REF | Embeddings                                  |  [Coming Soon](.)
-| REF | RAG                                         |  [Coming Soon](.)
-| REF | Prompts / Prompt Engineering                |  [Coming Soon](.)
-
-
 ### End to End Examples
 |  #  | Topic                                       |  GitHub Link |
 |-----|---------------------------------------------|--------------|
@@ -48,31 +34,6 @@ Welcome to the official home for .NET samples demonstrating how to use AI in you
 |  #  | Topic                                       | GitHub Link |
 |-----|---------------------------------------------|-------------|
 | REF | Phi                                         |  [Phi](./src/local-models/Phi)
-| REF | Llama 2                                     |  [Coming Soon](.)
-
-### Local Embedding Models
-| # | Topic                                         | GitHub Link |
-|-----|---------------------------------------------|-------------|
-| REF | Clip                                        |  [Coming Soon](.)
-
-### Tokenizers
-| # | Topic                                         | GitHub Link |
-|-----|---------------------------------------------|-------------|
-| REF | TikToken                                    |  [Coming Soon](.)
-
-### Vector Databases
-| # | Topic                                         | GitHub Link |
-|-----|---------------------------------------------|-------------|
-| REF | Azure AI Search                             |  [Coming Soon](.)
-| REF | PostgreSQL + pgvector                       |  [Coming Soon](.)
-| REF | Milvus                                      |  [Coming Soon](.)
-| REF | Qdrant                                      |  [Coming Soon](.)
-
-### Reference Examples
-| # | Topic                                         | GitHub Link |
-|-----|---------------------------------------------|-------------|
-| REF | Vector\<T\>                                 |  [Coming Soon](.)
-
 
 
 ## .NET Foundation
