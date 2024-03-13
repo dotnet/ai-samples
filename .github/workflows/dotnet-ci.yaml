@@ -27,10 +27,10 @@ jobs:
         global-json-file: global.json
     - name: Build all solutions
       run: |
-        # get all .sln files
-        sln_files=$(find . -name '*.sln')
-        for sln_file in $sln_files; do
-          echo "Building $sln_file"
-          dotnet build $sln_file
+        # get all .sln files using powershell
+        $slnFiles = Get-ChildItem -Path . -Recurse -Filter *.sln
+        foreach ($sln in $slnFiles) {
+          dotnet build $sln.FullName
+        }
         done
       shell: pwsh
