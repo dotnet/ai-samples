@@ -31,6 +31,12 @@ jobs:
         $ErrorActionPreference = "Stop"
         $slnFiles = Get-ChildItem -Path . -Recurse -Filter *.sln
         foreach ($sln in $slnFiles) {
-          dotnet build $sln.FullName
+          Write-Host "Building $sln"
+          $result = dotnet build $sln.FullName
+          if ($result -ne 0) {
+            Write-Host "Result: $result"
+            Write-Host "Build failed for $sln"
+            exit 1
+          }
         }
       shell: pwsh
