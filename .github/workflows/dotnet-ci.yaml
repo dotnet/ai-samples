@@ -28,6 +28,7 @@ jobs:
     - name: Build all solutions
       run: |
         # get all .sln files using powershell
+        $ErrorActionPreference = "Stop"
         $slnFiles = Get-ChildItem -Path . -Recurse -Filter *.sln
         foreach ($sln in $slnFiles) {
           dotnet build $sln.FullName
