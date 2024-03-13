@@ -43,7 +43,7 @@ Welcome to the official home for .NET samples demonstrating how to use AI in you
 
 |  #  | Topic                                       | GitHub Link                               |
 |-----|---------------------------------------------|-------------------------------------------|
-| REF | Form Assistant                              |  [Form Assistant](./src/llm-agents/form-assistant/README.md)
+| REF | Form Assistant                              |  [Form Assistant](./src/llm-agents/autogen/form-assistant/README.md)
 
 ### End to End Examples
 |  #  | Topic                                       |  GitHub Link |
