@@ -30,7 +30,10 @@ jobs:
         # get all .sln files using powershell
         $slnFiles = Get-ChildItem -Path . -Recurse -Filter *.sln
         foreach ($sln in $slnFiles) {
-          dotnet build $sln.FullName
+          $result = dotnet build $sln.FullName
+          if ($result) {
+            Write-Error "Failed to build $sln"
+            exit 1
+          }
         }
-        done
       shell: pwsh
