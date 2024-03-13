@@ -1,0 +1,42 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: dotnet-ci
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.head_ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        global-json-file: global.json
+    - name: Build all solutions
+      run: |
+        # get all .sln files using powershell
+        $ErrorActionPreference = "Stop"
+        $slnFiles = Get-ChildItem -Path . -Recurse -Filter *.sln
+        foreach ($sln in $slnFiles) {
+          Write-Host "Building $sln"
+          dotnet build $sln.FullName
+
+          if ($LASTEXITCODE -ne 0) {
+            Write-Error "Failed to build $sln"
+            exit $LASTEXITCODE
+          }
+        }
+      shell: pwsh
