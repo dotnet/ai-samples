@@ -37,7 +37,9 @@ Welcome to the official home for .NET samples demonstrating how to use AI in you
 | REF | RAG                                         |  [Coming Soon](.)
 | REF | Prompts / Prompt Engineering                |  [Coming Soon](.)
 
-### LLM Agents
+### Agent Examples
+
+~~ Text to describe Agents ~~
 
 |  #  | Topic                                       | GitHub Link                               |
 |-----|---------------------------------------------|-------------------------------------------|
