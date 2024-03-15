@@ -3,48 +3,29 @@
 // See the LICENSE file in the project root for more information.
 
 using Microsoft.Extensions.Configuration;
-using Microsoft.SemanticKernel.ChatCompletion;
+using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
 
-// == Retrieve the local secrets saved during the Azure deployment ==========
+// Retrieve the local secrets saved during the Azure deployment. If you skipped the deployment
+// because you already have an Azure OpenAI available, edit the following lines to use your information,
+// e.g. string openAIEndpoint = "https://cog-demo123.openai.azure.com/";
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
-string openAIEndpoint = config["AZURE_OPENAI_ENDPOINT"];
-string openAIDeploymentName = config["AZURE_OPENAI_GPT_NAME"];
-string openAiKey = config["AZURE_OPENAI_KEY"];
-// == If you skipped the deployment because you already have an Azure OpenAI available,
-// == edit the previous lines to use hardcoded values.
-// == ex: string openAIEndpoint = "https://cog-demo123.openai.azure.com/";
+string endpoint = config["AZURE_OPENAI_ENDPOINT"];
+string deployment = config["AZURE_OPENAI_GPT_NAME"];
+string key = config["AZURE_OPENAI_KEY"];
 
+// Create a Kernel containing the Azure OpenAI Chat Completion Service
+Kernel kernel = Kernel.CreateBuilder()
+    .AddAzureOpenAIChatCompletion(deployment, endpoint, key)
+    .Build();
 
-// == Create the Azure Open AI Chat Completion Service ==========
-AzureOpenAIChatCompletionService chatCompletionService = new(
-            deploymentName: openAIDeploymentName,
-            endpoint: openAIEndpoint,
-            apiKey: openAiKey);
+// Create and print out the prompt
+string prompt = $"""
+    Please summarize the the following text in 20 words or less:
+    {File.ReadAllText("benefits.md")}
+    """;
+Console.WriteLine($"user >>> {prompt}");
 
-
-var executionSettings = new OpenAIPromptExecutionSettings
-{
-    MaxTokens = 400,
-    Temperature = 1f,
-    TopP = 0.95f,
-};
-
-
-//== Read markdown file  ==========
-string markdown = System.IO.File.ReadAllText("benefits.md");
-
-
-// == Starting the conversation ==========
-string userRequest = """
-Please summarize the the following text in 20 words or less:
-""" + markdown;
-
-
-var chatHistory = new ChatHistory(userRequest);
-Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last().Content}");
-
-
-// == Get the response and display it ==========
-chatHistory.Add(await chatCompletionService.GetChatMessageContentAsync(chatHistory, executionSettings));
-Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last().Content}");
+// Submit the prompt and print out the response
+string response = await kernel.InvokePromptAsync<string>(prompt, new(new OpenAIPromptExecutionSettings() { MaxTokens = 400 }));
+Console.WriteLine($"assistant >>> {response}");

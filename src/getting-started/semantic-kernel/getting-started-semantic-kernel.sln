@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03-ChattingAboutMyHikes", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05-HikeImages", "05-HikeImages\05-HikeImages.csproj", "{AEDE95A2-2723-41B2-9DC7-9EFBD3CD24C8}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04-HikerAIPro", "04-HikerAIPro\04-HikerAIPro.csproj", "{B838C6B7-64B9-4FF0-97E7-BC5FF254ADC7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{AEDE95A2-2723-41B2-9DC7-9EFBD3CD24C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEDE95A2-2723-41B2-9DC7-9EFBD3CD24C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEDE95A2-2723-41B2-9DC7-9EFBD3CD24C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B838C6B7-64B9-4FF0-97E7-BC5FF254ADC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B838C6B7-64B9-4FF0-97E7-BC5FF254ADC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B838C6B7-64B9-4FF0-97E7-BC5FF254ADC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B838C6B7-64B9-4FF0-97E7-BC5FF254ADC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
