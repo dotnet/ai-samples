@@ -30,7 +30,6 @@ kernel.ImportPluginFromFunctions("WeatherPlugin",
 [
     KernelFunctionFactory.CreateFromMethod(([Description("The city, e.g. Montreal, Sidney")] string location, string unit = null) =>
     {
-        Console.WriteLine("Invoked");
         // Here you would call a weather API to get the weather for the location
         return "Periods of rain or drizzle, 15 C";
     }, "get_current_weather", "Get the current weather in a given location")
