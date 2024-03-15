@@ -19,7 +19,7 @@ var openaiDeployment = [
     model: {
       format: 'OpenAI'
       name: 'gpt-35-turbo'
-      version: '0613'
+      version: '0125'
     }
   },{
     name: 'dal3${resourceToken}'
