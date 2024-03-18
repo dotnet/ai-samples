@@ -28,7 +28,7 @@ Welcome to the official home for .NET samples demonstrating how to use AI in you
 
 
 
-### LLM Core Cocepts
+### LLM Core Concepts
 
 |  #  | Topic                                       | GitHub Link                               | 
 |-----|---------------------------------------------|-------------------------------------------|  
