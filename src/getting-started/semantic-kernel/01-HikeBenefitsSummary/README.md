@@ -14,14 +14,14 @@ If it's not already done, follow the [Getting-started: Deploying the Azure resou
 
 1. From a terminal or command prompt, navigate to the `01-HikeBenefitsSummary` directory.
    
-2. It's now time to try the console application. Depending on your Azure subscription it's possible that a few minutes more minute are required before the model deployed in Azure OpenAI is available. If you get an error message about this, wait a few (~5) minutes and try again.
+2. It's now time to try the console application. Depending on your Azure subscription it's possible that a few more minutes are required before the model deployed in Azure OpenAI is available. If you get an error message about this, wait a few (~5) minutes and try again.
 	```bash
 	dotnet run
 	```
 
 3. (Optional) Try to change the content of the file or the length of the summary to see the differences in the responses.
 
-4. (Optional) Try another samples from the [Getting-started: Trying the samples](../../README.md#trying-the-samples) to experiment different scenarios.
+4. (Optional) Try another sample from the [Getting-started: Trying the samples](../../README.md#trying-the-samples) to experiment different scenarios.
 
 
 ## Clean up resources

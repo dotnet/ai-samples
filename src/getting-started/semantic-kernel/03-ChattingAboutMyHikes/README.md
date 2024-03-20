@@ -14,14 +14,14 @@ If it's not already done, follow the [Getting-started: Deploying the Azure resou
 
 1. From a terminal or command prompt, navigate to the `03-ChattingAboutMyHikes` directory.
    
-2. It's now time to try the console application. Depending on your Azure subscription it's possible that a few minutes more minute are required before the model deployed in Azure OpenAI get available. If you get an error message about this, wait a few (~5) minutes and try again.
+2. It's now time to try the console application. Depending on your Azure subscription it's possible that a few more minutes are required before the model deployed in Azure OpenAI get available. If you get an error message about this, wait a few (~5) minutes and try again.
 	```bash
 	dotnet run
 	```
 
 3. (Optional) Try changing the `hikeRequest` variable in the `Program.cs`, asking for different questions (ex: How many times did you hiked when it was raining? How many times did you hiked in 2021? etc.)
 
-4. (Optional) Try another samples from the [Getting-started: Trying the samples](../../README.md#trying-the-samples) to experiment different scenarios.
+4. (Optional) Try another sample from the [Getting-started: Trying the samples](../../README.md#trying-the-samples) to experiment different scenarios.
 
 
 ## Clean up resources
