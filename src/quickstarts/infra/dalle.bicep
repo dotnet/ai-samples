@@ -29,14 +29,14 @@ module dalleOpenAi './core/ai/cognitiveservices.bicep' = {
   name: 'dalleopenai'
   scope: resourceGroup()
   params: {
-    name: '${abbrs.cognitiveServicesAccounts}-dalle${resourceToken}'
+    name: '${abbrs.cognitiveServicesAccounts}-dalle-${resourceToken}'
     location: location
     tags: tags
     deployments: dalleDeployment
   }
 }
 
-output AZURE_OPENAI_ENDPOINT string = dalleOpenAi.outputs.endpoint
+output AZURE_OPENAI_GPT_ENDPOINT string = dalleOpenAi.outputs.endpoint
 output AZURE_OPENAI_DALLE_NAME string = 'dal3${resourceToken}'
 output AZURE_OPENAI_NAME string = 'aidalle${resourceToken}'
-output AZURE_OPENAI_KEY string = dalleOpenAi.outputs.key1
+output AZURE_OPENAI_GPT_KEY string = dalleOpenAi.outputs.key1

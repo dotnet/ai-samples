@@ -10,9 +10,9 @@ using Microsoft.SemanticKernel.Connectors.OpenAI;
 // because you already have an Azure OpenAI available, edit the following lines to use your information,
 // e.g. string openAIEndpoint = "https://cog-demo123.openai.azure.com/";
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
-string endpoint = config["AZURE_OPENAI_ENDPOINT"];
+string endpoint = config["AZURE_OPENAI_GPT_ENDPOINT"];
 string deployment = config["AZURE_OPENAI_GPT_NAME"];
-string key = config["AZURE_OPENAI_KEY"];
+string key = config["AZURE_OPENAI_GPT_KEY"];
 
 // Create the Azure OpenAI Chat Completion Service
 AzureOpenAIChatCompletionService service = new(deployment, endpoint, key);

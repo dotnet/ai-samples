@@ -9,9 +9,9 @@ using Microsoft.SemanticKernel.Connectors.OpenAI;
 // because you already have an Azure OpenAI available, edit the following lines to use your information,
 // e.g. string openAIEndpoint = "https://cog-demo123.openai.azure.com/";
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
-string endpoint = config["AZURE_OPENAI_ENDPOINT"];
+string endpoint = config["AZURE_OPENAI_DALLE_ENDPOINT"];
 string deployment = config["AZURE_OPENAI_DALLE_NAME"];
-string key = config["AZURE_OPENAI_KEY"];
+string key = config["AZURE_OPENAI_DALLE_KEY"];
 
 // Create the Azure OpeAI Text to Image Service
 AzureOpenAITextToImageService textToImageService = new(deployment, endpoint, key, null);

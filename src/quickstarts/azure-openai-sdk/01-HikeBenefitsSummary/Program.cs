@@ -8,9 +8,9 @@ using Microsoft.Extensions.Configuration;
 
 // == Retrieve the local secrets saved during the Azure deployment ==========
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
-string openAIEndpoint = config["AZURE_OPENAI_ENDPOINT"];
+string openAIEndpoint = config["AZURE_OPENAI_GPT_ENDPOINT"];
 string openAIDeploymentName = config["AZURE_OPENAI_GPT_NAME"];
-string openAiKey = config["AZURE_OPENAI_KEY"];
+string openAiKey = config["AZURE_OPENAI_GPT_KEY"];
 // == If you skipped the deployment because you already have an Azure OpenAI available,
 // == edit the previous lines to use hardcoded values.
 // == ex: string openAIEndpoint = "https://cog-demo123.openai.azure.com/";

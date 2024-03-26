@@ -29,14 +29,14 @@ module gptOpenAi './core/ai/cognitiveservices.bicep' = {
   name: 'gptopenai'
   scope: resourceGroup()
   params: {
-    name: '${abbrs.cognitiveServicesAccounts}-gpt${resourceToken}'
+    name: '${abbrs.cognitiveServicesAccounts}-gpt-${resourceToken}'
     location: location
     tags: tags
     deployments: gptDeployment
   }
 }
 
-output AZURE_OPENAI_ENDPOINT string = gptOpenAi.outputs.endpoint
+output AZURE_OPENAI_GPT_ENDPOINT string = gptOpenAi.outputs.endpoint
 output AZURE_OPENAI_GPT_NAME string = 'gpt35${resourceToken}'
 output AZURE_OPENAI_NAME string = 'aigpt${resourceToken}'
-output AZURE_OPENAI_KEY string = gptOpenAi.outputs.key1
+output AZURE_OPENAI_GPT_KEY string = gptOpenAi.outputs.key1
