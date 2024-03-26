@@ -2,29 +2,29 @@
 
 Welcome to the official home for .NET samples demonstrating how to use AI in your .NET applications. If you're new to AI, start at the top and work your way down. Otherwise, jump in wherever suits your interests.
 
-### Getting Started Series using Semantic Kernel
+### Quickstarts using Semantic Kernel
 
 |  #  | Topic                                       | GitHub Link                               | 
 |-----|---------------------------------------------|-------------------------------------------|  
-|  1  | Text Summary                       			    |  [Hike Benefits Summary Project](./src/getting-started/semantic-kernel/01-HikeBenefitsSummary/README.md)
-|  2  | Hiker AI                                    |  [Hiker AI Project](./src/getting-started/semantic-kernel/02-HikerAI/README.md)
-|  3  | Chat Context/Data                         	|  [Chatting About my Previous Hikes Project](./src/getting-started/semantic-kernel/03-ChattingAboutMyHikes/README.md)
-|  4  | Hiker AI Pro (Tool extension)  				      |  [Hiker AI Pro](./src/getting-started/semantic-kernel/04-HikerAIPro/README.md)
-|  5  | Generating images                    		    |  [Hike Images Project](./src/getting-started/semantic-kernel/05-HikeImages/README.md)
+|  1  | Text Summary                       			    |  [Hike Benefits Summary Project](./src/quickstarts/semantic-kernel/01-HikeBenefitsSummary/README.md)
+|  2  | Hiker AI                                    |  [Hiker AI Project](./src/quickstarts/semantic-kernel/02-HikerAI/README.md)
+|  3  | Chat Context/Data                         	|  [Chatting About my Previous Hikes Project](./src/quickstarts/semantic-kernel/03-ChattingAboutMyHikes/README.md)
+|  4  | Hiker AI Pro (Tool extension)  				      |  [Hiker AI Pro](./src/quickstarts/semantic-kernel/04-HikerAIPro/README.md)
+|  5  | Generating images                    		    |  [Hike Images Project](./src/quickstarts/semantic-kernel/05-HikeImages/README.md)
 | REF |  Using Milvus                               |  [Coming Soon](.)
 | REF |  Using Qdrant                               |  [Coming Soon](.)
 
 
 
-### Getting Started Series using Azure OpenAI SDK
+### Quickstarts using Azure OpenAI SDK
 
 |  #  | Topic                                       | GitHub Link                               | 
 |-----|---------------------------------------------|-------------------------------------------|  
-|  1  | Text Summary                       			    |  [Hike Benefits Summary Project](./src/getting-started/azure-openai-sdk/01-HikeBenefitsSummary/README.md)
-|  2  | Hiker AI                                    |  [Hiker AI Project](./src/getting-started/azure-openai-sdk/02-HikerAI/README.md)
-|  3  | Chat Context/Data                         	|  [Chatting About my Previous Hikes Project](./src/getting-started/azure-openai-sdk/03-ChattingAboutMyHikes/README.md)
-|  4  | Hiker AI Pro (Tool extension)  				      |  [Hiker AI Pro](./src/getting-started/azure-openai-sdk/04-HikerAIPro/README.md)
-|  5  | Generating images                    		    |  [Hike Images Project](./src/getting-started/azure-openai-sdk/05-HikeImages/README.md)
+|  1  | Text Summary                       			    |  [Hike Benefits Summary Project](./src/quickstarts/azure-openai-sdk/01-HikeBenefitsSummary/README.md)
+|  2  | Hiker AI                                    |  [Hiker AI Project](./src/quickstarts/azure-openai-sdk/02-HikerAI/README.md)
+|  3  | Chat Context/Data                         	|  [Chatting About my Previous Hikes Project](./src/quickstarts/azure-openai-sdk/03-ChattingAboutMyHikes/README.md)
+|  4  | Hiker AI Pro (Tool extension)  				      |  [Hiker AI Pro](./src/quickstarts/azure-openai-sdk/04-HikerAIPro/README.md)
+|  5  | Generating images                    		    |  [Hike Images Project](./src/quickstarts/azure-openai-sdk/05-HikeImages/README.md)
 
 
 

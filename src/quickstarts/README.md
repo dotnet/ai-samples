@@ -1,4 +1,4 @@
-# Getting Started
+# Quickstarts
 
 These samples demonstrates how to use the Azure OpenAI with a `gpt-35-turbo` and `dall-e-3` models, from a simple .NET 8.0 console application. It consists of a simple console applications, running locally, that will send request to an Azure OpenAI service deployed in your Azure subscription. 
 
