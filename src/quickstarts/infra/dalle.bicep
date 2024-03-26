@@ -9,7 +9,7 @@ var resourceToken = uniqueString(resourceGroup().id)
 var abbrs = loadJsonContent('./abbreviations.json')
 
 // the openai deployments to create
-var openaiDeployment = [
+var dalleDeployment = [
   {
     name: 'dal3${resourceToken}'
     sku: {
@@ -25,18 +25,18 @@ var openaiDeployment = [
 ]
 
 // create the openai resources
-module openAi './core/ai/cognitiveservices.bicep' = {
-  name: 'openai'
+module dalleOpenAi './core/ai/cognitiveservices.bicep' = {
+  name: 'dalleopenai'
   scope: resourceGroup()
   params: {
-    name: '${abbrs.cognitiveServicesAccounts}${resourceToken}'
+    name: '${abbrs.cognitiveServicesAccounts}-dalle${resourceToken}'
     location: location
     tags: tags
-    deployments: openaiDeployment
+    deployments: dalleDeployment
   }
 }
 
-output AZURE_OPENAI_ENDPOINT string = openAi.outputs.endpoint
+output AZURE_OPENAI_ENDPOINT string = dalleOpenAi.outputs.endpoint
 output AZURE_OPENAI_DALLE_NAME string = 'dal3${resourceToken}'
 output AZURE_OPENAI_NAME string = 'aidalle${resourceToken}'
-output AZURE_OPENAI_KEY string = openAi.outputs.key1
+output AZURE_OPENAI_KEY string = dalleOpenAi.outputs.key1

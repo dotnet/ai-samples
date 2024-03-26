@@ -9,7 +9,7 @@ var resourceToken = uniqueString(resourceGroup().id)
 var abbrs = loadJsonContent('./abbreviations.json')
 
 // the openai deployments to create
-var openaiDeployment = [
+var gptDeployment = [
   {
     name: 'gpt35${resourceToken}'
     sku: {
@@ -25,18 +25,18 @@ var openaiDeployment = [
 ]
 
 // create the openai resources
-module openAi './core/ai/cognitiveservices.bicep' = {
-  name: 'openai'
+module gptOpenAi './core/ai/cognitiveservices.bicep' = {
+  name: 'gptopenai'
   scope: resourceGroup()
   params: {
-    name: '${abbrs.cognitiveServicesAccounts}${resourceToken}'
+    name: '${abbrs.cognitiveServicesAccounts}-gpt${resourceToken}'
     location: location
     tags: tags
-    deployments: openaiDeployment
+    deployments: gptDeployment
   }
 }
 
-output AZURE_OPENAI_ENDPOINT string = openAi.outputs.endpoint
+output AZURE_OPENAI_ENDPOINT string = gptOpenAi.outputs.endpoint
 output AZURE_OPENAI_GPT_NAME string = 'gpt35${resourceToken}'
 output AZURE_OPENAI_NAME string = 'aigpt${resourceToken}'
-output AZURE_OPENAI_KEY string = openAi.outputs.key1
+output AZURE_OPENAI_KEY string = gptOpenAi.outputs.key1
