@@ -30,7 +30,8 @@ b.Services.ConfigureHttpClientDefaults(c => c.AddStandardResilienceHandler(optio
         Name = "Standard-AttemptTimeout"
     };
 }));
-b.Services.AddLogging(b => b.AddConsole().SetMinimumLevel(LogLevel.Trace)); // uncomment to see all interactions with the model logged
+
+// b.Services.AddLogging(b => b.AddConsole().SetMinimumLevel(LogLevel.Trace)); // uncomment to see all interactions with the model logged
 
 Kernel kernel = b
     .AddAzureOpenAIChatCompletion(deployment, endpoint, key)
