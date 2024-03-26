@@ -6,9 +6,14 @@ targetScope = 'subscription'
 param environmentName string
 
 @minLength(1)
-@description('The location used for all deployed resources')
-@allowed(['australiaeast'])
-param location string
+@description('The location used for Resource Group and GPT Model')
+@allowed(['australiaeast', 'canadaeast', 'francecentral', 'southindia', 'swedencentral', 'uksouth', 'westus'])
+param gptLocation string
+
+@minLength(1)
+@description('The location used for Dall-e')
+@allowed(['australiaeast', 'eastus', 'swedencentral'])
+param dalleLocation string
 
 @description('String representing the ID of the logged-in user')
 param principalId string = ''
@@ -27,25 +32,33 @@ var abbrs = loadJsonContent('./abbreviations.json')
 
 resource rg 'Microsoft.Resources/resourceGroups@2022-09-01' = {
   name: '${abbrs.resourcesResourceGroups}${environmentName}'
-  location: location
+  location: gptLocation
   tags: tags
 }
 
-module ai 'ai.bicep' = {
+module gpt 'gpt.bicep' = {
   scope: rg
   name: 'ai'
   params: {
-      location: location
+      location: gptLocation
       tags: tags
   }
 }
 
+module gpt 'dalle.bicep' = {
+  scope: rg
+  name: 'ai'
+  params: {
+      location: dalleLocation
+      tags: tags
+  }
+}
 
 module resources 'resources.bicep' = {
   scope: rg
   name: 'resources'
   params: {
-      location: location
+      location: gptLocation
       tags: tags
       principalId: principalId
       runningOnAdo: runningOnAdo
@@ -55,7 +68,11 @@ module resources 'resources.bicep' = {
 
 output AZURE_CLIENT_ID string = resources.outputs.MANAGED_IDENTITY_CLIENT_ID
 output MANAGED_IDENTITY_CLIENT_ID string = resources.outputs.MANAGED_IDENTITY_CLIENT_ID
-output AZURE_OPENAI_ENDPOINT string = ai.outputs.AZURE_OPENAI_ENDPOINT
-output AZURE_OPENAI_GPT_NAME string = ai.outputs.AZURE_OPENAI_GPT_NAME
-output AZURE_OPENAI_DALLE_NAME string = ai.outputs.AZURE_OPENAI_DALLE_NAME
-output AZURE_OPENAI_KEY string = ai.outputs.AZURE_OPENAI_KEY
+
+output AZURE_OPENAI_GPT_ENDPOINT string = gpt.outputs.AZURE_OPENAI_ENDPOINT
+output AZURE_OPENAI_GPT_NAME string = gpt.outputs.AZURE_OPENAI_GPT_NAME
+output AZURE_OPENAI_GPT_KEY string = gpt.outputs.AZURE_OPENAI_KEY
+
+output AZURE_OPENAI_DALLE_ENDPOINT string = dalle.outputs.AZURE_OPENAI_ENDPOINT
+output AZURE_OPENAI_DALLE_NAME string = dalle.outputs.AZURE_OPENAI_DALLE_NAME
+output AZURE_OPENAI_DALLE_KEY string = dalle.outputs.AZURE_OPENAI_KEY
