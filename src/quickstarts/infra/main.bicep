@@ -7,7 +7,7 @@ param environmentName string
 
 @minLength(1)
 @description('The location used for Resource Group and GPT Model')
-@allowed(['australiaeast', 'canadaeast', 'francecentral', 'southindia', 'swedencentral', 'uksouth', 'westus'])
+@allowed(['canadaeast', 'northcentralus', 'southcentralus'])
 param gptLocation string
 
 @minLength(1)

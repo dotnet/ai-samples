@@ -37,6 +37,5 @@ module dalleOpenAi './core/ai/cognitiveservices.bicep' = {
 }
 
 output AZURE_OPENAI_GPT_ENDPOINT string = dalleOpenAi.outputs.endpoint
-output AZURE_OPENAI_DALLE_NAME string = 'dal3${resourceToken}'
-output AZURE_OPENAI_NAME string = 'aidalle${resourceToken}'
+output AZURE_OPENAI_DALLE_NAME string = dalleDeployment.name
 output AZURE_OPENAI_GPT_KEY string = dalleOpenAi.outputs.key1

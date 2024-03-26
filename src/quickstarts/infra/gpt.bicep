@@ -19,7 +19,7 @@ var gptDeployment = [
     model: {
       format: 'OpenAI'
       name: 'gpt-35-turbo'
-      version: '1106'
+      version: '0125'
     }
   }
 ]
@@ -37,6 +37,5 @@ module gptOpenAi './core/ai/cognitiveservices.bicep' = {
 }
 
 output AZURE_OPENAI_GPT_ENDPOINT string = gptOpenAi.outputs.endpoint
-output AZURE_OPENAI_GPT_NAME string = 'gpt35${resourceToken}'
-output AZURE_OPENAI_NAME string = 'aigpt${resourceToken}'
+output AZURE_OPENAI_GPT_NAME string = gptDeployment.name
 output AZURE_OPENAI_GPT_KEY string = gptOpenAi.outputs.key1
