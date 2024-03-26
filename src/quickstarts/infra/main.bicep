@@ -38,7 +38,7 @@ resource rg 'Microsoft.Resources/resourceGroups@2022-09-01' = {
 
 module gpt 'gpt.bicep' = {
   scope: rg
-  name: 'ai'
+  name: 'aigpt'
   params: {
       location: gptLocation
       tags: tags
@@ -47,7 +47,7 @@ module gpt 'gpt.bicep' = {
 
 module dalle 'dalle.bicep' = {
   scope: rg
-  name: 'ai'
+  name: 'aidalle'
   params: {
       location: dalleLocation
       tags: tags

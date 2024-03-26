@@ -1,5 +1,5 @@
 @description('The location used for all deployed resources')
-param location string = resourceGroup().location
+param location string = ''
 
 @description('Tags that will be applied to all resources')
 param tags object = {}
@@ -38,5 +38,5 @@ module openAi './core/ai/cognitiveservices.bicep' = {
 
 output AZURE_OPENAI_ENDPOINT string = openAi.outputs.endpoint
 output AZURE_OPENAI_GPT_NAME string = 'gpt35${resourceToken}'
-output AZURE_OPENAI_NAME string = 'ai${resourceToken}'
+output AZURE_OPENAI_NAME string = 'aigpt${resourceToken}'
 output AZURE_OPENAI_KEY string = openAi.outputs.key1
