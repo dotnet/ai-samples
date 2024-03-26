@@ -5,8 +5,11 @@
       "environmentName": {
         "value": "${AZURE_ENV_NAME}"
       },
-      "location": {
-        "value": "${AZURE_LOCATION}"
+      "gptLocation": {
+        "value": "${AZURE_GPT_LOCATION}"
+      },
+      "dalleLocation": {
+        "value": "${AZURE_DALLE_LOCATION}"
       },
       "principalId": {
           "value": "${AZURE_PRINCIPAL_ID}"

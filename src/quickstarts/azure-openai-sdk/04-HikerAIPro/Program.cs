@@ -9,9 +9,9 @@ using Microsoft.Extensions.Configuration;
 
 // == Retrieve the local secrets saved during the Azure deployment ==========
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
-string openAIEndpoint = config["AZURE_OPENAI_ENDPOINT"];
+string openAIEndpoint = config["AZURE_OPENAI_GPT_ENDPOINT"];
 string openAIDeploymentName = config["AZURE_OPENAI_GPT_NAME"];
-string openAiKey = config["AZURE_OPENAI_KEY"];
+string openAiKey = config["AZURE_OPENAI_GPT_KEY"];
 
 // == Creating the AIClient ==========
 var endpoint = new Uri(openAIEndpoint);

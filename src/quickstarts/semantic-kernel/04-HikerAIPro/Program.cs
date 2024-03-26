@@ -3,9 +3,11 @@
 // See the LICENSE file in the project root for more information.
 
 using System.ComponentModel;
+using System.Net.NetworkInformation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Http.Resilience;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
@@ -14,13 +16,25 @@ using Microsoft.SemanticKernel.Connectors.OpenAI;
 // because you already have an Azure OpenAI available, edit the following lines to use your information,
 // e.g. string openAIEndpoint = "https://cog-demo123.openai.azure.com/";
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
-string endpoint = config["AZURE_OPENAI_ENDPOINT"];
+string endpoint = config["AZURE_OPENAI_GPT_ENDPOINT"];
 string deployment = config["AZURE_OPENAI_GPT_NAME"];
-string key = config["AZURE_OPENAI_KEY"];
+string key = config["AZURE_OPENAI_GPT_KEY"];
 
 // Create a Kernel containing the Azure OpenAI Chat Completion Service
 IKernelBuilder b = Kernel.CreateBuilder();
-//b.Services.AddLogging(b => b.AddConsole().SetMinimumLevel(LogLevel.Trace)); // uncomment to see all interactions with the model logged
+
+// Add resilience to the HTTP client that Semantic Kernel uses for calls to the AI model
+b.Services.ConfigureHttpClientDefaults(c => c.AddStandardResilienceHandler(options =>
+{
+    options.TotalRequestTimeout = new HttpTimeoutStrategyOptions
+    {
+        Timeout = TimeSpan.FromSeconds(500.0),
+        Name = "Standard-AttemptTimeout"
+    };
+}));
+
+// b.Services.AddLogging(b => b.AddConsole().SetMinimumLevel(LogLevel.Trace)); // uncomment to see all interactions with the model logged
+
 Kernel kernel = b
     .AddAzureOpenAIChatCompletion(deployment, endpoint, key)
     .Build();
