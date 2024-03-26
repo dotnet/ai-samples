@@ -22,6 +22,8 @@ string key = config["AZURE_OPENAI_GPT_KEY"];
 
 // Create a Kernel containing the Azure OpenAI Chat Completion Service
 IKernelBuilder b = Kernel.CreateBuilder();
+
+// Add resilience to the HTTP client that Semantic Kernel uses for calls to the AI model
 b.Services.ConfigureHttpClientDefaults(c => c.AddStandardResilienceHandler(options =>
 {
     options.TotalRequestTimeout = new HttpTimeoutStrategyOptions
