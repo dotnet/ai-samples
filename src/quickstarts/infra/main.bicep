@@ -45,7 +45,7 @@ module gpt 'gpt.bicep' = {
   }
 }
 
-module gpt 'dalle.bicep' = {
+module dalle 'dalle.bicep' = {
   scope: rg
   name: 'ai'
   params: {
