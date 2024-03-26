@@ -37,11 +37,18 @@ Welcome to the official home for .NET samples demonstrating how to use AI in you
 | REF | RAG                                         |  [Coming Soon](.)
 | REF | Prompts / Prompt Engineering                |  [Coming Soon](.)
 
+### Agent Examples
+
+~~ Text to describe Agents ~~
+
+|  #  | Topic                                       | GitHub Link                               |
+|-----|---------------------------------------------|-------------------------------------------|
+| REF | Form Assistant                              |  [Form Assistant](./src/llm-agents/autogen/form-assistant/README.md)
 
 ### End to End Examples
 |  #  | Topic                                       |  GitHub Link |
 |-----|---------------------------------------------|--------------|
-| E2E | Azure Search .                              |  [Azure Search Repository](https://github.com/Azure-Samples/azure-search-openai-demo-csharp)
+| E2E | Azure Search                                |  [Azure Search Repository](https://github.com/Azure-Samples/azure-search-openai-demo-csharp)
 | E2E | E-Shop Sample                               |  [E-Shop Repository](https://github.com/dotnet/eshop)
 
 ### Local Models
