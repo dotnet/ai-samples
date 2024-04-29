@@ -5,7 +5,7 @@ namespace LLMEval.Outputs;
 public static class ExportToJson
 {
     public static string CreateJson(LLMEvalResults results)
-    { 
+    {
         var json = System.Text.Json.JsonSerializer.Serialize(results);
         return json;
     }

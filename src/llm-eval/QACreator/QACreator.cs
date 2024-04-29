@@ -1,3 +1,6 @@
+#pragma warning disable CS8604 // Possible null reference argument.
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+
 using LLMEval.Core;
 using LLMEval.Data;
 using Microsoft.SemanticKernel;
@@ -29,14 +32,7 @@ public class QACreator : IInputProcessor
     {
         var qa = source as QA;
 
-#pragma warning disable CS8604 // Possible null reference argument.
-#pragma warning disable CS8604 // Possible null reference argument.
-#pragma warning disable CS8604 // Possible null reference argument.
         var modelResponse = await qaGenerator.GetQA(qa.Question, qa.Answer, qa.Topic);
-#pragma warning restore CS8604 // Possible null reference argument.
-#pragma warning restore CS8604 // Possible null reference argument.
-#pragma warning restore CS8604 // Possible null reference argument.
-    
         return new ModelOutput()
         {
             Input = $@"The model was asked this question: ""{qa.Question}"", expecting this answer: ""{qa.Answer}"", for this topic: ""{qa.Topic}""",

@@ -21,7 +21,7 @@ public static class SpectreConsoleOutput
     public static void DisplayTitleH2(string subtitle)
     {
         AnsiConsole.MarkupLine($"[bold][blue]=== {subtitle} ===[/][/]");
-        AnsiConsole.MarkupLine($"");        
+        AnsiConsole.MarkupLine($"");
     }
 
     public static void DisplayTitleH3(string subtitle)
@@ -83,7 +83,7 @@ public static class SpectreConsoleOutput
         return response;
     }
 
-    public static void DisplayKernels(Kernel testKernel, Kernel evalKernel, Kernel genKernel )
+    public static void DisplayKernels(Kernel testKernel, Kernel evalKernel, Kernel genKernel)
     {
         // Create a table
         var table = new Table();
@@ -95,7 +95,7 @@ public static class SpectreConsoleOutput
 
         DisplayKernelInfo(testKernel, "Test", table);
         DisplayKernelInfo(evalKernel, "Eval", table);
-        DisplayKernelInfo(evalKernel, "Gen", table);
+        DisplayKernelInfo(genKernel, "Gen", table);
 
         // Render the table to the console
         AnsiConsole.Write(table);
@@ -119,7 +119,6 @@ public static class SpectreConsoleOutput
         }
     }
 
-    
     private static void AddRow(Table table, string kernelName, string serviceName, IReadOnlyDictionary<string, object?> services)
     {
         foreach (var atr in services)
@@ -148,13 +147,13 @@ public static class SpectreConsoleOutput
         }
         table.Columns[0].PadLeft(1).PadRight(1);
         table.Columns[1].PadLeft(1).PadRight(1);
-                
+
         foreach (var result in results.EvalResults)
         {
             List<Renderable> row = [
-                new Text(result.Subject.Input), 
+                new Text(result.Subject.Input),
                 new Text(result.Subject.Output)];
-            
+
             // add the evaluation results
             foreach (var value in result.Results.Values)
             {

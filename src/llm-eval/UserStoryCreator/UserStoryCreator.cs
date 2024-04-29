@@ -1,3 +1,6 @@
+#pragma warning disable CS8604 // Possible null reference argument.
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+
 using UserStoryGenerator;
 using LLMEval.Core;
 using Microsoft.SemanticKernel;
@@ -16,7 +19,7 @@ public class UserStoryCreator : IInputProcessor
 
     public async Task<List<ModelOutput>> ProcessCollection<T>(T collection)
     {
-        var result = new List<ModelOutput>();        
+        var result = new List<ModelOutput>();
         foreach (var userInput in collection as List<UserStory>)
         {
             var modelOutput = await Process(userInput);
@@ -29,14 +32,13 @@ public class UserStoryCreator : IInputProcessor
     {
         var userInput = source as UserStory;
 
-#pragma warning disable CS8604 // Possible null reference argument.
         var userStory = await userStoryGenerator.GetUserStory(
             userInput.Description,
             userInput.ProjectContext,
             userInput.Persona);
-#pragma warning restore CS8604 // Possible null reference argument.
 
-        return new ModelOutput() {
+        return new ModelOutput()
+        {
             Input = @$"Generate a user story for persona: ""{userInput.Persona}"" so it can ""{userInput.Description}""",
             Output = $"{userStory!.Persona} - {userStory!.Description}"
         };
