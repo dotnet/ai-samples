@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "description": "Generate a question and answer topic.",
+  "models": [
+    {
+      "max_tokens": 150,
+      "temperature": 0.9,
+      "top_p": 0.5,
+      "presence_penalty": 0.2,
+      "frequency_penalty": 0.3
+    }
+  ],
+  "input": {
+    "parameters": [
+      {
+        "name": "topic",
+        "description": "optional topic for the QA",
+        "defaultValue": ""
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+Create a question and answer set of data.
+If a topic is provided, use the topic. 
+
+[Topic]
+{{$topic}}
+[End Topic]
+
+Otherwise, choose a random topic from the following list:
+[Topic List]
+- Math
+- Science
+- History
+- Geography
+- Literature
+- Art
+- Music
+- Sports
+[End Topic List]
+
+Return the results in json format with the fields question, answer and topic. 
+All these fields in the json object are of type string. 
+If there is no value for the topic, the topic field should be an empty string.
+Do not return anything besides the json, no comments, no format, no markdown, just the json object. 
+The JSON must be a valid JSON format.
+For example: { question: "2 + 2", answer: "4", topic: "Math" }
