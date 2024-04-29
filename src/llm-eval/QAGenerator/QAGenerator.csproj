@@ -7,14 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="_prompts\userstoryclassic\**" />
-    <EmbeddedResource Remove="_prompts\userstoryclassic\**" />
-    <None Remove="_prompts\userstoryclassic\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="_prompts\qa\config.json" />
-    <None Remove="_prompts\qa\skprompt.txt" />
+    <None Include="_prompts\qa\config.json" />
+    <None Include="_prompts\qa\skprompt.txt" />
   </ItemGroup>
 
   <ItemGroup>

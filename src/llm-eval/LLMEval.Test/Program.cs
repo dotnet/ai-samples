@@ -64,12 +64,11 @@ class Program
             var topic = SpectreConsoleOutput.AskForString("Type the topic to generate the QA?");
 
             var qa = await QALLMGenerator.GenerateQA(kernelGen, topic);
-            var json = JsonSerializer.Serialize(qa, new JsonSerializerOptions
-            {
-                WriteIndented = true
-            });
-            SpectreConsoleOutput.DisplayJson(json, "Generated QA using LLM", true);
-
+            // var json = JsonSerializer.Serialize(qa, new JsonSerializerOptions
+            // {
+            //     WriteIndented = true
+            // });
+            // SpectreConsoleOutput.DisplayJson(json, "Generated QA using LLM", true);
 
             var qaProcessor = new QACreator.QACreator(kernelTest);
             var processResult = await qaProcessor.Process(qa);
