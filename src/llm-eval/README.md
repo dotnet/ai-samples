@@ -86,7 +86,7 @@ public static Kernel CreateKernelEval()
 
 To learn more about Project Secrets in Development * [Project Secrets in Development](#https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-8.0&tabs=windows)
 
-### Creating Kernels to access Open Source LLMs, like Llama 3 or Phi-3
+### Creating Kernels to access Open Source LLMs, like Phi-3 or Llama 3 
 
 Semantic Kernel also allows the access to any model that supports the [OpenAI Chat Completions API](https://github.com/ollama/ollama/blob/main/docs/openai.md). 
 
