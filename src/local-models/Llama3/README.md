@@ -51,7 +51,7 @@ Once the model is running locally, we can now run some prompts using C# and Sema
 
 ### Step 1: Run the model
 
-The file `src/local-models/Llama3/Program.cs` shows an example on how to use Semantic Kernel to use the local model. When adding the OpenAI Chat Completion service to the kernel, we must specify the modelId, endpoint and apikey (usually an empty string).
+The file `src/local-models/phi3-llama3/Program.cs` shows an example on how to use Semantic Kernel to use the local model. When adding the OpenAI Chat Completion service to the kernel, we must specify the modelId, endpoint and apikey (usually an empty string).
 
 ### Chat Completion
 
