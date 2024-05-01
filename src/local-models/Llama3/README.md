@@ -12,7 +12,7 @@ The use of local LLMs offers several advantages:
 
 - **Reduced Latency**: Local models eliminate network latency associated with cloud-based solutions.
 - **Enhanced Privacy**: Data remains on your local device, offering a secure environment for sensitive information.
-- **Customization**: Local models allow for greater flexibility to tweak and optimize the models as per your needs3.
+- **Customization**: Local models allow for greater flexibility to tweak and optimize the models as per your needs.
 
 ## Prerequisites
 
