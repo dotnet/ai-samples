@@ -6,9 +6,8 @@ This repo contains a sample on how to use a Phi-3 or Llama 3 models with Semanti
 
 Local LLMs like Phi-3 and Llama3 represent a significant shift towards more efficient and compact AI models. 
 
+- [**Phi-3**](https://azure.microsoft.com/blog/introducing-phi-3-redefining-whats-possible-with-slms/), developed by Microsoft, uses advanced training techniques like quantization to maximize efficiency, making it ideal for deployment on a wide range of devices.
 - [**Llama3**](https://llama.meta.com/llama3/), with its Mixture-of-Experts (MoE) architecture, offers specialized neural networks for different tasks, providing high-quality outputs with a smaller parameter count. 
-- [**Phi-3**](https://azure.microsoft.com/en-us/blog/introducing-phi-3-redefining-whats-possible-with-slms/), developed by Microsoft, uses advanced training techniques like quantization to maximize efficiency, making it ideal for deployment on a wide range of devices.
-
 The use of local LLMs offers several advantages:
 
 - **Reduced Latency**: Local models eliminate network latency associated with cloud-based solutions.
