@@ -100,7 +100,7 @@ public static Kernel CreateKernelEval()
     var builder = Kernel.CreateBuilder();
 
         builder.AddOpenAIChatCompletion(
-            modelId: "llama3",
+            modelId: "phi3",
             endpoint: new Uri("http://localhost:11434"),
             apiKey: "api");
 
