@@ -20,12 +20,19 @@ To run Phi-3 or Llama3 model on your local machine, the following prerequisites 
 
 - [Install ollama](https://ollama.com/download). Ollama can be installed in macOS, Linux or Windows. 
 - Download and run a LLM. 
-    [Ollama library](https://ollama.com/library) provides different types of open source models. To install Llama3 run the command:
+    [Ollama library](https://ollama.com/library) provides different types of open source models. 
+    
+        To install Phi-3, run the command:
 
-    ```bash
-    ollama run llama3
-    ```
-- The command `ollama run phi3` will install Phi-3.
+            ```bash
+            ollama run phi3
+            ```
+
+        To install Llama 3 run the command:
+
+            ```bash
+            ollama run llama3
+            ```
 
 - The command `ollama list` will show the local installed models:
 
