@@ -90,7 +90,7 @@ For more details, see the [Project Secrets in Development guidance](#https://lea
 
 Semantic Kernel also allows the access to any model that supports the [OpenAI Chat Completions API](https://github.com/ollama/ollama/blob/main/docs/openai.md). 
 
-The following example creates a kernel using a Llama 3 model deployed and hosted locally using ollama. 
+The following example creates a kernel using a Llama 3 model deployed and hosted locally using Ollama. 
 
 ```csharp
 public static Kernel CreateKernelEval()
