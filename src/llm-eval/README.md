@@ -35,8 +35,8 @@ In this sample, a list of User stories are loaded from a file, and the **LLMEval
 If you open this project in a Dev Container or GitHub Codespaces, it will automatically set up the environment for you.
 If not, then follow these steps:
 
-1. Install .NET 8 or higher
-2. Install Visual Studio 2022 or Visual Studio Code
+1. Install [.NET 8](https://dotnet.microsoft.com/download) or higher
+2. Install [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/) or [Visual Studio Code](https://code.visualstudio.com/Download)
 
 ## Models to test, to evaluate and to generate data
 
