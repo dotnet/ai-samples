@@ -84,7 +84,7 @@ public static Kernel CreateKernelEval()
 }
 ```
 
-To learn more about Project Secrets in Development * [Project Secrets in Development](#https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-8.0&tabs=windows)
+For more details, see the [Project Secrets in Development guidance](#https://learn.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-8.0&tabs=windows)
 
 ### Creating Kernels to access Open Source LLMs, like Phi-3 or Llama 3 
 
