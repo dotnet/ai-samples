@@ -45,7 +45,7 @@ journalctl -u ollama -f
 ```
 
 
-## Quick Start, using Llama3 model as an example
+## Quick Start
 
 The llama3 model is locally running, we can now run some prompts using C# and Semantic Kernel.
 
