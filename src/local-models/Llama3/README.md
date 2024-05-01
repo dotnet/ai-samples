@@ -119,7 +119,7 @@ So, the skier's speed at the bottom of the frictionless slope is approximately 2
 22 m/s ≈ 80 km/h (or about 50 mph)
 ```
 
-### Code Format with Llama 3
+### Code Format
 ```csharp
 var codePrompt = @"Complete the following code
 ```python
