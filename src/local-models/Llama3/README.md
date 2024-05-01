@@ -47,7 +47,7 @@ journalctl -u ollama -f
 
 ## Quick Start
 
-The llama3 model is locally running, we can now run some prompts using C# and Semantic Kernel.
+Once the model is running locally, we can now run some prompts using C# and Semantic Kernel.
 
 ### Step 1: Run the model
 
