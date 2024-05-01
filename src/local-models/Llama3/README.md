@@ -54,32 +54,8 @@ The llama3 model is locally running, we can now run some prompts using C# and Se
 The file `src/local-models/Llama3/Program.cs` shows an example on how to use Semantic Kernel to use the local model. When adding the OpenAI Chat Completion service to the kernel, we must specify the modelId, endpoint and apikey (usually an empty string).
 
 ### Chat Completion
-```csharp
-using Microsoft.SemanticKernel;
 
-// Create kernel with a custom http address
-var builder = Kernel.CreateBuilder();
-builder.AddOpenAIChatCompletion(
-    modelId: "llama3",
-    endpoint: new Uri("http://localhost:11434"),
-    apiKey: "apikey");
-var kernel = builder.Build();
-
-var prompt = "Write a joke about kittens. Use emojis.";
-var response = await kernel.InvokePromptAsync(prompt);
-Console.WriteLine(response.GetValue<string>());
-
-```
-#### Output 
-```
-Why did the kitten join a band?
-
-Because it wanted to be the purr-cussionist!
-```
-
-### Chat Completion with Phi3
-
-Using the same endpoint, we can now select Phi3 as the model to be used.
+#### Phi-3
 
 ```csharp
 using Microsoft.SemanticKernel;
@@ -96,15 +72,6 @@ var prompt = "Write a joke about kittens. Use emojis.";
 var response = await kernel.InvokePromptAsync(prompt);
 Console.WriteLine(response.GetValue<string>());
 
-```
-#### Output 
-```
-Why did the scaredy-kitten refuse to walk through the forest at night?
-
-Because it heard there were "nocturnal" predators out for its dinner! But really, they're just as sleepy during the day like we all are. Kitties need their beauty sleep too, right after playtime with a ball of yarn! ???
-
-Remember, humor about animals should always be respectful and harmless.
-```
 
 ### QA Format with Llama 3
 ```csharp
