@@ -22,17 +22,17 @@ To run Phi-3 or Llama3 model on your local machine, the following prerequisites 
 - Download and run a LLM. 
     [Ollama library](https://ollama.com/library) provides different types of open source models. 
     
-        To install Phi-3, run the command:
+    To install Phi-3, run the command:
 
-            ```bash
-            ollama run phi3
-            ```
+    ```bash
+    ollama run phi3
+    ```
 
-        To install Llama 3 run the command:
+    To install Llama 3 run the command:
 
-            ```bash
-            ollama run llama3
-            ```
+    ```bash
+    ollama run llama3
+    ```
 
 - The command `ollama list` will show the local installed models:
 
@@ -68,10 +68,10 @@ builder.AddOpenAIChatCompletion(
     apiKey: "apikey");
 var kernel = builder.Build();
 
-var prompt = "Write a joke about kittens. Use emojis.";
+var prompt = "Write a joke about kittens.";
 var response = await kernel.InvokePromptAsync(prompt);
 Console.WriteLine(response.GetValue<string>());
-
+```
 
 ### QA Format
 ```csharp
