@@ -2,7 +2,7 @@
 
 This repo contains a sample on how to use a llama 3 model with semantic kernel.
 
-## Using Local LLMs like Llama3 or Phi-3
+## Using Local LLMs like Phi-3 or Llama 3 
 
 Local LLMs like Llama3 and Phi-3 represent a significant shift towards more efficient and compact AI models. 
 
