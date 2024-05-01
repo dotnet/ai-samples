@@ -73,7 +73,7 @@ var response = await kernel.InvokePromptAsync(prompt);
 Console.WriteLine(response.GetValue<string>());
 
 
-### QA Format with Llama 3
+### QA Format
 ```csharp
 var prompt = @"Instruction: A skier slides down a frictionless slope of height 40m and length 80m, what's the skier's speed at the bottom?
 Output:";
