@@ -1,4 +1,4 @@
-# Llama 3 using ollama
+# Phi-3 or Llama 3 using Ollama
 
 This repo contains a sample on how to use a llama 3 model with semantic kernel.
 
