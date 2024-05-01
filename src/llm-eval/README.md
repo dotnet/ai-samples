@@ -12,7 +12,7 @@ Table of contents:
 * [Running an evaluation](#running-an-evaluation)
 * [Viewing the results](#viewing-the-results)
 
-The sample console application includes several uses cases
+The sample console application includes several uses cases:
 
 - Generate and evaluate a QAs using a LLM
 - Evaluate 2 harcoded QAs
