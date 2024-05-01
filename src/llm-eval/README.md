@@ -14,13 +14,13 @@ Table of contents:
 
 The sample console application includes several uses cases
 
-- Generate and eval a QA using a LLM
-- Eval 2 harcoded QAs
-- Eval a harcoded User Story
-- Eval a List of User Stories loaded from a file
-- Generate and Eval a list of QAs using a LLM
-- Type a topic to generate a QA and eval the QA
-- Type the QA to be evaluated
+- Generate and evaluate a QAs using a LLM
+- Evaluate 2 harcoded QAs
+- Evaluate a harcoded User Story
+- Batch evaluate a list of User Stories loaded from a file
+- Generate and evaluate a list of QAs using a LLM
+- Manually generate a QA and eval the QA
+- Manually evaluate the QA 
 
 This is a sample of an user typing a QA, the test model generating the answer for the QA, and the **LLMEval.Core** library performing the eval.
 
