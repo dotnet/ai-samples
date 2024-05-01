@@ -210,7 +210,7 @@ results.EvalRunName = "Harcoded QA 1";
 SpectreConsoleOutput.DisplayResults(results);
 ```
 
-### Specifying the evaluate metrics
+### Specifying the evaluation metrics
 
 The **LLMEval.Core** class will use the metrics specified while creating the object. These metrics are custom metrics that we've added based on the python sample: [Evaluating a RAG Chat App
 ](https://github.com/Azure-Samples/ai-rag-chat-evaluator/tree/main).
