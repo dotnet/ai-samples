@@ -1,6 +1,6 @@
 # Phi-3 or Llama 3 using Ollama
 
-This repo contains a sample on how to use a llama 3 model with semantic kernel.
+This repo contains a sample on how to use a Phi-3 or Llama 3 models with Semantic Kernel.
 
 ## Using Local LLMs like Phi-3 or Llama 3 
 
