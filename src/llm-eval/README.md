@@ -134,7 +134,7 @@ There are a few ways to get this data:
 
 This repo includes a set of libraries to process and generate questions and answers from a specific topic.
 
-The following code is part of the main program, in the console application and show how to generate a QA from a topic. Each QA have a field for the question, the answer and the topic. 
+The following code is part of the main program, in the console application and shows how to generate a QA from a topic. Each QA has a field for the question, the answer and the topic. 
 
 ```csharp
 // ask for the topic to generate the QAs
