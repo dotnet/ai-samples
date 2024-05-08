@@ -23,7 +23,7 @@ var userToApplicationTransition = Transition.Create(user, applicationAgent);
 var applicationToAssistantTransition = Transition.Create(applicationAgent, assistantAgent);
 var assistantToUserTransition = Transition.Create(assistantAgent, user);
 
-var workflow = new Workflow(
+var workflow = new Graph(
     [
         userToApplicationTransition,
         applicationToAssistantTransition,

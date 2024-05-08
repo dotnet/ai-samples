@@ -9,8 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoGen" Version="0.0.9" />
-    <PackageReference Include="AutoGen.SourceGenerator" Version="0.0.9" />
+    <PackageReference Include="AutoGen" Version="0.0.12" />
+    <PackageReference Include="AutoGen.SourceGenerator" Version="0.0.12" />
     <PackageReference Include="Spectre.Console.Cli" Version="0.48.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="8.0.0" />
