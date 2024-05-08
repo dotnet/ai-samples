@@ -10,11 +10,8 @@ namespace FormAssistant;
 
 internal static class AgentFactory
 {
-    public static IAgent CreateFormAgent(AzureOpenAIConfig gptConfig)
+    public static IAgent CreateFormAgent(OpenAIClient client, string deployName)
     {
-        var endPoint = gptConfig.Endpoint ?? throw new Exception("Please set AZURE_OPENAI_ENDPOINT environment variable.");
-        var apiKey = gptConfig.ApiKey ?? throw new Exception("Please set AZURE_OPENAI_API_KEY environment variable.");
-        var openAIClient = new OpenAIClient(new Uri(endPoint), new Azure.AzureKeyCredential(apiKey));
 
         var instance = new FillApplicationFunction();
         var openaiMessageConnector = new OpenAIChatRequestMessageConnector();
@@ -26,9 +23,9 @@ internal static class AgentFactory
             });
 
         var chatAgent = new OpenAIChatAgent(
-            openAIClient: openAIClient,
+            openAIClient: client,
             name: "application",
-            modelName: gptConfig.DeploymentName,
+            modelName: deployName,
             systemMessage: """
             You are a helpful form assistant to help user during the application process.
             You save the progress once a piece of information is provided.
@@ -56,18 +53,14 @@ internal static class AgentFactory
         return chatAgent;
     }
 
-    public static IAgent CreateAssistantAgent(AzureOpenAIConfig gptConfig)
+    public static IAgent CreateAssistantAgent(OpenAIClient openaiClient, string deployName)
     {
-        var endPoint = gptConfig.Endpoint ?? throw new Exception("Please set AZURE_OPENAI_ENDPOINT environment variable.");
-        var apiKey = gptConfig.ApiKey ?? throw new Exception("Please set AZURE_OPENAI_API_KEY environment variable.");
-        var openaiClient = new OpenAIClient(new Uri(endPoint), new Azure.AzureKeyCredential(apiKey));
-
         var openaiMessageConnector = new OpenAIChatRequestMessageConnector();
 
         var chatAgent = new OpenAIChatAgent(
             openAIClient: openaiClient,
             name: "assistant",
-            modelName: gptConfig.DeploymentName,
+            modelName: deployName,
             systemMessage: """You create polite prompt to ask user provide missing information""")
             .RegisterStreamingMiddleware(openaiMessageConnector)
             .RegisterMiddleware(openaiMessageConnector)
