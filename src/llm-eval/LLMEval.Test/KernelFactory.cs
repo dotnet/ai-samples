@@ -12,11 +12,28 @@ internal static class KernelFactory
     /// <returns>A new instance of the <see cref="Kernel"/> class.</returns>
     public static Kernel CreatKernelTest()
     {
+        // // sample to test a local model 
+        // var builder = Kernel.CreateBuilder();
+        // builder.AddOpenAIChatCompletion(
+        //     modelId: "phi3",
+        //     endpoint: new Uri("http://localhost:11434"),
+        //     apiKey: "api");
+        // return builder.Build();
+
+        var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
+
         var builder = Kernel.CreateBuilder();
-        builder.AddOpenAIChatCompletion(
-            modelId: "llama3",
-            endpoint: new Uri("http://localhost:11434"),
-            apiKey: "api");
+
+#pragma warning disable CS8604 // Possible null reference argument.
+#pragma warning disable CS8604 // Possible null reference argument.
+#pragma warning disable CS8604 // Possible null reference argument.
+        builder.AddAzureOpenAIChatCompletion(
+            config["AZURE_OPENAI_MODEL"],
+            config["AZURE_OPENAI_ENDPOINT"],
+            config["AZURE_OPENAI_KEY"]);
+#pragma warning restore CS8604 // Possible null reference argument.
+#pragma warning restore CS8604 // Possible null reference argument.
+#pragma warning restore CS8604 // Possible null reference argument.
 
         return builder.Build();
     }

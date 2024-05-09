@@ -29,7 +29,7 @@ class Program
         // ========================================
         // create LLMEval and add evaluators
         // ========================================
-        var kernelEvalFunctions = kernelEval.CreatePluginFromPromptDirectory("Prompts");
+        var kernelEvalFunctions = kernelEval.CreatePluginFromPromptDirectory("prompts");
         var batchEval = new Core.LLMEval();
 
         batchEval
@@ -40,7 +40,6 @@ class Program
         batchEval.SetMeterId("llama3");
 
         var scenarios = SpectreConsoleOutput.SelectScenarios();
-
         Console.WriteLine("");
         SpectreConsoleOutput.DisplayTitleH2($"Processing user selection");
 
@@ -203,6 +202,37 @@ class Program
             var results = await batchEval.ProcessCollection(modelOutputCollection);
             results.EvalRunName = "LLM generated QAs";
             SpectreConsoleOutput.DisplayResults(results);
+        }
+
+        if (scenarios.Contains("Generate QAs associated to a topic, and export to json"))
+        {
+            // ========================================
+            // Generate a collection of QAs, for a specific topic
+            // export the generated collection to a json file
+            // ========================================
+            SpectreConsoleOutput.DisplayTitleH2("Generate a collection of QAs, for a specific topic");
+
+            // ask for the number of QAs to generate and the ropic
+            var numberOfQAs = SpectreConsoleOutput.AskForNumber("How many QAs do you want to generate?");
+            var topic = SpectreConsoleOutput.AskForString("Type the topic to generate the QAs");
+
+            // generate a collection of QAs using llms
+            var llmGenQAs = await QALLMGenerator.GenerateQACollection(kernelGen, numberOfQAs, topic);
+
+            // convert llmGenQAs to json
+            var jsonQAs = JsonSerializer.Serialize(llmGenQAs, new JsonSerializerOptions
+            {
+                WriteIndented = true
+            });
+            SpectreConsoleOutput.DisplayJson(jsonQAs, "Generated QAs using LLM", true);
+            var jsonQAsFileName = SpectreConsoleOutput.AskForString("Type the file name to export the QAs.");
+            if (!jsonQAsFileName.EndsWith(".json"))
+            {
+                jsonQAsFileName += ".json";
+            }
+            var jsonQAsFilePath = Path.Combine(Directory.GetCurrentDirectory(), jsonQAsFileName);
+            File.WriteAllText(jsonQAsFilePath, jsonQAs);            
+            Console.WriteLine($"The generated QAs were saved to: {jsonQAsFilePath}");            
         }
 
         // complete        

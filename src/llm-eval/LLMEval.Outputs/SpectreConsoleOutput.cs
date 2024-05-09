@@ -50,6 +50,7 @@ public static class SpectreConsoleOutput
             "1 harcoded User Story",
             "List of User Stories from a file",
             "List of QAs generated using a LLM",
+            "Generate QAs associated to a topic, and export to json",            
             "Type topic to generate a QA using LLM",
             "Type the QA to be tested"};
         return list;
