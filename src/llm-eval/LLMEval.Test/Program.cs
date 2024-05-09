@@ -15,12 +15,15 @@ class Program
         SpectreConsoleOutput.DisplayTitle();
 
         // ========================================
-        // create kernels
+        // Create 3 Kernels
+        // Test Kernel: the kernel that will be tested. In example: you fine tune a Phi-3 version, and you want to test it.
+        // Eval Kernel: the kernel that will be used to perform the evaluations on the responses from the "Test Kernel". This is usually GPT-4.
+        // Gen Kernel: the kernel that will be used to generate mock data if needed to perform the evaluation. This is usually GPT-4.
         // ========================================
         SpectreConsoleOutput.DisplayTitleH2($"LLM Kernels");
         var kernelEval = KernelFactory.CreateKernelEval();
-        var kernelTest = KernelFactory.CreateKernelEval();
-        var kernelGen = KernelFactory.CreateKernelEval();
+        var kernelTest = KernelFactory.CreatKernelTest();
+        var kernelGen = KernelFactory.CreateKernelGenerateData();
         SpectreConsoleOutput.DisplayKernels(kernelTest, kernelEval, kernelGen);
 
         // ========================================
