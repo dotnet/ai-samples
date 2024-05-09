@@ -212,7 +212,7 @@ class Program
             // ========================================
             SpectreConsoleOutput.DisplayTitleH2("Generate a collection of QAs, for a specific topic");
 
-            // ask for the number of QAs to generate and the ropic
+            // ask for the number of QAs to generate and the topic
             var numberOfQAs = SpectreConsoleOutput.AskForNumber("How many QAs do you want to generate?");
             var topic = SpectreConsoleOutput.AskForString("Type the topic to generate the QAs");
 
