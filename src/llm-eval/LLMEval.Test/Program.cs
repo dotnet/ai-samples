@@ -257,8 +257,8 @@ class Program
                 jsonQAsFileName += ".json";
             }
             var jsonQAsFilePath = Path.Combine(Directory.GetCurrentDirectory(), jsonQAsFileName);
-            File.WriteAllText(jsonQAsFilePath, jsonQAs);            
-            Console.WriteLine($"The generated QAs were saved to: {jsonQAsFilePath}");            
+            File.WriteAllText(jsonQAsFilePath, jsonQAs);
+            Console.WriteLine($"The generated QAs were saved to: {jsonQAsFilePath}");
         }
 
         // complete        
