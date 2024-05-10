@@ -176,6 +176,32 @@ class Program
 
         }
 
+        if (scenarios.Contains("List of QAs from a file"))
+        {
+            // ========================================
+            // evaluate a batch of inputs for QAs from a file
+            // ========================================
+            SpectreConsoleOutput.DisplayTitleH2("Processing batch of QAs");
+            var fileName = "assets/qa-02.json";
+            Console.WriteLine($"Processing {fileName} ...");
+            Console.WriteLine("");
+
+            // load the sample data
+            var qaCreator = new QACreator.QACreator(kernelTest);
+            var qaInputCollection = await QACreator.FileProcessor.ProcessQAsInputFile(fileName);
+
+            var modelOutputCollection = await qaCreator.ProcessCollection(qaInputCollection);
+            var results = await batchEval.ProcessCollection(modelOutputCollection);
+            results.EvalRunName = "QA collection from file";
+            SpectreConsoleOutput.DisplayResults(results);
+
+            // convert results to json, save the results and display them in the console
+            //var json = LLMEval.Outputs.ExportToJson.CreateJson(results);
+            //LLMEval.Outputs.ExportToJson.SaveJson(results, "results.json");
+            //SpectreConsoleOutput.DisplayJson(json, "User Story collection from file", true);
+
+        }
+
         if (scenarios.Contains("List of QAs generated using a LLM"))
         {
             // ========================================

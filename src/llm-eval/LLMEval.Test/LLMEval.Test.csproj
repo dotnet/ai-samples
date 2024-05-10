@@ -36,6 +36,12 @@
 	  <None Update="assets\data-02.json">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
+	  <None Update="assets\qa-02.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="assets\qa-10.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
 	  <None Update="prompts\coherence\config.json">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
