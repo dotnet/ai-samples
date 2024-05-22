@@ -11,6 +11,7 @@ Everything will be deployed automatically using the Azure Developer CLI.
 - Azure Developer CLI - [Install or update the Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd)
 - An Azure subscription - [Create one for free](https://azure.microsoft.com/free)
 - Access to [Azure OpenAI service](https://learn.microsoft.com/azure/ai-services/openai/overview#how-do-i-get-access-to-azure-openai).
+- On Windows, PowerShell `v7+` is required. To validate your version, run `pwsh` in a terminal. It should returns the current version. If it returns an error, execute the following command: `dotnet tool update --global PowerShell`.
 
 ## Deploying the Azure resources
 
