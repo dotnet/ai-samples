@@ -9,6 +9,8 @@ Discover how to bring AI into your .NET application! This session covers the too
 [![Infusing your .NET Apps with AI: Practical Tools and Techniques Youtube Preview](./images/Build2024Preview.png)](https://www.youtube.com/watch?v=jrNfKeGSuCg)
 
 
+[Infusing your .NET Apps with AI: Practical Tools and Techniques](https://www.youtube.com/watch?v=jrNfKeGSuCg)
+
 ### Quickstarts using Semantic Kernel
 
 |  #  | Topic                                       | GitHub Link                               | 
