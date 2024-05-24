@@ -2,6 +2,12 @@
 
 Welcome to the official home for .NET samples demonstrating how to use AI in your .NET applications. If you're new to AI, start at the top and work your way down. Otherwise, jump in wherever suits your interests.
 
+### Build 2024 - Infusing your .NET Apps with AI: Practical Tools and Techniques
+
+Discover how to bring AI into your .NET application! This session covers the tools, libraries, and best practices for incorporating LLMs or other AI capabilities to create an "intelligent app". We'll explore practical examples, including how to leverage Azure AI services and the .NET AI ecosystem, to enhance your apps with AI.
+
+https://www.youtube.com/watch?v=jrNfKeGSuCg&ab_channel=MicrosoftDeveloper
+
 ### Quickstarts using Semantic Kernel
 
 |  #  | Topic                                       | GitHub Link                               | 
