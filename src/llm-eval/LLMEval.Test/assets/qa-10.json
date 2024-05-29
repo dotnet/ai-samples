@@ -1,0 +1,52 @@
+[
+  {
+    "Question": "What is the square root of 16?",
+    "Answer": "4",
+    "Topic": "Math"
+  },
+  {
+    "Question": "What is the square root of 144?",
+    "Answer": "12",
+    "Topic": "Math"
+  },
+  {
+    "Question": "What is the square root of 81?",
+    "Answer": "9",
+    "Topic": "Math"
+  },
+  {
+    "Question": "What does Pythagorean Theorem state?",
+    "Answer": "In a right-angled triangle, the square of the hypotenuse side is equal to the sum of squares of the other two sides.",
+    "Topic": "Math"
+  },
+  {
+    "Question": "What is the square root of 16?",
+    "Answer": "4",
+    "Topic": "Math"
+  },
+  {
+    "Question": "What is the Pythagorean theorem?",
+    "Answer": "In a right angled triangle, the square of the hypotenuse side is equal to the sum of squares of the other two sides.",
+    "Topic": "Math"
+  },
+  {
+    "Question": "What is the square root of 16?",
+    "Answer": "4",
+    "Topic": "Math"
+  },
+  {
+    "Question": "What is the square root of 81?",
+    "Answer": "9",
+    "Topic": "Math"
+  },
+  {
+    "Question": "What is the square root of 144?",
+    "Answer": "12",
+    "Topic": "Math"
+  },
+  {
+    "Question": "What is the square root of 49?",
+    "Answer": "7",
+    "Topic": "Math"
+  }
+]
