@@ -9,6 +9,6 @@ var kernel = Kernel.CreateBuilder()
 // This is zero memory or stateless chat. The AI will not remember anything from the previous messages.
 while (true)
 {
-    Console.Write("Q': ");
+    Console.Write("Q: ");
     Console.WriteLine(await kernel.InvokePromptAsync(Console.ReadLine()!));
 }
