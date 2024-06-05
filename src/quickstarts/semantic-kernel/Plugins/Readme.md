@@ -9,7 +9,7 @@ builder.Services.AddLogging(b => b.AddConsole().SetMinimumLevel(LogLevel.Trace))
 ```
 
 2. Provide more context to the AI model using plugins.
-Plugins provide additional context to the AI model. In this example, we import a DemographicInfo class that includes a method to get the age of a person based on their name.
+Plugins provide additional context to the AI model. In this example, we import a `DemographicInfo` class that includes a method to get the age of a person based on the name.
 ```csharp
 // Import the DemographicInfo class to the kernel, so it can be used in the chat completion service.
 kernel.ImportPluginFromType<DemographicInfo>();
