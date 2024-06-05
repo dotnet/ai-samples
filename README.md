@@ -6,6 +6,7 @@ languages:
 - csharp
 - powershell
 products:
+- azure
 - ai-services
 - azure-openai
 urlFragment: ai-samples
