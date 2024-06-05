@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04-HikerAIPro", "04-HikerAI
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CreateBuilder", "CreateBuilder", "{DC340945-AA00-4485-9EFB-08E2CD5F8371}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeroMemoryChat", "Kernel\ZeroMemoryChat.csproj", "{3AF295CA-39C8-44E8-B3E7-17AC49D444DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloSemanticKernel", "Kernel\HelloSemanticKernel.csproj", "{3AF295CA-39C8-44E8-B3E7-17AC49D444DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
