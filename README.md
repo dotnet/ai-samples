@@ -14,7 +14,7 @@ Discover how to bring AI into your .NET application! This session covers the too
 ### Infusing your .NET Apps sample projects
 | GitHub Link    | Youtube Timestamp Link from Build 2024|
 | -------- | ------- |
-| [Zero memoery chat](./src/quickstarts/semantic-kernel/Kernel/Readme.md)| https://youtu.be/jrNfKeGSuCg?t=179
+| [Hello semantik kernel](./src/quickstarts/semantic-kernel/Kernel/Readme.md)| https://youtu.be/jrNfKeGSuCg?t=179
 
 ### Quickstarts using Semantic Kernel
 
