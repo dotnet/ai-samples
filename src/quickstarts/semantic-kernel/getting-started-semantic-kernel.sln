@@ -13,8 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05-HikeImages", "05-HikeIma
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04-HikerAIPro", "04-HikerAIPro\04-HikerAIPro.csproj", "{B838C6B7-64B9-4FF0-97E7-BC5FF254ADC7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StartUp", "StartUp", "{3E3421B5-2A9D-440D-9867-AA981DE66E95}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatService", "ChatService\ChatService.csproj", "{7ED34F86-CC93-4869-8D69-237A76EA47CF}"
 EndProject
 Global
@@ -50,9 +48,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{7ED34F86-CC93-4869-8D69-237A76EA47CF} = {3E3421B5-2A9D-440D-9867-AA981DE66E95}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {99AE4E2C-822E-495B-ADCE-7B44E1AF337B}
