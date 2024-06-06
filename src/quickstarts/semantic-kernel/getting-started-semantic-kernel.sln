@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05-HikeImages", "05-HikeIma
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04-HikerAIPro", "04-HikerAIPro\04-HikerAIPro.csproj", "{B838C6B7-64B9-4FF0-97E7-BC5FF254ADC7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoreDependencyInjection", "MoreDependencyInjection\MoreDependencyInjection.csproj", "{A1965353-246D-4FBE-9300-171C32D54D78}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{B838C6B7-64B9-4FF0-97E7-BC5FF254ADC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B838C6B7-64B9-4FF0-97E7-BC5FF254ADC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B838C6B7-64B9-4FF0-97E7-BC5FF254ADC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1965353-246D-4FBE-9300-171C32D54D78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1965353-246D-4FBE-9300-171C32D54D78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1965353-246D-4FBE-9300-171C32D54D78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1965353-246D-4FBE-9300-171C32D54D78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
