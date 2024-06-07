@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04 - Adding Plugins(Bing Se
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05 - Injecting Services", "05 - Injecting Services\05 - Injecting Services.csproj", "{43F49424-DAFC-4768-AF8B-8DC86EF5B55A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06 - Inject kerenel  To WebApp", "06 - Inject kerenel  To WebApp\06 - Inject kerenel  To WebApp.csproj", "{CFF33EC5-A1E6-4129-81DF-3EC9FCCE62BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{43F49424-DAFC-4768-AF8B-8DC86EF5B55A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43F49424-DAFC-4768-AF8B-8DC86EF5B55A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43F49424-DAFC-4768-AF8B-8DC86EF5B55A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFF33EC5-A1E6-4129-81DF-3EC9FCCE62BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFF33EC5-A1E6-4129-81DF-3EC9FCCE62BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFF33EC5-A1E6-4129-81DF-3EC9FCCE62BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFF33EC5-A1E6-4129-81DF-3EC9FCCE62BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
