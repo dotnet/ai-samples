@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02 - Adding Chat History", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03 - Adding Plugins (Function Calls)", "03 - Adding Plugins (Function Calls)\03 - Adding Plugins (Function Calls).csproj", "{EB0B667E-5442-4C37-8D5A-F431C046DB66}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-Adding Plugins(Bing Search)", "04-Adding Plugins(Bing Search)\04-Adding Plugins(Bing Search).csproj", "{5D5BB9D0-CCB6-41D6-A9E7-880452765466}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{EB0B667E-5442-4C37-8D5A-F431C046DB66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB0B667E-5442-4C37-8D5A-F431C046DB66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB0B667E-5442-4C37-8D5A-F431C046DB66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D5BB9D0-CCB6-41D6-A9E7-880452765466}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D5BB9D0-CCB6-41D6-A9E7-880452765466}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D5BB9D0-CCB6-41D6-A9E7-880452765466}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D5BB9D0-CCB6-41D6-A9E7-880452765466}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
