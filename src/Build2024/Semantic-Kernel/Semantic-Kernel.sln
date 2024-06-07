@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.34919.43
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01 - Hello Semantic Kernel", "01 - Hello Semantic Kernel\01 - Hello Semantic Kernel.csproj", "{DBB577F3-04C3-4582-A5D7-7822C0FB0C47}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02 - Adding Chat History", "02 - Adding Chat History\02 - Adding Chat History.csproj", "{A0006229-1928-4F17-B41D-4E98DF42787F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{DBB577F3-04C3-4582-A5D7-7822C0FB0C47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBB577F3-04C3-4582-A5D7-7822C0FB0C47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBB577F3-04C3-4582-A5D7-7822C0FB0C47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0006229-1928-4F17-B41D-4E98DF42787F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0006229-1928-4F17-B41D-4E98DF42787F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0006229-1928-4F17-B41D-4E98DF42787F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0006229-1928-4F17-B41D-4E98DF42787F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
