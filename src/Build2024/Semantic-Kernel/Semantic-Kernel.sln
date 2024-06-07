@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03 - Adding Plugins (Functi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04 - Adding Plugins(Bing Search)", "04-Adding Plugins(Bing Search)\04 - Adding Plugins(Bing Search).csproj", "{5D5BB9D0-CCB6-41D6-A9E7-880452765466}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05 - Injecting Services", "05 - Injecting Services\05 - Injecting Services.csproj", "{43F49424-DAFC-4768-AF8B-8DC86EF5B55A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{5D5BB9D0-CCB6-41D6-A9E7-880452765466}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D5BB9D0-CCB6-41D6-A9E7-880452765466}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D5BB9D0-CCB6-41D6-A9E7-880452765466}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43F49424-DAFC-4768-AF8B-8DC86EF5B55A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43F49424-DAFC-4768-AF8B-8DC86EF5B55A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43F49424-DAFC-4768-AF8B-8DC86EF5B55A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43F49424-DAFC-4768-AF8B-8DC86EF5B55A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
