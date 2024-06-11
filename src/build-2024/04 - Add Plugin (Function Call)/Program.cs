@@ -1,39 +1,23 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Http;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
-using Microsoft.SemanticKernel.Plugins.Web.Bing;
 
 var openAIChatCompletionModelName = "gpt-4-turbo"; // this could be other models like "gpt-4-turbo".
 
 var builder = Kernel.CreateBuilder();
 
-// injecting services to the kernel such as logging, http client, redaction.
-builder.Services.AddLogging(b => b.AddConsole().SetMinimumLevel(LogLevel.Trace));
-
-builder.Services.ConfigureHttpClientDefaults(b =>
-{
-    b.AddStandardResilienceHandler();
-    b.RedactLoggedHeaders(["Authorization"]);
-});
-builder.Services.AddRedaction();
-
-// injecting the permission filter to the kernel.
-# pragma warning disable
-builder.Services.AddSingleton<IFunctionInvocationFilter, PermissionFilter>();
-#pragma warning restore
+// Add logging services to the builder
+// builder.Services.AddLogging(b => b.AddConsole().SetMinimumLevel(LogLevel.Trace));
 
 var kernel = builder
     .AddOpenAIChatCompletion(openAIChatCompletionModelName, Environment.GetEnvironmentVariable("OPENAI_API_KEY")) // add the OpenAI chat completion service.
     .Build();
 
-#pragma warning disable
-kernel.ImportPluginFromObject(new Microsoft.SemanticKernel.Plugins.Web.WebSearchEnginePlugin(
-    new BingConnector(Environment.GetEnvironmentVariable("BING_API_KEY"))));
-#pragma warning disable
-
+// Import the DemographicInfo class to the kernel, so it can be used in the chat completion service.
+// this plugin could be from other options such as functions, prompts directory, etc.
+kernel.ImportPluginFromType<DemographicInfo>();
 var settings = new OpenAIPromptExecutionSettings() { ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions };// Set the settings for the chat completion service.
 var chatService = kernel.GetRequiredService<IChatCompletionService>();
 ChatHistory chatHistory = [];
@@ -50,19 +34,16 @@ while (true)
     chatHistory.AddRange(response);// Add chat response to chat history, hence it can be use to get more context for the next chat response
 }
 
-class PermissionFilter : IFunctionInvocationFilter
+class DemographicInfo
 {
-    public async Task OnFunctionInvocationAsync(FunctionInvocationContext context, Func<FunctionInvocationContext, Task> next)
+    [KernelFunction]
+    public int GetAge(string name)
     {
-        Console.WriteLine($"Allow {context.Function.Name}?");
-        if (Console.ReadLine() == "y")
+        return name switch
         {
-            await next(context);
-        }
-        else
-        {
-            throw new Exception("Permission denied");
-        }
-
+            "Alice" => 25,
+            "Bob" => 30,
+            _ => 0
+        };
     }
 }
