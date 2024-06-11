@@ -31,7 +31,7 @@ var kernel = builder
 
 #pragma warning disable
 kernel.ImportPluginFromObject(new Microsoft.SemanticKernel.Plugins.Web.WebSearchEnginePlugin(
-    new BingConnector(Environment.GetEnvironmentVariable("Being_API_KEY"))));
+    new BingConnector(Environment.GetEnvironmentVariable("BING_API_KEY"))));
 #pragma warning disable
 
 var settings = new OpenAIPromptExecutionSettings() { ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions };// Set the settings for the chat completion service.
