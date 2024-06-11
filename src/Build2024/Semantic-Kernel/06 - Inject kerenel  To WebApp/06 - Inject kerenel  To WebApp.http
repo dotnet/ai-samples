@@ -1,6 +1,0 @@
-@_06___Inject_kerenel__To_WebApp_HostAddress = http://localhost:5052
-
-GET {{_06___Inject_kerenel__To_WebApp_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

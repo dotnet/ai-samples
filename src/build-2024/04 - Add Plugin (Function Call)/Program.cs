@@ -9,9 +9,10 @@ var openAIChatCompletionModelName = "gpt-4-turbo"; // this could be other models
 var builder = Kernel.CreateBuilder();
 
 // Add logging services to the builder
-builder.Services.AddLogging(b => b.AddConsole().SetMinimumLevel(LogLevel.Trace));
+// builder.Services.AddLogging(b => b.AddConsole().SetMinimumLevel(LogLevel.Trace));
+
 var kernel = builder
-    .AddOpenAIChatCompletion(openAIChatCompletionModelName, Environment.GetEnvironmentVariable("OPENAI_API_KEY_TEAM")) // add the OpenAI chat completion service.
+    .AddOpenAIChatCompletion(openAIChatCompletionModelName, Environment.GetEnvironmentVariable("OPENAI_API_KEY")) // add the OpenAI chat completion service.
     .Build();
 
 // Import the DemographicInfo class to the kernel, so it can be used in the chat completion service.

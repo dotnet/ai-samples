@@ -3,18 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.34919.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01 - Hello Semantic Kernel", "01 - Hello Semantic Kernel\01 - Hello Semantic Kernel.csproj", "{DBB577F3-04C3-4582-A5D7-7822C0FB0C47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01 - Hello Semantic Kernel", "01 - Hello Semantic Kernel\01 - Hello Semantic Kernel.csproj", "{DBB577F3-04C3-4582-A5D7-7822C0FB0C47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02 - Adding Chat History", "02 - Adding Chat History\02 - Adding Chat History.csproj", "{A0006229-1928-4F17-B41D-4E98DF42787F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02 - Add Chat History", "02 - Add Chat History\02 - Add Chat History.csproj", "{A0006229-1928-4F17-B41D-4E98DF42787F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03 - Adding Plugins (Function Calls)", "03 - Adding Plugins (Function Calls)\03 - Adding Plugins (Function Calls).csproj", "{EB0B667E-5442-4C37-8D5A-F431C046DB66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03 - Add Logging", "03 - Add Logging\03 - Add Logging.csproj", "{7FAD416C-F33E-4FB9-8476-B1CD09919775}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04 - Adding Plugins(Bing Search)", "04-Adding Plugins(Bing Search)\04 - Adding Plugins(Bing Search).csproj", "{5D5BB9D0-CCB6-41D6-A9E7-880452765466}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04 - Add Plugin (Function Call)", "04 - Add Plugin (Function Call)\04 - Add Plugin (Function Call).csproj", "{EB0B667E-5442-4C37-8D5A-F431C046DB66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05 - Injecting Services", "05 - Injecting Services\05 - Injecting Services.csproj", "{43F49424-DAFC-4768-AF8B-8DC86EF5B55A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05 - Add Plugin (Bing Search)", "05 - Add Plugin (Bing Search)\05 - Add Plugin (Bing Search).csproj", "{5D5BB9D0-CCB6-41D6-A9E7-880452765466}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06 - Inject kerenel  To WebApp", "06 - Inject kerenel  To WebApp\06 - Inject kerenel  To WebApp.csproj", "{CFF33EC5-A1E6-4129-81DF-3EC9FCCE62BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06 - Modifying Kernel Behavior with Dependency Injection", "06 - Modifying Kernel Behavior with Dependency Injection\06 - Modifying Kernel Behavior with Dependency Injection.csproj", "{43F49424-DAFC-4768-AF8B-8DC86EF5B55A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07 - Using Semantic Kernel in WebApp", "07 - Using Semantic Kernel in WebApp\07 - Using Semantic Kernel in WebApp.csproj", "{CFF33EC5-A1E6-4129-81DF-3EC9FCCE62BF}"
+EndProject
+
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +48,10 @@ Global
 		{CFF33EC5-A1E6-4129-81DF-3EC9FCCE62BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFF33EC5-A1E6-4129-81DF-3EC9FCCE62BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFF33EC5-A1E6-4129-81DF-3EC9FCCE62BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FAD416C-F33E-4FB9-8476-B1CD09919775}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FAD416C-F33E-4FB9-8476-B1CD09919775}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FAD416C-F33E-4FB9-8476-B1CD09919775}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FAD416C-F33E-4FB9-8476-B1CD09919775}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
