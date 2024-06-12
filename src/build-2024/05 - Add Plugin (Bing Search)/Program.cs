@@ -3,21 +3,22 @@ using Microsoft.Extensions.Logging;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
+using Microsoft.SemanticKernel.Plugins.Web;
 using Microsoft.SemanticKernel.Plugins.Web.Bing;
 
-var openAIChatCompletionModelName = "gpt-4-turbo"; // this could be other models like "gpt-4-turbo".
+var openAIChatCompletionModelName = "gpt-4-turbo"; // this could be other models like "gpt-4o".
 
 var builder = Kernel.CreateBuilder();
 
 // Add logging services to the builder
-// builder.Services.AddLogging(b => b.AddConsole().SetMinimumLevel(LogLevel.Trace));
+//builder.Services.AddLogging(b => b.AddConsole().SetMinimumLevel(LogLevel.Trace));
 
 var kernel = builder
     .AddOpenAIChatCompletion(openAIChatCompletionModelName, Environment.GetEnvironmentVariable("OPENAI_API_KEY")) // add the OpenAI chat completion service.
     .Build();
 
 #pragma warning disable
-kernel.ImportPluginFromObject(new Microsoft.SemanticKernel.Plugins.Web.WebSearchEnginePlugin(
+kernel.ImportPluginFromObject(new WebSearchEnginePlugin(
     new BingConnector(Environment.GetEnvironmentVariable("BING_API_KEY"))));
 #pragma warning disable
 

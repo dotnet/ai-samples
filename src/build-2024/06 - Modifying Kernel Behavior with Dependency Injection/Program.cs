@@ -11,7 +11,7 @@ var openAIChatCompletionModelName = "gpt-4-turbo"; // this could be other models
 var builder = Kernel.CreateBuilder();
 
 // injecting services to the kernel such as logging, http client, redaction.
-// builder.Services.AddLogging(b => b.AddConsole().SetMinimumLevel(LogLevel.Trace));
+builder.Services.AddLogging(b => b.AddConsole().SetMinimumLevel(LogLevel.Trace));
 
 builder.Services.ConfigureHttpClientDefaults(b =>
 {
