@@ -26,3 +26,6 @@ app.MapGet("/WeatherForecast", async (Kernel kernel) =>
 });
 app.Run();
 ```
+
+ ### Next unit: Summary
+[Continue](../docs/Summary.md)

@@ -18,3 +18,7 @@ kernel.ImportPluginFromType<DemographicInfo>();
 ```csharp
 var settings = new OpenAIPromptExecutionSettings() { ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions };
 ```
+
+
+ ### Next unit: Exercise - Add Logging
+[Continue](../04%20-%20Add%20Logging/README.md)
