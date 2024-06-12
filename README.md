@@ -17,9 +17,9 @@ Discover how to bring AI into your .NET application! This session covers the too
 |-----|--------------------------------------------------|----------------------------------------------------------------|-------------------------|
 |  1  | Hello Semantic Kernel                            |  [3m 0s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=180s)   |  [01 - Hello Semantic Kernel](./src/build-2024/01 - Hello Semantic Kernel)       |
 |  2  | Add Chat History                                 |  [5m 40s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=340s)  |  [02 - Add Chat History](./src/build-2024/02 - Add Chat History)       |
-|  3  | Add Plugin - Function Call                       |  [7m 10s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=430s)  |  [03 - Add Plugin \(Function Call\)](./src/build-2024/03 - Add Plugin %28Function Call%29)       |
+|  3  | Add Plugin - Function Call                       |  [7m 10s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=430s)  |  [03 - Add Plugin - Function Call](./src/build-2024/03 - Add Plugin %28Function Call%29)       |
 |  4  | Add Logging                                      |  [9m 24s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=565s)  |  [04 - Add Logging](./src/build-2024/04 - Add Logging)       |
-|  5  | Add Plugin - Bing Search                         |  [11m 15s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=675s) |  [05 - Add Plugin \(Bing Search\)](./src/build-2024/05 - Add Plugin %28Bing Search%29)       |
+|  5  | Add Plugin - Bing Search                         |  [11m 15s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=675s) |  [05 - Add Plugin - Bing Search](./src/build-2024/05 - Add Plugin %28Bing Search%29)       |
 |  6  | Modify Kernel Behavior with Dependency Injection |  [12m 37s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=757s) |  [06 - Modifying Kernel Behavior with Dependency Injection](./src/build-2024/06 - Modifying Kernel Behavior with Dependency Injection)       |
 |  7  | Using Semantic with Web App                      |  [15m 57s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=957s) |  [07 - Using Semantic Kernel in WebApp](./src/build-2024/07 - Using Semantic Kernel in WebApp)       |
 
