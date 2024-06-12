@@ -12,8 +12,8 @@ ChatHistory chatHistory = [];
 while (true)
 {
     Console.Write("Q: ");
-    chatHistory.AddUserMessage(Console.ReadLine());// Add user message to chat history, then it can be use to get more context for the next chat response
-    var response = await chatService.GetChatMessageContentsAsync(chatHistory);// Get chat response based on chat history
-    Console.WriteLine(response[response.Count - 1]);
+    chatHistory.AddUserMessage(Console.ReadLine()); // Add user message to chat history.
+    var response = await chatService.GetChatMessageContentsAsync(chatHistory); // Get chat response based on chat history.
+    Console.WriteLine(response); // Print response.
     chatHistory.AddRange(response);// Add chat response to chat history, hence it can be use to get more context for the next chat response
 }
