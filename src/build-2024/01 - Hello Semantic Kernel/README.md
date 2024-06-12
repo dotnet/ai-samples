@@ -34,3 +34,7 @@ while (true)
 
  ## Notes
  -  This application is stateless, meaning the AI does not remember any previous interactions. Each input is treated independently.
+
+
+ ### Next unit: Exercise - Add Chat History
+[Continue](../02%20-%20Add%20Chat%20History/README.md)

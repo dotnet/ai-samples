@@ -25,3 +25,7 @@ var settings = new OpenAIPromptExecutionSettings() { ToolCallBehavior = ToolCall
 var chatService = kernel.GetRequiredService<IChatCompletionService>();
 ChatHistory chatHistory = [];
 ```
+
+
+ ### Next unit: Exercise - Modify Kernel Behavior with Dependency Injection
+[Continue](../06%20-%20Modifying%20Kernel%20Behavior%20with%20Dependency%20Injection/README.md)

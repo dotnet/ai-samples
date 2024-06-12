@@ -36,3 +36,7 @@ class PermissionFilter : IFunctionInvocationFilter
     }
 }
 ````
+
+
+ ### Next unit: Exercise - Using Semantic with Web App
+[Continue](../07%20-%20Using%20Semantic%20Kernel%20in%20WebApp/README.md)

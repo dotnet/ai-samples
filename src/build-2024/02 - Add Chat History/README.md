@@ -8,3 +8,7 @@ This console application demonstrates a basic chat interface using OpenAI's GPT 
 Named `chatHistory` is used to store the conversation history. Each user message and AI response is appended to this list, maintaining the context of the conversation.
 
 By maintaining a chat history, the application ensures that the AI model can remember previous contexts and provide more coherent and contextually relevant responses.
+
+
+ ### Next unit: Exercise - Add Plugin - Function Call
+[Continue](../03%20-%20Add%20Plugin%20%28Function%20Call%29/README.md)
