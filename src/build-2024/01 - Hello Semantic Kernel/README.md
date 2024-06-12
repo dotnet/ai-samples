@@ -1,9 +1,8 @@
 ﻿This project demonstrates a simple console application using the Microsoft Semantic Kernel to interact with the OpenAI GPT-3.5-turbo model. The application allows users to have a stateless chat with the AI, meaning the AI does not retain memory of previous messages in the conversation.
 
 ## Overview
-The main code utilizes the Microsoft Semantic Kernel to integrate with the OpenAI GPT-3.5-turbo model. Here's a breakdown of what the code does:
-1.Import the Microsoft Semantic Kernel:
-
+The main code utilizes the Microsoft Semantic Kernel library to integrate with the OpenAI GPT-3.5-turbo model. Here's a breakdown of what the code does:
+1.Import the core namespace for the Semantic Kernel library:
 ```csharp
 using Microsoft.SemanticKernel;
 ```
