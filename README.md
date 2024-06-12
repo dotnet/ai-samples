@@ -11,6 +11,19 @@ Discover how to bring AI into your .NET application! This session covers the too
 
 [Youtube: Infusing your .NET Apps with AI: Practical Tools and Techniques](https://www.youtube.com/watch?v=jrNfKeGSuCg)
 
+### Infusing your .NET Apps with AI: Practical Tools and Techniques
+
+|  #  | Topic                                            | YouTube Link and Time                                          | GitHub Link             |
+|-----|--------------------------------------------------|----------------------------------------------------------------|-------------------------|
+|  1  | Hello Semantic Kernel                            |  [3m 0s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=180s)   |  [Coming Soon](.)       |
+|  2  | Add Chat History                                 |  [5m 40s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=340s)  |  [Coming Soon](.)       |
+|  3  | Add Plugin - Function Call                       |  [7m 10s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=430s)  |  [Coming Soon](.)       |
+|  4  | Add Logging                                      |  [9m 24s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=565s)  |  [Coming Soon](.)       |
+|  5  | Add Plugin - Bing Search                         |  [11m 15s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=675s) |  [Coming Soon](.)       |
+|  6  | Modify Kernel Behavior with Dependency Injection |  [12m 37s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=757s) |  [Coming Soon](.)       |
+|  7  | Using Semantic with Web App                      |  [15m 57s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=957s) |  [Coming Soon](.)       |
+
+
 ### Quickstarts using Semantic Kernel
 
 |  #  | Topic                                       | GitHub Link                               | 
