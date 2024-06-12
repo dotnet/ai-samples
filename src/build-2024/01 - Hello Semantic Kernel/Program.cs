@@ -1,5 +1,5 @@
 ﻿using Microsoft.SemanticKernel;
-string openAIChatCompletionModelName = "gpt-3.5-turbo";// // this could be other models like "gpt-4-turbo".
+string openAIChatCompletionModelName = "gpt-3.5-turbo";// // this could be other models like "gpt-40".
 var kernel = Kernel.CreateBuilder()
     .AddOpenAIChatCompletion(openAIChatCompletionModelName, Environment.GetEnvironmentVariable("OPENAI_API_KEY")) // add the OpenAI chat completion service.
     .Build();

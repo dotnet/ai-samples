@@ -17,10 +17,8 @@ var kernel = builder
     .AddOpenAIChatCompletion(openAIChatCompletionModelName, Environment.GetEnvironmentVariable("OPENAI_API_KEY")) // add the OpenAI chat completion service.
     .Build();
 
-#pragma warning disable
 kernel.ImportPluginFromObject(new WebSearchEnginePlugin(
     new BingConnector(Environment.GetEnvironmentVariable("BING_API_KEY"))));
-#pragma warning disable
 
 var settings = new OpenAIPromptExecutionSettings() { ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions };// Set the settings for the chat completion service.
 var chatService = kernel.GetRequiredService<IChatCompletionService>();
@@ -32,8 +30,8 @@ while (true)
     Console.Write("Q: ");
     chatHistory.AddUserMessage(Console.ReadLine());// Add user message to chat history, then it can be use to get more context for the next chat response
 
-    var response = await chatService.GetChatMessageContentsAsync(chatHistory, settings, kernel);// Get chat response based on chat history
+    var response = await chatService.GetChatMessageContentAsync(chatHistory, settings, kernel);// Get chat response based on chat history
 
-    Console.WriteLine(response[response.Count - 1]);
-    chatHistory.AddRange(response);// Add chat response to chat history, hence it can be use to get more context for the next chat response
+    Console.WriteLine(response);
+    chatHistory.Add(response);// Add chat response to chat history, hence it can be use to get more context for the next chat response
 }

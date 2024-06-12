@@ -4,7 +4,7 @@ using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
 
-var openAIChatCompletionModelName = "gpt-4-turbo"; // this could be other models like "gpt-4-turbo".
+var openAIChatCompletionModelName = "gpt-4-turbo"; // this could be other models like "gpt-4o".
 
 var builder = Kernel.CreateBuilder();
 
@@ -28,10 +28,10 @@ while (true)
     Console.Write("Q: ");
     chatHistory.AddUserMessage(Console.ReadLine());// Add user message to chat history, then it can be use to get more context for the next chat response
 
-    var response = await chatService.GetChatMessageContentsAsync(chatHistory, settings, kernel);// Get chat response based on chat history
+    var response = await chatService.GetChatMessageContentAsync(chatHistory, settings, kernel);// Get chat response based on chat history
 
-    Console.WriteLine(response[response.Count - 1]);
-    chatHistory.AddRange(response);// Add chat response to chat history, hence it can be use to get more context for the next chat response
+    Console.WriteLine(response);
+    chatHistory.Add(response);// Add chat response to chat history, hence it can be use to get more context for the next chat response
 }
 
 class DemographicInfo

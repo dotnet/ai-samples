@@ -1,6 +1,6 @@
 ﻿using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ChatCompletion;
-string openAIChatCompletionModelName = "gpt-3.5-turbo"; // this could be other models like "gpt-4-turbo".
+string openAIChatCompletionModelName = "gpt-3.5-turbo"; // this could be other models like "gpt-4o".
 var kernel = Kernel.CreateBuilder()
     .AddOpenAIChatCompletion(openAIChatCompletionModelName, Environment.GetEnvironmentVariable("OPENAI_API_KEY")) // add the OpenAI chat completion service.
     .Build();
@@ -13,7 +13,7 @@ while (true)
 {
     Console.Write("Q: ");
     chatHistory.AddUserMessage(Console.ReadLine()); // Add user message to chat history.
-    var response = await chatService.GetChatMessageContentsAsync(chatHistory); // Get chat response based on chat history.
+    var response = await chatService.GetChatMessageContentAsync(chatHistory); // Get chat response based on chat history.
     Console.WriteLine(response); // Print response.
-    chatHistory.AddRange(response); // Add chat response to chat history
+    chatHistory.Add(response); // Add chat response to chat history
 }

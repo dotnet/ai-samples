@@ -6,7 +6,7 @@ using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
 using Microsoft.SemanticKernel.Plugins.Web.Bing;
 
-var openAIChatCompletionModelName = "gpt-4-turbo"; // this could be other models like "gpt-4-turbo".
+var openAIChatCompletionModelName = "gpt-4-turbo"; // this could be other models like "gpt-4o".
 
 var builder = Kernel.CreateBuilder();
 
@@ -21,9 +21,9 @@ builder.Services.ConfigureHttpClientDefaults(b =>
 builder.Services.AddRedaction();
 
 // injecting the permission filter to the kernel.
-# pragma warning disable
+
 builder.Services.AddSingleton<IFunctionInvocationFilter, PermissionFilter>();
-#pragma warning restore
+
 
 var kernel = builder
     .AddOpenAIChatCompletion(openAIChatCompletionModelName, Environment.GetEnvironmentVariable("OPENAI_API_KEY")) // add the OpenAI chat completion service.
@@ -44,10 +44,10 @@ while (true)
     Console.Write("Q: ");
     chatHistory.AddUserMessage(Console.ReadLine());// Add user message to chat history, then it can be use to get more context for the next chat response
 
-    var response = await chatService.GetChatMessageContentsAsync(chatHistory, settings, kernel);// Get chat response based on chat history
+    var response = await chatService.GetChatMessageContentAsync(chatHistory, settings, kernel);// Get chat response based on chat history
 
-    Console.WriteLine(response[response.Count - 1]);
-    chatHistory.AddRange(response);// Add chat response to chat history, hence it can be use to get more context for the next chat response
+    Console.WriteLine(response);
+    chatHistory.Add(response);// Add chat response to chat history, hence it can be use to get more context for the next chat response
 }
 
 class PermissionFilter : IFunctionInvocationFilter
