@@ -4,7 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <NoWarn>SKEXP0001</NoWarn>
+    <NoWarn>SKEXP0001,SKEXP0050</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

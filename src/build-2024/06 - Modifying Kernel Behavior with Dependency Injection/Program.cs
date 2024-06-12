@@ -21,18 +21,14 @@ builder.Services.ConfigureHttpClientDefaults(b =>
 builder.Services.AddRedaction();
 
 // injecting the permission filter to the kernel.
-
 builder.Services.AddSingleton<IFunctionInvocationFilter, PermissionFilter>();
-
 
 var kernel = builder
     .AddOpenAIChatCompletion(openAIChatCompletionModelName, Environment.GetEnvironmentVariable("OPENAI_API_KEY")) // add the OpenAI chat completion service.
     .Build();
 
-#pragma warning disable
 kernel.ImportPluginFromObject(new Microsoft.SemanticKernel.Plugins.Web.WebSearchEnginePlugin(
     new BingConnector(Environment.GetEnvironmentVariable("BING_API_KEY"))));
-#pragma warning disable
 
 var settings = new OpenAIPromptExecutionSettings() { ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions };// Set the settings for the chat completion service.
 var chatService = kernel.GetRequiredService<IChatCompletionService>();
