@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01 - Hello Semantic Kernel"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02 - Add Chat History", "02 - Add Chat History\02 - Add Chat History.csproj", "{A0006229-1928-4F17-B41D-4E98DF42787F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03 - Add Logging", "03 - Add Logging\03 - Add Logging.csproj", "{7FAD416C-F33E-4FB9-8476-B1CD09919775}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03 - Add Plugin (Function Call)", "03 - Add Plugin (Function Call)\03 - Add Plugin (Function Call).csproj", "{EB0B667E-5442-4C37-8D5A-F431C046DB66}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04 - Add Plugin (Function Call)", "04 - Add Plugin (Function Call)\04 - Add Plugin (Function Call).csproj", "{EB0B667E-5442-4C37-8D5A-F431C046DB66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04 - Add Logging", "04 - Add Logging\04 - Add Logging.csproj", "{7FAD416C-F33E-4FB9-8476-B1CD09919775}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05 - Add Plugin (Bing Search)", "05 - Add Plugin (Bing Search)\05 - Add Plugin (Bing Search).csproj", "{5D5BB9D0-CCB6-41D6-A9E7-880452765466}"
 EndProject
