@@ -1,7 +1,19 @@
-﻿This project demonstrates a simple console application using the Microsoft Semantic Kernel to interact with the OpenAI GPT-3.5-turbo model. The application allows users to have a stateless chat with the AI, meaning the AI does not retain memory of previous messages in the conversation.
+﻿# Exercise - Hello Semantic Kerenel
+<!--TODo: Time to complelet the exercise should be included-->
+Now we have an understanding of semantick kerenel libraray and  chat completions,let's create a basic console application that uses them.
+
+## Prerequisites
+
+- [OpenAI account](https://platform.openai.com/signup)
+- [OpenAI API key](https://platform.openai.com/account/api-keys)
+- [Visual studio/SDK version]()
+- Clone repo from  [dotnet/ai-samples](https://github.com/dotnet/ai-samples)
+- Open "01 - Hello Semantic Kernel" project  in build-2024 solution using Visual Studio.
 
 ## Overview
+
 The main code utilizes the Microsoft Semantic Kernel library to integrate with the OpenAI GPT-3.5-turbo model. Here's a breakdown of what the code does:
+
 1.Import the core namespace for the Semantic Kernel library:
 ```csharp
 using Microsoft.SemanticKernel;
