@@ -50,4 +50,4 @@ while (true)
 By maintaining a chat history, the application ensures that the AI model can remember previous contexts and provide more coherent and contextually relevant responses.
 
  ### Next unit: Exercise - Add Plugin - Function Call
-[Continue](../03%20-%20Add%20Plugin%20%28Function%20Call%29/README.md)
+[Continue](./03%20Add%20Plugin%20(Function%20Call).md)
