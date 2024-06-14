@@ -8,7 +8,6 @@ Now we have an understanding of semantick kerenel libraray and  chat completions
 - [OpenAI API key](https://platform.openai.com/account/api-keys)
 - [Visual studio/SDK version]()
 - Clone repo from  [dotnet/ai-samples](https://github.com/dotnet/ai-samples)
-- Open "01 - Hello Semantic Kernel" project  in build-2024 solution using Visual Studio.
 
 ## Overview
 
