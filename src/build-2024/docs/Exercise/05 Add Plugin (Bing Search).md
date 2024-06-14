@@ -30,4 +30,4 @@ kernel.ImportPluginFromObject(new WebSearchEnginePlugin(
 
 ### Next unit: Exercise - Modify Kernel Behavior with Dependency Injection
 
-[Continue](../06%20-%20Modifying%20Kernel%20Behavior%20with%20Dependency%20Injection/README.md)
+[Continue](./06%20Modifying%20Kernel%20Behavior%20with%20Dependency%20Injection.md)

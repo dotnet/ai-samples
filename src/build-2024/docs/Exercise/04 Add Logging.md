@@ -30,4 +30,4 @@ builder.Services.AddLogging(b => b.AddConsole().SetMinimumLevel(LogLevel.Trace))
 
 ### Next unit: Exercise - Add Plugin - Bing Search
 
-[Continue](../05%20-%20Add%20Plugin%20%28Bing%20Search%29/README.md)
+[Continue](./05%20Add%20Plugin%20(Bing%20Search).md)

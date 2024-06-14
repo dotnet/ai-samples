@@ -46,4 +46,4 @@ var settings = new OpenAIPromptExecutionSettings() { ToolCallBehavior = ToolCall
 
 ### Next unit: Exercise - Add Logging
 
-[Continue](../04%20-%20Add%20Logging/README.md)
+[Continue](./04%20Add%20Logging.md)
