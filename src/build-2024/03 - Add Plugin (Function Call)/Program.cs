@@ -2,7 +2,7 @@
 using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
 
-var openAIChatCompletionModelName = "gpt-4-turbo"; // this could be other models like "gpt-4o".
+var openAIChatCompletionModelName = "gpt-3.5-turbo""; // this could be other models like "gpt-4o".
 
 var builder = Kernel.CreateBuilder();
 

@@ -12,8 +12,12 @@ In this module, you will:
 [Start](./docs/Introduction.md)
 
 ## Prerequisites
- - Some C# programming experience
- - Basic familiarity with OpenAI Service
+
+- Some C# programming experience
+- Basic familiarity with OpenAI Service
+- [OpenAI account](https://platform.openai.com/signup)
+- [OpenAI API key](https://platform.openai.com/account/api-keys)
+- [.SDK 8]()
 
 1. [Introduction](./docs/Introduction.md)
 

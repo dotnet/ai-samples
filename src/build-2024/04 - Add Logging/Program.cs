@@ -14,6 +14,7 @@ var kernel = builder
     .AddOpenAIChatCompletion(openAIChatCompletionModelName, Environment.GetEnvironmentVariable("OPENAI_API_KEY")) // add the OpenAI chat completion service.
     .Build();
 
+var chatService = kernel.GetRequiredService<IChatCompletionService>();
 ChatHistory chatHistory = [];
 
 // Basic chat

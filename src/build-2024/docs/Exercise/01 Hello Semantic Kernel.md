@@ -1,31 +1,40 @@
-﻿# Exercise - Hello Semantic Kerenel
+﻿# Exercise - Hello Semantic Kernel
 <!--TODo: Time to complelet the exercise should be included-->
 Now we have an understanding of semantick kerenel libraray and  chat completions,let's create a basic console application that uses them.
 
-## Prerequisites
+## Create the console application
 
-- [OpenAI account](https://platform.openai.com/signup)
-- [OpenAI API key](https://platform.openai.com/account/api-keys)
-- [Visual studio/SDK version]()
-- Clone repo from  [dotnet/ai-samples](https://github.com/dotnet/ai-samples)
+1. Run the following command on `PowerShell` to create a new .NET application named **01 - Hello Semantic Kernel**.
 
-## Overview
+  ```shell
+  dotnet new console -n 01 - Hello Semantic Kernel
+  ```
 
-The main code utilizes the Microsoft Semantic Kernel library to integrate with the OpenAI GPT-3.5-turbo model. Here's a breakdown of what the code does:
+2. Switch to the newly created `01 - Hello Semantic Kernel` directory.
 
-1.Import the core namespace for the Semantic Kernel library:
-
-```csharp
-using Microsoft.SemanticKernel;
+```shell
+cd 01 - Hello Semantic Kernel
 ```
 
-2.Define the OpenAI Chat Completion Model Name:
+3. Install Semantic Kernel nuget package
 
-```csharp
-string openAIChatCompletionModelName = "gpt-3.5-turbo";
+```shell
+dotnet add package Microsoft.SemanticKernel
 ```
 
-3.Create and configure the kernel:
+4. Open the project in VS Code or Visual Studio.
+
+5. In the Program.cs file, delete all the existing code.
+
+6. Add `using Microsoft.SemanticKernel;` to the top of Program.cs.
+
+7.Add a compilation model name. To learn more about OpenAI model versions and their capability refer [this](https://platform.openai.com/docs/models/overview).
+
+```csharp
+string openAIChatCompletionModelName = "gpt-3.5-turbo"; // this could be other models like "gpt-4o".
+```
+
+8. Initializing the kernel and add OpenAI chat compilation service to it.
 
 ```csharp
 var kernel = Kernel.CreateBuilder()
@@ -33,13 +42,11 @@ var kernel = Kernel.CreateBuilder()
     .Build();
 ```
 
-- `Kernel.CreateBuilder()`: Initializes the kernel builder.
-- `AddOpenAIChatCompletion(...)`: Adds the OpenAI chat completion service using the specified model and API key.
-- Build(): Builds the kernel with the configured services.
-
-4.Basic Chat Loop:
+9. Receive user request and  send the request to the kernel to obtain response from LLM.
 
 ```Csharp
+// Basic chat
+// This is zero memory or stateless chat. The AI will not remember anything from the previous messages.
 while (true)
 {
     Console.Write("Q: ");
@@ -49,7 +56,16 @@ while (true)
 
 - This loop continuously prompts the user for input, sends the input to the OpenAI model, and prints the AI's response.
 
-## Notes
+10. Let's see what we have so far, you can run the application by entering `dotnet run` into the terminal. Experiment with a user prompt "Hi my name is Alice" and a follow-up question "what is my name?" you will get something similar output as shown below on console.
+
+ ```console
+ Q: Hi my name is Alice
+Hello Alice, pleased to meet you! How can I assist you today?
+Q: What is my name?
+I'm sorry, I cannot provide your name as I do not have that information. If you would like me to refer to you by a specific name during our conversation, please let me know.
+Q:
+```
+## Note
 
   This application is stateless, meaning the AI does not remember any previous interactions. Each input is treated independently.
 
