@@ -42,7 +42,7 @@ In this module, you will:
 
 1. [Exercise: Modify Kernel Behavior with Dependency Injection](./docs/Exercise/06%20Modifying%20Kernel%20Behavior%20with%20Dependency%20Injection.md)
    - [YouTube  12m 37s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=757s)
-   
+
 1. [Exercise: Using Semantic with Web App](./docs/Exercise/07%20Using%20Semantic%20Kernel%20in%20WebApp.md)
    - [YouTube  15m 57s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=957s)
 

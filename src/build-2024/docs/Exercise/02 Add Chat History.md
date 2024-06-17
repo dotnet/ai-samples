@@ -6,81 +6,81 @@ This console application demonstrates a basic chat interface using OpenAI's GPT 
 
 1. Run the following command on `PowerShell` to create a new .NET application named **02 - Add Chat History**.
 
-  ```shell
-  dotnet new console -n 02 - Add Chat History
-  ```
+    ```shell
+    dotnet new console -n 02 - Add Chat History
+    ```
 
-2. Switch to the newly created `02 - Add Chat History` directory.
+1. Switch to the newly created `02 - Add Chat History` directory.
 
-```shell
-cd 02 - Add Chat History
-```
+    ```shell
+    cd 02 - Add Chat History
+    ```
 
-3. Install Semantic Kernel nuget package
+1. Install Semantic Kernel nuget package
 
-```shell
-dotnet add package Microsoft.SemanticKernel
-```
+    ```shell
+    dotnet add package Microsoft.SemanticKernel
+    ```
 
-4. Open the project in VS Code or Visual Studio.
+1. Open the project in VS Code or Visual Studio.
 
-5. In the Program.cs file, delete all the existing code.
+1. In the Program.cs file, delete all the existing code.
 
-6. Add the following using statments at the top of `Program.cs` file.
+1. Add the following using statments at the top of `Program.cs` file.
 
-```csharp
-using Microsoft.SemanticKernel;
-using Microsoft.SemanticKernel.ChatCompletion;
-```
+    ```csharp
+    using Microsoft.SemanticKernel;
+    using Microsoft.SemanticKernel.ChatCompletion;
+    ```
 
-7. Add a compilation model name. To learn more about OpenAI model versions and their capability refer [this](https://platform.openai.com/docs/models/overview).
+1. Add a compilation model name. To learn more about OpenAI model versions and their capability refer [this](https://platform.openai.com/docs/models/overview).
 
-```csharp
-string openAIChatCompletionModelName = "gpt-3.5-turbo"; // this could be other models like "gpt-4o".
-```
+    ```csharp
+    string openAIChatCompletionModelName = "gpt-3.5-turbo"; // this could be other models like "gpt-4o".
+    ```
 
-8. Initializing the kernel and add OpenAI chat compilation service to it.
+1. Initializing the kernel and add OpenAI chat compilation service to it.
 
-```csharp
-var kernel = Kernel.CreateBuilder()
-    .AddOpenAIChatCompletion(openAIChatCompletionModelName, Environment.GetEnvironmentVariable("OPENAI_API_KEY"))
-    .Build();
-```
+    ```csharp
+    var kernel = Kernel.CreateBuilder()
+        .AddOpenAIChatCompletion(openAIChatCompletionModelName, Environment.GetEnvironmentVariable("OPENAI_API_KEY"))
+        .Build();
+    ```
 
-9. Get the required service form the kernel we initialized above which is chat compilation service.
+1. Get the required service form the kernel we initialized above which is chat compilation service.
 
-```csharp
-var chatService = kernel.GetRequiredService<IChatCompletionService>();
-```
+    ```csharp
+    var chatService = kernel.GetRequiredService<IChatCompletionService>();
+    ```
 
-10.  Add an variable to store conversation chat history to provide more context for upcomimg user requests.
+1. Add an variable to store conversation chat history to provide more context for upcomimg user requests.
 
-```Csharp
-ChatHistory chatHistory = [];
-```
+    ```Csharp
+    ChatHistory chatHistory = [];
+    ```
 
-11.  Get the request from the user , add it the `chatHistory`, passed the request to the service the get resonse from the LLM and add the response to the `chatHistory`
+1. Get the request from the user , add it the `chatHistory`, passed the request to the service the get resonse from the LLM and add the response to the `chatHistory`
 
-```csharp
-// Basic chat
-while (true)
-{
-    Console.Write("Q: ");
-    chatHistory.AddUserMessage(Console.ReadLine()); // Add user message to chat history.
-    var response = await chatService.GetChatMessageContentAsync(chatHistory); // Get chat response based on chat history.
-    Console.WriteLine(response); // Print response.
-    chatHistory.Add(response); // Add chat response to chat history
-}
-```
-12. Let's see what we have so far, you can run the application by entering `dotnet run` into the terminal. Experiment with a user prompt "Hi my name is Alice" and a follow-up question "what is my name?" you will get something similar output as shown below on console.
+    ```csharp
+    // Basic chat
+    while (true)
+    {
+        Console.Write("Q: ");
+        chatHistory.AddUserMessage(Console.ReadLine()); // Add user message to chat history.
+        var response = await chatService.GetChatMessageContentAsync(chatHistory); // Get chat response based on chat history.
+        Console.WriteLine(response); // Print response.
+        chatHistory.Add(response); // Add chat response to chat history
+    }
+    ```
+1. Let's see what we have so far, you can run the application by entering `dotnet run` into the terminal. Experiment with a user prompt "Hi my name is Alice" and a follow-up question "what is my name?" you will get something similar output as shown below on console.
 
-```console
-Q: Hi my name is Alice
-Hello Alice! Nice to meet you. How can I assist you today?
-Q: What is my name?
-Your name is Alice.
-Q:
-```
+    ```console
+    Q: Hi my name is Alice
+    Hello Alice! Nice to meet you. How can I assist you today?
+    Q: What is my name?
+    Your name is Alice.
+    Q:
+    ```
 
 ## Note
 
