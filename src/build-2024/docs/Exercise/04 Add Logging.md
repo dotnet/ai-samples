@@ -11,7 +11,7 @@
 2. Switch to the newly created `04 - Add Logging` directory.
 
 ```shell
-cd 02 - 04 - Add Logging
+cd 04 - Add Logging
 ```
 
 3. Install Semantic Kernel nuget package

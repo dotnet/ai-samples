@@ -17,6 +17,7 @@ In this module, you will:
 - Basic familiarity with OpenAI Service
 - [OpenAI account](https://platform.openai.com/signup)
 - [OpenAI API key](https://platform.openai.com/account/api-keys)
+- [Bing API Key](https://learn.microsoft.com/en-us/bing/search-apis/bing-web-search/create-bing-search-service-resource)
 - [.SDK 8]()
 
 1. [Introduction](./docs/Introduction.md)
