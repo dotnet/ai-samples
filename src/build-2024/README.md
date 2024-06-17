@@ -26,25 +26,24 @@ In this module, you will:
 
 1. [Overview Semantic Kernel](./docs/OverviewOpenAI.md)
 
-1. [Exercise: Hello Semantic Kernel](./01%20-%20Hello%20Semantic%20Kernel/README.md)
+1. [Exercise: Hello Semantic Kernel](./docs/Exercise/01%20Hello%20Semantic%20Kernel.md)
    - [YouTube 3m 0s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=180s)
 
-1. [Exercise: Add Chat History](./02%20-%20Add%20Chat%20History/README.md)
+1. [Exercise: Add Chat History](./docs/Exercise/02%20Add%20Chat%20History.md)
    - [YouTube 5m 40s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=340s)
 
-1. [Exercise: Add Plugin - Function Call](./03%20-%20Add%20Plugin%20%28Function%20Call%29/README.md)
-   - [YouTube  7m 10s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=430s)
+1. [Exercise: Add Plugin - Function Call](./docs/Exercise/03%20Add%20Plugin%20(Function%20Call).md)
 
-1. [Exercise: Add Logging](./04%20-%20Add%20Logging/README.md)
+1. [Exercise: Add Logging](./docs/Exercise/04%20Add%20Logging.md)
    - [YouTube 9m 24s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=565s) 
 
-1. [Exercise: Add Plugin - Bing Search](./05%20-%20Add%20Plugin%20%28Bing%20Search%29/README.md)
+1. [Exercise: Add Plugin - Bing Search](./docs/Exercise/05%20Add%20Plugin%20(Bing%20Search).md)
    - [YouTube  11m 15s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=675s)
 
-1. [Exercise: Modify Kernel Behavior with Dependency Injection](./06%20-%20Modifying%20Kernel%20Behavior%20with%20Dependency%20Injection/README.md)
+1. [Exercise: Modify Kernel Behavior with Dependency Injection](./docs/Exercise/06%20Modifying%20Kernel%20Behavior%20with%20Dependency%20Injection.md)
    - [YouTube  12m 37s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=757s)
    
-1. [Exercise: Using Semantic with Web App](./07%20-%20Using%20Semantic%20Kernel%20in%20WebApp/README.md)
+1. [Exercise: Using Semantic with Web App](./docs/Exercise/07%20Using%20Semantic%20Kernel%20in%20WebApp.md)
    - [YouTube  15m 57s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=957s)
 
 1. [Summary](./docs/Summary.md)
