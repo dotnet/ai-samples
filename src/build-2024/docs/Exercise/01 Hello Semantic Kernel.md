@@ -1,6 +1,6 @@
 ﻿# Exercise - Hello Semantic Kernel
 <!--TODo: Time to complelet the exercise should be included-->
-Now we have an understanding of semantick kerenel libraray and  chat completions,let's create a basic console application that uses them.
+Now we have an understanding of semantic kernel library and  chat completions,let's create a basic console application that uses them.
 
 ## Create the console application
 
@@ -29,13 +29,13 @@ Now we have an understanding of semantick kerenel libraray and  chat completions
 
 1. Add `using Microsoft.SemanticKernel;` to the top of Program.cs.
 
-1. Add a compilation model name. To learn more about OpenAI model versions and their capability refer [this](https://platform.openai.com/docs/models/overview).
+1. Add a compilation model name. To learn more about OpenAI model versions and their capabilities refer [this](https://platform.openai.com/docs/models/overview).
 
     ```csharp
     string openAIChatCompletionModelName = "gpt-3.5-turbo"; // this could be other models like "gpt-4o".
     ```
 
-1. Initializing the kernel and add OpenAI chat compilation service to it.
+1. Initialize the kernel and add the OpenAI chat completion service to it
 
       ```csharp
       var kernel = Kernel.CreateBuilder()
@@ -43,7 +43,7 @@ Now we have an understanding of semantick kerenel libraray and  chat completions
           .Build();
       ```
 
-1. Receive user request and  send the request to the kernel to obtain response from LLM.
+1. Receive the user's request and send it to the kernel to obtain a response from the LLM.
 
     ```Csharp
     // Basic chat

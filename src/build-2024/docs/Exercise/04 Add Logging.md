@@ -45,7 +45,7 @@
       using Microsoft.SemanticKernel.ChatCompletion;
       ```
 
-1. Add the  the following code : Model name and create builder
+1. Add the following code : Model name and create builder
 
       ```csharp
       var openAIChatCompletionModelName = "gpt-4-turbo"; // this could be other models like "gpt-4o".
@@ -59,6 +59,7 @@
       // Add logging services to the builder
       builder.Services.AddLogging(b => b.AddConsole().SetMinimumLevel(LogLevel.Trace));
       ```
+
 1. Initialize the kernel 
 
       ```csharp
@@ -66,7 +67,6 @@
       .AddOpenAIChatCompletion(openAIChatCompletionModelName, Environment.GetEnvironmentVariable("OPENAI_API_KEY")) // add the OpenAI chat completion service.
       .Build();
       ```
-
 
 1. Run the application by entering `dotnet run` into the terminal. Experiment with a user prompt "Hello" " you will get something similar output as shown below
 

@@ -1,25 +1,25 @@
 ﻿# Exercise - Add plugin (Bing Search)
 
-This enables the model to search on web to respond for the user request.
+This enables the model to perform web searches in order to respond to user requests.
 
 ## Create the console application
 
  1. Run the following command on `PowerShell` to create a new .NET application named **05 - Add Plugin (Bing Search)**.
 
     ```shell
-    dotnet new console -n 05 - Add Plugin (Bing Search)
+        dotnet new console -n 05 - Add Plugin (Bing Search)
     ```
 
 1. Switch to the newly created `05 - Add Plugin (Bing Search)` directory.
 
     ```shell
-    cd 05 - Add Plugin (Bing Search)
+            cd 05 - Add Plugin (Bing Search)
     ```
 
 1. Install Semantic Kernel nuget package
 
     ```shell
-    dotnet add package Microsoft.SemanticKernel
+        dotnet add package Microsoft.SemanticKernel
     ```
 
 1. Install Extensions Logging nuget package
@@ -54,7 +54,7 @@ This enables the model to search on web to respond for the user request.
     using Microsoft.SemanticKernel.Connectors.OpenAI;
     using Microsoft.SemanticKernel.Plugins.Web;
     using Microsoft.SemanticKernel.Plugins.Web.Bing;
-    ```
+     ```
 
 1. Add the the following code : Model name and create builder
 
@@ -64,7 +64,7 @@ This enables the model to search on web to respond for the user request.
     var builder = Kernel.CreateBuilder();
     ```
 
-1. Initialize the kernel 
+1. Initialize the kernel
 
     ```csharp
     var kernel = builder
@@ -72,7 +72,7 @@ This enables the model to search on web to respond for the user request.
         .Build();
     ```
 
-1. Import Plugin from WebSearchEnginePlugin object by creating bing connector using Bing API key.
+1. Import the plugin from the WebSearchEnginePlugin object by creating a Bing connector using the Bing API key.
 
     ```csharp
     kernel.ImportPluginFromObject(new WebSearchEnginePlugin(
@@ -85,7 +85,7 @@ This enables the model to search on web to respond for the user request.
     var settings = new OpenAIPromptExecutionSettings() { ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions };// Set the settings for the chat completion service.
     ```
 
-1. Finally add the common badic chat section
+1. Finally add the common code chat section
 
     ```csharp
 

@@ -80,7 +80,7 @@
       var builder = Kernel.CreateBuilder();
       ```
 
-1.  Modify the kernel behavior  by injecting  services into it.
+1. Modify the kernel behavior  by injecting  services into it.
 
       ```csharp
       // injecting services to the kernel such as logging, http client, redaction.
@@ -128,7 +128,7 @@
       }
       ```
 
-1.Implment  `IFunctionInvocationFilter`
+1. Implment  `IFunctionInvocationFilter`
 
       ```csharp
       class PermissionFilter : IFunctionInvocationFilter
@@ -148,8 +148,8 @@
       }
       ```
 
- 1. Run the application by entering `dotnet run` into the terminal. Experiment with a user prompt "What are the major Microsoft announcements in Build 2024?" and if you enter "y" for `Allow Search?`
-you will get something similar output as shown below 
+ 1. Run the application by typing `dotnet run` in the terminal. Test it with the user prompt, ‘What are the major Microsoft announcements in Build 2024?’ If prompted to allow search, enter 'y'. You will see an output similar to shown below.
+
       ```console
       trce: Microsoft.SemanticKernel.Plugins.Web.WebSearchEnginePlugin[0]
             Created KernelFunction 'Search' for 'SearchAsync'

@@ -1,8 +1,8 @@
 ﻿# Exercise - Add Plugin (Function Call)
 
-This project demonstrates how to extend OpenAI's Semantic Kernel capabilities by incorporating additional services like plugins.
+This project demonstrates how to extend OpenAI's Semantic Kernel functionalities by incorporating additional services like plugins.
 
-##  Create the console application
+## Create the console application
 
 1. Run the following command on `PowerShell` to create a new .NET application named **03 - Add Plugin (Function Call)**.
 
@@ -40,7 +40,7 @@ This project demonstrates how to extend OpenAI's Semantic Kernel capabilities by
     string openAIChatCompletionModelName = "gpt-3.5-turbo"; // this could be other models like "gpt-4o".
     ```
 
-1. Initializing the kernel and add OpenAI chat compilation service to it.
+1. Initialize the kernel and add OpenAI chat compilation service to it.
 
     ```csharp
     var kernel = Kernel.CreateBuilder()
@@ -66,7 +66,7 @@ This project demonstrates how to extend OpenAI's Semantic Kernel capabilities by
     }
     ```
 
-1. Add the following next to kerenel intilization to import a plugin to the kernel from type `DemographicInfo`.
+1. Add the following next to kernel initialization to import a plugin to the kernel from type `DemographicInfo`.
 
     ```csharp
     // Import the DemographicInfo class to the kernel, so it can be used in the chat completion service.
@@ -98,6 +98,7 @@ This project demonstrates how to extend OpenAI's Semantic Kernel capabilities by
         chatHistory.Add(response);// Add chat response to chat history, hence it can be use to get more context for the next chat response
     }
     ```
+
 1. Run the application by entering `dotnet run` into the terminal. Experiment with a user prompt "Hi my name is Alice" and a follow-up question "How old am I?" you will get something similar output as shown
 
     ```console
