@@ -15,8 +15,8 @@ In this module, you will:
 
 - Some C# programming experience
 - Basic familiarity with OpenAI Service
-- [OpenAI account](https://platform.openai.com/signup)
-- [OpenAI API key](https://platform.openai.com/account/api-keys)
+- [OpenAI account](https://platform.openai.com/docs/quickstart/account-setup)
+- [OpenAI API key](https://platform.openai.com/docs/quickstart/step-2-set-up-your-api-key)
 - [Bing API Key](https://learn.microsoft.com/en-us/bing/search-apis/bing-web-search/create-bing-search-service-resource)
 - [.SDK 8]()
 
