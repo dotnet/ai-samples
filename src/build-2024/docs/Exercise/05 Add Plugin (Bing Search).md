@@ -2,75 +2,27 @@
 
 This enables the model to perform web searches in order to respond to user requests.
 
-## Create the console application
+1. Maksure that your current directoty is `HelloBuild` if not Switch to it
 
- 1. Run the following command on `PowerShell` to create a new .NET application named **05 - Add Plugin (Bing Search)**.
+      ```shell
+       cd HelloBuild
+      ```
 
-    ```shell
-        dotnet new console -n 05 - Add Plugin (Bing Search)
-    ```
-
-1. Switch to the newly created `05 - Add Plugin (Bing Search)` directory.
-
-    ```shell
-            cd 05 - Add Plugin (Bing Search)
-    ```
-
-1. Install Semantic Kernel nuget package
-
-    ```shell
-        dotnet add package Microsoft.SemanticKernel
-    ```
-
-1. Install Extensions Logging nuget package
-
-    ```shell
-    dotnet add package Microsoft.Extensions.Logging
-    ```
-
-1. Install Extensions Logging console nuget package
-
-    ```shell
-    dotnet add package Microsoft.Extensions.Logging.Console
-    ```
-
-1. Install SemanticKernel.Plugins.Web" nuget package
+1. Install `SemanticKernel.Plugins.Web nuget` package
 
     ```shell
     dotnet add packageMicrosoft.SemanticKernel.Plugins.Web
     ```
 
-1. Open the project in VS Code or Visual Studio.
-
-1. In the Program.cs file, delete all the existing code.
+1. Open the project you have created in [04 Add Logging](./05%20Add%20Plugin%20(Bing%20Search).md) in VS Code or Visual Studio.
 
 1. Add the following using statments at the top of `Program.cs` file.
 
     ```Csharp
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Logging;
-    using Microsoft.SemanticKernel;
-    using Microsoft.SemanticKernel.ChatCompletion;
     using Microsoft.SemanticKernel.Connectors.OpenAI;
     using Microsoft.SemanticKernel.Plugins.Web;
     using Microsoft.SemanticKernel.Plugins.Web.Bing;
      ```
-
-1. Add the the following code : Model name and create builder
-
-    ```csharp
-    var openAIChatCompletionModelName = "gpt-4-turbo"; // this could be other models like "gpt-4o".
-
-    var builder = Kernel.CreateBuilder();
-    ```
-
-1. Initialize the kernel
-
-    ```csharp
-    var kernel = builder
-        .AddOpenAIChatCompletion(openAIChatCompletionModelName, Environment.GetEnvironmentVariable("OPENAI_API_KEY")) // add the OpenAI chat completion service.
-        .Build();
-    ```
 
 1. Import the plugin from the WebSearchEnginePlugin object by creating a Bing connector using the Bing API key.
 
@@ -79,30 +31,7 @@ This enables the model to perform web searches in order to respond to user reque
         new BingConnector(Environment.GetEnvironmentVariable("BING_API_KEY"))));
     ```
 
-1. Execution setting
-
-    ```csharp
-    var settings = new OpenAIPromptExecutionSettings() { ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions };// Set the settings for the chat completion service.
-    ```
-
-1. Finally add the common code chat section
-
-    ```csharp
-
-    // Basic chat
-    while (true)
-    {
-        Console.Write("Q: ");
-        chatHistory.AddUserMessage(Console.ReadLine());// Add user message to chat history, then it can be use to get more context for the next chat response
-
-        var response = await chatService.GetChatMessageContentAsync(chatHistory, settings, kernel);// Get chat response based on chat history
-
-        Console.WriteLine(response);
-        chatHistory.Add(response);// Add chat response to chat history, hence it can be use to get more context for the next chat response
-    }
-    ```
-
-1.  Run the application by entering `dotnet run` into the terminal. Experiment with a user prompt "What are the major Microsoft announcements in Build 2024?"
+1. Run the application by entering `dotnet run` into the terminal. Experiment with a user prompt "What are the major Microsoft announcements in Build 2024?"
 you will get something similar output as shown below
 
     ```console
@@ -127,6 +56,10 @@ you will get something similar output as shown below
 
     These announcements span various areas from AI advancements and new hardware to enhanced developer tools and software capabilities.
     ```
+
+## Complete sample project
+
+[05 Add Plugin (Bing Search)](../../05%20-%20Add%20Plugin%20(Bing%20Search))
 
 ### Next unit: Exercise - Modify Kernel Behavior with Dependency Injection
 

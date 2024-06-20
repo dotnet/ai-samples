@@ -1,35 +1,9 @@
 ﻿# Exercise - Modifying Kernel Behavior with Dependency Injection
 
-## Create the console application
-
-1. Run the following command on `PowerShell` to create a new .NET application named **06 - Modifying Kernel Behavior with Dependency Injectiong**.
+1. Maksure that your current directoty is `HelloBuild` if not Switch to it
 
       ```shell
-      dotnet new console -n 06 - Modifying Kernel Behavior with Dependency Injection
-      ```
-
-1. Switch to the newly created `06 - Modifying Kernel Behavior with Dependency Injection` directory.
-
-      ```shell
-      cd 06 - Modifying Kernel Behavior with Dependency Injection
-      ```
-
-1. Install Semantic Kernel nuget package
-
-      ```shell
-      dotnet add package Microsoft.SemanticKernel
-      ```
-
-1. Install Extensions Logging nuget package
-
-      ```shell
-      dotnet add package Microsoft.Extensions.Logging
-      ```
-
-1. Install Extensions Logging console nuget package
-
-      ```shell
-      dotnet add package Microsoft.Extensions.Logging.Console
+       cd HelloBuild
       ```
 
 1. Install Extensions.Compliance.Redaction nuget package
@@ -50,42 +24,18 @@
       dotnet add package Microsoft.Extensions.Http.Resilience
       ```
 
-1. Install SemanticKernel.Plugins.Web nuget package
+1. Open the project you have created in [04 Add Logging](./05%20Add%20Plugin%20(Bing%20Search).md).md) in VS Code or Visual Studio.
 
-      ```shell
-      dotnet add package Microsoft.SemanticKernel.Plugins.Web
-      ```
-
-1. Open the project in VS Code or Visual Studio.
-
-1. In the Program.cs file, delete all the existing code.
-
-1. Add the following using statments at the top of `Program.cs` file.
+1. Add the following using statment at the top of `Program.cs` file.
 
       ```cshap
-      using Microsoft.Extensions.DependencyInjection;
-      using Microsoft.Extensions.Logging;
       using Microsoft.Extensions.Http;
-      using Microsoft.SemanticKernel;
-      using Microsoft.SemanticKernel.ChatCompletion;
-      using Microsoft.SemanticKernel.Connectors.OpenAI;
-      using Microsoft.SemanticKernel.Plugins.Web.Bing;
       ```
 
-1. Add model name and create builder
+1. Add the following code after `builder.Services.AddLogging(b => b.AddConsole().SetMinimumLevel(LogLevel.Trace));`
+ which modifies the kernel behavior by injecting services into it.
 
       ```csharp
-      var openAIChatCompletionModelName = "gpt-4-turbo"; // this could be other models like "gpt-4o".
-
-      var builder = Kernel.CreateBuilder();
-      ```
-
-1. Modify the kernel behavior  by injecting  services into it.
-
-      ```csharp
-      // injecting services to the kernel such as logging, http client, redaction.
-      builder.Services.AddLogging(b => b.AddConsole().SetMinimumLevel(LogLevel.Trace));
-
       builder.Services.ConfigureHttpClientDefaults(b =>
       {
       b.AddStandardResilienceHandler();
@@ -97,38 +47,7 @@
       builder.Services.AddSingleton<IFunctionInvocationFilter, PermissionFilter>();
       ```
 
-1. Initialize the kernel and more
-
-      ```csharp
-      var kernel = builder
-      .AddOpenAIChatCompletion(openAIChatCompletionModelName, Environment.GetEnvironmentVariable("OPENAI_API_KEY")) // add the OpenAI chat completion service.
-      .Build();
-
-      kernel.ImportPluginFromObject(new Microsoft.SemanticKernel.Plugins.Web.WebSearchEnginePlugin(
-      new BingConnector(Environment.GetEnvironmentVariable("BING_API_KEY"))));
-
-      var settings = new OpenAIPromptExecutionSettings() { ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions };// Set the settings for the chat completion service.
-      var chatService = kernel.GetRequiredService<IChatCompletionService>();
-      ChatHistory chatHistory = [];
-      ```
-
-1. Basic chat section
-
-      ```csharp
-      / Basic chat
-      while (true)
-      {
-      Console.Write("Q: ");
-      chatHistory.AddUserMessage(Console.ReadLine());// Add user message to chat history, then it can be use to get more context for the next chat response
-
-      var response = await chatService.GetChatMessageContentAsync(chatHistory, settings, kernel);// Get chat response based on chat history
-
-      Console.WriteLine(response);
-      chatHistory.Add(response);// Add chat response to chat history, hence it can be use to get more context for the next chat response
-      }
-      ```
-
-1. Implment  `IFunctionInvocationFilter`
+1. Add the following code at the end of `Program.cs` to Implment  `IFunctionInvocationFilter`
 
       ```csharp
       class PermissionFilter : IFunctionInvocationFilter
@@ -388,6 +307,10 @@
       dbug: Microsoft.Extensions.Http.DefaultHttpClientFactory[101]
             Ending HttpMessageHandler cleanup cycle after 0.0036ms - processed: 0 items - remaining: 1 items
       ```
+
+## Complete sample project
+
+[06 Modifying Kernel Behavior with Dependency Injection](../../06%20-%20Modifying%20Kernel%20Behavior%20with%20Dependency%20Injection/))
 
 ## Next unit: Exercise - Using Semantic with Web App
 

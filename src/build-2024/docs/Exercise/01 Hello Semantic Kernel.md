@@ -4,17 +4,16 @@ Now we have an understanding of semantic kernel library and  chat completions,le
 
 ## Create the console application
 
-1. Run the following command on `PowerShell` to create a new .NET application named **01 - Hello Semantic 
-  Kernel**.
+1. Run the following command on `PowerShell` to create a new .NET application named **HelloBuild** but you can substitute the name of your choice.
 
     ```shell
-    dotnet new console -n 01 - Hello Semantic Kernel
+    dotnet new console -n HelloBuild
     ```
 
-1. Switch to the newly created `01 - Hello Semantic Kernel` directory.
+1. Switch to the newly created `HelloBuild` directory.
 
     ```shell
-    cd 01 - Hello Semantic Kernel
+    cd HelloBuild
     ```
 
 1. Install Semantic Kernel nuget package
@@ -66,6 +65,10 @@ Now we have an understanding of semantic kernel library and  chat completions,le
       I'm sorry, I cannot provide your name as I do not have that information. If you would like me to refer to you by a specific name during our conversation, please let me know.
       Q:
       ```
+
+## Complete sample project
+
+[01 Hello Semantic Kernel](../../01%20-%20Hello%20Semantic%20Kernel).
 
 ## Note
 

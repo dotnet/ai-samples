@@ -2,13 +2,13 @@
 
 ## Create the web application
 
-1. Run the following command on `PowerShell` to create a new .NET  web application named **07 - Using Semantic Kernel in WebApp**.
+1. Run the following command on `PowerShell` to create a new .NET  web application named **HelloBuildMinimalWebAp**.
 
     ```shell
-    dotnet new webapp -n 07 - Using Semantic Kernel in WebApp
+    dotnet new webapp -n HelloBuildMinimalWebAp
     ```
 
-1. Switch to the newly created `07 - Using Semantic Kernel in WebApp` directory.
+1. Switch to the newly created `HelloBuildMinimalWebAp` directory.
 
     ```shell
     cd 07 - Using Semantic Kernel in WebApp
@@ -87,6 +87,10 @@
         "summary": "At 4 degrees Celsius, the weather is cool and slightly chilly. It is above freezing, so there is no ice, but it's cold enough that you might want a jacket or sweater when outdoors. This temperature is typical for late autumn or early spring in temperate regions."
     }
     ```
+
+## Complete sample project
+
+[06 Modifying Kernel Behavior with Dependency Injection](../../07%20-%20Using%20Semantic%20Kernel%20in%20WebApp/))
 
 ### Next unit: Summary
 

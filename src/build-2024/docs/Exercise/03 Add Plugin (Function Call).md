@@ -2,50 +2,12 @@
 
 This project demonstrates how to extend OpenAI's Semantic Kernel functionalities by incorporating additional services like plugins.
 
-## Create the console application
+1. Open the project you have created in [02 Add Chat History](02%20Add%20Chat%20History.md) in VS Code or Visual Studio.
 
-1. Run the following command on `PowerShell` to create a new .NET application named **03 - Add Plugin (Function Call)**.
-
-    ```shell
-    dotnet new console -n 03 - Add Plugin (Function Call)
-    ```
-
-1. Switch to the newly created `03 - Add Plugin (Function Call)` directory.
-
-    ```shell
-    cd 03 - Add Plugin (Function Call)
-    ```
-
-1. Install Semantic Kernel nuget package
-
-    ```shell
-    dotnet add package Microsoft.SemanticKernel
-    ```
-
-1. Open the project in VS Code or Visual Studio.
-
-1. In the Program.cs file, delete all the existing code.
-
-1. Add the following using statments to the top of `Program.cs` file.
+1. Add the following using statment to the top of `Program.cs` file.
 
     ```csharp
-    using Microsoft.SemanticKernel;
-    using Microsoft.SemanticKernel.ChatCompletion;
     using Microsoft.SemanticKernel.Connectors.OpenAI;
-    ```
-
-1. Add a compilation model name. To learn more about OpenAI model versions and their capability refer [this](https://platform.openai.com/docs/models/overview).
-
-    ```csharp
-    string openAIChatCompletionModelName = "gpt-3.5-turbo"; // this could be other models like "gpt-4o".
-    ```
-
-1. Initialize the kernel and add OpenAI chat compilation service to it.
-
-    ```csharp
-    var kernel = Kernel.CreateBuilder()
-        .AddOpenAIChatCompletion(openAIChatCompletionModelName, Environment.GetEnvironmentVariable("OPENAI_API_KEY"))
-        .Build();
     ```
 
 1. Define a class named `DemographicInfo` with `GetAge` function at the bottom of `Program.cs`. The GetAge function is also decorated with KernelFunction to mark it as a kernel function.
@@ -80,23 +42,10 @@ This project demonstrates how to extend OpenAI's Semantic Kernel functionalities
     var settings = new OpenAIPromptExecutionSettings() { ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions };// Set the settings for the chat completion service.
     ```
 
-1. Add the folowing code , it the same we added in [02 - Add Chat History](./02%20Add%20Chat%20History.md)  excpt ` var response = await chatService.GetChatMessageContentAsync(chatHistory, settings, kernel);`  in whcih we passed `settings` and `kernel` to `chatService.GetChatMessageContentAsync`
+1. Modify the while loop  by adding  the following code 
 
-    ```csharp
-    var chatService = kernel.GetRequiredService<IChatCompletionService>();
-    ChatHistory chatHistory = [];
-
-    // Basic chat
-    while (true)
-    {
-        Console.Write("Q: ");
-        chatHistory.AddUserMessage(Console.ReadLine());// Add user message to chat history, then it can be use to get more context for the next chat response
-
-        var response = await chatService.GetChatMessageContentAsync(chatHistory, settings, kernel);// Get chat response based on chat history
-
-        Console.WriteLine(response);
-        chatHistory.Add(response);// Add chat response to chat history, hence it can be use to get more context for the next chat response
-    }
+    ```cshrp
+    var response = await chatService.GetChatMessageContentAsync(chatHistory, settings, kernel);// Get chat response based on chat history
     ```
 
 1. Run the application by entering `dotnet run` into the terminal. Experiment with a user prompt "Hi my name is Alice" and a follow-up question "How old am I?" you will get something similar output as shown
@@ -108,6 +57,10 @@ This project demonstrates how to extend OpenAI's Semantic Kernel functionalities
     You are 25 years old. If you have any other questions or need assistance with something, feel free to ask!
     Q:
     ```
+
+## Complete sample project
+
+[03 Add Plugin (Function Call)](../../03%20-%20Add%20Plugin%20(Function%20Call))
 
 ### Next unit: Exercise - Add Logging
 

@@ -1,23 +1,9 @@
 ﻿# Exercise - Add Logging
 
-## Create the console application
-
-1. Run the following command on `PowerShell` to create a new .NET application named **04 - Add Logging**.
+1. Maksure that your current directoty is `HelloBuild` if not Switch to it
 
       ```shell
-      dotnet new console -n 04 - Add Logging
-      ```
-
-1. Switch to the newly created `04 - Add Logging` directory.
-
-      ```shell
-      cd 04 - Add Logging
-      ```
-
-1. Install Semantic Kernel nuget package
-
-      ```shell
-      dotnet add package Microsoft.SemanticKernel
+       cd HelloBuild
       ```
 
 1. Install Extensions Logging nuget package
@@ -32,40 +18,20 @@
       dotnet add package Microsoft.Extensions.Logging.Console
       ```
 
-1. Open the project in VS Code or Visual Studio.
-
-1. In the Program.cs file, delete all the existing code.
+1. Open the project you have created in [03 Add Plugin (Function Call)](./03%20Add%20Plugin%20(Function%20Call).md) in VS Code or Visual Studio.
 
 1. Add the following using statments at the top of `Program.cs` file.
 
       ```csharp
       using Microsoft.Extensions.DependencyInjection;
       using Microsoft.Extensions.Logging;
-      using Microsoft.SemanticKernel;
-      using Microsoft.SemanticKernel.ChatCompletion;
       ```
 
-1. Add the following code : Model name and create builder
-
-      ```csharp
-      var openAIChatCompletionModelName = "gpt-4-turbo"; // this could be other models like "gpt-4o".
-
-      var builder = Kernel.CreateBuilder();
-      ```
-
-1. Add logging services to the builder
+1. Add logging services to the builder before intilizing the kerenel
 
       ```csharp
       // Add logging services to the builder
       builder.Services.AddLogging(b => b.AddConsole().SetMinimumLevel(LogLevel.Trace));
-      ```
-
-1. Initialize the kernel 
-
-      ```csharp
-      var kernel = builder
-      .AddOpenAIChatCompletion(openAIChatCompletionModelName, Environment.GetEnvironmentVariable("OPENAI_API_KEY")) // add the OpenAI chat completion service.
-      .Build();
       ```
 
 1. Run the application by entering `dotnet run` into the terminal. Experiment with a user prompt "Hello" " you will get something similar output as shown below
@@ -80,8 +46,11 @@
       Q:
       ```
 
-> **Note:**  From the outout on console notice the log  information that provided detailed information about our model settings. 
+> **Note:**  From the outout on console notice the log  information that provided detailed information about our model settings.
 
+## Complete sample project
+
+[04 Add Logging)](../../04%20-%20Add%20Logging/)
 
 ### Next unit: Exercise - Add Plugin - Bing Search
 
