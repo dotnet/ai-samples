@@ -2,19 +2,13 @@
 
 This enables the model to perform web searches in order to respond to user requests.
 
-1. Maksure that your current directoty is `HelloBuild` if not Switch to it
-
-      ```shell
-       cd HelloBuild
-      ```
+1. Open the project you have created in [04 Add Logging](./05%20Add%20Plugin%20(Bing%20Search).md) in VS Code or Visual Studio.
 
 1. Install `SemanticKernel.Plugins.Web nuget` package
 
     ```shell
     dotnet add packageMicrosoft.SemanticKernel.Plugins.Web
     ```
-
-1. Open the project you have created in [04 Add Logging](./05%20Add%20Plugin%20(Bing%20Search).md) in VS Code or Visual Studio.
 
 1. Add the following using statments at the top of `Program.cs` file.
 

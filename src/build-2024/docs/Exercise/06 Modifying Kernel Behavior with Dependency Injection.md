@@ -1,10 +1,6 @@
 ﻿# Exercise - Modifying Kernel Behavior with Dependency Injection
 
-1. Maksure that your current directoty is `HelloBuild` if not Switch to it
-
-      ```shell
-       cd HelloBuild
-      ```
+1. Open the project you have created in [04 Add Logging](./05%20Add%20Plugin%20(Bing%20Search).md).md) in VS Code or Visual Studio.
 
 1. Install Extensions.Compliance.Redaction nuget package
 
@@ -23,8 +19,6 @@
       ```shell
       dotnet add package Microsoft.Extensions.Http.Resilience
       ```
-
-1. Open the project you have created in [04 Add Logging](./05%20Add%20Plugin%20(Bing%20Search).md).md) in VS Code or Visual Studio.
 
 1. Add the following using statment at the top of `Program.cs` file.
 

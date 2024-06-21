@@ -1,10 +1,6 @@
 ﻿# Exercise - Add Logging
 
-1. Maksure that your current directoty is `HelloBuild` if not Switch to it
-
-      ```shell
-       cd HelloBuild
-      ```
+1. Open the project you have created in [03 Add Plugin (Function Call)](./03%20Add%20Plugin%20(Function%20Call).md) in VS Code or Visual Studio.
 
 1. Install Extensions Logging nuget package
 
@@ -17,8 +13,6 @@
       ```shell
       dotnet add package Microsoft.Extensions.Logging.Console
       ```
-
-1. Open the project you have created in [03 Add Plugin (Function Call)](./03%20Add%20Plugin%20(Function%20Call).md) in VS Code or Visual Studio.
 
 1. Add the following using statments at the top of `Program.cs` file.
 
