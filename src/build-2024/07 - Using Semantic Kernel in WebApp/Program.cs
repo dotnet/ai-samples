@@ -1,5 +1,6 @@
 ﻿using Microsoft.SemanticKernel;
-var openAIChatCompletionModelName = "gpt-4-turbo"; // this could be other models like "gpt-4o".
+
+string openAIChatCompletionModelName = "gpt-3.5-turbo"; // this could be other models like "gpt-4o".
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddKernel();
