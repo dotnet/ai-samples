@@ -27,7 +27,7 @@
       ```
 
 1. Add the following code after `builder.Services.AddLogging(b => b.AddConsole().SetMinimumLevel(LogLevel.Trace));`
- which modifies the kernel behavior by injecting services into it.
+ which modifies the kernel behavior by injecting services into it and suppress warning.
 
       ```csharp
       builder.Services.ConfigureHttpClientDefaults(b =>
@@ -38,6 +38,7 @@
       builder.Services.AddRedaction();
 
       // injecting the permission filter to the kernel.
+      #pragma warning disable SKEXP0001,SKEXP0050
       builder.Services.AddSingleton<IFunctionInvocationFilter, PermissionFilter>();
       ```
 
@@ -306,6 +307,6 @@
 
 [06 Modifying Kernel Behavior with Dependency Injection](../../06%20-%20Modifying%20Kernel%20Behavior%20with%20Dependency%20Injection/))
 
-## Next unit: Exercise - Using Semantic with Web App
+## Next unit: Exercise - Using Semantic kernel with Web App
 
 [Continue](./07%20Using%20Semantic%20Kernel%20in%20WebApp.md)

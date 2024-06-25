@@ -21,7 +21,7 @@
       using Microsoft.Extensions.Logging;
       ```
 
-1. Add logging services to the builder before intilizing the kerenel
+1. Add logging services to the builder before initializing the kernel
 
       ```csharp
       // Add logging services to the builder

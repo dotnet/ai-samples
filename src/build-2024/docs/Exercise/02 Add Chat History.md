@@ -10,19 +10,19 @@ This console application demonstrates a basic chat interface using OpenAI's GPT 
     using Microsoft.SemanticKernel.ChatCompletion;
     ```
 
-1. Add the following code next to kernel initilization to get the required service from the kernel which is chat the compilation service.
+1. Add the following code next to kernel initialization to get the required service from the kernel which is chat the completion service.
 
     ```csharp
     var chatService = kernel.GetRequiredService<IChatCompletionService>();
     ```
 
-1. Add a variable to store conversation chat history to provide more context for upcoming user requests before the whilw loop.
+1. Add a variable to store conversation chat history to provide more context for upcoming user requests before the while loop.
 
     ```Csharp
     ChatHistory chatHistory = [];
     ```
 
-1. Modify the while loop as follows get the request from the user , add to the `chatHistory`, pass the request to the service a get resonse from the LLM and add the response to the `chatHistory`
+1. Modify the while loop as follows get the request from the user , add to the `chatHistory`, pass the request to the service a get response from the LLM and add the response to the `chatHistory`
 
     ```csharp
     // Basic chat

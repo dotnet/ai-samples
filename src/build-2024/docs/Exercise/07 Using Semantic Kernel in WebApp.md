@@ -43,13 +43,13 @@
     var builder = WebApplication.CreateBuilder(args);
     ```
 
-1. Add Kernel to web builder 
+1. Add Kernel to web builder
 
     ```csharp
     builder.Services.AddKernel();
     ```
 
-1. Add `AddOpenAIChatCompletion` sevice to the web buider and build the app
+1. Add `AddOpenAIChatCompletion` service to the web builder and build the app
 
     ```csharp
 
@@ -62,7 +62,7 @@
 
     ```csharp
 
-    app.MapGet("/WeatherForecast", async (Kernel kerel) =>
+    app.MapGet("/WeatherForecast", async (Kernel kernel) =>
     {
         int temp = Random.Shared.Next(-20, 55);
         return new WeatherForecast
@@ -74,11 +74,24 @@
     });
     app.Run();
 
-    internal record WeatherForecast(DateOnly Date, int TempratureC, string Summary)
+    internal record WeatherForecast(DateOnly Date, int TempratureC, string Summary);
     ```
 
-1. Run the application by entering `dotnet run` into the terminal.
- You will get an output similar to the following for random temprature.
+1. Run the application by entering `dotnet run` into the terminal You will get an output similar to the following
+
+ ```comsole
+ Building...
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://localhost:<your port>
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path:<your path>
+```
+
+ 1. Open your web browser and navigate to `http://localhost:<your-port>/WeatherForecast`, you will get json output similar to the following
 
     ```json
     {
@@ -90,7 +103,7 @@
 
 ## Complete sample project
 
-[06 Modifying Kernel Behavior with Dependency Injection](../../07%20-%20Using%20Semantic%20Kernel%20in%20WebApp/))
+[07 Using Semantic Kernel in WebApp](../../07%20-%20Using%20Semantic%20Kernel%20in%20WebApp/))
 
 ### Next unit: Summary
 

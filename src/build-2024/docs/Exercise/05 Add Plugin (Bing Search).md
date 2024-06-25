@@ -7,7 +7,7 @@ This enables the model to perform web searches in order to respond to user reque
 1. Install `SemanticKernel.Plugins.Web nuget` package
 
     ```shell
-    dotnet add packageMicrosoft.SemanticKernel.Plugins.Web
+    dotnet add package Microsoft.SemanticKernel.Plugins.Web --prerelease
     ```
 
 1. Add the following using statments at the top of `Program.cs` file.
@@ -18,11 +18,13 @@ This enables the model to perform web searches in order to respond to user reque
     using Microsoft.SemanticKernel.Plugins.Web.Bing;
      ```
 
-1. Import the plugin from the WebSearchEnginePlugin object by creating a Bing connector using the Bing API key.
+1. Import the plugin from the WebSearchEnginePlugin object by creating a Bing connector using the Bing API key and suppress warning `SKEXP0050`
 
     ```csharp
+    #pragma warning disable SKEXP0050
     kernel.ImportPluginFromObject(new WebSearchEnginePlugin(
         new BingConnector(Environment.GetEnvironmentVariable("BING_API_KEY"))));
+    #pragma warning restore SKEXP0050
     ```
 
 1. Run the application by entering `dotnet run` into the terminal. Experiment with a user prompt "What are the major Microsoft announcements in Build 2024?"
