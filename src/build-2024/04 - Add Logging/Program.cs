@@ -3,14 +3,14 @@ using Microsoft.Extensions.Logging;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ChatCompletion;
 
-string openAIChatCompletionModelName = "gpt-3.5-turbo"; // this could be other models like "gpt-4o".
+var openAIChatCompletionModelName = "gpt-3.5-turbo"; // this could be other models like "gpt-4o".
 
 var builder = Kernel.CreateBuilder();
 
 // Add logging services to the builder
 builder.Services.AddLogging(b => b.AddConsole().SetMinimumLevel(LogLevel.Trace));
 
-var kernel =builder
+var kernel = builder
     .AddOpenAIChatCompletion(openAIChatCompletionModelName, Environment.GetEnvironmentVariable("OPENAI_API_KEY")) // add the OpenAI chat completion service.
     .Build();
 
