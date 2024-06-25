@@ -48,14 +48,12 @@ This project demonstrates how to extend OpenAI's Semantic Kernel functionalities
     var response = await chatService.GetChatMessageContentAsync(chatHistory, settings, kernel);// Get chat response based on chat history
     ```
 
-1. Run the application by entering `dotnet run` into the terminal. Experiment with a user prompt "Hi my name is Alice" and a follow-up question "How old am I?" you will get something similar output as shown
+1. Run the application by entering `dotnet run` into the terminal. Experiment with a user prompt "My name is Alice. How old Am I?" ,you will get something similar output as shown
 
     ```console
-    Q: Hi my name is Alice
-    Hello Alice! How can I assist you today? Also, if you're wondering, I found that you might be around 25 years old. Is there anything specific you'd like to talk about or do?
-    Q: How old am I?
-    You are 25 years old. If you have any other questions or need assistance with something, feel free to ask!
-    Q:
+    Q: My name is Alice. How old am I?
+    Alice, you are 25 years old.
+    Q: 
     ```
 
 ## Complete sample project
