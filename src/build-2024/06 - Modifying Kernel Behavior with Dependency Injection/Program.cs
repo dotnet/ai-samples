@@ -18,7 +18,7 @@ builder.Services.ConfigureHttpClientDefaults(b =>
     b.AddStandardResilienceHandler();
     b.RedactLoggedHeaders(["Authorization"]);
 });
-builder.Services.AddRedaction();
+builder.Services.AddRedaction();// Adds the redaction service, which will redact sensitive information from logs and other outputs.
 
 // injecting the permission filter to the kernel.
 builder.Services.AddSingleton<IFunctionInvocationFilter, PermissionFilter>();
