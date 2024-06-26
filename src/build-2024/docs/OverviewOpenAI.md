@@ -1,5 +1,5 @@
 
 
 
-### Next unit: Overview Azure OpenAI and text completions
-[Continue](./OverviewSemanticKernel.md) [Overview Semantic Kernel]
+### Next unit: Overview Semantic Kernel
+[Continue](./OverviewSemanticKernel.md)

@@ -5,7 +5,6 @@ Learn how to use the Semantic Kernel library in your .NET Applications.
 ## Learning Objectives
 
 In this module, you will:
- - Write 
  - Learn how to use Semantic Kernel
  - ...
 
@@ -15,10 +14,12 @@ In this module, you will:
 
 - Some C# programming experience
 - Basic familiarity with OpenAI Service
-- [OpenAI account](https://platform.openai.com/docs/quickstart/account-setup)
-- [OpenAI API key](https://platform.openai.com/docs/quickstart/step-2-set-up-your-api-key)
-- [Bing API Key](https://learn.microsoft.com/en-us/bing/search-apis/bing-web-search/create-bing-search-service-resource)
-- [.SDK 8]()
+- Setup an [Account with OpenAI](https://platform.openai.com/docs/quickstart/account-setup)
+- Generate [OpenAI API key](https://platform.openai.com/docs/quickstart/step-2-set-up-your-api-key)
+- Generate [Bing API Key](https://learn.microsoft.com/en-us/bing/search-apis/bing-web-search/create-bing-search-service-resource)
+- .NET 8.0 SDK - [Install the .NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+
+> **ℹ️ Note:** For most common OpenAI API-related issues, such as "You exceeded your current quota" and more, check [here](https://help.openai.com/en/collections/3675943-how-to-fix-common-issues).
 
 1. [Introduction](./docs/Introduction.md)
 
