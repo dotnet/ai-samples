@@ -16,7 +16,7 @@ If it's not already done, follow the [Getting-started: Deploying the Azure resou
 	dotnet run
 	```
 
-3. (Optional) Try another sample from the [Getting-started: Trying the samples](../../README.md#trying-the-samples) to experiment different scenarios.
+3. (Optional) Try another sample from the [Getting-started: Trying the samples](../README.md#trying-the-samples) to experiment with different scenarios.
 
 ## Clean up resources
 

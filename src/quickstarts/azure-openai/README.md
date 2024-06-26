@@ -1,6 +1,6 @@
 # Quickstarts
 
-These samples demonstrates how to use the Azure OpenAI with a `gpt-35-turbo` and `dall-e-3` models, from a simple .NET 8.0 console application. It consists of a simple console applications, running locally, that will send request to an Azure OpenAI service deployed in your Azure subscription. 
+These samples demonstrates how to use Azure OpenAI with a `gpt-35-turbo` and `dall-e-3` models, from a simple .NET 8.0 console application. It consists of a simple console applications, running locally, that will send request to an Azure OpenAI service deployed in your Azure subscription. 
 
 Everything will be deployed automatically using the Azure Developer CLI.
 
@@ -19,7 +19,7 @@ Ensure that you follow the [Prerequisites](#prerequisites) to have access to Azu
 
 1. Clone/ Download the repository
    
-2. From a terminal or command prompt, navigate to the `src\quickstarts` directory (`src/quickstarts` on macOS or Linux).
+2. From a terminal or command prompt, navigate to the `src\quickstarts\azure-openai` directory (`src/quickstarts/azure-openai` on macOS or Linux).
 
 3. Create the Azure resources (Azure OpenAI service, gpt-35-turbo and dall-e-3 models) using the Azure Developer CLI. Only the regions that support the Azure OpenAI service with the models will be displayed. 
 	```bash
@@ -27,19 +27,14 @@ Ensure that you follow the [Prerequisites](#prerequisites) to have access to Azu
 	```
 
 	> 💡 If you already have an Azure OpenAI service available, you can skip the deployment and use hardcoded value in the `program.cs`.
-	
-
-## Azure OpenAI SDK (SDK)
-
-The [Azure OpenAI client library for .NET](https://learn.microsoft.com/en-us/azure/ai-services/openai/) is an adaptation of OpenAI's REST APIs that provides an idiomatic interface and rich integration with the rest of the Azure SDK ecosystem. It can connect to Azure OpenAI resources or to the non-Azure OpenAI inference endpoint, making it a great choice for even non-Azure OpenAI development.
 
 ## Semantic Kernel (SK)
 
-[Semantic Kernel](https://learn.microsoft.com/en-us/semantic-kernel/overview/) is an open-source SDK that lets you easily build agents that can call your existing code. As a highly extensible SDK, you can use Semantic Kernel with models from OpenAI, Azure OpenAI, Hugging Face, and more!
+[Semantic Kernel](https://learn.microsoft.com/en-us/semantic-kernel/overview/) is an open-source library that lets you easily build generative AI solutions using .NET. As a highly extensible SDK, you can use Semantic Kernel with models from OpenAI, Azure OpenAI, Hugging Face, and more!
 
 ## Trying the samples
 
-Now that your Azure OpenAI Service is deployed, It's time to select one of our sample to experiment different scenarios.
+Now that your Azure OpenAI Service is deployed, It's time to select one of our sample to experiment with different scenarios.
 
 | Sample                | Description                         | Semantic Kernel | Azure OpenAI SDK |
 |-----------------------|-------------                        |-----------------|------------------|
