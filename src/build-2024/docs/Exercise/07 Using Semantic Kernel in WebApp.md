@@ -103,7 +103,7 @@ info: Microsoft.Hosting.Lifetime[0]
 
 ## Complete sample project
 
-[07 Using Semantic Kernel in WebApp](../../07%20-%20Using%20Semantic%20Kernel%20in%20WebApp/))
+View the completed sample in the [07 Using Semantic Kernel in WebApp](../../07%20-%20Using%20Semantic%20Kernel%20in%20WebApp/)) project.
 
 ### Next unit: Summary
 
