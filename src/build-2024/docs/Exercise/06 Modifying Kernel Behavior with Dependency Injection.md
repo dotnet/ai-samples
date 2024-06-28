@@ -305,7 +305,7 @@
 
 ## Complete sample project
 
-[06 Modifying Kernel Behavior with Dependency Injection](../../06%20-%20Modifying%20Kernel%20Behavior%20with%20Dependency%20Injection/))
+View the completed sample in the [06 Modifying Kernel Behavior with Dependency Injection](../../06%20-%20Modifying%20Kernel%20Behavior%20with%20Dependency%20Injection/)) project.
 
 ## Next unit: Exercise - Using Semantic kernel with Web App
 
