@@ -27,7 +27,7 @@
       ```
 
 1. Add the following code after `builder.Services.AddLogging(b => b.AddConsole().SetMinimumLevel(LogLevel.Trace));`
- which modifies the kernel behavior by injecting services into it and suppress warning.
+ which modifies the kernel behavior by injecting services into it. For this sample we're using experimental features, so we add a `#pragma` statement to suppress warnings about using them.
 
       ```csharp
       builder.Services.ConfigureHttpClientDefaults(b =>
