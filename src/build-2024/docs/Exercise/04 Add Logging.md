@@ -44,7 +44,7 @@
 
 ## Complete sample project
 
-[04 Add Logging)](../../04%20-%20Add%20Logging/)
+View the completed sample in the [04 Add Logging)](../../04%20-%20Add%20Logging/) project.
 
 ### Next unit: Exercise - Add Plugin - Bing Search
 
