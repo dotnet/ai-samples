@@ -13,7 +13,7 @@
     <PackageReference Include="Microsoft.Extensions.Http.Resilience" Version="9.0.0-preview.4.24271.2" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.0-preview.4.24266.19" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.0-preview.4.24266.19" />
-    <PackageReference Include="Microsoft.SemanticKernel" Version="1.13.0" />
+    <PackageReference Include="Microsoft.SemanticKernel" Version="1.15.0" />
     <PackageReference Include="Microsoft.SemanticKernel.Plugins.Web" Version="1.14.1-alpha" />
   </ItemGroup>
 
