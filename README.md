@@ -21,7 +21,7 @@ Discover how to bring AI into your .NET application! This session covers the too
 |  4  | Add Logging                                      |  [9m 24s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=565s)  |  [Add Logging](./src/build-2024/04%20-%20Add%20Logging)       |
 |  5  | Add Plugin - Bing Search                         |  [11m 15s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=675s) |  [Add Plugin - Bing Search](./src/build-2024/05%20-%20Add%20Plugin%20%28Bing%20Search%29)       |
 |  6  | Modify Kernel Behavior with Dependency Injection |  [12m 37s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=757s) |  [Modifying Kernel Behavior with Dependency Injection](./src/build-2024/06%20-%20Modifying%20Kernel%20Behavior%20with%20Dependency%20Injection)       |
-|  7  | Using Semantic with Web App                      |  [15m 57s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=957s) |  [Using Semantic Kernel in WebApp](./src/build-2024/07%20-%20Using%20Semantic%20Kernel%20in%20WebApp)       |
+|  7  | Using Semantic Kernel in a Web App                      |  [15m 57s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=957s) |  [Using Semantic Kernel in a Web App](./src/build-2024/07%20-%20Using%20Semantic%20Kernel%20in%20WebApp)       |
 
 
 ### Quickstarts using Semantic Kernel
