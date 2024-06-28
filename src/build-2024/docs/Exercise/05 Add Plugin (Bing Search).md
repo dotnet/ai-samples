@@ -55,7 +55,7 @@ you will get something similar output as shown below
 
 ## Complete sample project
 
-[05 Add Plugin (Bing Search)](../../05%20-%20Add%20Plugin%20(Bing%20Search))
+View the completed sample in the [05 Add Plugin (Bing Search)](../../05%20-%20Add%20Plugin%20(Bing%20Search)) project.
 
 ### Next unit: Exercise - Modify Kernel Behavior with Dependency Injection
 
