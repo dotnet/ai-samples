@@ -2,14 +2,6 @@
 
 Learn how to use the Semantic Kernel library in your .NET Applications.
 
-## Learning Objectives
-
-In this module, you will:
- - Learn how to use Semantic Kernel
- - ...
-
-[Start](./docs/Introduction.md)
-
 ## Prerequisites
 
 - Some C# programming experience
@@ -20,12 +12,6 @@ In this module, you will:
 - .NET 8.0 SDK - [Install the .NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 
 > **ℹ️ Note:** For most common OpenAI API-related issues, such as "You exceeded your current quota" and more, check [here](https://help.openai.com/en/collections/3675943-how-to-fix-common-issues).
-
-1. [Introduction](./docs/Introduction.md)
-
-1. [Overview OpenAI and text completions](./docs/OverviewOpenAI.md)
-
-1. [Overview Semantic Kernel](./docs/OverviewOpenAI.md)
 
 1. [Exercise: Hello Semantic Kernel](./docs/Exercise/01%20Hello%20Semantic%20Kernel.md)
    - [YouTube 3m 0s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=180s)
@@ -55,6 +41,5 @@ In this module, you will:
 Discover how to bring AI into your .NET application! This session covers the tools, libraries, and best practices for incorporating LLMs or other AI capabilities to create an "intelligent app". We'll explore practical examples, including how to leverage Azure AI services and the .NET AI ecosystem, to enhance your apps with AI.
 
 [![Infusing your .NET Apps with AI: Practical Tools and Techniques Youtube Preview](../../images/Build2024Preview.png)](https://www.youtube.com/watch?v=jrNfKeGSuCg)
-
 
 [Youtube: Infusing your .NET Apps with AI: Practical Tools and Techniques](https://www.youtube.com/watch?v=jrNfKeGSuCg)
