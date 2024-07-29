@@ -1,0 +1,6 @@
+@_07___Using_Semantic_Kerenel_in_WebApp_HostAddress = http://localhost:5052
+
+GET {{_07___Using_Semantic_Kerenel_in_WebApp_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
