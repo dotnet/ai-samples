@@ -21,7 +21,7 @@ If it's not already done, follow the [Getting-started: Deploying the Azure resou
 
 3. (Optional) Try to change the content of the file or the length of the summary to see the differences in the responses.
 
-4. (Optional) Try another sample from the [Getting-started: Trying the samples](../../README.md#trying-the-samples) to experiment different scenarios.
+4. (Optional) Try another sample from the [Getting-started: Trying the samples](../README.md#trying-the-samples) to experiment with different scenarios.
 
 
 ## Clean up resources
