@@ -4,8 +4,7 @@
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 - [Ollama](https://ollama.com/download)
-- (Optional) Azure subscription. [Create one for free](https://azure.microsoft.com/free/cognitive-services?azure-portal=true).  
-- (Optional) [LlamaCloud API Key](https://docs.cloud.llamaindex.ai/llamacloud/getting_started/api_key)
+- (Optional) Azure subscription. [Create one for free](https://azure.microsoft.com/free/cognitive-services?azure-portal=true).
 
 
 ## Configuration

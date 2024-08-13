@@ -23,7 +23,7 @@ var endpoint = new Uri("http://localhost:11434/");
 var openAIKey = Environment.GetEnvironmentVariable("AZURE_AI_KEY");
 var openAIEndpoint = Environment.GetEnvironmentVariable("AZURE_AI_ENDPOINT");
 
-var useOpenAI = true;
+var useOpenAI = false;
 
 IChatCompletionService chatService = 
     useOpenAI ? 
@@ -36,8 +36,11 @@ ITextEmbeddingGenerationService embeddingService =
     new OllamaTextEmbeddingGenerationService("all-minilm", endpoint);
 
 // Part 0: Ingest manuals
-// var manualIngestor = new ManualIngestor(embeddingService);
-// await manualIngestor.RunAsync("./data/manuals", "./data");
+if(!File.Exists("./data/manual-chunks.json"))
+{
+    var manualIngestor = new ManualIngestor(embeddingService);
+    await manualIngestor.RunAsync("./data/manuals", "./data");
+}
 
 // Part 1: Load tickets and manuals
 var tickets = LoadTickets("./data/tickets.json");
@@ -64,7 +67,7 @@ while(true)
     if(prompt == "Inspect ticket")
     {
         // No AI
-        // InspectTicket(tickets);
+        InspectTicket(tickets);
 
         // With AI Summaries
         // await InspectTicketWithAISummaryAsync(tickets, summaryGenerator);
