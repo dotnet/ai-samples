@@ -52,7 +52,11 @@ Discover how to bring AI into your .NET application! This session covers the too
 |  4  | Hiker AI Pro (Tool extension)  				      |  [Hiker AI Pro](./src/quickstarts/azure-openai/04-HikerAIPro/README.md)
 |  5  | Generating images                    		    |  [Hike Images Project](./src/quickstarts/azure-openai/05-HikeImages/README.md)
 
+### Other samples
 
+|# | Topic | GitHub Link |
+|--- | --- | --- | 
+| 1 | Customer Support | [Customer Support Project](./src/samples/CustomerSupport/README.md) |    
 
 ### LLM Core Concepts
 
