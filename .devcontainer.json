@@ -24,9 +24,5 @@
         "--gpus", "all"
     ],
     "postCreateCommand": "curl -fsSL https://ollama.com/install.sh | sh",
-    "postStartCommand": "ollama serve",
-    "containerEnv": {
-        "AZURE_AI_KEY": "<your-key-here>",
-        "AZURE_AI_ENDPOINT": "<your-endpoint-here>"
-    }
+    "postStartCommand": "ollama serve"
 }

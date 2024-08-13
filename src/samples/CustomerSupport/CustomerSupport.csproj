@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.SemanticKernel" Version="1.16.2" />
+    <PackageReference Include="OllamaSharp" Version="2.1.1" />
     <PackageReference Include="PdfPig" Version="0.1.9-alpha-20240721-a99c0" />
     <PackageReference Include="Spectre.Console" Version="0.49.1" />
     <PackageReference Include="Spectre.Console.Cli" Version="0.49.1" />

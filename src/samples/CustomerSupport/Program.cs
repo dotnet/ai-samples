@@ -18,7 +18,7 @@ using Microsoft.SemanticKernel.Embeddings;
 
 // Configure AI
 var apiKey = "";
-var endpoint = new Uri("http://localhost:11434/");
+var endpoint = "http://localhost:11434/";
 
 var openAIKey = Environment.GetEnvironmentVariable("AZURE_AI_KEY");
 var openAIEndpoint = Environment.GetEnvironmentVariable("AZURE_AI_ENDPOINT");
@@ -28,12 +28,12 @@ var useOpenAI = false;
 IChatCompletionService chatService = 
     useOpenAI ? 
     new AzureOpenAIChatCompletionService("chat", openAIEndpoint, openAIKey) :
-    new OpenAIChatCompletionService("llama3.1", endpoint, apiKey);
+    new OllamaChatCompletionService("llama3.1", endpoint);
 
 ITextEmbeddingGenerationService embeddingService =
     useOpenAI ?
     new AzureOpenAITextEmbeddingGenerationService("embeddingsmall", openAIEndpoint, openAIKey) : 
-    new OllamaTextEmbeddingGenerationService("all-minilm", endpoint);
+    new OllamaTextEmbeddingGenerationService("all-minilm", new Uri(endpoint));
 
 // Part 0: Ingest manuals
 if(!File.Exists("./data/manual-chunks.json"))
@@ -67,13 +67,13 @@ while(true)
     if(prompt == "Inspect ticket")
     {
         // No AI
-        InspectTicket(tickets);
+        // InspectTicket(tickets);
 
         // With AI Summaries
         // await InspectTicketWithAISummaryAsync(tickets, summaryGenerator);
 
         // With Semantic Search 
-        // await InspectTicketWithSemanticSearchAsync(tickets, summaryGenerator, productManualSearchService, chatService);
+        await InspectTicketWithSemanticSearchAsync(tickets, summaryGenerator, productManualSearchService, chatService);
 
     }
 }

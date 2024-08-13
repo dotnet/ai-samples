@@ -1,5 +1,18 @@
 # Customer Support 
 
+This sample is a C# console application that uses local models provided by Ollama to:
+
+- Generate customer support ticket summaries
+- Generate embeddings for product manuals
+- Perform semantic search over product manuals
+
+## Project structure
+
+- *OllamaTextEmbeddingGeneration.cs* - Embedding generation service that uses Ollama models. 
+- *ManualIngestor.cs* - Ingestion service that extracts data from product manual PDF files, chunks text into smaller segments, generates embeddings, saves them to a JSON file.
+- *ProductManualSemanticSearch.cs* - Search service that uses product manual embeddings for semantic search. 
+- *TicketSummarizer* - AI service which uses an AI model to generate summaries of customer support tickets.
+
 ## Requirements
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
