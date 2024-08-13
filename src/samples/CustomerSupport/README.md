@@ -8,7 +8,8 @@ This sample is a C# console application that uses local models provided by Ollam
 
 ## Project structure
 
-- *OllamaTextEmbeddingGeneration.cs* - Embedding generation service that uses Ollama models. 
+- *OllamaChatCompletionService.cs* - Chat service that uses Ollama models. Implements `IChatCompletionService`
+- *OllamaTextEmbeddingGenerationService.cs* - Embedding generation service that uses Ollama models. Implements `ITextEmbeddingGenerationService`
 - *ManualIngestor.cs* - Ingestion service that extracts data from product manual PDF files, chunks text into smaller segments, generates embeddings, saves them to a JSON file.
 - *ProductManualSemanticSearch.cs* - Search service that uses product manual embeddings for semantic search. 
 - *TicketSummarizer* - AI service which uses an AI model to generate summaries of customer support tickets.
