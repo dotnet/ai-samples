@@ -26,8 +26,8 @@ Get started setting up your environment using either GitHub Codespaces or Dev Co
 
 | Environment | Codespaces | DevContainer |
 | --- | --- | --- |
-| GPU (Recommended) | N/A | [![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/dotnet/ai-samples)| 
-| CPU | [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/luisquintanilla/ai-samples/tree/customer-support-sample?devcontainer_path=.devcontainer%2Follama-cpu%2Fdevcontainer.json&machine=premiumLinux) | [![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/dotnet/ai-samples) |
+| GPU (Recommended) | N/A | Coming Soon | 
+| CPU | [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/luisquintanilla/ai-samples/tree/customer-support-sample?devcontainer_path=.devcontainer%2Follama-cpu%2Fdevcontainer.json&machine=premiumLinux) | Coming soon |
 
 ## Configuration
 
