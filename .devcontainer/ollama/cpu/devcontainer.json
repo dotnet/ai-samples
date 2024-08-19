@@ -1,5 +1,5 @@
 {
-    "name": ".NET (CPU) DevContainer",
+    "name": ".NET (CPU) + Ollama DevContainer",
     "image": "mcr.microsoft.com/devcontainers/base:debian",
     "features": {
         "ghcr.io/devcontainers/features/git:1": {},
