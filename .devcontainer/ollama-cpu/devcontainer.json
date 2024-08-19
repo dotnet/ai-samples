@@ -1,13 +1,12 @@
 {
-    "name": ".NET (GPU) + Ollama DevContainer",
+    "name": ".NET + Ollama DevContainer (CPU)",
     "image": "mcr.microsoft.com/devcontainers/base:debian",
     "features": {
         "ghcr.io/devcontainers/features/git:1": {},
         "ghcr.io/devcontainers/features/docker-in-docker:2": {},
         "ghcr.io/devcontainers/features/dotnet:2": {
             "version": "8.0"
-        },
-        "ghcr.io/devcontainers/features/nvidia-cuda:1": {}
+        }
     },
     "customizations": {
         "vscode": {
@@ -20,9 +19,6 @@
             ]
         }
     },
-    "runArgs": [
-        "--gpus", "all"
-    ],
     "postCreateCommand": "curl -fsSL https://ollama.com/install.sh | sh",
     "postStartCommand": "ollama serve"
 }
