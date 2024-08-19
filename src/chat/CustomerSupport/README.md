@@ -60,7 +60,14 @@ For this application, you can either use local language and embedding models wit
 
     If you use deployment names other than *chat* and *embedding*, update them in `Program.cs`;
 
+1. In *Program.cs*, set `useOpenAI` to `true`.
 1. Configure environment variables for your endpoint and key. For more details, [see the Azure OpenAI documentation](https://learn.microsoft.com/azure/ai-services/openai/chatgpt-quickstart?tabs=command-line%2Cpython-new&pivots=programming-language-csharp#retrieve-key-and-endpoint).
     - **AZURE_AI_ENDPOINT** - Your Azure OpenAI endpoint.
     - **AZURE_AI_KEY** - Your Azure OpenAI Key.
-1. In *Program.cs*, set `useOpenAI` to `true`.
+
+#### Using managed identity (Recommended)
+
+By using a managed identity from Microsoft Entra, your application can easily access protected Azure OpenAI resources without having to manually provision or rotate any secrets.
+
+1. Assign Azure OpenAI user role to your managed identity. For more details, see [the documentation](https://learn.microsoft.com/dotnet/ai/how-to/app-service-aoai-auth?pivots=azure-portal#add-an-azure-openai-user-role-to-your-managed-identity).  
+1. In *Program.cs*, set `useManagedIdentity` to `true`.

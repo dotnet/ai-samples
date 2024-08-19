@@ -1,9 +1,6 @@
 ﻿#pragma warning disable
 
-// Part 0: Add dependencies
-// Microsoft.Semantic Kernel
-// using Microsoft.Extensions.DependencyInjection;
-
+// Add dependencies
 using System.Text.Json;
 using Spectre.Console;
 using Microsoft.SemanticKernel;
@@ -14,39 +11,47 @@ using System.Collections;
 using System.Reflection.Metadata.Ecma335;
 using static Utils;
 using Microsoft.SemanticKernel.Embeddings;
-// using Microsoft.SemanticKernel.Embeddings;
+using Azure.AI.OpenAI;
+using Azure.Identity;
 
 // Configure AI
 var apiKey = "";
 var endpoint = "http://localhost:11434/";
 
-var openAIKey = Environment.GetEnvironmentVariable("AZURE_AI_KEY");
 var openAIEndpoint = Environment.GetEnvironmentVariable("AZURE_AI_ENDPOINT");
 
-var useOpenAI = false;
+var useOpenAI = true;
+var useManagedIdentity = false;
+
+var azureOpenAIClient =
+    useManagedIdentity ?
+    new OpenAIClient(new Uri(openAIEndpoint), new DefaultAzureCredential()) :
+    new OpenAIClient(
+        new Uri(openAIEndpoint),
+        new Azure.AzureKeyCredential(Environment.GetEnvironmentVariable("AZURE_AI_KEY")));
 
 IChatCompletionService chatService = 
     useOpenAI ? 
-    new AzureOpenAIChatCompletionService("chat", openAIEndpoint, openAIKey) :
+    new AzureOpenAIChatCompletionService("chat", azureOpenAIClient) :
     new OllamaChatCompletionService("llama3.1", endpoint);
 
 ITextEmbeddingGenerationService embeddingService =
     useOpenAI ?
-    new AzureOpenAITextEmbeddingGenerationService("embeddingsmall", openAIEndpoint, openAIKey) : 
+    new AzureOpenAITextEmbeddingGenerationService("embeddingsmall", azureOpenAIClient) : 
     new OllamaTextEmbeddingGenerationService("all-minilm", new Uri(endpoint));
 
-// Part 0: Ingest manuals
+// Ingest manuals
 if(!File.Exists("./data/manual-chunks.json"))
 {
     var manualIngestor = new ManualIngestor(embeddingService);
     await manualIngestor.RunAsync("./data/manuals", "./data");
 }
 
-// Part 1: Load tickets and manuals
+// Load tickets and manuals
 var tickets = LoadTickets("./data/tickets.json");
 var manuals = LoadManualChunks("./data/manual-chunks.json");
 
-// Part 2: Service
+// Service configurations
 var summaryGenerator = new TicketSummarizer(chatService);
 var productManualSearchService = new ProductManualSemanticSearch(embeddingService, manuals);
 
