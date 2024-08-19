@@ -20,6 +20,14 @@ This sample is a C# console application that uses local models provided by Ollam
 - [Ollama](https://ollama.com/download)
 - (Optional) Azure subscription. [Create one for free](https://azure.microsoft.com/free/cognitive-services?azure-portal=true).
 
+## Quick Start
+
+Get started setting up your environment using either GitHub Codespaces or Dev Containers.
+
+| Environment | Codespaces | DevContainer |
+| --- | --- | --- |
+| GPU (Recommended) | N/A | [![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/dotnet/ai-samples)| 
+| CPU | [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/luisquintanilla/ai-samples/tree/customer-support-sample?devcontainer_path=.devcontainer%2Follama-cpu%2Fdevcontainer.json&machine=premiumLinux) | [![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/dotnet/ai-samples) |
 
 ## Configuration
 
