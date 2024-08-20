@@ -1,0 +1,333 @@
+[
+    {
+        "TicketId": 1,
+        "ProductId": 104,
+        "CreatedAt": "0001-01-01T00:00:00",
+        "ShortSummary": "Filter cartridge replacement and maintenance inquiry",
+        "CustomerId": 1,
+        "TicketStatus": "Open",
+        "Messages": [
+            {
+                "MessageId": 1,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": true,
+                "Text": "Hello, I\u0027m considering purchasing the Aquaduct Puriflo Water Filter Bottle for my upcoming hiking trip. I\u0027m wondering if the filter cartridge needs to be replaced regularly, and if so, how often? Also, are there any specific maintenance tips for using the bottle on extended outdoor trips? Thank you for your assistance."
+            },
+            {
+                "MessageId": 2,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": false,
+                "Text": "The Aquaduct Puriflo Water Filter Bottle is equipped with a high-performance filter cartridge that should be disposed of carefully in accordance with local regulations. To remove the filter cartridge, unscrew the filter housing from the bottle body and carefully remove the cartridge. Additionally, the bottle features a high-performance filter cartridge that utilizes a microfiltration membrane to effectively remove contaminants from water. For maintenance tips, it\u0027s recommended to store the Puriflo Water Filter Bottle in a clean and dry environment when not in use. Avoid exposing the product to extreme temperatures or direct sunlight, as this may degrade its performance and structural integrity."
+            },
+            {
+                "MessageId": 3,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": true,
+                "Text": "Thank you for the information. Just to clarify, how often should the filter cartridge be replaced? Also, are there any specific signs to look for that indicate the cartridge needs to be replaced? Thank you for your help."
+            },
+            {
+                "MessageId": 4,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": false,
+                "Text": "The filter cartridge needs to be replaced after filtering 500 liters of water. You can monitor the filter\u0027s condition by inspecting it for discoloration or clogging. Additionally, weekly maintenance includes cleaning the filter cartridge with warm water and mild detergent. For detailed maintenance and calibration procedures, refer to the user manual."
+            }
+        ]
+    },
+    {
+        "TicketId": 2,
+        "ProductId": 200,
+        "CreatedAt": "0001-01-01T00:00:00",
+        "ShortSummary": "MOLLE Compatibility Guidance Needed",
+        "CustomerId": 56,
+        "TicketStatus": "Open",
+        "Messages": [
+            {
+                "MessageId": 312,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": true,
+                "Text": "Hello, I recently purchased the Raptor Tactical Backpack from Strategicgear and I\u0027m experiencing some difficulties with the MOLLE compatibility. I was under the impression that the backpack would be able to securely attach additional pouches and accessories, but I\u0027m having trouble with the webbing. Can you provide me with some guidance on how to properly utilize the MOLLE system? Your assistance would be greatly appreciated. Thank you."
+            }
+        ]
+    },
+    {
+        "TicketId": 3,
+        "ProductId": 168,
+        "CreatedAt": "0001-01-01T00:00:00",
+        "ShortSummary": "WildDJ Pro Mixer battery charging issue",
+        "CustomerId": 191,
+        "TicketStatus": "Open",
+        "Messages": [
+            {
+                "MessageId": 599,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": true,
+                "Text": "Need help with WildDJ Pro Mixer battery charging. How to do?"
+            }
+        ]
+    },
+    {
+        "TicketId": 4,
+        "ProductId": 140,
+        "CreatedAt": "0001-01-01T00:00:00",
+        "ShortSummary": "Inquiry about wholesale and battery life",
+        "CustomerId": 271,
+        "TicketStatus": "Open",
+        "Messages": [
+            {
+                "MessageId": 920,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": true,
+                "Text": "Hey there, Trektunes team! I just stumbled upon your RuggedSound Waterproof Bluetooth Speaker and I am absolutely blown away by the idea of taking my music on all my outdoor adventures! The fact that it\u0027s waterproof and dustproof is a game-changer for me. I run a retail store and I can already see our customers loving this product. Can you share more details about the speaker\u0027s battery life and how it holds up in different outdoor conditions? Also, do you offer any wholesale options for retailers like us? I\u0027d love to chat more about stocking your awesome product. Looking forward to hearing from you soon! Cheers, Samantha."
+            },
+            {
+                "MessageId": 921,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": false,
+                "Text": "Hi Samantha, thank you for your interest in the RuggedSound Waterproof Bluetooth Speaker! According to the product manual, the speaker is designed to withstand the harshest outdoor conditions and is rated IPX7 waterproof, allowing it to be fully submerged in water up to 1 meter deep for 30 minutes without being damaged. The battery life details are not provided in the manual. For wholesale options, please contact our sales team at sales@trektunes.example.com. Let us know if there\u0027s anything else we can assist you with!"
+            },
+            {
+                "MessageId": 922,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": true,
+                "Text": "Hey there! Thanks for all the info. I\u0027ll be sure to reach out to your sales team about wholesale options. Do you happen to have any information on the battery life? I\u0027m so excited to bring this speaker on all my outdoor adventures!"
+            }
+        ]
+    },
+    {
+        "TicketId": 5,
+        "ProductId": 147,
+        "CreatedAt": "0001-01-01T00:00:00",
+        "ShortSummary": "GPS troubleshooting for SkyMaster X2000",
+        "CustomerId": 350,
+        "TicketStatus": "Closed",
+        "Messages": [
+            {
+                "MessageId": 1242,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": true,
+                "Text": "GPS not working, drone won\u0027t hold position. Need help."
+            },
+            {
+                "MessageId": 1243,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": false,
+                "Text": "I\u0027m sorry, I couldn\u0027t find information about manufacturer contact details in the manual. If you need to contact the manufacturer, I recommend checking their official website or contacting the store where you purchased the drone for assistance."
+            },
+            {
+                "MessageId": 1244,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": true,
+                "Text": "Still not working. Need more help."
+            },
+            {
+                "MessageId": 1245,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": false,
+                "Text": "According to the manual, to address GPS navigation errors, I recommend verifying that the GPS module is properly connected and functioning on the drone. It\u0027s also advisable to update the drone\u0027s firmware to ensure compatibility with the latest GPS navigation systems. If GPS errors persist, recalibrate the GPS system and ensure a clear line of sight to the satellites for accurate positioning."
+            },
+            {
+                "MessageId": 1246,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": true,
+                "Text": "GPS still not working after following your suggestions. Please advise further."
+            },
+            {
+                "MessageId": 1247,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": false,
+                "Text": "Based on the manual, the next steps to address GPS navigation errors are to recalibrate the GPS system and ensure a clear line of sight to the satellites for accurate positioning. If the issue persists, please initiate a return or repair process at https://northernmountains.example.com/support/returns"
+            },
+            {
+                "MessageId": 1248,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": true,
+                "Text": "Tried recalibrating GPS and still not working. Will initiate return process."
+            },
+            {
+                "MessageId": 1249,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": false,
+                "Text": "I\u0027m sorry that the troubleshooting steps didn\u0027t resolve the issue. You may contact AeroVision\u0027s customer support team at 1-800-AERO-123 or email them at support@aerovision.com for further assistance. If you prefer to initiate a return, you can do so at https://northernmountains.example.com/support/returns. Thank you for choosing SkyMaster X2000."
+            }
+        ]
+    },
+    {
+        "TicketId": 6,
+        "ProductId": 88,
+        "CreatedAt": "0001-01-01T00:00:00",
+        "ShortSummary": "Safety concern with RapidFlow Kayak Paddle",
+        "CustomerId": 357,
+        "TicketStatus": "Open",
+        "Messages": [
+            {
+                "MessageId": 1282,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": true,
+                "Text": "Hello, I recently purchased the WaterWay RapidFlow Kayak Paddle and I have a question about the grip slippage issue. I\u0027ve noticed that the grip seems to be slipping during use, and I\u0027m concerned about potential safety risks. Can you provide me with some information on how to address this problem? I want to ensure that I can continue using the paddle safely. Thank you."
+            },
+            {
+                "MessageId": 1283,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": false,
+                "Text": "According to the manual, if you experience grip slippage while using the paddle, immediately cease paddling and secure the paddle to your kayak. Continuing to use the paddle with a slipping grip may cause loss of control, leading to potential capsizing or injury. Ensure the paddle\u0027s grip is securely fastened before resuming use. If the problem persists, discontinue use and seek a professional to inspect the paddle for potential defects."
+            }
+        ]
+    },
+    {
+        "TicketId": 7,
+        "ProductId": 76,
+        "CreatedAt": "0001-01-01T00:00:00",
+        "ShortSummary": "Inquiry about using Wilderness DJ Pro for summoning forest spirits",
+        "CustomerId": 56,
+        "TicketStatus": "Closed",
+        "Messages": [
+            {
+                "MessageId": 1304,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": true,
+                "Text": "Hey, I got the Wilderness DJ Pro and I want to use it to summon forest spirits. Can it do that?"
+            },
+            {
+                "MessageId": 1305,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": false,
+                "Text": "I\u0027m sorry, the user manual does not contain any information about summoning forest spirits with the Wilderness DJ Pro."
+            },
+            {
+                "MessageId": 1306,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": true,
+                "Text": "Well, that\u0027s disappointing. I really wanted to summon some forest spirits. Can you recommend a different product that can do that?"
+            },
+            {
+                "MessageId": 1307,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": false,
+                "Text": "I\u0027m sorry, but the Wilderness DJ Pro is not designed for summoning forest spirits. However, it is a high-quality product for mixing music and delivering powerful bass. If you have any other questions about the product or need assistance with using it for its intended purpose, feel free to ask. Is there anything else I can help you with?"
+            },
+            {
+                "MessageId": 1308,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": true,
+                "Text": "Well, I guess I\u0027ll just use it for mixing music. Thanks."
+            }
+        ]
+    },
+    {
+        "TicketId": 8,
+        "ProductId": 131,
+        "CreatedAt": "0001-01-01T00:00:00",
+        "ShortSummary": "NatureCam 1000 won\u0027t turn on",
+        "CustomerId": 121,
+        "TicketStatus": "Open",
+        "Messages": [
+            {
+                "MessageId": 1330,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": true,
+                "Text": "Greetings Naturevision support team, I recently purchased the NatureCam 1000 and am encountering a major issue - the camera is not turning on at all. I have meticulously checked the batteries, ensured they are properly inserted, and they have sufficient power. Additionally, I attempted to reset the camera by removing the batteries for an extended period and reinserting them as per the troubleshooting manual, but to no avail. I am an experienced user and have never encountered such a problem with previous trail cameras. I would greatly appreciate any specific guidance or insights on how to resolve this issue as I am eager to utilize the stunning HD capture capabilities of the NatureCam 1000. Your prompt assistance in addressing this technical matter is highly anticipated. Thank you for your attention to this matter."
+            },
+            {
+                "MessageId": 1331,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": false,
+                "Text": "According to the manual, if your NatureCam 1000 isn\u0027t turning on, first check the batteries to make sure they\u0027re properly inserted and have enough power. If the batteries are fine, try resetting the camera by removing the batteries for a few minutes and then reinserting them."
+            },
+            {
+                "MessageId": 1332,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": true,
+                "Text": "I have followed the instructions provided in the manual and by the assistant, but unfortunately, the NatureCam 1000 still does not turn on. I have checked the batteries multiple times and they are properly inserted with enough power. I am confident in my technical abilities and am certain that the issue lies beyond a simple battery or reset problem. I would appreciate a more in-depth troubleshooting process to address this issue. Your urgent attention to this matter is crucial as I am unable to utilize the camera\u0027s features. Thank you."
+            },
+            {
+                "MessageId": 1333,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": false,
+                "Text": "According to the manual, there are some common problems and how to fix them. We also have tips for dealing with weather-related issues. Let\u0027s see if this provides further insight into the issue with your NatureCam 1000. I\u0027ll get back to you shortly with more information."
+            }
+        ]
+    },
+    {
+        "TicketId": 9,
+        "ProductId": 149,
+        "CreatedAt": "0001-01-01T00:00:00",
+        "ShortSummary": "Inquiry about Buckle Material and Durability",
+        "CustomerId": 379,
+        "TicketStatus": "Open",
+        "Messages": [
+            {
+                "MessageId": 1362,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": true,
+                "Text": "Greetings, I am considering utilizing the AquaFlow Pro hydration system from Thirsttrek for a unique application that requires a high level of material durability and performance. I have thoroughly researched the technical specifications of the BPA-free reservoir material properties, including the ASTM D5116-16, ISO 10993-1:2018, and FDA Title 21CFR177.1520 standards. I am confident that the proprietary blend of polyethylene, known as Hydratech 3000, will meet the stringent requirements of my intended use. Additionally, the flow dynamics of the bite valve are of particular interest to me as I require optimal liquid flow for my purposes. I understand that Thirsttrek engineers have conducted thorough analysis, including Computational Fluid Dynamics (CFD) modeling and measurement of flow rates and forces using a hydraulic test bench. I believe that this level of engineering precision aligns with my needs. However, I would appreciate further information or assistance in ensuring that the adjustable straps are suitable for my intended use. Your prompt and detailed response would be greatly appreciated."
+            },
+            {
+                "MessageId": 1363,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": false,
+                "Text": "According to the manual, the adjustable straps on the Thirsttrek AquaFlow Pro hydration system have been engineered for comfort and stability. The design analysis includes Finite Element Analysis (FEA) to assess stress distribution and performance under load. This ensures a customized and comfortable fit for users of all sizes."
+            },
+            {
+                "MessageId": 1364,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": true,
+                "Text": "Thank you for the information regarding the adjustable straps. I would like to inquire further about the material composition and durability of the buckles used on the Thirsttrek AquaFlow Pro hydration system. Can you provide detailed information on the material type, strength, and potential failure modes of the buckles? Your prompt and comprehensive response would be greatly appreciated."
+            },
+            {
+                "MessageId": 1365,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": false,
+                "Text": "According to the manual, the Thirsttrek AquaFlow Pro hydration system features a state-of-the-art BPA-free reservoir constructed from a proprietary blend of polyethylene, known as Hydratech 3000. This material has been extensively tested and meets industry standards. Additionally, the adjustable straps have been engineered for comfort and stability, including Finite Element Analysis (FEA) for stress distribution and performance under load. Unfortunately, I was unable to locate specific information about the material composition, durability, and potential failure modes of the buckles in the manual. For detailed information on the buckles, I recommend reaching out to the manufacturer\u0027s support contact, as detailed in the user manual. If you need further assistance, feel free to ask."
+            }
+        ]
+    },
+    {
+        "TicketId": 10,
+        "ProductId": 60,
+        "CreatedAt": "0001-01-01T00:00:00",
+        "ShortSummary": "Leaking Water Filter Bottle Issue",
+        "CustomerId": 2,
+        "TicketStatus": "Open",
+        "Messages": [
+            {
+                "MessageId": 5,
+                "CreatedAt": "0001-01-01T00:00:00",
+                "TicketId": 0,
+                "IsCustomerMessage": true,
+                "Text": "I\u0027m so frustrated with the PureFlow Water Filter Bottle from H2OZone! I bought it for my hiking trip and it\u0027s leaking everywhere. I made sure the cap was on tight and the seal was in place, but it still leaks. This is not what I expected from a leak-proof bottle. I need help with this before my trip, or else I want a refund."
+            }
+        ]
+    }
+]
