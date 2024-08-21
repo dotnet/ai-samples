@@ -58,7 +58,7 @@ This project demonstrates how to extend OpenAI's Semantic Kernel functionalities
 
 ## Complete sample project
 
-[03 Add Plugin (Function Call)](../../03%20-%20Add%20Plugin%20(Function%20Call))
+View the completed sample in the [03 Add Plugin (Function Call)](../../03%20-%20Add%20Plugin%20(Function%20Call)) project.
 
 ### Next unit: Exercise - Add Logging
 
