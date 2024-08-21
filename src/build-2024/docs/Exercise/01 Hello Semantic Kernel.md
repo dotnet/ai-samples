@@ -56,7 +56,7 @@ Now we have an understanding of semantic kernel library and  chat completions,le
 
     - This loop continuously prompts the user for input, sends the input to the OpenAI model, and prints the AI's response.
 
-1. Let's see what we have so far, you can run the application by entering `dotnet run` into the terminal. Experiment with a user prompt "Hi my name is Alice" and a follow-up question "what is my name?" you will get something similar output as shown below on console.
+1. Let's see what we have so far, you can run the application by entering `dotnet run` into the terminal. Experiment with a user prompt "Hi my name is Alice" and a follow-up question "what is my name?" your output may vary, but it will be similar to what is shown below.
 
       ```console
       Q: Hi my name is Alice
