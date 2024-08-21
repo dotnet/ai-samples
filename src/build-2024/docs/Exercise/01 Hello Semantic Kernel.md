@@ -68,7 +68,7 @@ Now we have an understanding of semantic kernel library and  chat completions,le
 
 ## Complete sample project
 
-[01 Hello Semantic Kernel](../../01%20-%20Hello%20Semantic%20Kernel).
+You can view the completed project in the [01 Hello Semantic Kernel](../../01%20-%20Hello%20Semantic%20Kernel) folder.
 
 ## Note
 
