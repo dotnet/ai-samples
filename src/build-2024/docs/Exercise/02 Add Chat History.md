@@ -13,7 +13,21 @@ This console application demonstrates a basic chat interface using OpenAI's GPT 
 1. Add the following code next to kernel initialization to get the required service from the kernel which is chat the completion service.
 
     ```csharp
+Change the code from 
+    ```csharp
+    var kernel = Kernel.CreateBuilder()
+          .AddOpenAIChatCompletion(openAIChatCompletionModelName, Environment.GetEnvironmentVariable("OPENAI_API_KEY"))
+          .Build();
+    ```
+to
+
+    ```csharp
+    var kernel = Kernel.CreateBuilder()
+          .AddOpenAIChatCompletion(openAIChatCompletionModelName, Environment.GetEnvironmentVariable("OPENAI_API_KEY"))
+          .Build();
+
     var chatService = kernel.GetRequiredService<IChatCompletionService>();
+    ```
     ```
 
 1. Add a variable to store conversation chat history to provide more context for upcoming user requests before the while loop.
