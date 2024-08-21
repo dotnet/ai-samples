@@ -62,7 +62,7 @@ to
 
 ## Complete sample project
 
-  [02 - Add Chat History](../../02%20-%20Add%20Chat%20History/) project.
+View the completed sample in the  [02 - Add Chat History](../../02%20-%20Add%20Chat%20History/) project.
 
 ## Note
 
