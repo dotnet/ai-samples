@@ -40,7 +40,7 @@
       Q:
       ```
 
-> **Note:**  From the outout on console notice the log  information that provided detailed information about our model settings.
+> **Note:**  From the output on the console, notice the log information that provided detailed information about our model settings.
 
 ## Complete sample project
 
