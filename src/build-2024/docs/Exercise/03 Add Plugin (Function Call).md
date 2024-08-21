@@ -36,7 +36,7 @@ This project demonstrates how to extend OpenAI's Semantic Kernel functionalities
     kernel.ImportPluginFromType<DemographicInfo>();
     ```
 
-1. Add the following function calling  behavior setting. The setting is configured to call the method GetAge automatically when the user requests the age of the person with the provided name.
+1. Add the following function calling behavior setting. The setting is configured to call the method `GetAge` automatically when the user requests the age of the person with the provided name.
 
     ```csharp
     var settings = new OpenAIPromptExecutionSettings() { ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions };// Set the settings for the chat completion service.
