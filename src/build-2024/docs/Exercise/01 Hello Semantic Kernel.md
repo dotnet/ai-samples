@@ -28,7 +28,7 @@ Now we have an understanding of semantic kernel library and  chat completions,le
 
 1. Add `using Microsoft.SemanticKernel;` to the top of Program.cs.
 
-1. Add a compilation model name. To learn more about OpenAI model versions and their capabilities refer [this](https://platform.openai.com/docs/models/overview).
+1. Add a model to use for chat completions [Learn more about OpenAI model versions and their capabilities](https://platform.openai.com/docs/models/overview).
 
     ```csharp
     string openAIChatCompletionModelName = "gpt-3.5-turbo"; // this could be other models like "gpt-4o".
