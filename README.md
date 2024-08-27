@@ -28,6 +28,18 @@ Discover how to bring AI into your .NET application! This session covers the too
 
 [Youtube: Infusing your .NET Apps with AI: Practical Tools and Techniques](https://www.youtube.com/watch?v=jrNfKeGSuCg)
 
+### Tutorial: Infusing your .NET Apps with AI: Practical Tools and Techniques
+
+|  #  | Topic                                            | YouTube Link and Time                                          | GitHub Link             |
+|-----|--------------------------------------------------|----------------------------------------------------------------|-------------------------|
+|  1  | Hello Semantic Kernel                            |  [3m 0s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=180s)   |  [Hello Semantic Kernel](./src/build-2024/01%20-%20Hello%20Semantic%20Kernel)       |
+|  2  | Add Chat History                                 |  [5m 40s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=340s)  |  [Add Chat History](./src/build-2024/02%20-%20Add%20Chat%20History)       |
+|  3  | Add Plugin - Function Call                       |  [7m 10s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=430s)  |  [Add Plugin - Function Call](./src/build-2024/03%20-%20Add%20Plugin%20%28Function%20Call%29)       |
+|  4  | Add Logging                                      |  [9m 24s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=565s)  |  [Add Logging](./src/build-2024/04%20-%20Add%20Logging)       |
+|  5  | Add Plugin - Bing Search                         |  [11m 15s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=675s) |  [Add Plugin - Bing Search](./src/build-2024/05%20-%20Add%20Plugin%20%28Bing%20Search%29)       |
+|  6  | Modify Kernel Behavior with Dependency Injection |  [12m 37s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=757s) |  [Modifying Kernel Behavior with Dependency Injection](./src/build-2024/06%20-%20Modifying%20Kernel%20Behavior%20with%20Dependency%20Injection)       |
+|  7  | Using Semantic Kernel in a Web App                      |  [15m 57s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=957s) |  [Using Semantic Kernel in a Web App](./src/build-2024/07%20-%20Using%20Semantic%20Kernel%20in%20WebApp)       |
+
 ### Quickstarts using OpenAI
 
 |  #  | Topic                                       | GitHub Link                               | 
