@@ -4,6 +4,8 @@ using Azure;
 using Azure.AI.Inference;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Options;
 using OpenTelemetry.Trace;
 using ChatRole = Microsoft.Extensions.AI.ChatRole;
 
@@ -20,8 +22,9 @@ public partial class AzureAIInferenceSamples
             .AddInMemoryExporter(activities)
             .Build();
 
-        // Configure Cache
-        IDistributedCache cache = new InMemoryCacheStorage();
+        // Configure cache
+        var options = Options.Create(new MemoryDistributedCacheOptions());
+        IDistributedCache cache = new MemoryDistributedCache(options);
 
         // Configure tool calling
         [Description("Gets the weather")]

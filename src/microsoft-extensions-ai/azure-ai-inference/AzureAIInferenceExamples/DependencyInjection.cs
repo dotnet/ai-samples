@@ -16,17 +16,15 @@ public partial class AzureAIInferenceSamples
                 new Uri("https://models.inference.ai.azure.com"),
                 new AzureKeyCredential(Environment.GetEnvironmentVariable("GH_TOKEN"))));
 
-        app.Services.AddSingleton<IDistributedCache, InMemoryCacheStorage>();
+        app.Services.AddDistributedMemoryCache();
         app.Services.AddChatClient(builder => {
 
             IChatClient aiInferenceClient = 
                 builder.Services.GetRequiredService<ChatCompletionsClient>()
                     .AsChatClient("gpt-4o-mini");
             
-            var cache = builder.Services.GetRequiredService<IDistributedCache>();
-
             return builder
-                .UseDistributedCache(cache) 
+                .UseDistributedCache() 
                 .Use(aiInferenceClient);
         });
 

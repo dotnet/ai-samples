@@ -1,12 +1,15 @@
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Options;
 
 public partial class AbstractionSamples
 {
     public static async Task TextEmbeddingCaching() 
     {
         // Configure cache
-        IDistributedCache cache = new InMemoryCacheStorage();
+        var options = Options.Create(new MemoryDistributedCacheOptions());
+        IDistributedCache cache = new MemoryDistributedCache(options);
 
         IEmbeddingGenerator<string,Embedding<float>> sampleEmbeddingGenerator = 
             new SampleEmbeddingGenerator(new Uri("http://coolsite.ai"), "my-custom-model");

@@ -1,12 +1,16 @@
 using OpenAI;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Caching.Memory;
 
 public partial class OpenAISamples
 {
     public static async Task TextEmbeddingCaching() 
     {
-        IDistributedCache cache = new InMemoryCacheStorage();
+        // Configure cache
+        var options = Options.Create(new MemoryDistributedCacheOptions());
+        IDistributedCache cache = new MemoryDistributedCache(options);
 
         IEmbeddingGenerator<string,Embedding<float>> openAIGenerator =
             new OpenAIClient(Environment.GetEnvironmentVariable("OPENAI_API_KEY"))

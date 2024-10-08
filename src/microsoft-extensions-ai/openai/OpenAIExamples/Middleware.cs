@@ -4,6 +4,8 @@ using System.Diagnostics;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Caching.Distributed;
 using OpenTelemetry.Trace;
+using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Caching.Memory;
 
 public partial class OpenAISamples
 {
@@ -18,8 +20,9 @@ public partial class OpenAISamples
             .AddInMemoryExporter(activities)
             .Build();
 
-        // Configure Cache
-        IDistributedCache cache = new InMemoryCacheStorage();
+        // Configure cache
+        var options = Options.Create(new MemoryDistributedCacheOptions());
+        IDistributedCache cache = new MemoryDistributedCache(options);
 
         // Configure tool calling
         [Description("Gets the weather")]

@@ -9,7 +9,8 @@ public partial class OllamaSamples
     {
         var app = Host.CreateApplicationBuilder();
 
-        app.Services.AddSingleton<IDistributedCache, InMemoryCacheStorage>();
+        app.Services.AddDistributedMemoryCache();
+
         app.Services.AddChatClient(builder => {
             var endpoint = new Uri("http://localhost:11434/");
             var modelId = "llama3.1"; 
@@ -17,7 +18,7 @@ public partial class OllamaSamples
             var cache = builder.Services.GetRequiredService<IDistributedCache>();
 
             return builder
-                .UseDistributedCache(cache) 
+                .UseDistributedCache() 
                 .Use(new OllamaChatClient(endpoint, modelId: modelId));
         });
 

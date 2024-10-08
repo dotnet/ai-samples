@@ -2,12 +2,16 @@ using Azure;
 using Azure.AI.Inference;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Options;
 
 public partial class AzureAIInferenceSamples
 {
     public static async Task Caching() 
     {
-        IDistributedCache cache = new InMemoryCacheStorage();
+        // Configure cache
+        var options = Options.Create(new MemoryDistributedCacheOptions());
+        IDistributedCache cache = new MemoryDistributedCache(options);
 
         var endpoint = new Uri("https://models.inference.ai.azure.com");
         var modelId = "gpt-4o-mini";

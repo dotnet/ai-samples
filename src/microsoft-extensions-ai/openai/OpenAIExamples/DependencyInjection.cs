@@ -12,7 +12,7 @@ public partial class OpenAISamples
 
         app.Services.AddSingleton(
             new OpenAIClient(Environment.GetEnvironmentVariable("OPENAI_API_KEY")));
-        app.Services.AddSingleton<IDistributedCache, InMemoryCacheStorage>();
+        app.Services.AddDistributedMemoryCache();
         app.Services.AddChatClient(builder => {
 
             var openaiClient = builder.Services.GetRequiredService<OpenAIClient>();

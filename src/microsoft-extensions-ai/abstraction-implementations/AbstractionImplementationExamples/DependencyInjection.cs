@@ -9,15 +9,13 @@ public partial class AbstractionSamples
     {
         var app = Host.CreateApplicationBuilder();
 
-        app.Services.AddSingleton<IDistributedCache, InMemoryCacheStorage>();
+        app.Services.AddDistributedMemoryCache();
         app.Services.AddChatClient(builder => {
             var endpoint = new Uri("http://coolsite.ai");
             var modelId = "my-custom-model";
 
-            var cache = builder.Services.GetRequiredService<IDistributedCache>();
-
             return builder
-                .UseDistributedCache(cache) 
+                .UseDistributedCache() 
                 .Use(new SampleChatClient(endpoint, modelId));
         });
 
