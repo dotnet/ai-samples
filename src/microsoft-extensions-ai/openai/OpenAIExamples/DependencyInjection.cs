@@ -19,7 +19,7 @@ public partial class OpenAISamples
             var cache = builder.Services.GetRequiredService<IDistributedCache>();
 
             return builder
-                .UseDistributedCache(cache) 
+                .UseDistributedCache() 
                 .Use(openaiClient.AsChatClient("gpt-4o-mini"));
         });
 
