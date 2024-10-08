@@ -19,6 +19,26 @@ description: .NET samples demonstrating how to use AI in your .NET applications.
 
 Welcome to the official home for .NET samples demonstrating how to use AI in your .NET applications. If you're new to AI, start at the top and work your way down. Otherwise, jump in wherever suits your interests.
 
+### Microsoft.Extensions.AI (preview)
+
+Microsoft.Extensions.AI is a set of core .NET libraries developed in collaboration with the .NET ecosystem, including Semantic Kernel. These libraries provide a unified layer of C# abstractions for interacting with AI services, such as small and large language models (SLMs and LLMs) and embeddings.
+
+Core benefits:
+
+- *Unified API:* Offers a consistent and standard set of APIs and conventions for integrating AI services into .NET applications.
+- *Flexibility:* Allows .NET library authors to use AI services without forcing a specific AI provider, making it parameterizable with any provider.
+- *Ease of Use:* Enables .NET application developers to experiment with different packages using the same underlying abstractions and to utilize a single API throughout their application.
+- *Componentization:* Facilitates the addition of new capabilities and simplifies the componentization and testing of applications.
+
+For more details, see the [Introducing Microsoft.Extensions.AI Preview blog post](https://aka.ms/meai-preview-blog). 
+
+| # | Topic | GitHub Link |
+| --- | --- | --- |
+| REF | Abstraction implementations | [GitHub Link](./src/microsoft-extensions-ai/abstraction-implementations/README.md) |
+| REF | OpenAI | [GitHub Link](./src/microsoft-extensions-ai/openai/README.md) |
+| REF | Azure AI Inference | [GitHub Link](./src/microsoft-extensions-ai/azure-ai-inference/README.md) |
+| REF | Ollama | [GitHub Link](./src/microsoft-extensions-ai/ollama/README.md) |
+
 ### Build 2024 - Infusing your .NET Apps with AI: Practical Tools and Techniques
 
 Discover how to bring AI into your .NET application! This session covers the tools, libraries, and best practices for incorporating LLMs or other AI capabilities to create an "intelligent app". We'll explore practical examples, including how to leverage Azure AI services and the .NET AI ecosystem, to enhance your apps with AI.
@@ -28,7 +48,7 @@ Discover how to bring AI into your .NET application! This session covers the too
 
 [Youtube: Infusing your .NET Apps with AI: Practical Tools and Techniques](https://www.youtube.com/watch?v=jrNfKeGSuCg)
 
-### Tutorial: Infusing your .NET Apps with AI: Practical Tools and Techniques
+#### Tutorial: Infusing your .NET Apps with AI: Practical Tools and Techniques
 
 |  #  | Topic                                            | YouTube Link and Time                                          | GitHub Link             |
 |-----|--------------------------------------------------|----------------------------------------------------------------|-------------------------|
