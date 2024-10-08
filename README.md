@@ -32,12 +32,12 @@ Core benefits:
 
 For more details, see the [Introducing Microsoft.Extensions.AI Preview blog post](https://aka.ms/meai-preview-blog). 
 
-| # | Topic | GitHub Link |
-| --- | --- | --- |
-| REF | Abstraction implementations | [GitHub Link](./src/microsoft-extensions-ai/abstraction-implementations/README.md) |
-| REF | OpenAI | [GitHub Link](./src/microsoft-extensions-ai/openai/README.md) |
-| REF | Azure AI Inference | [GitHub Link](./src/microsoft-extensions-ai/azure-ai-inference/README.md) |
-| REF | Ollama | [GitHub Link](./src/microsoft-extensions-ai/ollama/README.md) |
+|Topic | GitHub Link |
+| --- | --- |
+| Abstraction implementations | [GitHub Link](./src/microsoft-extensions-ai/abstraction-implementations/README.md) |
+ OpenAI | [GitHub Link](./src/microsoft-extensions-ai/openai/README.md) |
+ Azure AI Inference | [GitHub Link](./src/microsoft-extensions-ai/azure-ai-inference/.md) |
+| Ollama | [GitHub Link](./src/microsoft-extensions-ai/ollama/README.md) |
 
 ### Build 2024 - Infusing your .NET Apps with AI: Practical Tools and Techniques
 
