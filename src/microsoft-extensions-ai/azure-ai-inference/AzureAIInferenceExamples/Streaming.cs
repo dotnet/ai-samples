@@ -16,9 +16,9 @@ public partial class AzureAIInferenceSamples
 
         var stream = client.CompleteStreamingAsync("What is AI?");
         
-        await foreach (var message in stream)
+        await foreach (var update in stream)
         {
-            Console.Write(message);
+            Console.Write(update);
         }
     }    
 }

@@ -10,9 +10,9 @@ public partial class OpenAISamples
                 .AsChatClient("gpt-4o-mini");
 
         var stream = client.CompleteStreamingAsync("What is AI?");
-        await foreach (var message in stream)
+        await foreach (var update in stream)
         {
-            Console.Write(message);
+            Console.Write(update);
         }
     }    
 }

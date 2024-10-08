@@ -36,13 +36,13 @@ public class SampleChatClient : IChatClient
         await Task.Delay(300, cancellationToken);
 
         // Return a sample chat completion response
-        return new ChatCompletion([
+        return new ChatCompletion(
             new ChatMessage
             {
                 Role = Microsoft.Extensions.AI.ChatRole.Assistant,
                 Text = chosenResponse
-            },
-        ]);
+            }
+        );
     }
 
     public async IAsyncEnumerable<StreamingChatCompletionUpdate> CompleteStreamingAsync(
@@ -69,7 +69,7 @@ public class SampleChatClient : IChatClient
     public TService? GetService<TService>(object? key = null) where TService : class
     {
         // Return null as this is a sample implementation
-        return null;
+        return this as TService;
     }
 
     public void Dispose()

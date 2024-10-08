@@ -6,11 +6,11 @@ public partial class AbstractionSamples
     {
         IChatClient client = new SampleChatClient(new Uri("http://coolsite.ai"), "my-custom-model");
 
-        var response = client.CompleteStreamingAsync("What is AI?");
+        var stream = client.CompleteStreamingAsync("What is AI?");
 
-        await foreach(var message in response)
+        await foreach(var update in stream)
         {
-            Console.WriteLine(message);
+            Console.WriteLine(update);
         }
     }
 }
