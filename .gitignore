@@ -399,3 +399,7 @@ FodyWeavers.xsd
 
 # AZD
 .[aA]zure/
+
+# App settings
+
+**/appsettings.local.json
