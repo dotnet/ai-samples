@@ -1,0 +1,53 @@
+ A user story is an informal, specific explanation of a software feature written from the perspective of the end user and related to a context ContextTopic.
+Its purpose is to articulate how a software feature will provide value to the customer.
+It also explains what a developer need to implement and why.
+
+User stories description are often expressed in a simple sentence, structured as follows:
+As a [persona], I [want to], [so that].
+
+For example, user stories description might look like:
+As a DevOPS, I want to invite my friends, so we can enjoy this service together.
+As Sascha, I want to organize my work, so I can feel more in control. 
+As a Manager, I want to be able to understand my colleagues progress, so I can better report our sucess and failures. 
+As a PO, I want to have the order being generated from a customer shop, so I can have my customer order processed and delivered. 
+
+User stories could also contain acceptance criteria and a summarized title.
+
+A user story title is a summary of the user story's contents. 
+It is short but descriptive, and team members can refer to the title of the story and be easily understood by the rest of the team.
+
+User story titles might look like:
+Scale Environment Creation
+Create E2E Tests for Terraform Resources
+Create Demo Environment
+
+Acceptance criteria serve as a set of conditions that must be met for a user story to be considered complete. 
+They provide clear, detailed expectations for the functionality described in the user story.
+Each acceptance criterion is specific, measurable, and testable, ensuring that the team can objectively determine when the user story is fulfilled.
+
+An example of acceptance criteria for a user story for creating a demo envirionment is:
+
+1. The demo environment should be created using a script that can be run with a single command.
+2. The demo environment should include all necessary components of the application, such as the database and web server.
+3. The demo environment should be isolated from other environments to prevent interference.
+4. The demo environment should be easy to tear down and recreate as needed.
+
+Create user story based on below context topic:
+
+[ProjectContext]
+{{$ProjectContext}}
+[End ProjectContext]
+
+[Persona]
+{{$Persona}}
+[End Persona]
+
+[ContextTopic]
+{{$ContextTopic}}
+[End]
+
+Return the results in json format with the fields title, description and acceptanceCriteria. All these fields in the json object are of type string. Do not return anything besides the json, no comments, no format, no markdown, just the json object. 
+The JSON must be a valid JSON format.
+For example:
+
+{ title: "My summarized title", description: "As a <persona>, I want to ...", acceptanceCriteria: "1. ..." }
