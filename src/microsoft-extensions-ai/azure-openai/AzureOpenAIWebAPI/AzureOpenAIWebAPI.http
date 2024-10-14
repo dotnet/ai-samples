@@ -1,0 +1,6 @@
+@AzureOpenAIWebAPI_HostAddress = http://localhost:5208
+
+GET {{AzureOpenAIWebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
