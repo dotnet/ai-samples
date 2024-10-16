@@ -1,10 +1,21 @@
+﻿using System.ClientModel;
+using System.Runtime.CompilerServices;
 using System.Text.Json;
+using Azure.AI.OpenAI;
+using Azure.Identity;
+using Microsoft.Extensions.AI;
 using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.VisualBasic;
 using Spectre.Console;
 
 public static class Utils
 {
+    public static AzureOpenAIClient CreateAzureOpenAIClient(string endpoint, bool useManagedIdentity)
+    {
+        return useManagedIdentity
+            ? new AzureOpenAIClient(new Uri(endpoint), new DefaultAzureCredential())
+            : new AzureOpenAIClient(new Uri(endpoint), new ApiKeyCredential(Environment.GetEnvironmentVariable("AZURE_OPENAIAI_KEY")));
+    }
 
     public static IEnumerable<Ticket> LoadTickets(string path, int limit = 10)
     {
@@ -87,7 +98,7 @@ public static class Utils
         AnsiConsole.Write(panel);
     }
 
-    public static async Task InspectTicketWithSemanticSearchAsync(IEnumerable<Ticket> tickets, TicketSummarizer summaryGenerator, ProductManualSemanticSearch productManualSearchService, IChatCompletionService chatService)
+    public static async Task InspectTicketWithSemanticSearchAsync(IEnumerable<Ticket> tickets, TicketSummarizer summaryGenerator, ProductManualSemanticSearch productManualSearchService, IChatClient chatClient)
     {
         // User selects ticket
         var ticket =
@@ -156,7 +167,7 @@ public static class Utils
                 """;
 
                 // [3] Generate response
-                var response = await chatService.GetChatMessageContentAsync(message);
+                var response = await chatClient.CompleteAsync(message);
 
                 AnsiConsole.MarkupLine($"[bold yellow]{response}[/]");
             }

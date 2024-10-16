@@ -1,6 +1,6 @@
 # Customer Support 
 
-This sample is a C# console application that uses local models provided by Ollama to:
+This sample is a C# console application that uses Generative AI services like Ollama or Azure OpenAI to:
 
 - Generate customer support ticket summaries
 - Generate embeddings for product manuals
@@ -8,8 +8,6 @@ This sample is a C# console application that uses local models provided by Ollam
 
 ## Project structure
 
-- *OllamaChatCompletionService.cs* - Chat service that uses Ollama models. Implements `IChatCompletionService`
-- *OllamaTextEmbeddingGenerationService.cs* - Embedding generation service that uses Ollama models. Implements `ITextEmbeddingGenerationService`
 - *ManualIngestor.cs* - Ingestion service that extracts data from product manual PDF files, chunks text into smaller segments, generates embeddings, saves them to a JSON file.
 - *ProductManualSemanticSearch.cs* - Search service that uses product manual embeddings for semantic search. 
 - *TicketSummarizer* - AI service which uses an AI model to generate summaries of customer support tickets.
@@ -62,8 +60,8 @@ For this application, you can either use local language and embedding models wit
 
 1. In *Program.cs*, set `useOpenAI` to `true`.
 1. Configure environment variables for your endpoint and key. For more details, [see the Azure OpenAI documentation](https://learn.microsoft.com/azure/ai-services/openai/chatgpt-quickstart?tabs=command-line%2Cpython-new&pivots=programming-language-csharp#retrieve-key-and-endpoint).
-    - **AZURE_AI_ENDPOINT** - Your Azure OpenAI endpoint.
-    - **AZURE_AI_KEY** - Your Azure OpenAI Key.
+    - **AZURE_OPENAI_ENDPOINT** - Your Azure OpenAI endpoint.
+    - **AZURE_OPENAI_KEY** - Your Azure OpenAI Key.
 
 #### Using managed identity (Recommended)
 

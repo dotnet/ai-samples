@@ -3,9 +3,6 @@
 // Add dependencies
 using System.Text.Json;
 using Spectre.Console;
-using Microsoft.SemanticKernel;
-using Microsoft.SemanticKernel.ChatCompletion;
-using Microsoft.SemanticKernel.Connectors.OpenAI;
 using System.Collections.Immutable;
 using System.Collections;
 using System.Reflection.Metadata.Ecma335;
@@ -13,37 +10,32 @@ using static Utils;
 using Microsoft.SemanticKernel.Embeddings;
 using Azure.AI.OpenAI;
 using Azure.Identity;
+using Microsoft.Extensions.AI;
+using System.ClientModel;
 
 // Configure AI
-var apiKey = "";
-var endpoint = "http://localhost:11434/";
-
-var openAIEndpoint = Environment.GetEnvironmentVariable("AZURE_AI_ENDPOINT");
+var ollamaEndpoint = "http://localhost:11434/";
+var openAIEndpoint = Environment.GetEnvironmentVariable("AZURE_OPENAI_ENDPOINT");
 
 var useOpenAI = true;
-var useManagedIdentity = false;
+var useManagedIdentity = true;
 
-var azureOpenAIClient =
-    useManagedIdentity ?
-    new OpenAIClient(new Uri(openAIEndpoint), new DefaultAzureCredential()) :
-    new OpenAIClient(
-        new Uri(openAIEndpoint),
-        new Azure.AzureKeyCredential(Environment.GetEnvironmentVariable("AZURE_AI_KEY")));
-
-IChatCompletionService chatService = 
-    useOpenAI ? 
-    new AzureOpenAIChatCompletionService("chat", azureOpenAIClient) :
-    new OllamaChatCompletionService("llama3.1", endpoint);
-
-ITextEmbeddingGenerationService embeddingService =
+IChatClient chatClient =
     useOpenAI ?
-    new AzureOpenAITextEmbeddingGenerationService("embeddingsmall", azureOpenAIClient) : 
-    new OllamaTextEmbeddingGenerationService("all-minilm", new Uri(endpoint));
+    Utils.CreateAzureOpenAIClient(openAIEndpoint, useManagedIdentity)
+        .AsChatClient("chat")
+    : new OllamaChatClient(new Uri(ollamaEndpoint), "llama3.1");
+
+IEmbeddingGenerator<string,Embedding<float>> embeddingGenerator =
+    useOpenAI ?
+        Utils.CreateAzureOpenAIClient(openAIEndpoint, useManagedIdentity)
+        .AsEmbeddingGenerator("embeddingsmall") :
+        new OllamaEmbeddingGenerator(new Uri(ollamaEndpoint), "all-minilm");
 
 // Ingest manuals
 if(!File.Exists("./data/manual-chunks.json"))
 {
-    var manualIngestor = new ManualIngestor(embeddingService);
+    var manualIngestor = new ManualIngestor(embeddingGenerator);
     await manualIngestor.RunAsync("./data/manuals", "./data");
 }
 
@@ -52,8 +44,8 @@ var tickets = LoadTickets("./data/tickets.json");
 var manuals = LoadManualChunks("./data/manual-chunks.json");
 
 // Service configurations
-var summaryGenerator = new TicketSummarizer(chatService);
-var productManualSearchService = new ProductManualSemanticSearch(embeddingService, manuals);
+var summaryGenerator = new TicketSummarizer(chatClient);
+var productManualSearchService = new ProductManualSemanticSearch(embeddingGenerator, manuals);
 
 while(true)
 {
@@ -78,7 +70,7 @@ while(true)
         // await InspectTicketWithAISummaryAsync(tickets, summaryGenerator);
 
         // With Semantic Search 
-        await InspectTicketWithSemanticSearchAsync(tickets, summaryGenerator, productManualSearchService, chatService);
+        await InspectTicketWithSemanticSearchAsync(tickets, summaryGenerator, productManualSearchService, chatClient);
 
     }
 }

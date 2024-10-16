@@ -1,13 +1,14 @@
+﻿using Microsoft.Extensions.AI;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ChatCompletion;
 
 public class TicketSummarizer
 {
-    private readonly IChatCompletionService _chatService;
+    private readonly IChatClient _chatClient;
 
-    public TicketSummarizer(IChatCompletionService chatService)
+    public TicketSummarizer(IChatClient chatClient)
     {
-        _chatService = chatService;
+        _chatClient = chatClient;
     }
 
     private string GetShortSummaryPrompt(string messages)
@@ -50,17 +51,17 @@ public class TicketSummarizer
             """;
     }
 
-    public async Task<ChatMessageContent> GenerateLongSummaryAsync(string input)
+    public async Task<ChatCompletion> GenerateLongSummaryAsync(string input)
     {
         var prompt = GetLongSummaryPrompt(input);
-        var response = await _chatService.GetChatMessageContentAsync(prompt);
+        var response = await _chatClient.CompleteAsync(prompt);
         return response;
     }
 
-    public async Task<ChatMessageContent> GenerateShortSummaryAsync(string input)
+    public async Task<ChatCompletion> GenerateShortSummaryAsync(string input)
     {
         var prompt = GetShortSummaryPrompt(input);
-        var response = await _chatService.GetChatMessageContentAsync(prompt);
+        var response = await _chatClient.CompleteAsync(prompt);
         return response;
     }
 }

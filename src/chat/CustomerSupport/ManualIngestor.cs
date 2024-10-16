@@ -1,7 +1,8 @@
-#pragma warning disable
+﻿#pragma warning disable
 using System.Numerics.Tensors;
 using System.Text.Json;
 using Azure.AI.OpenAI;
+using Microsoft.Extensions.AI;
 using Microsoft.SemanticKernel.Embeddings;
 using Microsoft.SemanticKernel.Text;
 using UglyToad.PdfPig;
@@ -14,11 +15,11 @@ public class ManualIngestor
 {
     record ParseResult(PageContent[] Pages);
     record PageContent(int Page, string Text);
-    private readonly ITextEmbeddingGenerationService _embeddingService;
+    private readonly IEmbeddingGenerator<string,Embedding<float>> _embeddingGenerator;
 
-    public ManualIngestor(ITextEmbeddingGenerationService embeddingService)
+    public ManualIngestor(IEmbeddingGenerator<string, Embedding<float>> embeddingGenerator)
     {
-        _embeddingService = embeddingService;
+        _embeddingGenerator = embeddingGenerator;
     }
 
     public async Task RunAsync(string sourceDir, string outputDir)
@@ -52,7 +53,7 @@ public class ManualIngestor
                 var paragraphs = TextChunker.SplitPlainTextParagraphs([page.Text], 200);
 
                 // [3] Embed (string -> embedding)
-                var paragraphsWithEmbeddings = paragraphs.Zip(await _embeddingService.GenerateEmbeddingsAsync(paragraphs));
+                var paragraphsWithEmbeddings = paragraphs.Zip(await _embeddingGenerator.GenerateAsync(paragraphs));
 
                 // [4] Save
                 chunks.AddRange(paragraphsWithEmbeddings.Select(p => new ManualChunk
@@ -61,7 +62,7 @@ public class ManualIngestor
                     PageNumber = page.Number,
                     ChunkId = ++paragraphIndex,
                     Text = p.First,
-                    Embedding = p.Second.ToArray()
+                    Embedding = p.Second
                 }));           
             }
         }
