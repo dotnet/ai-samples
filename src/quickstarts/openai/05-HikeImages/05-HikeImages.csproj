@@ -11,7 +11,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="8.0.0" />
-    <PackageReference Include="Microsoft.SemanticKernel" Version="1.6.2" />
+    <PackageReference Include="OpenAI" Version="2.1.0-beta.1" />
+    
+    <!-- <PackageReference Include="Microsoft.SemanticKernel" Version="1.6.2" /> -->
   </ItemGroup>
 
 </Project>
