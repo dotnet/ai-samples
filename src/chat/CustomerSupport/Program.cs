@@ -25,7 +25,7 @@ IChatClient chatClient =
     useOpenAI ?
     Utils.CreateAzureOpenAIClient(openAIEndpoint, useManagedIdentity)
         .AsChatClient("chat")
-    : new OllamaChatClient(new Uri(ollamaEndpoint), "llama3.1");
+    : new OllamaChatClient(new Uri(ollamaEndpoint), "llama3.2");
 
 IEmbeddingGenerator<string,Embedding<float>> embeddingGenerator =
     useOpenAI ?
