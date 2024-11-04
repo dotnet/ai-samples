@@ -1,6 +1,13 @@
 ﻿using System.Text.Json.Serialization;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.VectorData;
+using UglyToad.PdfPig.Fonts.Type1;
+
+internal class EmbeddingDimensions
+{
+    public const int OllamaEmbeddingSize = 384;
+    public const int OpenAIEmbeddingSize = 1536;
+}
 
 public class ManualChunk
 {
@@ -16,7 +23,7 @@ public class ManualChunk
     [VectorStoreRecordData]
     public required string Text { get; set; }
 
-    [VectorStoreRecordVector(1536, DistanceFunction.CosineSimilarity)]
+    [VectorStoreRecordVector(EmbeddingDimensions.OpenAIEmbeddingSize, DistanceFunction.CosineSimilarity)]
     public required ReadOnlyMemory<float> Embedding { get; set; }
 }
 

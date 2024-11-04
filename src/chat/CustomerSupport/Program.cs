@@ -13,6 +13,7 @@ using Azure.Identity;
 using Microsoft.Extensions.AI;
 using System.ClientModel;
 using Microsoft.SemanticKernel.Connectors.InMemory;
+using OllamaSharp;
 
 // Configure AI
 var ollamaEndpoint = "http://localhost:11434/";
@@ -26,13 +27,13 @@ IChatClient chatClient =
     useOpenAIChat ?
     Utils.CreateAzureOpenAIClient(openAIEndpoint, useManagedIdentity)
         .AsChatClient("chat")
-    : new OllamaChatClient(new Uri(ollamaEndpoint), "llama3.2");
+    : new OllamaApiClient(new Uri(ollamaEndpoint), "llama3.2");
 
 IEmbeddingGenerator<string,Embedding<float>> embeddingGenerator =
     useOpenAIEmbeddings ?
         Utils.CreateAzureOpenAIClient(openAIEndpoint, useManagedIdentity)
             .AsEmbeddingGenerator("embeddingsmall") :
-                new OllamaEmbeddingGenerator(new Uri(ollamaEndpoint), "all-minilm");
+                new OllamaApiClient(new Uri(ollamaEndpoint), "all-minilm");
 
 // Configure product manual service
 var vectorStore = new InMemoryVectorStore();
