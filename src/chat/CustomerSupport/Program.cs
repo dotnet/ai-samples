@@ -18,17 +18,18 @@ using Microsoft.SemanticKernel.Connectors.InMemory;
 var ollamaEndpoint = "http://localhost:11434/";
 var openAIEndpoint = Environment.GetEnvironmentVariable("AZURE_OPENAI_ENDPOINT");
 
-var useOpenAI = true;
+var useOpenAIChat = true; // Use OpenAI chat completion models
+var useOpenAIEmbeddings = true; // Use OpenAI text embedding generation models
 var useManagedIdentity = true;
 
 IChatClient chatClient =
-    useOpenAI ?
+    useOpenAIChat ?
     Utils.CreateAzureOpenAIClient(openAIEndpoint, useManagedIdentity)
         .AsChatClient("chat")
     : new OllamaChatClient(new Uri(ollamaEndpoint), "llama3.2");
 
 IEmbeddingGenerator<string,Embedding<float>> embeddingGenerator =
-    useOpenAI ?
+    useOpenAIEmbeddings ?
         Utils.CreateAzureOpenAIClient(openAIEndpoint, useManagedIdentity)
             .AsEmbeddingGenerator("embeddingsmall") :
                 new OllamaEmbeddingGenerator(new Uri(ollamaEndpoint), "all-minilm");
