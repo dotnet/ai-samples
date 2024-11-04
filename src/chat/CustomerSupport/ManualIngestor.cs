@@ -26,7 +26,6 @@ public class ManualIngestor
     {
         Console.WriteLine("Ingesting manuals...");
 
-
         // Load data
         var chunks = new List<ManualChunk>();
         var paragraphIndex = 0;
@@ -53,17 +52,20 @@ public class ManualIngestor
                 var paragraphs = TextChunker.SplitPlainTextParagraphs([page.Text], 200);
 
                 // [3] Embed (string -> embedding)
-                var paragraphsWithEmbeddings = paragraphs.Zip(await _embeddingGenerator.GenerateAsync(paragraphs));
+                var paragraphsWithEmbeddings = await _embeddingGenerator.GenerateAndZipAsync(paragraphs);
 
                 // [4] Save
-                chunks.AddRange(paragraphsWithEmbeddings.Select(p => new ManualChunk
-                {
-                    ProductId = docId,
-                    PageNumber = page.Number,
-                    ChunkId = ++paragraphIndex,
-                    Text = p.First,
-                    Embedding = p.Second
-                }));           
+                var manualChunks = 
+                    paragraphsWithEmbeddings.Select(p => new ManualChunk
+                    {
+                        ProductId = docId,
+                        PageNumber = page.Number,
+                        ChunkId = ++paragraphIndex,
+                        Text = p.Value,
+                        Embedding = p.Embedding.Vector.ToArray()
+                    });
+
+                chunks.AddRange(manualChunks);          
             }
         }
         var outputOptions = new JsonSerializerOptions { WriteIndented = true };

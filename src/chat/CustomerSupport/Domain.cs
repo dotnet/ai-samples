@@ -1,13 +1,23 @@
 ﻿using System.Text.Json.Serialization;
 using Microsoft.Extensions.AI;
+using Microsoft.Extensions.VectorData;
 
 public class ManualChunk
 {
+    [VectorStoreRecordData]
     public int ChunkId { get; set; }
+
+    [VectorStoreRecordKey]
     public int ProductId { get; set; }
+
+    [VectorStoreRecordData]
     public int PageNumber { get; set; }
+
+    [VectorStoreRecordData]
     public required string Text { get; set; }
-    public required Embedding<float> Embedding { get; set; }
+
+    [VectorStoreRecordVector(1536, DistanceFunction.CosineSimilarity)]
+    public required ReadOnlyMemory<float> Embedding { get; set; }
 }
 
 public class Message

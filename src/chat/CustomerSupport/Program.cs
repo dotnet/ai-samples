@@ -12,6 +12,7 @@ using Azure.AI.OpenAI;
 using Azure.Identity;
 using Microsoft.Extensions.AI;
 using System.ClientModel;
+using Microsoft.SemanticKernel.Connectors.InMemory;
 
 // Configure AI
 var ollamaEndpoint = "http://localhost:11434/";
@@ -29,10 +30,14 @@ IChatClient chatClient =
 IEmbeddingGenerator<string,Embedding<float>> embeddingGenerator =
     useOpenAI ?
         Utils.CreateAzureOpenAIClient(openAIEndpoint, useManagedIdentity)
-        .AsEmbeddingGenerator("embeddingsmall") :
-        new OllamaEmbeddingGenerator(new Uri(ollamaEndpoint), "all-minilm");
+            .AsEmbeddingGenerator("embeddingsmall") :
+                new OllamaEmbeddingGenerator(new Uri(ollamaEndpoint), "all-minilm");
 
+// Configure product manual service
+var vectorStore = new InMemoryVectorStore();
+var productManualService = new ProductManualService(embeddingGenerator, vectorStore);
 // Ingest manuals
+
 if(!File.Exists("./data/manual-chunks.json"))
 {
     var manualIngestor = new ManualIngestor(embeddingGenerator);
@@ -41,11 +46,10 @@ if(!File.Exists("./data/manual-chunks.json"))
 
 // Load tickets and manuals
 var tickets = LoadTickets("./data/tickets.json");
-var manuals = LoadManualChunks("./data/manual-chunks.json");
+LoadManualsIntoVectorStore("./data/manual-chunks.json", productManualService);
 
 // Service configurations
 var summaryGenerator = new TicketSummarizer(chatClient);
-var productManualSearchService = new ProductManualSemanticSearch(embeddingGenerator, manuals);
 
 while(true)
 {
@@ -70,7 +74,7 @@ while(true)
         // await InspectTicketWithAISummaryAsync(tickets, summaryGenerator);
 
         // With Semantic Search 
-        await InspectTicketWithSemanticSearchAsync(tickets, summaryGenerator, productManualSearchService, chatClient);
+        await InspectTicketWithSemanticSearchAsync(tickets, summaryGenerator, productManualService, chatClient);
 
     }
 }
