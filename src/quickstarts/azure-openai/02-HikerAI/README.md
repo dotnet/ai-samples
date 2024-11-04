@@ -4,7 +4,7 @@ This sample demonstrates how to use the Azure OpenAI with a `gpt-35-turbo` model
 
 ## Deploying the Azure resources
 
-If it's not already done, follow the [Getting-started: Deploying the Azure resources](../../README.md#deploying-the-azure-resources) to deploy the Azure OpenAI Service with the models.
+If it's not already done, follow the [Getting-started: Deploying the Azure resources](../README.md#deploying-the-azure-resources) to deploy the Azure OpenAI Service with the models.
 
 ## Trying HikerAI
 
@@ -21,5 +21,5 @@ If it's not already done, follow the [Getting-started: Deploying the Azure resou
 
 ## Clean up resources
 
-Once you are done experimenting with the samples, follow the instructions from the [Getting-started: Clean up resources](../../README.md#clean-up-resources) to delete the Azure resources created using the Azure Developer CLI.
+Once you are done experimenting with the samples, follow the instructions from the [Getting-started: Clean up resources](../README.md#clean-up-resources) to delete the Azure resources created using the Azure Developer CLI.
 
