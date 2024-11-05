@@ -157,23 +157,20 @@ public static class Utils
 
                 // RAG loop
                 // [1] Search for relevant documents
-                var searchResults = new List<ManualChunk>();
                 var manualChunks = await productManualService.GetManualChunksAsync(query, ticket.ProductId.Value);
 
-                await foreach (var result in manualChunks.Results)
-                {
-                    searchResults.Add(result.Record);
-                }
-
                 // [2] Augment prompt with search results
-
-                var context = searchResults.Select(r => $"- {r.Text}");
+                var context = (await manualChunks.Results.ToListAsync()).Select(r => $"- {r.Record.Text}");
 
                 var message = $"""
-                Using the following data sources as context, answer the user query: {query}
+                Using the following data sources as context
                 
                 ## Context
                 {string.Join("\n", context)}
+
+                ## Instruction
+
+                Answer the user query: {query}
 
                 Response: 
                 """;

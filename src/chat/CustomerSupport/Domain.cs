@@ -11,10 +11,10 @@ internal class EmbeddingDimensions
 
 public class ManualChunk
 {
-    [VectorStoreRecordData]
+    [VectorStoreRecordKey]
     public int ChunkId { get; set; }
 
-    [VectorStoreRecordKey]
+    [VectorStoreRecordData(IsFilterable = true)]
     public int ProductId { get; set; }
 
     [VectorStoreRecordData]

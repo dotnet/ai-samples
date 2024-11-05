@@ -12,7 +12,7 @@ var useManagedIdentity = true;
 IChatClient chatClient =
     useOpenAIChat ?
     Utils.CreateAzureOpenAIClient(openAIEndpoint, useManagedIdentity)
-        .AsChatClient("chat")
+        .AsChatClient("gpt-4o-mini")
     : new OllamaApiClient(new Uri(ollamaEndpoint), "llama3.2");
 
 IEmbeddingGenerator<string,Embedding<float>> embeddingGenerator =
@@ -23,7 +23,7 @@ IEmbeddingGenerator<string,Embedding<float>> embeddingGenerator =
 
 // Configure product manual service
 var vectorStore = new InMemoryVectorStore();
-var productManualService = new ProductManualService(embeddingGenerator, vectorStore);
+var productManualService = new ProductManualService(embeddingGenerator, vectorStore, chatClient);
 // Ingest manuals
 
 if(!File.Exists("./data/manual-chunks.json"))
@@ -63,6 +63,5 @@ while(true)
 
         // With Semantic Search 
         await InspectTicketWithSemanticSearchAsync(tickets, summaryGenerator, productManualService, chatClient);
-
     }
 }
