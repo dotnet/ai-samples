@@ -1,8 +1,4 @@
-using System.Net.Http.Headers;
-using Microsoft.Extensions.AI;
-using Microsoft.Extensions.VectorData;
-
-public class ProductManualService
+﻿public class ProductManualService
 {
     private readonly IEmbeddingGenerator<string, Embedding<float>> _embeddingGenerator;
     private readonly IVectorStore _store;
@@ -14,13 +10,11 @@ public class ProductManualService
         _embeddingGenerator = embeddingGenerator;
         _store = store;
         _collection = _store.GetCollection<int, ManualChunk>(_collectionName);
+        Task.FromResult(_collection.CreateCollectionIfNotExistsAsync());
     }
 
     public async Task InsertManualChunksAsync(IEnumerable<ManualChunk> manualChunks)
     {
-
-        await _collection.CreateCollectionIfNotExistsAsync();
-
         foreach (var chunk in manualChunks)
         {
             await _collection.UpsertAsync(chunk);
@@ -35,9 +29,11 @@ public class ProductManualService
         {
             Top = limit ?? 1,
             VectorPropertyName = _vectorField,
-            Filter = new VectorSearchFilter([
-                new EqualToFilterClause("ProductId", productId)
-            ])
+            // TODO: Filter not working correctly
+            //Filter = new VectorSearchFilter(new List<FilterClause>()
+            //{
+            //    new EqualToFilterClause(nameof(ManualChunk.ProductId), productId)
+            //})
         };
 
         return await _collection.VectorizedSearchAsync(queryEmbedding, searchOptions);

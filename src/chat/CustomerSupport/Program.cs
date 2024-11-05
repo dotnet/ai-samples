@@ -1,19 +1,5 @@
 ﻿#pragma warning disable
-
-// Add dependencies
-using System.Text.Json;
-using Spectre.Console;
-using System.Collections.Immutable;
-using System.Collections;
-using System.Reflection.Metadata.Ecma335;
-using static Utils;
-using Microsoft.SemanticKernel.Embeddings;
-using Azure.AI.OpenAI;
-using Azure.Identity;
-using Microsoft.Extensions.AI;
-using System.ClientModel;
 using Microsoft.SemanticKernel.Connectors.InMemory;
-using OllamaSharp;
 
 // Configure AI
 var ollamaEndpoint = "http://localhost:11434/";

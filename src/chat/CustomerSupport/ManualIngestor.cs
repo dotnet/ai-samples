@@ -1,9 +1,4 @@
 ﻿#pragma warning disable
-using System.Numerics.Tensors;
-using System.Text.Json;
-using Azure.AI.OpenAI;
-using Microsoft.Extensions.AI;
-using Microsoft.SemanticKernel.Embeddings;
 using Microsoft.SemanticKernel.Text;
 using UglyToad.PdfPig;
 using UglyToad.PdfPig.Actions;
