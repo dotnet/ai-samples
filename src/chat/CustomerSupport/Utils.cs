@@ -1,11 +1,4 @@
-﻿using System.ClientModel;
-using System.Text.Json;
-using Azure.AI.OpenAI;
-using Azure.Identity;
-using Microsoft.Extensions.AI;
-using Spectre.Console;
-
-public static class Utils
+﻿public static class Utils
 {
     public static AzureOpenAIClient CreateAzureOpenAIClient(string endpoint, bool useManagedIdentity)
     {

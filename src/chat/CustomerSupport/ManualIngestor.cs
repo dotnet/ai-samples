@@ -10,7 +10,7 @@ public class ManualIngestor
 {
     record ParseResult(PageContent[] Pages);
     record PageContent(int Page, string Text);
-    private readonly IEmbeddingGenerator<string,Embedding<float>> _embeddingGenerator;
+    private readonly IEmbeddingGenerator<string, Embedding<float>> _embeddingGenerator;
 
     public ManualIngestor(IEmbeddingGenerator<string, Embedding<float>> embeddingGenerator)
     {
@@ -26,9 +26,9 @@ public class ManualIngestor
         var paragraphIndex = 0;
 
         var files = Directory.GetFiles(sourceDir, "*.pdf");
-        
+
         // Loop over each PDF file
-        foreach(var file in files)
+        foreach (var file in files)
         {
             Console.WriteLine($"Generating chunks for {file}...");
 
@@ -37,7 +37,7 @@ public class ManualIngestor
             // Loop over each page
             var pdf = PdfDocument.Open(file);
             var pages = pdf.GetPages();
-            
+
             foreach (var page in pages)
             {
                 // [1] Parse (PDF page -> string)
@@ -50,7 +50,7 @@ public class ManualIngestor
                 var paragraphsWithEmbeddings = await _embeddingGenerator.GenerateAndZipAsync(paragraphs);
 
                 // [4] Save
-                var manualChunks = 
+                var manualChunks =
                     paragraphsWithEmbeddings.Select(p => new ManualChunk
                     {
                         ProductId = docId,
@@ -60,12 +60,12 @@ public class ManualIngestor
                         Embedding = p.Embedding.Vector.ToArray()
                     });
 
-                chunks.AddRange(manualChunks);          
+                chunks.AddRange(manualChunks);
             }
         }
         var outputOptions = new JsonSerializerOptions { WriteIndented = true };
         var content = JsonSerializer.Serialize(chunks, outputOptions);
-        await File.WriteAllTextAsync(Path.Combine(outputDir,"manual-chunks.json"), content);
+        await File.WriteAllTextAsync(Path.Combine(outputDir, "manual-chunks.json"), content);
         Console.WriteLine($"Wrote {chunks.Count} manual chunks");
     }
 

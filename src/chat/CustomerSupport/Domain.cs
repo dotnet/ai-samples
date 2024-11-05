@@ -1,7 +1,4 @@
 ﻿using System.Text.Json.Serialization;
-using Microsoft.Extensions.AI;
-using Microsoft.Extensions.VectorData;
-using UglyToad.PdfPig.Fonts.Type1;
 
 internal class EmbeddingDimensions
 {

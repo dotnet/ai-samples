@@ -15,7 +15,7 @@ IChatClient chatClient =
         .AsChatClient("gpt-4o-mini")
     : new OllamaApiClient(new Uri(ollamaEndpoint), "llama3.2");
 
-IEmbeddingGenerator<string,Embedding<float>> embeddingGenerator =
+IEmbeddingGenerator<string, Embedding<float>> embeddingGenerator =
     useOpenAIEmbeddings ?
         Utils.CreateAzureOpenAIClient(openAIEndpoint, useManagedIdentity)
             .AsEmbeddingGenerator("embeddingsmall") :
@@ -26,7 +26,7 @@ var vectorStore = new InMemoryVectorStore();
 var productManualService = new ProductManualService(embeddingGenerator, vectorStore, chatClient);
 // Ingest manuals
 
-if(!File.Exists("./data/manual-chunks.json"))
+if (!File.Exists("./data/manual-chunks.json"))
 {
     var manualIngestor = new ManualIngestor(embeddingGenerator);
     await manualIngestor.RunAsync("./data/manuals", "./data");
@@ -39,21 +39,21 @@ LoadManualsIntoVectorStore("./data/manual-chunks.json", productManualService);
 // Service configurations
 var summaryGenerator = new TicketSummarizer(chatClient);
 
-while(true)
+while (true)
 {
-    var prompt = 
+    var prompt =
         AnsiConsole
             .Prompt(
                 new SelectionPrompt<string>()
                     .Title("Enter a command")
                     .PageSize(10)
                     .MoreChoicesText("[grey](Move up and down to reveal more choices)[/]")
-                    .AddChoices(new[] {"Inspect ticket", "Quit"})
+                    .AddChoices(new[] { "Inspect ticket", "Quit" })
             );
 
-    if(prompt == "Quit") break;
+    if (prompt == "Quit") break;
 
-    if(prompt == "Inspect ticket")
+    if (prompt == "Inspect ticket")
     {
         // No AI
         // InspectTicket(tickets);
