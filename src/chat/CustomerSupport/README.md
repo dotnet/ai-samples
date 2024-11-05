@@ -50,8 +50,6 @@ For this application, you can either use local language and embedding models wit
     - `useOpenAIChat` to `false`
     - `useOpenAIEmbeddings` to `false`
 
-1. In *Domain.cs*, update the `VectorStoreRecordVector` attribute on the `ManualChunk.Embedding` property to `EmbeddingDimensions.OllamaEmbeddingSize`.
-
 ### Azure OpenAI
 
 1. Deploy a chat and embedding model. For more details, [see the Azure OpenAI documentation](https://learn.microsoft.com/azure/ai-services/openai/how-to/create-resource?pivots=web-portal#deploy-a-model).
@@ -67,8 +65,6 @@ For this application, you can either use local language and embedding models wit
 
     - `useOpenAIChat` to `true`
     - `useOpenAIEmbeddings` to `true`
-
-1. In *Domain.cs*, update the `VectorStoreRecordVector` attribute on the `ManualChunk.Embedding` property to `EmbeddingDimensions.OpenAIEmbeddingSize`.
 
 1. Configure environment variables for your endpoint and key. For more details, [see the Azure OpenAI documentation](https://learn.microsoft.com/azure/ai-services/openai/chatgpt-quickstart?tabs=command-line%2Cpython-new&pivots=programming-language-csharp#retrieve-key-and-endpoint).
     - **AZURE_OPENAI_ENDPOINT** - Your Azure OpenAI endpoint.
