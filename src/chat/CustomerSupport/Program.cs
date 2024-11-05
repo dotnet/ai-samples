@@ -23,7 +23,7 @@ IEmbeddingGenerator<string, Embedding<float>> embeddingGenerator =
 
 // Configure product manual service
 var vectorStore = new InMemoryVectorStore();
-var productManualService = new ProductManualService(embeddingGenerator, vectorStore, chatClient);
+var productManualService = new ProductManualService(embeddingGenerator, vectorStore, useOpenAIEmbeddings);
 // Ingest manuals
 
 if (!File.Exists("./data/manual-chunks.json"))

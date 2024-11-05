@@ -1,26 +1,15 @@
 ﻿using System.Text.Json.Serialization;
 
-internal class EmbeddingDimensions
-{
-    public const int OllamaEmbeddingSize = 384;
-    public const int OpenAIEmbeddingSize = 1536;
-}
-
 public class ManualChunk
 {
-    [VectorStoreRecordKey]
     public int ChunkId { get; set; }
 
-    [VectorStoreRecordData(IsFilterable = true)]
     public int ProductId { get; set; }
 
-    [VectorStoreRecordData]
     public int PageNumber { get; set; }
 
-    [VectorStoreRecordData]
     public required string Text { get; set; }
 
-    [VectorStoreRecordVector(EmbeddingDimensions.OpenAIEmbeddingSize, DistanceFunction.CosineSimilarity)]
     public required ReadOnlyMemory<float> Embedding { get; set; }
 }
 
