@@ -49,7 +49,7 @@ This project contains a set of samples that show how to use the Ollama reference
 | [Chat](./Chat.cs) | Use `IChatClient` to send and receive chat messages 
 | [Chat + Conversation History](./ConversationHistory.cs) | Use `IChatClient` alongside conversation history to send and receive chat messages | 
 | [Streaming](./Streaming.cs) | Use `IChatClient` to send and receive a stream of chat messages | 
-| [Caching](./Chat.cs) | Use prompt caching middleware |
+| [Caching](./Caching.cs) | Use prompt caching middleware |
 | [OpenTelemetry](./OpenTelemetry.cs) | Use OpenTelemetry middleware | 
 | [Tool Calling](./ToolCalling.cs) | Use tool calling middleware |
 | [Middleware](./Middleware.cs) | Use prompt caching, OpenTelemetry and tool calling middleware |
