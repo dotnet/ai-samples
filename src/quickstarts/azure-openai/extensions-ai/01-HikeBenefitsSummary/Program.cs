@@ -6,6 +6,7 @@ using System.ClientModel;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.AI;
 using Azure.AI.OpenAI;
+using Azure.Identity;
 
 // Retrieve the local secrets saved during the Azure deployment. If you skipped the deployment
 // because you already have an Azure OpenAI available, edit the following lines to use your information,
@@ -13,10 +14,15 @@ using Azure.AI.OpenAI;
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 string endpoint = config["AZURE_OPENAI_ENDPOINT"];
 string deployment = config["AZURE_OPENAI_GPT_NAME"];
-string key = config["AZURE_OPENAI_KEY"];
+
+Console.WriteLine(endpoint);
+Console.WriteLine(deployment);
+
+endpoint = "https://cog-s7lpqsuzj7zrm.openai.azure.com";
+deployment = "gpt35s7lpqsuzj7zrm";
 
 IChatClient client =
-    new AzureOpenAIClient(new Uri(endpoint), new ApiKeyCredential(key))
+    new AzureOpenAIClient(new Uri(endpoint), new DefaultAzureCredential(new DefaultAzureCredentialOptions() { TenantId = "888d76fa-54b2-4ced-8ee5-aac1585adee7" }))
         .AsChatClient(deployment);
 
 // Create and print out the prompt

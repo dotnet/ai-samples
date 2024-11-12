@@ -16,11 +16,11 @@ function Set-DotnetUserSecrets {
 }
 
 $lines = (azd env get-values) -split "`n"
-Set-DotnetUserSecrets -path "./azure-openai-sdk/01-HikeBenefitsSummary/" -lines $lines
-Set-DotnetUserSecrets -path "./azure-openai-sdk/02-HikerAI/"     -lines $lines
-Set-DotnetUserSecrets -path "./azure-openai-sdk/03-ChattingAboutMyHikes/" -lines $lines
-Set-DotnetUserSecrets -path "./azure-openai-sdk/04-HikerAIPro/" -lines $lines
-Set-DotnetUserSecrets -path "./azure-openai-sdk/05-HikeImages/" -lines $lines
+Set-DotnetUserSecrets -path "./azure-openai/01-HikeBenefitsSummary/" -lines $lines
+Set-DotnetUserSecrets -path "./azure-openai/02-HikerAI/"     -lines $lines
+Set-DotnetUserSecrets -path "./azure-openai/03-ChattingAboutMyHikes/" -lines $lines
+Set-DotnetUserSecrets -path "./azure-openai/04-HikerAIPro/" -lines $lines
+Set-DotnetUserSecrets -path "./azure-openai/05-HikeImages/" -lines $lines
 
 
 
