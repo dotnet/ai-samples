@@ -15,14 +15,8 @@ var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 string endpoint = config["AZURE_OPENAI_ENDPOINT"];
 string deployment = config["AZURE_OPENAI_GPT_NAME"];
 
-Console.WriteLine(endpoint);
-Console.WriteLine(deployment);
-
-endpoint = "https://cog-s7lpqsuzj7zrm.openai.azure.com";
-deployment = "gpt35s7lpqsuzj7zrm";
-
 IChatClient client =
-    new AzureOpenAIClient(new Uri(endpoint), new DefaultAzureCredential(new DefaultAzureCredentialOptions() { TenantId = "888d76fa-54b2-4ced-8ee5-aac1585adee7" }))
+    new AzureOpenAIClient(new Uri(endpoint), new DefaultAzureCredential(new DefaultAzureCredentialOptions()))
         .AsChatClient(deployment);
 
 // Create and print out the prompt

@@ -2,6 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using Azure.Identity;
 using System.ComponentModel;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,13 +17,12 @@ using Microsoft.SemanticKernel.Connectors.OpenAI;
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 string endpoint = config["AZURE_OPENAI_ENDPOINT"];
 string deployment = config["AZURE_OPENAI_GPT_NAME"];
-string key = config["AZURE_OPENAI_KEY"];
 
 // Create a Kernel containing the Azure OpenAI Chat Completion Service
 IKernelBuilder b = Kernel.CreateBuilder();
 //b.Services.AddLogging(b => b.AddConsole().SetMinimumLevel(LogLevel.Trace)); // uncomment to see all interactions with the model logged
 Kernel kernel = b
-    .AddAzureOpenAIChatCompletion(deployment, endpoint, key)
+    .AddAzureOpenAIChatCompletion(deployment, endpoint, new DefaultAzureCredential())
     .Build();
 
 // Add a new plugin with a local .NET function that should be available to the AI model

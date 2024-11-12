@@ -11,15 +11,16 @@ If it's not already done, get an [API key from OpenAI](https://platform.openai.c
 1. From a terminal or command prompt, navigate to the `01-HikeBenefitsSummary` directory.
 
 1. Run the following commands to configure your OpenAI API key to run the sample, using the key you previously got from OpenAI.
-	```bash
-	dotnet user-secrets init
-	dotnet user-secrets set OpenAIKey <your-openai-key>
-	```
+
+    ```bash
+    dotnet user-secrets init
+    dotnet user-secrets set OpenAIKey <your-openai-key>
+    ```
    
 1. It's now time to try the console application.
-	```bash
-	dotnet run
-	```
+    ```bash
+    dotnet run
+    ```
 
 1. (Optional) Try to change the content of the file or the length of the summary to see the differences in the responses.
 

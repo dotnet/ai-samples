@@ -2,6 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using Azure.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
@@ -12,10 +13,9 @@ using Microsoft.SemanticKernel.Connectors.OpenAI;
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 string endpoint = config["AZURE_OPENAI_ENDPOINT"];
 string deployment = config["AZURE_OPENAI_GPT_NAME"];
-string key = config["AZURE_OPENAI_KEY"];
 
 // Create the Azure OpenAI Chat Completion Service
-AzureOpenAIChatCompletionService service = new(deployment, endpoint, key);
+AzureOpenAIChatCompletionService service = new(deployment, endpoint, new DefaultAzureCredential());
 
 // Start the conversation with context for the AI model
 ChatHistory chatHistory = new("""

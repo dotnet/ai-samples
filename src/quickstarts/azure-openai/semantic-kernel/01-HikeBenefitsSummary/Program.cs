@@ -1,7 +1,7 @@
 ﻿// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
-
+using Azure.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
@@ -12,11 +12,10 @@ using Microsoft.SemanticKernel.Connectors.OpenAI;
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 string endpoint = config["AZURE_OPENAI_ENDPOINT"];
 string deployment = config["AZURE_OPENAI_GPT_NAME"];
-string key = config["AZURE_OPENAI_KEY"];
 
 // Create a Kernel containing the Azure OpenAI Chat Completion Service
 Kernel kernel = Kernel.CreateBuilder()
-    .AddAzureOpenAIChatCompletion(deployment, endpoint, key)
+    .AddAzureOpenAIChatCompletion(deployment, endpoint, new DefaultAzureCredential())
     .Build();
 
 // Create and print out the prompt
