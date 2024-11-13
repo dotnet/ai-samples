@@ -3,8 +3,9 @@
 // See the LICENSE file in the project root for more information.
 
 using Microsoft.Extensions.Configuration;
-using Microsoft.SemanticKernel.ChatCompletion;
-using Microsoft.SemanticKernel.Connectors.OpenAI;
+using Microsoft.Extensions.AI;
+using Azure.AI.OpenAI;
+using System.ClientModel;
 
 // Retrieve the local secrets saved during the Azure deployment. If you skipped the deployment
 // because you already have an Azure OpenAI available, edit the following lines to use your information,
@@ -14,29 +15,32 @@ string endpoint = config["AZURE_OPENAI_ENDPOINT"];
 string deployment = config["AZURE_OPENAI_GPT_NAME"];
 string key = config["AZURE_OPENAI_KEY"];
 
-// Create the Azure OpenAI Chat Completion Service
-AzureOpenAIChatCompletionService service = new(deployment, endpoint, key);
+// Create the IChatClient
+IChatClient client =
+    new AzureOpenAIClient(new Uri(endpoint), new ApiKeyCredential(key))
+        .AsChatClient(deployment);
 
 // Provide context for the AI model
-ChatHistory chatHistory = new($"""
+List<ChatMessage> chatHistory = [new(ChatRole.System, $"""
     You are upbeat and friendly. You introduce yourself when first saying hello. 
     Provide a short answer only based on the user hiking records below:  
 
     {File.ReadAllText("hikes.md")}
-    """);
-Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last().Content}");
+    """)];
+Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last()}");
 
 // Start the conversation
-chatHistory.AddUserMessage("Hi!");
+chatHistory.Add(new ChatMessage(ChatRole.User, "Hi!"));
 await PrintAndSendAsync();
 
 // Continue the conversation with a question.
-chatHistory.AddUserMessage("I would like to know the ratio of the hikes I've done in Canada compared to other countries.");
+chatHistory.Add(new ChatMessage(ChatRole.User, "I would like to know the ratio of the hikes I've done in Canada compared to other countries."));
 await PrintAndSendAsync();
 
 async Task PrintAndSendAsync()
 {
-    Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last().Content}");
-    chatHistory.Add(await service.GetChatMessageContentAsync(chatHistory, new OpenAIPromptExecutionSettings() { MaxTokens = 400 }));
-    Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last().Content}");
+    Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last()}");
+    var response = await client.CompleteAsync(chatHistory, new ChatOptions { MaxOutputTokens = 400 });
+    chatHistory.Add(new ChatMessage(ChatRole.Assistant, response.Message.Text));
+    Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last()}");
 }

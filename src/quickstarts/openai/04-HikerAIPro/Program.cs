@@ -3,12 +3,10 @@
 // See the LICENSE file in the project root for more information.
 
 using System.ComponentModel;
+using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.SemanticKernel;
-using Microsoft.SemanticKernel.ChatCompletion;
-using Microsoft.SemanticKernel.Connectors.OpenAI;
+using OpenAI;
 
 // Retrieve the local secrets that were set from the command line, using:
 // dotnet user-secrets init
@@ -17,41 +15,42 @@ var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 string model = "gpt-3.5-turbo";
 string key = config["OpenAIKey"];
 
-// Create a Kernel containing the OpenAI Chat Completion Service
-IKernelBuilder b = Kernel.CreateBuilder();
-//b.Services.AddLogging(b => b.AddConsole().SetMinimumLevel(LogLevel.Trace)); // uncomment to see all interactions with the model logged
-Kernel kernel = b
-    .AddOpenAIChatCompletion(model, key)
-    .Build();
+// Create the IChatClient
+IChatClient client =
+    new ChatClientBuilder()
+        .UseFunctionInvocation()
+        .Use(new OpenAIClient(key).AsChatClient(model));
 
 // Add a new plugin with a local .NET function that should be available to the AI model
-kernel.ImportPluginFromFunctions("WeatherPlugin",
-[
-    KernelFunctionFactory.CreateFromMethod(([Description("The city, e.g. Montreal, Sidney")] string location, string unit = null) =>
+var chatOptions = new ChatOptions
+{
+    Tools = [AIFunctionFactory.Create((string location, string unit) =>
     {
         // Here you would call a weather API to get the weather for the location
         return "Periods of rain or drizzle, 15 C";
-    }, "get_current_weather", "Get the current weather in a given location")
-]);
+    },
+    "get_current_weather",
+    "Get the current weather in a given location")]
+};
+
 
 // Start the conversation
-ChatHistory chatHistory = new("""
+List<ChatMessage> chatHistory = [new(ChatRole.System, """
     You are a hiking enthusiast who helps people discover fun hikes in their area. You are upbeat and friendly.
     You introduce yourself when first saying hello.
-    """);
-chatHistory.AddUserMessage("Hi!");
+    """)];
+
+chatHistory.Add(new ChatMessage(ChatRole.User, "Hi!"));
 await PrintAndSendAsync();
 
 // Continue the conversation
-chatHistory.AddUserMessage("I live in Montreal and I'm looking for a moderate intensity hike. Is the weather good today for a hike? ");
+chatHistory.Add(new ChatMessage(ChatRole.User, "I live in Montreal and I'm looking for a moderate intensity hike. Is the weather good today for a hike? "));
 await PrintAndSendAsync();
 
 async Task PrintAndSendAsync()
 {
-    Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last().Content}");
-
-    OpenAIPromptExecutionSettings settings = new() { ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions };
-    chatHistory.Add(await kernel.GetRequiredService<IChatCompletionService>().GetChatMessageContentAsync(chatHistory, settings, kernel));
-
-    Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last().Content}");
+    Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last()}");
+    var response = await client.CompleteAsync(chatHistory, chatOptions);
+    chatHistory.Add(new ChatMessage(ChatRole.Assistant, response.Message.Contents));
+    Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last()}");
 }
