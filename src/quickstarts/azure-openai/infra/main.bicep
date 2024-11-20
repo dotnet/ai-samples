@@ -53,9 +53,19 @@ module resources 'resources.bicep' = {
   }
 }
 
+module openAiRoleUser 'core/security/role.bicep' ={
+  scope: rg
+  name: 'openai-role-user'
+  params: {
+    principalId: principalId
+    roleDefinitionId: '5e0bd9bd-7b93-4f28-af87-19fc36ad61bd'
+    principalType: 'User'
+  }
+}
+
+
 output AZURE_CLIENT_ID string = resources.outputs.MANAGED_IDENTITY_CLIENT_ID
 output MANAGED_IDENTITY_CLIENT_ID string = resources.outputs.MANAGED_IDENTITY_CLIENT_ID
 output AZURE_OPENAI_ENDPOINT string = ai.outputs.AZURE_OPENAI_ENDPOINT
 output AZURE_OPENAI_GPT_NAME string = ai.outputs.AZURE_OPENAI_GPT_NAME
 output AZURE_OPENAI_DALLE_NAME string = ai.outputs.AZURE_OPENAI_DALLE_NAME
-output AZURE_OPENAI_KEY string = ai.outputs.AZURE_OPENAI_KEY
