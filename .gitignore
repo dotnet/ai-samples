@@ -403,3 +403,6 @@ FodyWeavers.xsd
 # App settings
 
 **/appsettings.local.json
+
+# Data
+**/src/chat/CustomerSupport/data/manual-chunks.json

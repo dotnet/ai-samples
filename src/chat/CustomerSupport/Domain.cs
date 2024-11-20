@@ -1,13 +1,16 @@
 ﻿using System.Text.Json.Serialization;
-using Microsoft.Extensions.AI;
 
 public class ManualChunk
 {
     public int ChunkId { get; set; }
+
     public int ProductId { get; set; }
+
     public int PageNumber { get; set; }
+
     public required string Text { get; set; }
-    public required Embedding<float> Embedding { get; set; }
+
+    public required ReadOnlyMemory<float> Embedding { get; set; }
 }
 
 public class Message

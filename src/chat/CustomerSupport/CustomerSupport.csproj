@@ -11,14 +11,15 @@
   <ItemGroup>
     <PackageReference Include="Azure.AI.OpenAI" Version="2.1.0-beta.1" />
     <PackageReference Include="Azure.Identity" Version="1.12.0" />
-    <PackageReference Include="Microsoft.Extensions.AI" Version="9.0.0-preview.9.24507.7" />
-    <PackageReference Include="Microsoft.Extensions.AI.Ollama" Version="9.0.0-preview.9.24507.7" />
-    <PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="9.0.0-preview.9.24507.7" />
-    <PackageReference Include="Microsoft.SemanticKernel.Core" Version="1.22.0" />
+    <PackageReference Include="Microsoft.Extensions.AI" Version="9.0.0-preview.9.24525.1" />
+    <PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="9.0.0-preview.9.24525.1" />
+    <PackageReference Include="Microsoft.SemanticKernel.Connectors.InMemory" Version="1.26.0-preview" />
+    <PackageReference Include="Microsoft.SemanticKernel.Core" Version="1.26.0" />
+    <PackageReference Include="OllamaSharp" Version="4.0.3" />
     <PackageReference Include="PdfPig" Version="0.1.9-alpha-20240721-a99c0" />
     <PackageReference Include="Spectre.Console" Version="0.49.1" />
     <PackageReference Include="Spectre.Console.Cli" Version="0.49.1" />
-    <PackageReference Include="System.Numerics.Tensors" Version="9.0.0-preview.6.24327.7" />
+    <PackageReference Include="System.Linq.Async" Version="6.0.1" />
   </ItemGroup>
 
   <ItemGroup>

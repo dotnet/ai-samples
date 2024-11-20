@@ -1,14 +1,4 @@
-﻿using System.ClientModel;
-using System.Runtime.CompilerServices;
-using System.Text.Json;
-using Azure.AI.OpenAI;
-using Azure.Identity;
-using Microsoft.Extensions.AI;
-using Microsoft.SemanticKernel.ChatCompletion;
-using Microsoft.VisualBasic;
-using Spectre.Console;
-
-public static class Utils
+﻿public static class Utils
 {
     public static AzureOpenAIClient CreateAzureOpenAIClient(string endpoint, bool useManagedIdentity)
     {
@@ -35,6 +25,12 @@ public static class Utils
         var chunkData = File.ReadAllText(path);
         var chunks = JsonSerializer.Deserialize<List<ManualChunk>>(chunkData);
         return chunks;
+    }
+
+    public static async void LoadManualsIntoVectorStore(string path, ProductManualService productManualService)
+    {
+        var manuals = LoadManualChunks(path);
+        await productManualService.InsertManualChunksAsync(manuals);
     }
 
     public static void InspectTicket(IEnumerable<Ticket> tickets)
@@ -98,7 +94,7 @@ public static class Utils
         AnsiConsole.Write(panel);
     }
 
-    public static async Task InspectTicketWithSemanticSearchAsync(IEnumerable<Ticket> tickets, TicketSummarizer summaryGenerator, ProductManualSemanticSearch productManualSearchService, IChatClient chatClient)
+    public static async Task InspectTicketWithSemanticSearchAsync(IEnumerable<Ticket> tickets, TicketSummarizer summaryGenerator, ProductManualService productManualService, IChatClient chatClient)
     {
         // User selects ticket
         var ticket =
@@ -154,14 +150,20 @@ public static class Utils
 
                 // RAG loop
                 // [1] Search for relevant documents
-                var searchResults = await productManualSearchService.SearchAsync(ticket.ProductId.Value, query);
+                var manualChunks = await productManualService.GetManualChunksAsync(query, ticket.ProductId.Value);
 
                 // [2] Augment prompt with search results
+                var context = (await manualChunks.Results.ToListAsync()).Select(r => $"- {r.Record.Text}");
+
                 var message = $"""
-                Using the following data sources as context, answer the user query: {query}
+                Using the following data sources as context
                 
                 ## Context
-                {String.Join("\n", searchResults)}
+                {string.Join("\n", context)}
+
+                ## Instruction
+
+                Answer the user query: {query}
 
                 Response: 
                 """;

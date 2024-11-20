@@ -1,39 +1,32 @@
 ﻿#pragma warning disable
-
-// Add dependencies
-using System.Text.Json;
-using Spectre.Console;
-using System.Collections.Immutable;
-using System.Collections;
-using System.Reflection.Metadata.Ecma335;
-using static Utils;
-using Microsoft.SemanticKernel.Embeddings;
-using Azure.AI.OpenAI;
-using Azure.Identity;
-using Microsoft.Extensions.AI;
-using System.ClientModel;
+using Microsoft.SemanticKernel.Connectors.InMemory;
 
 // Configure AI
 var ollamaEndpoint = "http://localhost:11434/";
 var openAIEndpoint = Environment.GetEnvironmentVariable("AZURE_OPENAI_ENDPOINT");
 
-var useOpenAI = true;
+var useOpenAIChat = true; // Use OpenAI chat completion models
+var useOpenAIEmbeddings = true; // Use OpenAI text embedding generation models
 var useManagedIdentity = true;
 
 IChatClient chatClient =
-    useOpenAI ?
+    useOpenAIChat ?
     Utils.CreateAzureOpenAIClient(openAIEndpoint, useManagedIdentity)
         .AsChatClient("chat")
-    : new OllamaChatClient(new Uri(ollamaEndpoint), "llama3.1");
+    : new OllamaApiClient(new Uri(ollamaEndpoint), "llama3.2");
 
-IEmbeddingGenerator<string,Embedding<float>> embeddingGenerator =
-    useOpenAI ?
+IEmbeddingGenerator<string, Embedding<float>> embeddingGenerator =
+    useOpenAIEmbeddings ?
         Utils.CreateAzureOpenAIClient(openAIEndpoint, useManagedIdentity)
-        .AsEmbeddingGenerator("embeddingsmall") :
-        new OllamaEmbeddingGenerator(new Uri(ollamaEndpoint), "all-minilm");
+            .AsEmbeddingGenerator("embeddingsmall") :
+                new OllamaApiClient(new Uri(ollamaEndpoint), "all-minilm");
 
+// Configure product manual service
+var vectorStore = new InMemoryVectorStore();
+var productManualService = new ProductManualService(embeddingGenerator, vectorStore, useOpenAIEmbeddings);
 // Ingest manuals
-if(!File.Exists("./data/manual-chunks.json"))
+
+if (!File.Exists("./data/manual-chunks.json"))
 {
     var manualIngestor = new ManualIngestor(embeddingGenerator);
     await manualIngestor.RunAsync("./data/manuals", "./data");
@@ -41,27 +34,26 @@ if(!File.Exists("./data/manual-chunks.json"))
 
 // Load tickets and manuals
 var tickets = LoadTickets("./data/tickets.json");
-var manuals = LoadManualChunks("./data/manual-chunks.json");
+LoadManualsIntoVectorStore("./data/manual-chunks.json", productManualService);
 
 // Service configurations
 var summaryGenerator = new TicketSummarizer(chatClient);
-var productManualSearchService = new ProductManualSemanticSearch(embeddingGenerator, manuals);
 
-while(true)
+while (true)
 {
-    var prompt = 
+    var prompt =
         AnsiConsole
             .Prompt(
                 new SelectionPrompt<string>()
                     .Title("Enter a command")
                     .PageSize(10)
                     .MoreChoicesText("[grey](Move up and down to reveal more choices)[/]")
-                    .AddChoices(new[] {"Inspect ticket", "Quit"})
+                    .AddChoices(new[] { "Inspect ticket", "Quit" })
             );
 
-    if(prompt == "Quit") break;
+    if (prompt == "Quit") break;
 
-    if(prompt == "Inspect ticket")
+    if (prompt == "Inspect ticket")
     {
         // No AI
         // InspectTicket(tickets);
@@ -70,7 +62,6 @@ while(true)
         // await InspectTicketWithAISummaryAsync(tickets, summaryGenerator);
 
         // With Semantic Search 
-        await InspectTicketWithSemanticSearchAsync(tickets, summaryGenerator, productManualSearchService, chatClient);
-
+        await InspectTicketWithSemanticSearchAsync(tickets, summaryGenerator, productManualService, chatClient);
     }
 }

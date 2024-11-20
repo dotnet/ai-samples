@@ -9,7 +9,7 @@ This sample is a C# console application that uses Generative AI services like Ol
 ## Project structure
 
 - *ManualIngestor.cs* - Ingestion service that extracts data from product manual PDF files, chunks text into smaller segments, generates embeddings, saves them to a JSON file.
-- *ProductManualSemanticSearch.cs* - Search service that uses product manual embeddings for semantic search. 
+- *ProductManualService.cs* - Storage service that uses an `IVectorStore` to save and search product manual embeddings.
 - *TicketSummarizer* - AI service which uses an AI model to generate summaries of customer support tickets.
 
 ## Requirements
@@ -33,10 +33,10 @@ For this application, you can either use local language and embedding models wit
 
 ### Ollama
 
-1. Download [llama3.1](https://ollama.com/library/llama3.1) language model
+1. Download [llama3.2](https://ollama.com/library/llama3.2) language model
 
     ```bash
-    ollama pull llama3.1
+    ollama pull llama3.2
     ```
 
 1. Download [all-minilm](https://ollama.com/library/all-minilm) embedding model
@@ -45,7 +45,10 @@ For this application, you can either use local language and embedding models wit
     ollama pull all-minilm
     ```
 
-1. In *Program.cs*, set `useOpenAI` to `false`.
+1. In *Program.cs*, depending on what you want to use the model for set:
+
+    - `useOpenAIChat` to `false`
+    - `useOpenAIEmbeddings` to `false`
 
 ### Azure OpenAI
 
@@ -58,7 +61,11 @@ For this application, you can either use local language and embedding models wit
 
     If you use deployment names other than *chat* and *embedding*, update them in `Program.cs`;
 
-1. In *Program.cs*, set `useOpenAI` to `true`.
+1. In *Program.cs*, depending on what you want to use the model for set: 
+
+    - `useOpenAIChat` to `true`
+    - `useOpenAIEmbeddings` to `true`
+
 1. Configure environment variables for your endpoint and key. For more details, [see the Azure OpenAI documentation](https://learn.microsoft.com/azure/ai-services/openai/chatgpt-quickstart?tabs=command-line%2Cpython-new&pivots=programming-language-csharp#retrieve-key-and-endpoint).
     - **AZURE_OPENAI_ENDPOINT** - Your Azure OpenAI endpoint.
     - **AZURE_OPENAI_KEY** - Your Azure OpenAI Key.

@@ -1,8 +1,4 @@
-﻿using Microsoft.Extensions.AI;
-using Microsoft.SemanticKernel;
-using Microsoft.SemanticKernel.ChatCompletion;
-
-public class TicketSummarizer
+﻿public class TicketSummarizer
 {
     private readonly IChatClient _chatClient;
 
