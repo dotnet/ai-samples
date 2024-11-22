@@ -1,4 +1,4 @@
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Diagnostics;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Caching.Distributed;
@@ -8,10 +8,10 @@ using OpenTelemetry.Trace;
 
 public partial class AbstractionSamples
 {
-    public static async Task Middleware() 
+    public static async Task Middleware()
     {
         // Configure OpenTelemetry Exporter
-        var sourceName  = Guid.NewGuid().ToString();
+        var sourceName = Guid.NewGuid().ToString();
         var activities = new List<Activity>();
 
         var tracerProvider = OpenTelemetry.Sdk.CreateTracerProviderBuilder()
@@ -25,33 +25,26 @@ public partial class AbstractionSamples
 
         // Configure tool calling
         [Description("Gets the weather")]
-        string GetWeather()
-        {
-            var r = new Random();
-            return r.NextDouble() > 0.5 ? "It's sunny" : "It's raining";
-        }
+        string GetWeather() => Random.Shared.NextDouble() > 0.5 ? "It's sunny" : "It's raining";
 
         var chatOptions = new ChatOptions
         {
-            Tools = [ AIFunctionFactory.Create(GetWeather) ]
+            Tools = [AIFunctionFactory.Create(GetWeather)]
         };
 
-        IChatClient client =
-            new ChatClientBuilder()
-                .UseFunctionInvocation()
-                .UseOpenTelemetry(sourceName, instance => {
-                    instance.EnableSensitiveData = true;
-                })
-                .UseDistributedCache(cache)
-                .Use(new SampleChatClient(new Uri("http://coolsite.ai"), "my-custom-model"));
+        IChatClient client = new SampleChatClient(new Uri("http://coolsite.ai"), "my-custom-model")
+            .AsBuilder()
+            .UseFunctionInvocation()
+            .UseOpenTelemetry(sourceName: sourceName, configure: o => o.EnableSensitiveData = true)
+            .UseDistributedCache(cache)
+            .Build();
 
-        var conversation = new [] {
-            new ChatMessage(ChatRole.System, "You are a helpful AI assistant"),
-            new ChatMessage(ChatRole.User, "Do I need an umbrella?")
-        };
+        List<ChatMessage> conversation =
+        [
+            new(ChatRole.System, "You are a helpful AI assistant"),
+            new(ChatRole.User, "Do I need an umbrella?")
+        ];
 
-        var response = await client.CompleteAsync("Do I need an umbrella?", chatOptions);
-
-        Console.WriteLine(response.Message);
-    }    
+        Console.WriteLine(await client.CompleteAsync("Do I need an umbrella?", chatOptions));
+    }
 }

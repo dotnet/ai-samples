@@ -1,4 +1,4 @@
-using Microsoft.Extensions.AI;
+﻿using Microsoft.Extensions.AI;
 
 public class SampleEmbeddingGenerator : IEmbeddingGenerator<string, Embedding<float>>
 {
@@ -20,7 +20,7 @@ public class SampleEmbeddingGenerator : IEmbeddingGenerator<string, Embedding<fl
         EmbeddingGenerationOptions? options = null,
         CancellationToken cancellationToken = default)
     {
-        var embeddings = new List<Embedding<float>>();
+        GeneratedEmbeddings<Embedding<float>> embeddings = [];
 
         foreach (var value in values)
         {
@@ -28,22 +28,17 @@ public class SampleEmbeddingGenerator : IEmbeddingGenerator<string, Embedding<fl
             await Task.Delay(100, cancellationToken);
 
             // Generate a sample embedding
-            var embedding = new Embedding<float>(new float[] {
+            embeddings.Add(new(new[] {
                 _random.NextSingle(),
                 _random.NextSingle(),
-                _random.NextSingle()});
-
-            embeddings.Add(embedding);
+                _random.NextSingle()}));
         }
 
-        return new GeneratedEmbeddings<Embedding<float>>(embeddings);
+        return embeddings;
     }
 
-    public TService? GetService<TService>(object? key = null) where TService : class
-    {
-        // Return null as this is a sample implementation
-        return null;
-    }
+    public object? GetService(Type serviceType, object? key = null) =>
+        key is null && serviceType?.IsInstanceOfType(this) is true ? this : null;
 
     public void Dispose()
     {

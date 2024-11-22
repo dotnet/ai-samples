@@ -1,6 +1,6 @@
 ﻿using Spectre.Console;
 
-while(true)
+while (true)
 {
     var prompt = 
         AnsiConsole
@@ -9,12 +9,12 @@ while(true)
                     .Title("Enter a command")
                     .PageSize(10)
                     .MoreChoicesText("[grey](Move up and down to reveal more choices)[/]")
-                    .AddChoices(new[] {"Choose sample", "Quit"})
+                    .AddChoices(["Choose sample", "Quit"])
             );
 
-    if(prompt == "Quit") break;
+    if (prompt == "Quit") break;
 
-    if(prompt == "Choose sample")
+    if (prompt == "Choose sample")
     {
         var selectedSample = 
             AnsiConsole
@@ -23,55 +23,35 @@ while(true)
                         .Title("Choose a sample")
                         .PageSize(10)
                         .MoreChoicesText("[grey](Move up and down to reveal more choices)[/]")
-                        .AddChoices(new[] 
-                            {
-                                "Chat", 
-                                "Conversation History", 
-                                "Streaming", 
-                                "Tool Calling", 
-                                "Caching", 
-                                "OpenTelemetry", 
-                                "Middleware",
-                                "Dependency Injection",
-                                "Text Embedding", 
-                                "Text Embedding Caching",                         
-                            })
+                        .AddChoices([
+                            "Chat", 
+                            "Conversation History", 
+                            "Streaming", 
+                            "Tool Calling", 
+                            "Caching", 
+                            "OpenTelemetry", 
+                            "Middleware",
+                            "Dependency Injection",
+                            "Text Embedding", 
+                            "Text Embedding Caching",                         
+                        ])
                 );
 
 
         // Execute the selected sample
-        switch (selectedSample)
+        await (selectedSample switch
         {
-            case "Chat":
-                await OllamaSamples.Chat();
-                break;
-            case "Conversation History":
-                await OllamaSamples.ConversationHistory();
-                break;
-            case "Streaming":
-                await OllamaSamples.Streaming();
-                break;
-            case "Tool Calling":
-                await OllamaSamples.ToolCalling();
-                break;
-            case "Caching":
-                await OllamaSamples.Caching();
-                break;
-            case "OpenTelemetry":
-                await OllamaSamples.OpenTelemetryExample();
-                break;
-            case "Middleware":
-                await OllamaSamples.Middleware();
-                break;
-            case "Dependency Injection":
-                await OllamaSamples.DependencyInjection();
-                break;
-            case "Text Embedding":
-                await OllamaSamples.TextEmbedding();
-                break;
-            case "Text Embedding Caching":
-                await OllamaSamples.TextEmbeddingCaching();
-                break;        
-        }
+            "Chat" => OllamaSamples.Chat(),
+            "Conversation History" => OllamaSamples.ConversationHistory(),
+            "Streaming" => OllamaSamples.Streaming(),
+            "Tool Calling" => OllamaSamples.ToolCalling(),
+            "Caching" => OllamaSamples.Caching(),
+            "OpenTelemetry" => OllamaSamples.OpenTelemetryExample(),
+            "Middleware" => OllamaSamples.Middleware(),
+            "Dependency Injection" => OllamaSamples.DependencyInjection(),
+            "Text Embedding" => OllamaSamples.TextEmbedding(),
+            "Text Embedding Caching" => OllamaSamples.TextEmbeddingCaching(),
+            _ => Task.CompletedTask,
+        });
     }
 }

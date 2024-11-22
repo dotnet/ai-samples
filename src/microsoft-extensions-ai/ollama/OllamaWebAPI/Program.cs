@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.AI;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,31 +8,20 @@ builder.Configuration.AddJsonFile(
     optional: true,
     reloadOnChange: true);
 
-builder.Services.AddChatClient(c => {
-    var endpoint = new Uri(builder.Configuration["AI:Ollama:Chat:Endpoint"] ?? "http://localhost:11434/");
-    var modelId = builder.Configuration["AI:Ollama:Chat:ModelId"];
-    return c.Use(new OllamaChatClient(endpoint, modelId));
-});
+var chatEndpoint = new Uri(builder.Configuration["AI:Ollama:Chat:Endpoint"] ?? "http://localhost:11434/");
+var embeddingEndpoint = new Uri(builder.Configuration["AI:Ollama:Embedding:Endpoint"] ?? "http://localhost:11434/");
+var chatModelId = builder.Configuration["AI:Ollama:Chat:ModelId"];
+var embeddingModelId = builder.Configuration["AI:Ollama:Embedding:ModelId"];
 
-builder.Services.AddEmbeddingGenerator<string,Embedding<float>>(c => {
-    var endpoint = new Uri(builder.Configuration["AI:Ollama:Embedding:Endpoint"] ?? "http://localhost:11434/");
-    var modelId = builder.Configuration["AI:Ollama:Embedding:ModelId"];
-    
-    return c.Use(new OllamaEmbeddingGenerator(endpoint, modelId));
-});
+builder.Services.AddChatClient(new OllamaChatClient(chatEndpoint, chatModelId));
+builder.Services.AddEmbeddingGenerator(new OllamaEmbeddingGenerator(embeddingEndpoint, embeddingModelId));
 
 var app = builder.Build();
 
 app.MapPost("/chat", async (IChatClient client, [FromBody] string message) =>
-{
-    var response = await client.CompleteAsync(message, cancellationToken: default);
-    return response;
-});
+    await client.CompleteAsync(message, cancellationToken: default));
 
-app.MapPost("/embedding", async (IEmbeddingGenerator<string,Embedding<float>> client, [FromBody] string message) =>
-{
-    var response = await client.GenerateAsync(message);
-    return response;
-});
+app.MapPost("/embedding", async (IEmbeddingGenerator<string, Embedding<float>> client, [FromBody] string message) =>
+    await client.GenerateEmbeddingAsync(message));
 
 app.Run();

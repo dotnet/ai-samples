@@ -1,4 +1,4 @@
-using OpenAI;
+﻿using OpenAI;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Options;
@@ -16,20 +16,21 @@ public partial class OpenAISamples
             new OpenAIClient(Environment.GetEnvironmentVariable("OPENAI_API_KEY"))
                 .AsChatClient("gpt-4o-mini");
 
-        IChatClient client =
-            new ChatClientBuilder()
-                .UseDistributedCache(cache)
-                .Use(openaiClient);
+        IChatClient client = openaiClient
+            .AsBuilder()
+            .UseDistributedCache(cache)
+            .Build();
 
-        var prompts = new []{"What is AI?", "What is .NET?", "What is AI?"};
+        string[] prompts = ["What is AI?", "What is .NET?", "What is AI?"];
 
-        foreach(var prompt in prompts)
+        foreach (var prompt in prompts)
         {
-            var stream = client.CompleteStreamingAsync(prompt);
-            await foreach (var message in stream)
+            await foreach (var message in client.CompleteStreamingAsync(prompt))
             {
                 Console.Write(message);
             }
+
+            Console.WriteLine();
         }
     }    
 }

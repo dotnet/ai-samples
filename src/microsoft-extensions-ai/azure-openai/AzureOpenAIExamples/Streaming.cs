@@ -1,5 +1,4 @@
-using OpenAI;
-using Microsoft.Extensions.AI;
+﻿using Microsoft.Extensions.AI;
 using Azure.AI.OpenAI;
 using Azure.Identity;
 
@@ -13,10 +12,10 @@ public partial class OpenAISamples
                 new DefaultAzureCredential())
                 .AsChatClient(modelId: "gpt-4o-mini");
 
-        var stream = client.CompleteStreamingAsync("What is AI?");
-        await foreach (var update in stream)
+        await foreach (var update in client.CompleteStreamingAsync("What is AI?"))
         {
             Console.Write(update);
         }
+        Console.WriteLine();
     }    
 }

@@ -1,5 +1,4 @@
-using OpenAI;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using Microsoft.Extensions.AI;
 using Azure.Identity;
 using Azure.AI.OpenAI;
@@ -9,11 +8,7 @@ public partial class OpenAISamples
     public static async Task ToolCalling() 
     {
         [Description("Gets the weather")]
-        string GetWeather()
-        {
-            var r = new Random();
-            return r.NextDouble() > 0.5 ? "It's sunny" : "It's raining";
-        }
+        string GetWeather() => Random.Shared.NextDouble() > 0.5 ? "It's sunny" : "It's raining";
 
         var chatOptions = new ChatOptions
         {
@@ -26,16 +21,15 @@ public partial class OpenAISamples
                 new DefaultAzureCredential())
                     .AsChatClient("gpt-4o-mini");
 
-        IChatClient client =
-            new ChatClientBuilder()
-                .UseFunctionInvocation()
-                .Use(azureOpenAIClient);
+        IChatClient client = azureOpenAIClient
+            .AsBuilder()
+            .UseFunctionInvocation()
+            .Build();
 
-        var stream = client.CompleteStreamingAsync("Do I need an umbrella?", chatOptions);
-
-        await foreach (var message in stream)
+        await foreach (var message in client.CompleteStreamingAsync("Do I need an umbrella?", chatOptions))
         {
             Console.Write(message);
         }
+        Console.WriteLine();
     }    
 }

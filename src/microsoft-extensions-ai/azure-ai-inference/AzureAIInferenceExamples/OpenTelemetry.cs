@@ -1,4 +1,4 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using Azure;
 using Azure.AI.Inference;
 using Microsoft.Extensions.AI;
@@ -6,10 +6,10 @@ using OpenTelemetry.Trace;
 
 public partial class AzureAIInferenceSamples
 {
-    public static async Task OpenTelemetryExample() 
+    public static async Task OpenTelemetryExample()
     {
         // Configure OpenTelemetry Exporter
-        var sourceName  = Guid.NewGuid().ToString();
+        var sourceName = Guid.NewGuid().ToString();
         var activities = new List<Activity>();
 
         var tracerProvider = OpenTelemetry.Sdk.CreateTracerProviderBuilder()
@@ -25,15 +25,11 @@ public partial class AzureAIInferenceSamples
             new ChatCompletionsClient(endpoint, credential)
                 .AsChatClient(modelId);
 
-        IChatClient client =
-            new ChatClientBuilder()
-                .UseOpenTelemetry(sourceName, instance => {
-                    instance.EnableSensitiveData = true;
-                })
-                .Use(aiInferenceClient);
+        IChatClient client = aiInferenceClient
+            .AsBuilder()
+            .UseOpenTelemetry(sourceName: sourceName, configure: o => o.EnableSensitiveData = true)
+            .Build();
 
-        var response = await client.CompleteAsync("What is AI?");
-
-        Console.WriteLine(response.Message);
-    }    
+        Console.WriteLine(await client.CompleteAsync("What is AI?"));
+    }
 }

@@ -10,8 +10,8 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.8" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
-    <PackageReference Include="Microsoft.Extensions.AI" Version="9.0.0-preview.9.24507.7" />
-    <PackageReference Include="Microsoft.Extensions.AI.AzureAIInference" Version="9.0.0-preview.9.24507.7" />
+    <PackageReference Include="Microsoft.Extensions.AI" Version="9.0.1-preview.1.24570.5" />
+    <PackageReference Include="Microsoft.Extensions.AI.AzureAIInference" Version="9.0.1-preview.1.24570.5" />
   </ItemGroup>
 
 </Project>
