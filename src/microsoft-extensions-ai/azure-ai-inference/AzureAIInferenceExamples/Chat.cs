@@ -1,4 +1,4 @@
-using Azure;
+﻿using Azure;
 using Azure.AI.Inference;
 using Microsoft.Extensions.AI;
 
@@ -14,8 +14,6 @@ public partial class AzureAIInferenceSamples
             new ChatCompletionsClient(endpoint, credential)
                 .AsChatClient(modelId);
 
-        var response = await client.CompleteAsync("What is AI?");
-
-        Console.WriteLine(response.Message);
+        Console.WriteLine(await client.CompleteAsync("What is AI?"));
     }    
 }

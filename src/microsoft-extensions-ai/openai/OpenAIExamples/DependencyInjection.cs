@@ -1,6 +1,5 @@
-using OpenAI;
+﻿using OpenAI;
 using Microsoft.Extensions.AI;
-using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -8,28 +7,17 @@ public partial class OpenAISamples
 {
     public static async Task DependencyInjection() 
     {
-        var app = Host.CreateApplicationBuilder();
+        var builder = Host.CreateApplicationBuilder();
 
-        app.Services.AddSingleton(
-            new OpenAIClient(Environment.GetEnvironmentVariable("OPENAI_API_KEY")));
-        app.Services.AddDistributedMemoryCache();
-        app.Services.AddChatClient(builder => {
+        builder.Services.AddSingleton(new OpenAIClient(Environment.GetEnvironmentVariable("OPENAI_API_KEY")));
+        builder.Services.AddDistributedMemoryCache();
+        builder.Services.AddChatClient(services => services.GetRequiredService<OpenAIClient>().AsChatClient("gpt-4o-mini"))
+            .UseDistributedCache();
+        
+        var app = builder.Build();
 
-            var openaiClient = builder.Services.GetRequiredService<OpenAIClient>();
-            var cache = builder.Services.GetRequiredService<IDistributedCache>();
+        var chatClient = app.Services.GetRequiredService<IChatClient>();
 
-            return builder
-                .UseDistributedCache() 
-                .Use(openaiClient.AsChatClient("gpt-4o-mini"));
-        });
-
-        var serviceProvider = app.Services.BuildServiceProvider();
-        app.Build();
-
-        var chatClient = serviceProvider.GetRequiredService<IChatClient>();
-
-        var response = await chatClient.CompleteAsync("What is AI?");
-
-        Console.WriteLine(response.Message);
+        Console.WriteLine(await chatClient.CompleteAsync("What is AI?"));
     }        
 }

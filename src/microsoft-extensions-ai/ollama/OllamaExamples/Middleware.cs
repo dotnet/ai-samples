@@ -1,4 +1,4 @@
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Diagnostics;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Caching.Distributed;
@@ -10,7 +10,6 @@ public partial class OllamaSamples
 {
     public static async Task Middleware() 
     {
-
         // Configure OpenTelemetry Exporter
         var sourceName  = Guid.NewGuid().ToString();
         var activities = new List<Activity>();
@@ -27,36 +26,29 @@ public partial class OllamaSamples
 
         // Configure tool calling
         [Description("Gets the weather")]
-        string GetWeather()
-        {
-            var r = new Random();
-            return r.NextDouble() > 0.5 ? "It's sunny" : "It's raining";
-        }
+        string GetWeather() => Random.Shared.NextDouble() > 0.5 ? "It's sunny" : "It's raining";
 
         var chatOptions = new ChatOptions
         {
-            Tools = [AIFunctionFactory.Create(GetWeather) ]
+            Tools = [AIFunctionFactory.Create(GetWeather)]
         };
 
-        var endpoint = new Uri("http://localhost:11434/");
+        var endpoint = "http://localhost:11434/";
         var modelId = "llama3.1";
 
-        IChatClient client =
-            new ChatClientBuilder()
-                .UseFunctionInvocation()
-                .UseOpenTelemetry(sourceName, instance => {
-                    instance.EnableSensitiveData = true;
-                })
-                .UseDistributedCache(cache)
-                .Use(new OllamaChatClient(endpoint, modelId: modelId));
+        IChatClient client = new OllamaChatClient(endpoint, modelId: modelId)
+            .AsBuilder()
+            .UseFunctionInvocation()
+            .UseOpenTelemetry(sourceName: sourceName, configure: o => o.EnableSensitiveData = true)
+            .UseDistributedCache(cache)
+            .Build();
 
-        var conversation = new [] {
-            new ChatMessage(ChatRole.System, "You are a helpful AI assistant"),
-            new ChatMessage(ChatRole.User, "Do I need an umbrella?")
-        };
+        List<ChatMessage> conversation =
+        [
+            new(ChatRole.System, "You are a helpful AI assistant"),
+            new(ChatRole.User, "Do I need an umbrella?")
+        ];
 
-        var response = await client.CompleteAsync("Do I need an umbrella?", chatOptions);
-
-        Console.WriteLine(response.Message);
+        Console.WriteLine(await client.CompleteAsync("Do I need an umbrella?", chatOptions));
     }    
 }

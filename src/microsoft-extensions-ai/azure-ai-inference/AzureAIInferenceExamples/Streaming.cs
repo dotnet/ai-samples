@@ -1,4 +1,4 @@
-using Azure;
+﻿using Azure;
 using Azure.AI.Inference;
 using Microsoft.Extensions.AI;
 
@@ -10,13 +10,9 @@ public partial class AzureAIInferenceSamples
         var modelId = "gpt-4o-mini";
         var credential = new AzureKeyCredential(Environment.GetEnvironmentVariable("GH_TOKEN"));
 
-        IChatClient client =
-            new ChatCompletionsClient(endpoint, credential)
-                .AsChatClient(modelId);
+        IChatClient client = new ChatCompletionsClient(endpoint, credential).AsChatClient(modelId);
 
-        var stream = client.CompleteStreamingAsync("What is AI?");
-        
-        await foreach (var update in stream)
+        await foreach (var update in client.CompleteStreamingAsync("What is AI?"))
         {
             Console.Write(update);
         }

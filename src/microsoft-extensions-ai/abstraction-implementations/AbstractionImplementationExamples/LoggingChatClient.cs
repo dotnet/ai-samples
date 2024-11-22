@@ -1,4 +1,4 @@
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Logging;
 
@@ -6,7 +6,7 @@ public class LoggingChatClient : DelegatingChatClient
 {
     private readonly ILogger _logger;
     private readonly IChatClient _innerClient;
-    
+
     public LoggingChatClient(IChatClient innerClient, ILogger? logger = null) : base(innerClient)
     {
         _innerClient = innerClient;

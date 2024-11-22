@@ -1,4 +1,4 @@
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using Microsoft.Extensions.AI;
 
 public class SampleChatClient : IChatClient
@@ -22,12 +22,12 @@ public class SampleChatClient : IChatClient
         CancellationToken cancellationToken = default)
     {
         // Generate a set of random responses
-        var responses = new List<string>
-        {
+        List<string> responses =
+        [
             "This is the first sample response.",
             "Here is another example of a response message.",
             "This is yet another response message."
-        };
+        ];
 
         // Choose one response randomly
         var chosenResponse = responses[_random.Next(responses.Count)];
@@ -36,13 +36,7 @@ public class SampleChatClient : IChatClient
         await Task.Delay(300, cancellationToken);
 
         // Return a sample chat completion response
-        return new ChatCompletion(
-            new ChatMessage
-            {
-                Role = Microsoft.Extensions.AI.ChatRole.Assistant,
-                Text = chosenResponse
-            }
-        );
+        return new ChatCompletion(new ChatMessage(ChatRole.Assistant, chosenResponse));
     }
 
     public async IAsyncEnumerable<StreamingChatCompletionUpdate> CompleteStreamingAsync(
@@ -53,7 +47,7 @@ public class SampleChatClient : IChatClient
         // Simulate streaming by yielding messages one by one
         yield return new StreamingChatCompletionUpdate
         {
-            Role = Microsoft.Extensions.AI.ChatRole.Assistant,
+            Role = ChatRole.Assistant,
             Text = "This is the first part of the stream.",
         };
 
@@ -61,16 +55,13 @@ public class SampleChatClient : IChatClient
 
         yield return new StreamingChatCompletionUpdate
         {
-            Role = Microsoft.Extensions.AI.ChatRole.Assistant,
+            Role = ChatRole.Assistant,
             Text = "This is the second part of the stream.",
         };
     }
 
-    public TService? GetService<TService>(object? key = null) where TService : class
-    {
-        // Return null as this is a sample implementation
-        return this as TService;
-    }
+    public object? GetService(Type serviceType, object? key = null) =>
+        key is null && serviceType?.IsInstanceOfType(this) is true ? this : null;
 
     public void Dispose()
     {

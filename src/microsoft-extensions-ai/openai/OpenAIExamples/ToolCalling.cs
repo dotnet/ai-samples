@@ -1,17 +1,13 @@
-using OpenAI;
+﻿using OpenAI;
 using System.ComponentModel;
 using Microsoft.Extensions.AI;
 
 public partial class OpenAISamples
 {
-    public static async Task ToolCalling() 
+    public static async Task ToolCalling()
     {
         [Description("Gets the weather")]
-        string GetWeather()
-        {
-            var r = new Random();
-            return r.NextDouble() > 0.5 ? "It's sunny" : "It's raining";
-        }
+        string GetWeather() => Random.Shared.NextDouble() > 0.5 ? "It's sunny" : "It's raining";
 
         var chatOptions = new ChatOptions
         {
@@ -22,16 +18,15 @@ public partial class OpenAISamples
             new OpenAIClient(Environment.GetEnvironmentVariable("OPENAI_API_KEY"))
                 .AsChatClient("gpt-4o-mini");
 
-        IChatClient client =
-            new ChatClientBuilder()
-                .UseFunctionInvocation()
-                .Use(openaiClient);
+        IChatClient client = openaiClient
+            .AsBuilder()
+            .UseFunctionInvocation()
+            .Build();
 
-        var stream = client.CompleteStreamingAsync("Do I need an umbrella?", chatOptions);
-
-        await foreach (var message in stream)
+        await foreach (var message in client.CompleteStreamingAsync("Do I need an umbrella?", chatOptions))
         {
             Console.Write(message);
         }
-    }    
+        Console.WriteLine();
+    }
 }

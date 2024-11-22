@@ -1,4 +1,4 @@
-using Azure.AI.OpenAI;
+﻿using Azure.AI.OpenAI;
 using Microsoft.Extensions.AI;
 using Azure.Identity;
 
@@ -12,8 +12,6 @@ public partial class OpenAISamples
                 new DefaultAzureCredential())
                 .AsChatClient(modelId: "gpt-4o-mini");
 
-        var response = await client.CompleteAsync("What is AI?");
-
-        Console.WriteLine(response.Message);
+        Console.WriteLine(await client.CompleteAsync("What is AI?"));
     }    
 }

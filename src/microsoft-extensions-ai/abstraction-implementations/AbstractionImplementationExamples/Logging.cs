@@ -1,29 +1,23 @@
-using Microsoft.Extensions.AI;
+﻿using Microsoft.Extensions.AI;
 
 public partial class AbstractionSamples
 {
-    public static async Task LoggingChat() 
+    public static async Task LoggingChat()
     {
         IChatClient sampleChatClient = new SampleChatClient(new Uri("http://coolsite.ai"), "my-custom-model");
 
         IChatClient client = new LoggingChatClient(sampleChatClient);
 
-        var response = await client.CompleteAsync("What is AI?");
-
-        Console.WriteLine(response.Message);
-    }    
+        Console.WriteLine(await client.CompleteAsync("What is AI?"));
+    }
 
     public static async Task LoggingEmbedding()
     {
-        IEmbeddingGenerator<string,Embedding<float>> sampleEmbeddingGenerator = 
-            new SampleEmbeddingGenerator(new Uri("http://coolsite.ai"), "my-custom-model");
+        IEmbeddingGenerator<string, Embedding<float>> generator =
+            new LoggingEmbeddingGenerator(
+                new SampleEmbeddingGenerator(new Uri("http://coolsite.ai"), "my-custom-model"));
 
-        IEmbeddingGenerator<string,Embedding<float>> generator = 
-            new LoggingEmbeddingGenerator(sampleEmbeddingGenerator);
-
-        var embeddings = await generator.GenerateAsync(new []{"What is AI?", "What is .NET?"});
-
-        foreach(var embedding in embeddings)
+        foreach (var embedding in await generator.GenerateAsync(["What is AI?", "What is .NET?"]))
         {
             Console.WriteLine(string.Join(", ", embedding.Vector.ToArray()));
         }

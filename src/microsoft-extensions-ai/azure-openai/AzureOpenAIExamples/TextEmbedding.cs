@@ -1,5 +1,4 @@
-using OpenAI;
-using Microsoft.Extensions.AI;
+﻿using Microsoft.Extensions.AI;
 using Azure.AI.OpenAI;
 using Azure.Identity;
 
@@ -13,8 +12,8 @@ public partial class OpenAISamples
                 new DefaultAzureCredential())
                     .AsEmbeddingGenerator("text-embedding-3-small");
 
-        var embeddings = await generator.GenerateAsync("What is AI?");
+        var embedding = await generator.GenerateEmbeddingVectorAsync("What is AI?");
 
-        Console.WriteLine(string.Join(", ", embeddings[0].Vector.ToArray()));
+        Console.WriteLine(string.Join(", ", embedding.ToArray()));
     }    
 }

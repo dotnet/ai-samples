@@ -1,4 +1,4 @@
-using OpenAI;
+﻿using OpenAI;
 using System.Diagnostics;
 using Microsoft.Extensions.AI;
 using OpenTelemetry.Trace;
@@ -8,7 +8,7 @@ public partial class OpenAISamples
     public static async Task OpenTelemetryExample() 
     {
         // Configure OpenTelemetry Exporter
-        var sourceName  = Guid.NewGuid().ToString();
+        var sourceName = Guid.NewGuid().ToString();
         var activities = new List<Activity>();
 
         var tracerProvider = OpenTelemetry.Sdk.CreateTracerProviderBuilder()
@@ -20,15 +20,11 @@ public partial class OpenAISamples
             new OpenAIClient(Environment.GetEnvironmentVariable("OPENAI_API_KEY"))
                 .AsChatClient("gpt-4o-mini");
 
-        IChatClient client =
-            new ChatClientBuilder()
-                .UseOpenTelemetry(sourceName, instance => {
-                    instance.EnableSensitiveData = true;
-                })
-                .Use(openaiClient);
+        IChatClient client = openaiClient
+            .AsBuilder()
+            .UseOpenTelemetry(sourceName: sourceName, configure: o => o.EnableSensitiveData = true)
+            .Build();
 
-        var response = await client.CompleteAsync("What is AI?");
-
-        Console.WriteLine(response.Message);
+        Console.WriteLine(await client.CompleteAsync("What is AI?"));
     }    
 }

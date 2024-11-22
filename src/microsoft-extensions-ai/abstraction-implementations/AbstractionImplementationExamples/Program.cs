@@ -9,7 +9,7 @@ while (true)
                     .Title("Enter a command")
                     .PageSize(10)
                     .MoreChoicesText("[grey](Move up and down to reveal more choices)[/]")
-                    .AddChoices(new[] { "Choose sample", "Quit" })
+                    .AddChoices(["Choose sample", "Quit"])
             );
 
     if (prompt == "Quit") break;
@@ -23,63 +23,38 @@ while (true)
                         .Title("Choose a sample")
                         .PageSize(10)
                         .MoreChoicesText("[grey](Move up and down to reveal more choices)[/]")
-                        .AddChoices(new[]
-                            {
-                        "Chat",
-                        "Conversation History",
-                        "Streaming",
-                        "Tool Calling",
-                        "Caching",
-                        "OpenTelemetry",
-                        "Middleware",
-                        "Text Embedding",
-                        "Text Embedding Caching",
-                        "Logging Chat",
-                        "Logging Embedding",
-                        "Dependency Injection"
-                            })
+                        .AddChoices([
+                            "Chat",
+                            "Conversation History",
+                            "Streaming",
+                            "Tool Calling",
+                            "Caching",
+                            "OpenTelemetry",
+                            "Middleware",
+                            "Text Embedding",
+                            "Text Embedding Caching",
+                            "Logging Chat",
+                            "Logging Embedding",
+                            "Dependency Injection"
+                         ])
                 );
 
-
         // Execute the selected sample
-        switch (selectedSample)
+        await (selectedSample switch
         {
-            case "Chat":
-                await AbstractionSamples.Chat();
-                break;
-            case "Conversation History":
-                await AbstractionSamples.ConversationHistory();
-                break;
-            case "Streaming":
-                await AbstractionSamples.Streaming();
-                break;
-            case "Tool Calling":
-                await AbstractionSamples.ToolCalling();
-                break;
-            case "Caching":
-                await AbstractionSamples.Caching();
-                break;
-            case "OpenTelemetry":
-                await AbstractionSamples.OpenTelemetryExample();
-                break;
-            case "Middleware":
-                await AbstractionSamples.Middleware();
-                break;
-            case "Text Embedding":
-                await AbstractionSamples.TextEmbedding();
-                break;
-            case "Text Embedding Caching":
-                await AbstractionSamples.TextEmbeddingCaching();
-                break;
-            case "Logging Chat":
-                await AbstractionSamples.LoggingChat();
-                break;
-            case "Logging Embedding":
-                await AbstractionSamples.LoggingEmbedding();
-                break;
-            case "Dependency Injection":
-                await AbstractionSamples.DependencyInjection();
-                break;
-        }
+            "Chat" => AbstractionSamples.Chat(),
+            "Conversation History" => AbstractionSamples.ConversationHistory(),
+            "Streaming" => AbstractionSamples.Streaming(),
+            "Tool Calling" => AbstractionSamples.ToolCalling(),
+            "Caching" => AbstractionSamples.Caching(),
+            "OpenTelemetry" => AbstractionSamples.OpenTelemetryExample(),
+            "Middleware" => AbstractionSamples.Middleware(),
+            "Text Embedding" => AbstractionSamples.TextEmbedding(),
+            "Text Embedding Caching" => AbstractionSamples.TextEmbeddingCaching(),
+            "Logging Chat" => AbstractionSamples.LoggingChat(),
+            "Logging Embedding" => AbstractionSamples.LoggingEmbedding(),
+            "Dependency Injection" => AbstractionSamples.DependencyInjection(),
+            _ => Task.CompletedTask,
+        });
     }
 }

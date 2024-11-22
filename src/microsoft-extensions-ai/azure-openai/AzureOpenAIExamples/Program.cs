@@ -9,7 +9,7 @@ while (true)
                     .Title("Enter a command")
                     .PageSize(10)
                     .MoreChoicesText("[grey](Move up and down to reveal more choices)[/]")
-                    .AddChoices(new[] { "Choose sample", "Quit" })
+                    .AddChoices(["Choose sample", "Quit"])
             );
 
     if (prompt == "Quit") break;
@@ -23,55 +23,35 @@ while (true)
                         .Title("Choose a sample")
                         .PageSize(10)
                         .MoreChoicesText("[grey](Move up and down to reveal more choices)[/]")
-                        .AddChoices(new[]
-                            {
-                        "Chat",
-                        "Conversation History",
-                        "Streaming",
-                        "Tool Calling",
-                        "Caching",
-                        "OpenTelemetry",
-                        "Middleware",
-                        "Dependency Injection",
-                        "Text Embedding",
-                        "Text Embedding Caching",
-                            })
+                        .AddChoices([
+                            "Chat",
+                            "Conversation History",
+                            "Streaming",
+                            "Tool Calling",
+                            "Caching",
+                            "OpenTelemetry",
+                            "Middleware",
+                            "Dependency Injection",
+                            "Text Embedding",
+                            "Text Embedding Caching",
+                        ])
                 );
 
 
         // Execute the selected sample
-        switch (selectedSample)
+        await (selectedSample switch
         {
-            case "Chat":
-                await OpenAISamples.Chat();
-                break;
-            case "Conversation History":
-                await OpenAISamples.ConversationHistory();
-                break;
-            case "Streaming":
-                await OpenAISamples.Streaming();
-                break;
-            case "Tool Calling":
-                await OpenAISamples.ToolCalling();
-                break;
-            case "Caching":
-                await OpenAISamples.Caching();
-                break;
-            case "OpenTelemetry":
-                await OpenAISamples.OpenTelemetryExample();
-                break;
-            case "Middleware":
-                await OpenAISamples.Middleware();
-                break;
-            case "Dependency Injection":
-                await OpenAISamples.DependencyInjection();
-                break;
-            case "Text Embedding":
-                await OpenAISamples.TextEmbedding();
-                break;
-            case "Text Embedding Caching":
-                await OpenAISamples.TextEmbeddingCaching();
-                break;
-        }
+            "Chat" => OpenAISamples.Chat(),
+            "Conversation History" => OpenAISamples.ConversationHistory(),
+            "Streaming" => OpenAISamples.Streaming(),
+            "Tool Calling" => OpenAISamples.ToolCalling(),
+            "Caching" => OpenAISamples.Caching(),
+            "OpenTelemetry" => OpenAISamples.OpenTelemetryExample(),
+            "Middleware" => OpenAISamples.Middleware(),
+            "Dependency Injection" => OpenAISamples.DependencyInjection(),
+            "Text Embedding" => OpenAISamples.TextEmbedding(),
+            "Text Embedding Caching" => OpenAISamples.TextEmbeddingCaching(),
+            _ => Task.CompletedTask,
+        });
     }
 }

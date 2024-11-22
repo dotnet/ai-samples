@@ -1,16 +1,15 @@
-using Microsoft.Extensions.AI;
+﻿using Microsoft.Extensions.AI;
 
 public partial class AbstractionSamples
 {
-    public static async Task Streaming() 
+    public static async Task Streaming()
     {
         IChatClient client = new SampleChatClient(new Uri("http://coolsite.ai"), "my-custom-model");
 
-        var stream = client.CompleteStreamingAsync("What is AI?");
-
-        await foreach(var update in stream)
+        await foreach (var update in client.CompleteStreamingAsync("What is AI?"))
         {
-            Console.WriteLine(update);
+            Console.Write(update);
         }
+        Console.WriteLine();
     }
 }

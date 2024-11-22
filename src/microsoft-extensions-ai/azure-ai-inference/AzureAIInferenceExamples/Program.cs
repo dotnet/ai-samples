@@ -9,7 +9,7 @@ while (true)
                     .Title("Enter a command")
                     .PageSize(10)
                     .MoreChoicesText("[grey](Move up and down to reveal more choices)[/]")
-                    .AddChoices(new[] { "Choose sample", "Quit" })
+                    .AddChoices(["Choose sample", "Quit"])
             );
 
     if (prompt == "Quit") break;
@@ -23,47 +23,33 @@ while (true)
                         .Title("Choose a sample")
                         .PageSize(10)
                         .MoreChoicesText("[grey](Move up and down to reveal more choices)[/]")
-                        .AddChoices(new[]
-                            {
-                        "Chat",
-                        "Conversation History",
-                        "Streaming",
-                        "Tool Calling",
-                        "Caching",
-                        "OpenTelemetry",
-                        "Middleware",
-                        "Dependency Injection"
-                            })
+                        .AddChoices([
+                            "Chat",
+                            "Conversation History",
+                            "Streaming",
+                            "Tool Calling",
+                            "Caching",
+                            "OpenTelemetry",
+                            "Middleware",
+                            "Dependency Injection",
+                        ])
                 );
 
 
         // Execute the selected sample
-        switch (selectedSample)
+        await (selectedSample switch
         {
-            case "Chat":
-                await AzureAIInferenceSamples.Chat();
-                break;
-            case "Conversation History":
-                await AzureAIInferenceSamples.ConversationHistory();
-                break;
-            case "Streaming":
-                await AzureAIInferenceSamples.Streaming();
-                break;
-            case "Tool Calling":
-                await AzureAIInferenceSamples.ToolCalling();
-                break;
-            case "Caching":
-                await AzureAIInferenceSamples.Caching();
-                break;
-            case "OpenTelemetry":
-                await AzureAIInferenceSamples.OpenTelemetryExample();
-                break;
-            case "Middleware":
-                await AzureAIInferenceSamples.Middleware();
-                break;
-            case "Dependency Injection":
-                await AzureAIInferenceSamples.DependencyInjection();
-                break;
-        }
+            "Chat" => AzureAIInferenceSamples.Chat(),
+            "Conversation History" => AzureAIInferenceSamples.ConversationHistory(),
+            "Streaming" => AzureAIInferenceSamples.Streaming(),
+            "Tool Calling" => AzureAIInferenceSamples.ToolCalling(),
+            "Caching" => AzureAIInferenceSamples.Caching(),
+            "OpenTelemetry" => AzureAIInferenceSamples.OpenTelemetryExample(),
+            "Middleware" => AzureAIInferenceSamples.Middleware(),
+            "Dependency Injection" => AzureAIInferenceSamples.DependencyInjection(),
+            "Text Embedding" => AzureAIInferenceSamples.TextEmbedding(),
+            "Text Embedding Caching" => AzureAIInferenceSamples.TextEmbeddingCaching(),
+            _ => Task.CompletedTask,
+        });
     }
 }
