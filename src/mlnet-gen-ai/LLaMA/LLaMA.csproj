@@ -8,7 +8,9 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ML.GenAI.LLaMA" Version="0.22.0" />
-    <PackageReference Include="TorchSharp-cuda-windows" Version="0.102.7" />
+    <PackageReference Include="TorchSharp-cuda-windows" Version="0.103.1" />
+    <!--Install cuda linux runtime if you are running on linux machine-->
+    <!--<PackageReference Include="TorchSharp-cuda-linux" Version="0.103.1" />-->
   </ItemGroup>
 
   
