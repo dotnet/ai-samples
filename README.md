@@ -110,8 +110,8 @@ Discover how to bring AI into your .NET application! This session covers the too
 ### ML.NET GenAI
 |  #  | Topic                                       | GitHub Link |
 |-----|---------------------------------------------|-------------|
-| REF | Phi                                         |  [Phi](./src/local-models/Phi)
-| REF | Llama 3.2                                   |  [Coming Soon](.)
+| REF | Phi                                         |  [Phi](./src/mlnet-gen-ai/Phi)
+| REF | LLaMA                                   |  [LLaMA](./src/mlnet-gen-ai/LLaMA)
 
 ### Local Embedding Models
 | # | Topic                                         | GitHub Link |
