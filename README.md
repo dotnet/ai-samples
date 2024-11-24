@@ -107,11 +107,11 @@ Discover how to bring AI into your .NET application! This session covers the too
 | E2E | Azure Search .                              |  [Azure Search Repository](https://github.com/Azure-Samples/azure-search-openai-demo-csharp)
 | E2E | E-Shop Sample                               |  [E-Shop Repository](https://github.com/dotnet/eshop)
 
-### Local Models
+### ML.NET GenAI
 |  #  | Topic                                       | GitHub Link |
 |-----|---------------------------------------------|-------------|
 | REF | Phi                                         |  [Phi](./src/local-models/Phi)
-| REF | Llama 2                                     |  [Coming Soon](.)
+| REF | Llama 3.2                                   |  [Coming Soon](.)
 
 ### Local Embedding Models
 | # | Topic                                         | GitHub Link |
