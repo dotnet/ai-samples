@@ -17,7 +17,7 @@ public partial class LLaMASamples
 
         // download model from huggingface model hub url and replace the modelFolder with your own model folder
         // huggingface model hub: https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct/tree/main/
-        var modelFolder = @"C:\Users\xiaoyuz\source\repos\Llama-3.2-1B-Instruct";
+        var modelFolder = "/path/to/download/folder";
         var tokenizerModelFolder = Path.Combine(modelFolder, "original");
 
         var tokenizer = LlamaTokenizerHelper.FromPretrained(tokenizerModelFolder);
