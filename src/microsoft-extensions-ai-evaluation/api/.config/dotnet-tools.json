@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "isRoot": true,
+  "tools": {
+    "microsoft.extensions.ai.evaluation.console": {
+      "version": "0.9.56-preview",
+      "commands": [
+        "aieval"
+      ],
+      "rollForward": false
+    }
+  }
+}
