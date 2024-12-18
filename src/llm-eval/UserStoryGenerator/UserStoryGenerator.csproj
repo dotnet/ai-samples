@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PackageId>UserStoryGenerator.Local.RC1</PackageId>
+    <Version>0.0.1</Version>
+    <Authors>Maho Pacheco</Authors>
+    <Company>Raccoon Bits</Company>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SemanticKernel" Version="1.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="_prompts/userstoryclassic/config.json" />
+    <Content Remove="_prompts/userstoryclassic/skprompt.txt" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <EmbeddedResource Include="_prompts/userstoryclassic/config.json" />
+    <EmbeddedResource Include="_prompts/userstoryclassic/skprompt.txt" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\LLMEval.Data\LLMEval.Data.csproj" />
+  </ItemGroup>
+
+</Project>
