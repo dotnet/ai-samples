@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="_prompts\qa\config.json" />
+    <None Include="_prompts\qa\skprompt.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="_prompts\qa\skprompt.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SemanticKernel" Version="1.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="_prompts\qa\config.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LLMEval.Data\LLMEval.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="_prompts\qagen\config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="_prompts\qagen\skprompt.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

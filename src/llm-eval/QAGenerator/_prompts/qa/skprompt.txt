@@ -1,0 +1,14 @@
+Answer the question based on below context:
+
+[Question]
+{{$question}}
+[End Question]
+
+Return the results in json format with the fields question, answer and topic. 
+All these fields in the json object are of type string. 
+Do not return anything besides the json, no comments, no format, no markdown, just the json object. 
+The question field should be empty, the answer field should be the answer to the question, and the topic field should be the topic related to the question.
+The JSON must be a valid JSON format.
+
+For example:
+{ question: "", answer: "4", topic: "Math"}
