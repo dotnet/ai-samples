@@ -40,6 +40,16 @@ For more details, see the [Introducing Microsoft.Extensions.AI Preview blog post
  Azure AI Inference | [GitHub Link](./src/microsoft-extensions-ai/azure-ai-inference/.md) |
 | Ollama | [GitHub Link](./src/microsoft-extensions-ai/ollama/README.md) |
 
+### Microsoft.Extensions.AI.Evaluation (preview)
+Microsoft.Extensions.AI.Evaluation is a set of .NET libraries that provide the tooling necessary to evaluate the quality and efficacy of LLM responses in your intelligent applications.
+
+The Microsoft.Extensions.AI.Evaluation libraries are built on top of core AI abstractions defined in the Microsoft.Extensions.AI libraries above. For more details, see the following blog post:
+[Evaluate the quality of your AI applications with ease](https://devblogs.microsoft.com/dotnet/evaluate-the-quality-of-your-ai-applications-with-ease/)
+
+| Topic | GitHub Link |
+| --- | --- |
+| Microsoft.Extensions.AI.Evaluation | [API Usage Examples](./src/microsoft-extensions-ai-evaluation/api/README.md) |
+
 ### Build 2024 - Infusing your .NET Apps with AI: Practical Tools and Techniques
 
 Discover how to bring AI into your .NET application! This session covers the tools, libraries, and best practices for incorporating LLMs or other AI capabilities to create an "intelligent app". We'll explore practical examples, including how to leverage Azure AI services and the .NET AI ecosystem, to enhance your apps with AI.
