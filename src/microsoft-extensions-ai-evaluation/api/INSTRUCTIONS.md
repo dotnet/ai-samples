@@ -19,6 +19,17 @@ All examples are included in [Examples.sln](./Examples.sln) and are structured a
 Then read on to learn
 [how to generate reports using the `aieval` dotnet tool](#generating-reports-using-the-aieval-dotnet-tool).
 
+**Note:** The examples included in this solution have been primarily tested against the GPT-4o model. The prompts
+present within the examples directly, as well as the prompts present within the evaluators included as part of the
+[Microsoft.Extensions.AI.Evaluation.Quality](https://www.nuget.org/packages/Microsoft.Extensions.AI.Evaluation.Quality)
+NuGet package (such as `CoherenceEvaluator`, `RelevanceTruthAndCompletenessEvaluator`, etc.) perform well against
+GPT-4o. However, they may not perform as well against other models. So, the evaluations performed in the examples may
+produce poor results against some other models.
+
+That said, it can still be an interesting exercise to try out the examples against other models to understand how
+different models perform (i.e., how quickly or slowly are they able to perform the evaluations, how accurately can they
+score the coherence, relevance, fluency, etc. of the supplied responses, and so on).
+
 ### Quick version
 
 1. Set the following environment variables. The most convenient option may be to set these environment variables
@@ -49,7 +60,7 @@ The following setup steps are required to set up the LLM connection / endpoint t
 
 1. **Select your LLM provider:** The examples are authored to run against Azure Open AI by default and have been tested
    against GPT-4o. You can easily switch to use Azure AI Inference, Ollama, or Open AI by changing one line of code
-   within [`TestSetup.GetChatConfiguration()`](./evaluation/Setup/TestSetup.cs#L24).
+   within [`TestSetup.GetChatConfiguration()`](./evaluation/Setup/TestSetup.cs#L25).
 
 2. **Configure environment variables that define the connection parameters for your LLM endpoint:** Open
    [`EnvironmentVariables.cs`](./evaluation/Setup/EnvironmentVariables.cs) to figure out the set of environment
