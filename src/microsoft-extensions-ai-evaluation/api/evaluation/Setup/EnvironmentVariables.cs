@@ -39,11 +39,18 @@ public class EnvironmentVariables
         return value is not null;
     }
 
-    private static int GetInputTokenLimit(string variableName, int @default = 5000)
+    private static bool TryGetInputTokenLimit(string variableName, [NotNullWhen(true)] out int? limit)
     {
-        return TryGetEnvironmentVariable(variableName, out string? value) && int.TryParse(value, out int limit)
-            ? limit
-            : @default;
+        if (TryGetEnvironmentVariable(variableName, out string? value) && int.TryParse(value, out int valueInteger))
+        {
+            limit = valueInteger;
+            return true;
+        }
+        else
+        {
+            limit = null;
+            return false;
+        }
     }
 
     #region Azure AI Inference
@@ -56,8 +63,10 @@ public class EnvironmentVariables
     public static string AzureAIInferenceModel
         => GetEnvironmentVariable("EVAL_SAMPLE_AZURE_AI_INFERENCE_MODEL");
 
-    public static int AzureAIInferenceModelInputTokenLimit
-        => GetInputTokenLimit("EVAL_SAMPLE_AZURE_AI_INFERENCE_MODEL_INPUT_TOKEN_LIMIT");
+    public static int? AzureAIInferenceModelInputTokenLimit =>
+        TryGetInputTokenLimit("EVAL_SAMPLE_AZURE_AI_INFERENCE_MODEL_INPUT_TOKEN_LIMIT", out int? limit)
+            ? limit
+            : null;
     #endregion
 
     #region Azure OpenAI
@@ -67,8 +76,10 @@ public class EnvironmentVariables
     public static string AzureOpenAIModel
         => GetEnvironmentVariable("EVAL_SAMPLE_AZURE_OPENAI_MODEL");
 
-    public static int AzureOpenAIModelInputTokenLimit
-        => GetInputTokenLimit("EVAL_SAMPLE_AZURE_OPENAI_MODEL_INPUT_TOKEN_LIMIT");
+    public static int? AzureOpenAIModelInputTokenLimit =>
+        TryGetInputTokenLimit("EVAL_SAMPLE_AZURE_OPENAI_MODEL_INPUT_TOKEN_LIMIT", out int? limit)
+            ? limit
+            : null;
     #endregion
 
     #region Ollama
@@ -78,8 +89,10 @@ public class EnvironmentVariables
     public static string OllamaModel
         => GetEnvironmentVariable("EVAL_SAMPLE_OLLAMA_MODEL");
 
-    public static int OllamaModelInputTokenLimit
-        => GetInputTokenLimit("EVAL_SAMPLE_OLLAMA_MODEL_INPUT_TOKEN_LIMIT");
+    public static int? OllamaModelInputTokenLimit =>
+        TryGetInputTokenLimit("EVAL_SAMPLE_OLLAMA_MODEL_INPUT_TOKEN_LIMIT", out int? limit)
+            ? limit
+            : null;
     #endregion
 
     #region OpenAI
@@ -89,8 +102,10 @@ public class EnvironmentVariables
     public static string OpenAIModel
         => GetEnvironmentVariable("EVAL_SAMPLE_OPENAI_MODEL");
 
-    public static int OpenAIModelInputTokenLimit
-        => GetInputTokenLimit("EVAL_SAMPLE_OPENAI_MODEL_INPUT_TOKEN_LIMIT");
+    public static int? OpenAIModelInputTokenLimit =>
+        TryGetInputTokenLimit("EVAL_SAMPLE_OPENAI_MODEL_INPUT_TOKEN_LIMIT", out int? limit)
+            ? limit
+            : null;
     #endregion
 
     public static string StorageRootPath

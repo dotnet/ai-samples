@@ -18,7 +18,7 @@ namespace Reporting;
 [TestClass]
 public partial class ReportingExamples
 {
-    /// NOTE: The value of the below property is populated by MSTest.
+    /// Note: The value of the below property is populated by MSTest.
     public TestContext? TestContext { get; set; }
 
     /// The execution name below is used to group evaluation results that are part of the same evaluation run (or test
