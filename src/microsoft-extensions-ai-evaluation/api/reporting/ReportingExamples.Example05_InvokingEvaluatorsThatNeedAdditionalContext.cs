@@ -37,7 +37,7 @@ public partial class ReportingExamples
             chatClient: scenarioRun.ChatConfiguration!.ChatClient,
             astronomyQuestion: "How far is the planet Venus from the Earth at its closest and furthest points?");
 
-        /// Create an instance of <see cref="EquivalenceEvaluator.Context"/> that contains a baseline response against
+        /// Create an instance of <see cref="EquivalenceEvaluatorContext"/> that contains a baseline response against
         /// which the <see cref="EquivalenceEvaluator"/> should compare <see cref="modelResponse"/> in order to
         /// generate an 'equivalence' score.
         EquivalenceEvaluatorContext baselineResponseForEquivalenceEvaluator =
@@ -50,7 +50,7 @@ public partial class ReportingExamples
                 can vary slightly due to the specific orbital positions of the planets at any given time.
                 """);
 
-        /// Create an instance of <see cref="GroundednessEvaluator.Context"/> that contains grounding context that
+        /// Create an instance of <see cref="GroundednessEvaluatorContext"/> that contains grounding context that
         /// the <see cref="GroundednessEvaluator"/> should use. The <see cref="GroundednessEvaluator"/> will produce a
         /// 'groundedness' score which indicates how well <see cref="modelResponse"/> is grounded in the supplied
         /// grounding context.
