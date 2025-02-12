@@ -60,7 +60,7 @@ The following setup steps are required to set up the LLM connection / endpoint t
 
 1. **Select your LLM provider:** The examples are authored to run against Azure Open AI by default and have been tested
    against GPT-4o. You can easily switch to use Azure AI Inference, Ollama, or Open AI by changing one line of code
-   within [`TestSetup.GetChatConfiguration()`](./evaluation/Setup/TestSetup.cs#L25).
+   within [`TestSetup.GetChatConfiguration()`](https://github.com/dotnet/ai-samples/blob/9d28db621f110d51914645e0fe9c733942e9107f/src/microsoft-extensions-ai-evaluation/api/evaluation/Setup/TestSetup.cs#L32).
 
 2. **Configure environment variables that define the connection parameters for your LLM endpoint:** Open
    [`EnvironmentVariables.cs`](./evaluation/Setup/EnvironmentVariables.cs) to figure out the set of environment
