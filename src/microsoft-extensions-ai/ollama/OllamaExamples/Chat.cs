@@ -9,6 +9,6 @@ public partial class OllamaSamples
 
         IChatClient client = new OllamaChatClient(endpoint, modelId: modelId);
 
-        Console.WriteLine(await client.CompleteAsync("What is AI?"));
+        Console.WriteLine(await client.GetResponseAsync("What is AI?"));
     }    
 }

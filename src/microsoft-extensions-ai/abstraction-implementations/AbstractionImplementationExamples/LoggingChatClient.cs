@@ -13,22 +13,22 @@ public class LoggingChatClient : DelegatingChatClient
         _logger = logger ?? LoggerFactory.Create(builder => builder.AddConsole()).CreateLogger<LoggingChatClient>();
     }
 
-    public override async Task<ChatCompletion> CompleteAsync(
+    public override async Task<ChatResponse> GetResponseAsync(
         IList<ChatMessage> chatMessages,
         ChatOptions? options = null,
         CancellationToken cancellationToken = default)
     {
         _logger.LogInformation("Completing chat for {message}", chatMessages.Last().Text);
-        return await _innerClient.CompleteAsync(chatMessages, options, cancellationToken);
+        return await _innerClient.GetResponseAsync(chatMessages, options, cancellationToken);
     }
 
-    public override async IAsyncEnumerable<StreamingChatCompletionUpdate> CompleteStreamingAsync(
+    public override async IAsyncEnumerable<ChatResponseUpdate> GetStreamingResponseAsync(
         IList<ChatMessage> chatMessages,
         ChatOptions? options = null,
         [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
         _logger.LogInformation("Completing chat for {message}", chatMessages.Last().Text);
-        await foreach (var message in _innerClient.CompleteStreamingAsync(chatMessages, options, cancellationToken))
+        await foreach (var message in _innerClient.GetStreamingResponseAsync(chatMessages, options, cancellationToken))
         {
             yield return message;
         }

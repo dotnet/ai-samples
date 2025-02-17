@@ -20,7 +20,7 @@ builder.Services.AddEmbeddingGenerator(services =>
 var app = builder.Build();
 
 app.MapPost("/chat", async (IChatClient client, [FromBody] string message) =>
-    await client.CompleteAsync(message, cancellationToken: default));
+    await client.GetResponseAsync(message, cancellationToken: default));
 
 app.MapPost("/embedding", async (IEmbeddingGenerator<string, Embedding<float>> client, [FromBody] string message) =>
     await client.GenerateEmbeddingAsync(message));

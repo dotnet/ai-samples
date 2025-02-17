@@ -12,7 +12,7 @@ public partial class AzureAIInferenceSamples
 
         IChatClient client = new ChatCompletionsClient(endpoint, credential).AsChatClient(modelId);
 
-        await foreach (var update in client.CompleteStreamingAsync("What is AI?"))
+        await foreach (var update in client.GetStreamingResponseAsync("What is AI?"))
         {
             Console.Write(update);
         }

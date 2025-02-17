@@ -16,6 +16,6 @@ public partial class OllamaSamples
 
         var chatClient = app.Services.GetRequiredService<IChatClient>();
 
-        Console.WriteLine(await chatClient.CompleteAsync("What is AI?"));
+        Console.WriteLine(await chatClient.GetResponseAsync("What is AI?"));
     }    
 }

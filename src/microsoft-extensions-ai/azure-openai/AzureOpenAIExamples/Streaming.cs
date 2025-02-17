@@ -12,7 +12,7 @@ public partial class OpenAISamples
                 new DefaultAzureCredential())
                 .AsChatClient(modelId: "gpt-4o-mini");
 
-        await foreach (var update in client.CompleteStreamingAsync("What is AI?"))
+        await foreach (var update in client.GetStreamingResponseAsync("What is AI?"))
         {
             Console.Write(update);
         }

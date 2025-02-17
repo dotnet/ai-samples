@@ -47,17 +47,17 @@
             """;
     }
 
-    public async Task<ChatCompletion> GenerateLongSummaryAsync(string input)
+    public async Task<ChatResponse> GenerateLongSummaryAsync(string input)
     {
         var prompt = GetLongSummaryPrompt(input);
-        var response = await _chatClient.CompleteAsync(prompt);
+        var response = await _chatClient.GetResponseAsync(prompt);
         return response;
     }
 
-    public async Task<ChatCompletion> GenerateShortSummaryAsync(string input)
+    public async Task<ChatResponse> GenerateShortSummaryAsync(string input)
     {
         var prompt = GetShortSummaryPrompt(input);
-        var response = await _chatClient.CompleteAsync(prompt);
+        var response = await _chatClient.GetResponseAsync(prompt);
         return response;
     }
 }

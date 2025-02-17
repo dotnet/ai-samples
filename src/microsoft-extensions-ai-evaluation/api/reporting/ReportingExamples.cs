@@ -11,7 +11,7 @@ using Microsoft.Extensions.AI;
 using Microsoft.Extensions.AI.Evaluation;
 using Microsoft.Extensions.AI.Evaluation.Quality;
 using Microsoft.Extensions.AI.Evaluation.Reporting;
-using Microsoft.Extensions.AI.Evaluation.Reporting.Storage.Disk;
+using Microsoft.Extensions.AI.Evaluation.Reporting.Storage;
 
 namespace Reporting;
 
@@ -114,7 +114,7 @@ public partial class ReportingExamples
 
     private static IEnumerable<IEvaluator> GetEvaluators()
     {
-        var rtcOptions = new RelevanceTruthAndCompletenessEvaluator.Options(includeReasoning: true);
+        var rtcOptions = new RelevanceTruthAndCompletenessEvaluatorOptions(includeReasoning: true);
         IEvaluator rtcEvaluator = new RelevanceTruthAndCompletenessEvaluator(rtcOptions);
         IEvaluator measurementSystemEvaluator = new MeasurementSystemEvaluator();
         IEvaluator wordCountEvaluator = new WordCountEvaluator();
@@ -154,7 +154,7 @@ public partial class ReportingExamples
                 ResponseFormat = ChatResponseFormat.Text
             };
 
-        ChatCompletion completion = await chatClient.CompleteAsync(messages, chatOptions);
+        ChatResponse completion = await chatClient.GetResponseAsync(messages, chatOptions);
         return (messages, ModelResponse: completion.Message);
     }
 

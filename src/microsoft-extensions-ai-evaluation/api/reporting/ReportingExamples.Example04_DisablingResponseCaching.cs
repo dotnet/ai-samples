@@ -5,7 +5,7 @@
 using Evaluation.Setup;
 using Microsoft.Extensions.AI.Evaluation;
 using Microsoft.Extensions.AI.Evaluation.Reporting;
-using Microsoft.Extensions.AI.Evaluation.Reporting.Storage.Disk;
+using Microsoft.Extensions.AI.Evaluation.Reporting.Storage;
 
 namespace Reporting;
 

@@ -49,6 +49,6 @@ public partial class OllamaSamples
             new(ChatRole.User, "Do I need an umbrella?")
         ];
 
-        Console.WriteLine(await client.CompleteAsync("Do I need an umbrella?", chatOptions));
+        Console.WriteLine(await client.GetResponseAsync("Do I need an umbrella?", chatOptions));
     }    
 }

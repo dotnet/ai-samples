@@ -23,7 +23,7 @@ public partial class OllamaSamples
 
         foreach (var prompt in prompts)
         {
-            await foreach (var message in client.CompleteStreamingAsync(prompt))
+            await foreach (var message in client.GetStreamingResponseAsync(prompt))
             {
                 Console.Write(message);
             }

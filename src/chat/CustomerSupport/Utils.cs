@@ -169,7 +169,7 @@
                 """;
 
                 // [3] Generate response
-                var response = await chatClient.CompleteAsync(message);
+                var response = await chatClient.GetResponseAsync(message);
 
                 AnsiConsole.MarkupLine($"[bold yellow]{response}[/]");
             }

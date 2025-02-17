@@ -8,7 +8,7 @@ public partial class AbstractionSamples
 
         IChatClient client = new LoggingChatClient(sampleChatClient);
 
-        Console.WriteLine(await client.CompleteAsync("What is AI?"));
+        Console.WriteLine(await client.GetResponseAsync("What is AI?"));
     }
 
     public static async Task LoggingEmbedding()

@@ -9,6 +9,6 @@ public partial class OpenAISamples
             new OpenAIClient(Environment.GetEnvironmentVariable("OPENAI_API_KEY"))
                 .AsChatClient("gpt-4o-mini");
 
-        Console.WriteLine(await client.CompleteAsync("What is AI?"));
+        Console.WriteLine(await client.GetResponseAsync("What is AI?"));
     }    
 }

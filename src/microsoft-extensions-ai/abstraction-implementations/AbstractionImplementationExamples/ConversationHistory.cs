@@ -12,6 +12,6 @@ public partial class AbstractionSamples
             new(ChatRole.User, "What is AI?")
         ];
 
-        Console.WriteLine(await client.CompleteAsync(conversation));
+        Console.WriteLine(await client.GetResponseAsync(conversation));
     }
 }

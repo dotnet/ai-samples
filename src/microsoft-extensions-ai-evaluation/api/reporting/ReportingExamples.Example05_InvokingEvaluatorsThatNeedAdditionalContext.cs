@@ -8,7 +8,7 @@ using FluentAssertions.Execution;
 using Microsoft.Extensions.AI.Evaluation;
 using Microsoft.Extensions.AI.Evaluation.Quality;
 using Microsoft.Extensions.AI.Evaluation.Reporting;
-using Microsoft.Extensions.AI.Evaluation.Reporting.Storage.Disk;
+using Microsoft.Extensions.AI.Evaluation.Reporting.Storage;
 
 namespace Reporting;
 
@@ -40,8 +40,8 @@ public partial class ReportingExamples
         /// Create an instance of <see cref="EquivalenceEvaluator.Context"/> that contains a baseline response against
         /// which the <see cref="EquivalenceEvaluator"/> should compare <see cref="modelResponse"/> in order to
         /// generate an 'equivalence' score.
-        EquivalenceEvaluator.Context baselineResponseForEquivalenceEvaluator =
-            new EquivalenceEvaluator.Context(
+        EquivalenceEvaluatorContext baselineResponseForEquivalenceEvaluator =
+            new EquivalenceEvaluatorContext(
                 """
                 The distance between Earth and Venus varies significantly due to the elliptical orbits of both planets
                 around the Sun. At their closest approach, known as inferior conjunction, Venus can be about 23.6
@@ -54,8 +54,8 @@ public partial class ReportingExamples
         /// the <see cref="GroundednessEvaluator"/> should use. The <see cref="GroundednessEvaluator"/> will produce a
         /// 'groundedness' score which indicates how well <see cref="modelResponse"/> is grounded in the supplied
         /// grounding context.
-        GroundednessEvaluator.Context groundingContextForGroundednessEvaluator =
-            new GroundednessEvaluator.Context(
+        GroundednessEvaluatorContext groundingContextForGroundednessEvaluator =
+            new GroundednessEvaluatorContext(
                 """
                 Distance between Venus and Earth at inferior conjunction: About 23.6 million miles.
                 Distance between Venus and Earth at superior conjunction: About 162 million miles.

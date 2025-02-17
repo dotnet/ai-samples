@@ -18,7 +18,7 @@ public partial class AbstractionSamples
             .UseFunctionInvocation()
             .Build();
 
-        await foreach (var message in client.CompleteStreamingAsync("What is AI?", chatOptions))
+        await foreach (var message in client.GetStreamingResponseAsync("What is AI?", chatOptions))
         {
             Console.Write(message);
         }
