@@ -21,6 +21,6 @@ builder.Services.AddChatClient(services => services.GetRequiredService<ChatCompl
 var app = builder.Build();
 
 app.MapPost("/chat", async (IChatClient client, [FromBody] string message) =>
-    await client.CompleteAsync(message, cancellationToken: default));
+    await client.GetResponseAsync(message, cancellationToken: default));
 
 app.Run();

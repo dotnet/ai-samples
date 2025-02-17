@@ -25,7 +25,7 @@ public partial class AzureAIInferenceSamples
             .UseFunctionInvocation()
             .Build();
 
-        await foreach (var message in client.CompleteStreamingAsync("Do I need an umbrella?", chatOptions))
+        await foreach (var message in client.GetStreamingResponseAsync("Do I need an umbrella?", chatOptions))
         {
             Console.Write(message);
         }

@@ -9,7 +9,7 @@ public partial class OllamaSamples
 
         IChatClient client = new OllamaChatClient(endpoint, modelId: modelId);
 
-        await foreach (var update in client.CompleteStreamingAsync("What is AI?"))
+        await foreach (var update in client.GetStreamingResponseAsync("What is AI?"))
         {
             Console.Write(update);
         }

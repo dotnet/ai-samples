@@ -21,6 +21,6 @@ public partial class OllamaSamples
             .UseFunctionInvocation()
             .Build();
 
-        Console.WriteLine(await client.CompleteAsync("Do I need an umbrella?", chatOptions));
+        Console.WriteLine(await client.GetResponseAsync("Do I need an umbrella?", chatOptions));
     }
 }

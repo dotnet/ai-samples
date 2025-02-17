@@ -12,6 +12,6 @@ public partial class OpenAISamples
                 new DefaultAzureCredential())
                 .AsChatClient(modelId: "gpt-4o-mini");
 
-        Console.WriteLine(await client.CompleteAsync("What is AI?"));
+        Console.WriteLine(await client.GetResponseAsync("What is AI?"));
     }    
 }

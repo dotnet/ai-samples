@@ -6,17 +6,16 @@ public class SampleChatClient : IChatClient
     private readonly Random _random = new Random();
     private readonly Uri _serviceEndpoint;
     private readonly string _modelId;
-
-    public ChatClientMetadata Metadata { get; }
+    private readonly ChatClientMetadata _metadata;
 
     public SampleChatClient(Uri endpoint, string modelId)
     {
         _serviceEndpoint = endpoint;
         _modelId = modelId;
-        Metadata = new ChatClientMetadata("SampleChatClient", endpoint, modelId);
+        _metadata = new ChatClientMetadata("SampleChatClient", endpoint, modelId);
     }
 
-    public async Task<ChatCompletion> CompleteAsync(
+    public async Task<ChatResponse> GetResponseAsync(
         IList<ChatMessage> chatMessages,
         ChatOptions? options = null,
         CancellationToken cancellationToken = default)
@@ -36,16 +35,16 @@ public class SampleChatClient : IChatClient
         await Task.Delay(300, cancellationToken);
 
         // Return a sample chat completion response
-        return new ChatCompletion(new ChatMessage(ChatRole.Assistant, chosenResponse));
+        return new(new ChatMessage(ChatRole.Assistant, chosenResponse));
     }
 
-    public async IAsyncEnumerable<StreamingChatCompletionUpdate> CompleteStreamingAsync(
+    public async IAsyncEnumerable<ChatResponseUpdate> GetStreamingResponseAsync(
         IList<ChatMessage> chatMessages,
         ChatOptions? options = null,
         [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
         // Simulate streaming by yielding messages one by one
-        yield return new StreamingChatCompletionUpdate
+        yield return new()
         {
             Role = ChatRole.Assistant,
             Text = "This is the first part of the stream.",
@@ -53,7 +52,7 @@ public class SampleChatClient : IChatClient
 
         await Task.Delay(300, cancellationToken);
 
-        yield return new StreamingChatCompletionUpdate
+        yield return new()
         {
             Role = ChatRole.Assistant,
             Text = "This is the second part of the stream.",
@@ -61,7 +60,10 @@ public class SampleChatClient : IChatClient
     }
 
     public object? GetService(Type serviceType, object? key = null) =>
-        key is null && serviceType?.IsInstanceOfType(this) is true ? this : null;
+        key is not null ? null :
+        serviceType == typeof(ChatClientMetadata) ? _metadata :
+        serviceType?.IsInstanceOfType(this) is true ? this :
+        null;
 
     public void Dispose()
     {

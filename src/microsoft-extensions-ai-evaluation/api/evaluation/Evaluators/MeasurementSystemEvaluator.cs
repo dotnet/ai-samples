@@ -199,8 +199,8 @@ public class MeasurementSystemEvaluator : IEvaluator
             new ChatMessage(ChatRole.System, EvaluationSystemPrompt),
             new ChatMessage(ChatRole.User, evaluationPrompt)];
 
-        ChatCompletion evaluationResponse =
-            await chatConfiguration.ChatClient.CompleteAsync(
+        ChatResponse evaluationResponse =
+            await chatConfiguration.ChatClient.GetResponseAsync(
                 evaluationMessages,
                 new ChatOptions
                 {

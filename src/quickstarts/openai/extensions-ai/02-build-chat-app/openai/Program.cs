@@ -3,12 +3,12 @@ using Microsoft.Extensions.AI;
 using OpenAI;
 
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
-string model = config["ModelName"];
-string key = config["OpenAIKey"];
+string? model = config["ModelName"];
+string? key = config["OpenAIKey"];
 
 // Create the IChatClient
 IChatClient chatClient =
-    new OpenAIClient(key).AsChatClient(model);
+    new OpenAIClient(key).AsChatClient(model ?? "gpt-4o");
 
 // Start the conversation with context for the AI model
 List<ChatMessage> chatHistory = new()
@@ -39,8 +39,7 @@ while (true)
     // Stream the AI response and add to chat history
     Console.WriteLine("AI Response:");
     var response = "";
-    await foreach (var item in
-        chatClient.CompleteStreamingAsync(chatHistory))
+    await foreach (var item in chatClient.GetStreamingResponseAsync(chatHistory))
     {
         Console.Write(item.Text);
         response += item.Text;

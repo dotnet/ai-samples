@@ -15,6 +15,6 @@ public partial class OllamaSamples
             new(ChatRole.User, "What is AI?")
         ];
 
-        Console.WriteLine(await client.CompleteAsync(conversation));
+        Console.WriteLine(await client.GetResponseAsync(conversation));
     }    
 }

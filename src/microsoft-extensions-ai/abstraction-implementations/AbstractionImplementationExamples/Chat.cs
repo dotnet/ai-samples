@@ -6,6 +6,6 @@ public partial class AbstractionSamples
     {
         IChatClient client = new SampleChatClient(new Uri("http://coolsite.ai"), "my-custom-model");
 
-        Console.WriteLine(await client.CompleteAsync("What is AI?"));
+        Console.WriteLine(await client.GetResponseAsync("What is AI?"));
     }
 }
