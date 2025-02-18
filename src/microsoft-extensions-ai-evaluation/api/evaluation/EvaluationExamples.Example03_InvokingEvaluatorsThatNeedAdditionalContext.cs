@@ -20,7 +20,7 @@ public partial class EvaluationExamples
         IEvaluator groundednessEvaluator = new GroundednessEvaluator();
         IEvaluator compositeEvaluator = new CompositeEvaluator(equivalenceEvaluator, groundednessEvaluator);
 
-        /// Create an instance of <see cref="EquivalenceEvaluator.Context"/> that contains a baseline response against
+        /// Create an instance of <see cref="EquivalenceEvaluatorContext"/> that contains a baseline response against
         /// which the <see cref="EquivalenceEvaluator"/> should compare <see cref="s_response"/> in order to
         /// generate an 'equivalence' score.
         EquivalenceEvaluatorContext baselineResponseForEquivalenceEvaluator =
@@ -33,7 +33,7 @@ public partial class EvaluationExamples
                 can vary slightly due to the specific orbital positions of the planets at any given time.
                 """);
 
-        /// Create an instance of <see cref="GroundednessEvaluator.Context"/> that contains grounding context that
+        /// Create an instance of <see cref="GroundednessEvaluatorContext"/> that contains grounding context that
         /// the <see cref="GroundednessEvaluator"/> should use. The <see cref="GroundednessEvaluator"/> will produce a
         /// 'groundedness' score which indicates how well <see cref="s_response"/> is grounded in the supplied
         /// grounding context.

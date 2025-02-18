@@ -8,11 +8,16 @@ using Azure.AI.OpenAI;
 using Azure.Identity;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.AI.Evaluation;
-using Microsoft.Extensions.AI.Evaluation.Quality;
 using Microsoft.ML.Tokenizers;
 using OpenAI;
 
 namespace Evaluation.Setup;
+
+// --------------------------------------------------------------------------------------------------------------------
+// NOTE: The TestSetup.GetChatConfiguration() function below is linked from the instructions in ..\..\INSTRUCTIONS.md.
+// If the code in this file is modified, please ensure that the instructions (and the linked line number therein) are
+// updated as well.
+// --------------------------------------------------------------------------------------------------------------------
 
 public class TestSetup
 {
