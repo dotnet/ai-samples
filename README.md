@@ -75,11 +75,11 @@ Discover how to bring AI into your .NET application! This session covers the too
 
 |  #  | Topic                                       | GitHub Link                               | 
 |-----|---------------------------------------------|-------------------------------------------|  
-|  1  | Text Summary                       			    |  [Hike Benefits Summary Project](./src/quickstarts/openai/01-HikeBenefitsSummary/README.md)
-|  2  | Hiker AI                                    |  [Hiker AI Project](./src/quickstarts/openai/02-HikerAI/README.md)
-|  3  | Chat Context/Data                         	|  [Chatting About my Previous Hikes Project](./src/quickstarts/openai/03-ChattingAboutMyHikes/README.md)
-|  4  | Hiker AI Pro (Tool extension)  				      |  [Hiker AI Pro](./src/quickstarts/openai/04-HikerAIPro/README.md)
-|  5  | Generating images                    		    |  [Hike Images Project](./src/quickstarts/openai/05-HikeImages/README.md)
+|  1  | Text Summary                       			    |  [Hike Benefits Summary Project](./src/quickstarts/openai/semantic-kernel/01-HikeBenefitsSummary/README.md)
+|  2  | Hiker AI                                    |  [Hiker AI Project](./src/quickstarts/openai/semantic-kernel/02-HikerAI/README.md)
+|  3  | Chat Context/Data                         	|  [Chatting About my Previous Hikes Project](./src/quickstarts/openai/semantic-kernel/03-ChattingAboutMyHikes/README.md)
+|  4  | Hiker AI Pro (Tool extension)  				      |  [Hiker AI Pro](./src/quickstarts/openai/semantic-kernel/04-HikerAIPro/README.md)
+|  5  | Generating images                    		    |  [Hike Images Project](./src/quickstarts/openai/semantic-kernel/05-HikeImages/README.md)
 | REF |  Using Milvus                               |  [Coming Soon](.)
 | REF |  Using Qdrant                               |  [Coming Soon](.)
 
@@ -89,11 +89,11 @@ Discover how to bring AI into your .NET application! This session covers the too
 
 |  #  | Topic                                       | GitHub Link                               | 
 |-----|---------------------------------------------|-------------------------------------------|  
-|  1  | Text Summary                       			    |  [Hike Benefits Summary Project](./src/quickstarts/azure-openai/01-HikeBenefitsSummary/README.md)
-|  2  | Hiker AI                                    |  [Hiker AI Project](./src/quickstarts/azure-openai/02-HikerAI/README.md)
-|  3  | Chat Context/Data                         	|  [Chatting About my Previous Hikes Project](./src/quickstarts/azure-openai/03-ChattingAboutMyHikes/README.md)
-|  4  | Hiker AI Pro (Tool extension)  				      |  [Hiker AI Pro](./src/quickstarts/azure-openai/04-HikerAIPro/README.md)
-|  5  | Generating images                    		    |  [Hike Images Project](./src/quickstarts/azure-openai/05-HikeImages/README.md)
+|  1  | Text Summary                       			    |  [Hike Benefits Summary Project](./src/quickstarts/azure-openai/extensions-ai/01-HikeBenefitsSummary/README.md)
+|  2  | Hiker AI                                    |  [Hiker AI Project](./src/quickstarts/azure-openai/semantic-kernel/02-HikerAI/README.md)
+|  3  | Chat Context/Data                         	|  [Chatting About my Previous Hikes Project](./src/quickstarts/azure-openai/semantic-kernel/03-ChattingAboutMyHikes/README.md)
+|  4  | Hiker AI Pro (Tool extension)  				      |  [Hiker AI Pro](./src/quickstarts/azure-openai/semantic-kernel/04-HikerAIPro/README.md)
+|  5  | Generating images                    		    |  [Hike Images Project](./src/quickstarts/azure-openai/semantic-kernel/05-HikeImages/README.md)
 
 ### Chat samples
 
