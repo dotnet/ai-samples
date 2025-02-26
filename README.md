@@ -36,8 +36,8 @@ For more details, see the [Introducing Microsoft.Extensions.AI Preview blog post
 | --- | --- |
 | Abstraction implementations | [GitHub Link](./src/microsoft-extensions-ai/abstraction-implementations/README.md) |
 | Azure OpenAI | [GitHub Link](./src/microsoft-extensions-ai/azure-openai/README.md) | 
- OpenAI | [GitHub Link](./src/microsoft-extensions-ai/openai/README.md) |
- Azure AI Inference | [GitHub Link](./src/microsoft-extensions-ai/azure-ai-inference/.md) |
+| OpenAI | [GitHub Link](./src/microsoft-extensions-ai/openai/README.md) |
+| Azure AI Inference | [GitHub Link](./src/microsoft-extensions-ai/azure-ai-inference/.md) |
 | Ollama | [GitHub Link](./src/microsoft-extensions-ai/ollama/README.md) |
 
 ### Microsoft.Extensions.AI.Evaluation (preview)
@@ -50,12 +50,31 @@ The Microsoft.Extensions.AI.Evaluation libraries are built on top of core AI abs
 | --- | --- |
 | Microsoft.Extensions.AI.Evaluation | [API Usage Examples](./src/microsoft-extensions-ai-evaluation/api/README.md) |
 
+### Quickstarts using OpenAI
+
+|  #  | Topic                                       | GitHub Link                               | 
+|-----|---------------------------------------------|-------------------------------------------|  
+|  1  | Text Summary                         			    |  [Hike Benefits Summary Project](./src/quickstarts/openai/extensions-ai/01-HikeBenefitsSummary/README.md)
+|  2  | Chat App                                    |  [Hiker AI Project](./src/quickstarts/openai/extensions-ai/02-build-chat-app/openai/README.md)
+|  4  | Function Calling                  				      |  [Hiker AI Pro](./src/quickstarts/openai/extensions-ai/04-function-calling/openai/README.md)
+
+### Quickstarts using the Azure OpenAI SDK
+
+|  #  | Topic                                       | GitHub Link                               | 
+|-----|---------------------------------------------|-------------------------------------------|  
+|  1  | Text Summary                         			    |  [Hike Benefits Summary Project](./src/quickstarts/azure-openai/extensions-ai/01-HikeBenefitsSummary/README.md)
+|  2  | Chat App                                    |  [Hiker AI Project](./src/quickstarts/azure-openai/extensions-ai/02-build-chat-app/openai/README.md)
+|  4  | Function Calling                  				      |  [Hiker AI Pro](./src/quickstarts/azure-openai/extensions-ai/04-function-calling/openai/README.md)
+
+### Chat samples
+
+|# | Topic | GitHub Link |
+|--- | --- | --- | 
+| 1 | Customer Support | [Customer Support Project](./src/chat/CustomerSupport/README.md) |    
+
 ### Build 2024 - Infusing your .NET Apps with AI: Practical Tools and Techniques
 
 Discover how to bring AI into your .NET application! This session covers the tools, libraries, and best practices for incorporating LLMs or other AI capabilities to create an "intelligent app". We'll explore practical examples, including how to leverage Azure AI services and the .NET AI ecosystem, to enhance your apps with AI.
-
-[![Infusing your .NET Apps with AI: Practical Tools and Techniques Youtube Preview](./images/Build2024Preview.png)](https://www.youtube.com/watch?v=jrNfKeGSuCg)
-
 
 [Youtube: Infusing your .NET Apps with AI: Practical Tools and Techniques](https://www.youtube.com/watch?v=jrNfKeGSuCg)
 
@@ -70,82 +89,6 @@ Discover how to bring AI into your .NET application! This session covers the too
 |  5  | Add Plugin - Bing Search                         |  [11m 15s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=675s) |  [Add Plugin - Bing Search](./src/build-2024/05%20-%20Add%20Plugin%20%28Bing%20Search%29)       |
 |  6  | Modify Kernel Behavior with Dependency Injection |  [12m 37s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=757s) |  [Modifying Kernel Behavior with Dependency Injection](./src/build-2024/06%20-%20Modifying%20Kernel%20Behavior%20with%20Dependency%20Injection)       |
 |  7  | Using Semantic Kernel in a Web App                      |  [15m 57s](https://www.youtube.com/watch?v=jrNfKeGSuCg&t=957s) |  [Using Semantic Kernel in a Web App](./src/build-2024/07%20-%20Using%20Semantic%20Kernel%20in%20WebApp)       |
-
-### Quickstarts using OpenAI
-
-|  #  | Topic                                       | GitHub Link                               | 
-|-----|---------------------------------------------|-------------------------------------------|  
-|  1  | Text Summary                       			    |  [Hike Benefits Summary Project](./src/quickstarts/openai/01-HikeBenefitsSummary/README.md)
-|  2  | Hiker AI                                    |  [Hiker AI Project](./src/quickstarts/openai/02-HikerAI/README.md)
-|  3  | Chat Context/Data                         	|  [Chatting About my Previous Hikes Project](./src/quickstarts/openai/03-ChattingAboutMyHikes/README.md)
-|  4  | Hiker AI Pro (Tool extension)  				      |  [Hiker AI Pro](./src/quickstarts/openai/04-HikerAIPro/README.md)
-|  5  | Generating images                    		    |  [Hike Images Project](./src/quickstarts/openai/05-HikeImages/README.md)
-| REF |  Using Milvus                               |  [Coming Soon](.)
-| REF |  Using Qdrant                               |  [Coming Soon](.)
-
-
-
-### Quickstarts using the Azure OpenAI SDK
-
-|  #  | Topic                                       | GitHub Link                               | 
-|-----|---------------------------------------------|-------------------------------------------|  
-|  1  | Text Summary                       			    |  [Hike Benefits Summary Project](./src/quickstarts/azure-openai/01-HikeBenefitsSummary/README.md)
-|  2  | Hiker AI                                    |  [Hiker AI Project](./src/quickstarts/azure-openai/02-HikerAI/README.md)
-|  3  | Chat Context/Data                         	|  [Chatting About my Previous Hikes Project](./src/quickstarts/azure-openai/03-ChattingAboutMyHikes/README.md)
-|  4  | Hiker AI Pro (Tool extension)  				      |  [Hiker AI Pro](./src/quickstarts/azure-openai/04-HikerAIPro/README.md)
-|  5  | Generating images                    		    |  [Hike Images Project](./src/quickstarts/azure-openai/05-HikeImages/README.md)
-
-### Chat samples
-
-|# | Topic | GitHub Link |
-|--- | --- | --- | 
-| 1 | Customer Support | [Customer Support Project](./src/chat/CustomerSupport/README.md) |    
-
-### LLM Core Concepts
-
-|  #  | Topic                                       | GitHub Link                               | 
-|-----|---------------------------------------------|-------------------------------------------|  
-| REF | Tokenizer                                   |  [Coming Soon](.)
-| REF | Embeddings                                  |  [Coming Soon](.)
-| REF | RAG                                         |  [Coming Soon](.)
-| REF | Prompts / Prompt Engineering                |  [Coming Soon](.)
-
-
-### End to End Examples
-|  #  | Topic                                       |  GitHub Link |
-|-----|---------------------------------------------|--------------|
-| E2E | Azure Search .                              |  [Azure Search Repository](https://github.com/Azure-Samples/azure-search-openai-demo-csharp)
-| E2E | E-Shop Sample                               |  [E-Shop Repository](https://github.com/dotnet/eshop)
-
-### ML.NET GenAI
-|  #  | Topic                                       | GitHub Link |
-|-----|---------------------------------------------|-------------|
-| REF | Phi                                         |  [Phi](./src/mlnet-gen-ai/Phi)
-| REF | LLaMA                                   |  [LLaMA](./src/mlnet-gen-ai/LLaMA)
-
-### Local Embedding Models
-| # | Topic                                         | GitHub Link |
-|-----|---------------------------------------------|-------------|
-| REF | Clip                                        |  [Coming Soon](.)
-
-### Tokenizers
-| # | Topic                                         | GitHub Link |
-|-----|---------------------------------------------|-------------|
-| REF | TikToken                                    |  [Coming Soon](.)
-
-### Vector Databases
-| # | Topic                                         | GitHub Link |
-|-----|---------------------------------------------|-------------|
-| REF | Azure AI Search                             |  [Coming Soon](.)
-| REF | PostgreSQL + pgvector                       |  [Coming Soon](.)
-| REF | Milvus                                      |  [Coming Soon](.)
-| REF | Qdrant                                      |  [Coming Soon](.)
-
-### Reference Examples
-| # | Topic                                         | GitHub Link |
-|-----|---------------------------------------------|-------------|
-| REF | Vector\<T\>                                 |  [Coming Soon](.)
-
 
 
 ## .NET Foundation
