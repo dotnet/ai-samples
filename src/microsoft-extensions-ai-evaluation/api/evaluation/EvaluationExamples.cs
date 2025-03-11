@@ -36,7 +36,7 @@ public partial class EvaluationExamples
             ChatRole.User,
             "How far is the planet Venus from the Earth at its closest and furthest points?")];
 
-    private static ChatMessage s_response = new();
+    private static ChatResponse s_response = new();
 
     [ClassInitialize]
     public static async Task InitializeAsync(TestContext _)
@@ -54,6 +54,6 @@ public partial class EvaluationExamples
 
         /// Fetch the response to be evaluated and store it in a static variable <see cref="s_response" />.
         ChatResponse response = await s_chatConfiguration.ChatClient.GetResponseAsync(s_messages, chatOptions);
-        s_response = response.Message;
+        s_response = response;
     }
 }

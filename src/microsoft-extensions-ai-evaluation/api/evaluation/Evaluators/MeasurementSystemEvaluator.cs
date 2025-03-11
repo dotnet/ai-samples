@@ -154,7 +154,7 @@ public class MeasurementSystemEvaluator : IEvaluator
     /// <inheritdoc/>
     public async ValueTask<EvaluationResult> EvaluateAsync(
         IEnumerable<ChatMessage> messages,
-        ChatMessage modelResponse,
+        ChatResponse modelResponse,
         ChatConfiguration? chatConfiguration = null,
         IEnumerable<EvaluationContext>? additionalContext = null,
         CancellationToken cancellationToken = default)
@@ -215,7 +215,7 @@ public class MeasurementSystemEvaluator : IEvaluator
         /// Set the value of the <see cref="StringMetric"> (that we will return as part of the
         /// <see cref="EvaluationResult"/> below) to be the text of the LLM's response (which should contain the name of
         /// the detected measurement system).
-        metric.Value = evaluationResponse.Message.Text;
+        metric.Value = evaluationResponse.Text;
 
         /// Attach a default <see cref="EvaluationMetricInterpretation"/> for the metric. An evaluator can provide a
         /// default interpretation for each metric that it produces. This default interpretation can be overridden by

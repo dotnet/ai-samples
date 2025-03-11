@@ -130,7 +130,7 @@ public partial class ReportingExamples
     /// corresponding cache entry expires (in 14 days by default), or until any request parameter (such as the question
     /// being asked, or the LLM endpoint being invoked) is changed.
 
-    private static async Task<(IList<ChatMessage> Messages, ChatMessage ModelResponse)> GetAstronomyConversationAsync(
+    private static async Task<(IList<ChatMessage> Messages, ChatResponse ModelResponse)> GetAstronomyConversationAsync(
         IChatClient chatClient,
         string astronomyQuestion)
     {
@@ -155,7 +155,7 @@ public partial class ReportingExamples
             };
 
         ChatResponse completion = await chatClient.GetResponseAsync(messages, chatOptions);
-        return (messages, ModelResponse: completion.Message);
+        return (messages, ModelResponse: completion);
     }
 
     /// <summary>
