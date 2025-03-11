@@ -10,7 +10,7 @@ using Azure.Search.Documents.Indexes;
 using Azure.Search.Documents.Indexes.Models;
 using OpenAI.Chat;
 
-var connectionString = "eastus2.api.azureml.ms;d2e83b94-8a5a-47f2-88a5-0db8812b6a3b;rg-jomatthiai;jomatthi-samples";
+var connectionString = "<connection string>";
 var projectClient = new AIProjectClient(connectionString, new DefaultAzureCredential());
 
 var connections = projectClient.GetConnectionsClient();
