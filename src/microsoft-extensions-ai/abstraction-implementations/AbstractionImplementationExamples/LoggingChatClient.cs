@@ -14,7 +14,7 @@ public class LoggingChatClient : DelegatingChatClient
     }
 
     public override async Task<ChatResponse> GetResponseAsync(
-        IList<ChatMessage> chatMessages,
+        IEnumerable<ChatMessage> chatMessages,
         ChatOptions? options = null,
         CancellationToken cancellationToken = default)
     {
@@ -23,7 +23,7 @@ public class LoggingChatClient : DelegatingChatClient
     }
 
     public override async IAsyncEnumerable<ChatResponseUpdate> GetStreamingResponseAsync(
-        IList<ChatMessage> chatMessages,
+        IEnumerable<ChatMessage> chatMessages,
         ChatOptions? options = null,
         [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
