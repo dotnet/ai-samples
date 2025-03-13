@@ -114,8 +114,7 @@ public partial class ReportingExamples
 
     private static IEnumerable<IEvaluator> GetEvaluators()
     {
-        var rtcOptions = new RelevanceTruthAndCompletenessEvaluatorOptions(includeReasoning: true);
-        IEvaluator rtcEvaluator = new RelevanceTruthAndCompletenessEvaluator(rtcOptions);
+        IEvaluator rtcEvaluator = new RelevanceTruthAndCompletenessEvaluator();
         IEvaluator measurementSystemEvaluator = new MeasurementSystemEvaluator();
         IEvaluator wordCountEvaluator = new WordCountEvaluator();
 
