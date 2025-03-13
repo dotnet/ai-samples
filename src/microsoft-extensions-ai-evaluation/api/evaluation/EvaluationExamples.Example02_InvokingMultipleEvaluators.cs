@@ -29,14 +29,14 @@ public partial class EvaluationExamples
 
         /// Retrieve the score for coherence from the <see cref="EvaluationResult"/>.
         NumericMetric coherence = result.Get<NumericMetric>(CoherenceEvaluator.CoherenceMetricName);
-        coherence.Interpretation!.Failed.Should().NotBe(true);
+        coherence.Interpretation!.Failed.Should().BeFalse();
         coherence.Interpretation.Rating.Should().BeOneOf(EvaluationRating.Good, EvaluationRating.Exceptional);
         coherence.ContainsDiagnostics().Should().BeFalse();
         coherence.Value.Should().BeGreaterThanOrEqualTo(3);
 
         /// Retrieve the score for fluency from the <see cref="EvaluationResult"/>.
         NumericMetric fluency = result.Get<NumericMetric>(FluencyEvaluator.FluencyMetricName);
-        fluency.Interpretation!.Failed.Should().NotBe(true);
+        fluency.Interpretation!.Failed.Should().BeFalse();
         fluency.Interpretation.Rating.Should().BeOneOf(EvaluationRating.Good, EvaluationRating.Exceptional);
         fluency.ContainsDiagnostics().Should().BeFalse();
         fluency.Value.Should().BeGreaterThanOrEqualTo(3);

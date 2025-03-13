@@ -42,7 +42,7 @@ public partial class EvaluationExamples
         /// interpretation can also be changed after the fact to suit your specific requirements if needed.
         /// 
         /// Validate the default interpretation for the returned coherence metric.
-        coherence.Interpretation!.Failed.Should().NotBe(true);
+        coherence.Interpretation!.Failed.Should().BeFalse();
         coherence.Interpretation.Rating.Should().BeOneOf(EvaluationRating.Good, EvaluationRating.Exceptional);
 
         /// Evaluators such as <see cref="CoherenceEvaluator"/> above can include diagnostics on the metrics they
