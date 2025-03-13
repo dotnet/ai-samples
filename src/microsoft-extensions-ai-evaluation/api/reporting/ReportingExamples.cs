@@ -153,8 +153,8 @@ public partial class ReportingExamples
                 ResponseFormat = ChatResponseFormat.Text
             };
 
-        ChatResponse completion = await chatClient.GetResponseAsync(messages, chatOptions);
-        return (messages, ModelResponse: completion);
+        ChatResponse response = await chatClient.GetResponseAsync(messages, chatOptions);
+        return (messages, response);
     }
 
     /// <summary>
@@ -175,20 +175,20 @@ public partial class ReportingExamples
             result.Get<NumericMetric>(RelevanceTruthAndCompletenessEvaluator.RelevanceMetricName);
         relevance.Interpretation!.Failed.Should().NotBe(true);
         relevance.Interpretation.Rating.Should().BeOneOf(EvaluationRating.Good, EvaluationRating.Exceptional);
-        relevance.Value.Should().BeGreaterThanOrEqualTo(3);
+        relevance.Value.Should().BeGreaterThanOrEqualTo(3, because: relevance.Reason);
 
         /// Retrieve the score for truth from the <see cref="EvaluationResult"/>.
         NumericMetric truth = result.Get<NumericMetric>(RelevanceTruthAndCompletenessEvaluator.TruthMetricName);
         truth.Interpretation!.Failed.Should().NotBe(true);
         truth.Interpretation.Rating.Should().BeOneOf(EvaluationRating.Good, EvaluationRating.Exceptional);
-        truth.Value.Should().BeGreaterThanOrEqualTo(3);
+        truth.Value.Should().BeGreaterThanOrEqualTo(3, because: truth.Reason);
 
         /// Retrieve the score for completeness from the <see cref="EvaluationResult"/>.
         NumericMetric completeness =
             result.Get<NumericMetric>(RelevanceTruthAndCompletenessEvaluator.CompletenessMetricName);
         completeness.Interpretation!.Failed.Should().NotBe(true);
         completeness.Interpretation.Rating.Should().BeOneOf(EvaluationRating.Good, EvaluationRating.Exceptional);
-        completeness.Value.Should().BeGreaterThanOrEqualTo(3);
+        completeness.Value.Should().BeGreaterThanOrEqualTo(3, because: completeness.Reason);
 
         /// Retrieve the measurement system from the <see cref="EvaluationResult"/>.
         StringMetric measurementSystem =

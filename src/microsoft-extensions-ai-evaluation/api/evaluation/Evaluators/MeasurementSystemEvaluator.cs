@@ -135,11 +135,15 @@ public class MeasurementSystemEvaluator : IEvaluator
         }
         else if (Enum.TryParse(metric.Value, ignoreCase: true, out MeasurementSystem measurementSystem))
         {
-            var reason = $"Detected measurement system was '{metric.Value}'.";
             metric.Interpretation =
                 measurementSystem is MeasurementSystem.Imperial or MeasurementSystem.USCustomary
-                    ? new EvaluationMetricInterpretation(EvaluationRating.Good, reason: reason)
-                    : new EvaluationMetricInterpretation(EvaluationRating.Unacceptable, failed: true, reason);
+                    ? new EvaluationMetricInterpretation(
+                        EvaluationRating.Good,
+                        reason: $"Detected measurement system '{metric.Value}' was part of expected set (i.e., either '{MeasurementSystem.Imperial} or '{MeasurementSystem.USCustomary}').")
+                    : new EvaluationMetricInterpretation(
+                        EvaluationRating.Unacceptable,
+                        failed: true,
+                        reason: $"Detected measurement system '{metric.Value}' was not part of expected set (i.e., neither '{MeasurementSystem.Imperial} nor '{MeasurementSystem.USCustomary}').");
         }
         else
         {
@@ -147,7 +151,7 @@ public class MeasurementSystemEvaluator : IEvaluator
                 new EvaluationMetricInterpretation(
                     EvaluationRating.Inconclusive,
                     failed: true,
-                    reason: $"The detected measurement system '{metric.Value}' is not valid.");
+                    reason: $"The detected measurement system '{metric.Value}' was not valid.");
         }
     }
 
@@ -216,6 +220,13 @@ public class MeasurementSystemEvaluator : IEvaluator
         /// <see cref="EvaluationResult"/> below) to be the text of the LLM's response (which should contain the name of
         /// the detected measurement system).
         metric.Value = evaluationResponse.Text;
+
+        /// Include a reason that provides some commentary around the result. An <see cref="IEvaluator"/> can
+        /// optionally include such commentary to explain the scores present within any <see cref="EvaluationMetric"/>
+        /// that it returns. Note that although we hand craft the reason below, with some tweaks to the above prompt,
+        /// we could also have asked the LLM to include an explanation for the returned metric value in its response
+        /// and used that instead.
+        metric.Reason = $"The detected measurement system was '{metric.Value}'.";
 
         /// Attach a default <see cref="EvaluationMetricInterpretation"/> for the metric. An evaluator can provide a
         /// default interpretation for each metric that it produces. This default interpretation can be overridden by

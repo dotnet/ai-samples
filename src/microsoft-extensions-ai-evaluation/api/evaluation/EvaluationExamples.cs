@@ -53,7 +53,6 @@ public partial class EvaluationExamples
             };
 
         /// Fetch the response to be evaluated and store it in a static variable <see cref="s_response" />.
-        ChatResponse response = await s_chatConfiguration.ChatClient.GetResponseAsync(s_messages, chatOptions);
-        s_response = response;
+        s_response = await s_chatConfiguration.ChatClient.GetResponseAsync(s_messages, chatOptions);
     }
 }
