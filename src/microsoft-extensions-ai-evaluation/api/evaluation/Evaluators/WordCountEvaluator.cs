@@ -56,18 +56,22 @@ public class WordCountEvaluator : IEvaluator
         }
         else
         {
-            var reason = $"The response was {metric.Value} words long.";
             metric.Interpretation =
                 metric.Value <= 100
-                    ? new EvaluationMetricInterpretation(EvaluationRating.Good, reason: reason)
-                    : new EvaluationMetricInterpretation(EvaluationRating.Unacceptable, failed: true, reason);
+                    ? new EvaluationMetricInterpretation(
+                        EvaluationRating.Good,
+                        reason: "The response was shorter than 100 words.")
+                    : new EvaluationMetricInterpretation(
+                        EvaluationRating.Unacceptable,
+                        failed: true,
+                        reason: "The response was longer than 100 words.");
         }
     }
 
     /// <inheritdoc/>
     public ValueTask<EvaluationResult> EvaluateAsync(
         IEnumerable<ChatMessage> messages,
-        ChatMessage modelResponse,
+        ChatResponse modelResponse,
         ChatConfiguration? chatConfiguration = null,
         IEnumerable<EvaluationContext>? additionalContext = null,
         CancellationToken cancellationToken = default)
@@ -75,8 +79,13 @@ public class WordCountEvaluator : IEvaluator
         /// Count the number of words in the supplied <see cref="modelResponse"/>.
         int wordCount = CountWords(modelResponse.Text);
 
-        /// Create a <see cref="NumericMetric"/> with value set to the word count.
-        var metric = new NumericMetric(WordCountMetricName, value: wordCount);
+        var reason =
+            $"This {WordCountMetricName} metric has value {wordCount} because the evaluated model response contained {wordCount} words.";
+
+        /// Create a <see cref="NumericMetric"/> with value set to the word count. Also include a reason that provides
+        /// some commentary around the result. An <see cref="IEvaluator"/> can optionally include such commentary
+        /// to explain the scores present within any <see cref="EvaluationMetric"/> that it returns.
+        var metric = new NumericMetric(WordCountMetricName, value: wordCount, reason);
 
         /// Attach a default <see cref="EvaluationMetricInterpretation"/> for the metric. An evaluator can provide a
         /// default interpretation for each metric that it produces. This default interpretation can be overridden by

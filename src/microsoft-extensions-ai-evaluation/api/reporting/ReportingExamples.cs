@@ -114,8 +114,7 @@ public partial class ReportingExamples
 
     private static IEnumerable<IEvaluator> GetEvaluators()
     {
-        var rtcOptions = new RelevanceTruthAndCompletenessEvaluatorOptions(includeReasoning: true);
-        IEvaluator rtcEvaluator = new RelevanceTruthAndCompletenessEvaluator(rtcOptions);
+        IEvaluator rtcEvaluator = new RelevanceTruthAndCompletenessEvaluator();
         IEvaluator measurementSystemEvaluator = new MeasurementSystemEvaluator();
         IEvaluator wordCountEvaluator = new WordCountEvaluator();
 
@@ -130,7 +129,7 @@ public partial class ReportingExamples
     /// corresponding cache entry expires (in 14 days by default), or until any request parameter (such as the question
     /// being asked, or the LLM endpoint being invoked) is changed.
 
-    private static async Task<(IList<ChatMessage> Messages, ChatMessage ModelResponse)> GetAstronomyConversationAsync(
+    private static async Task<(IList<ChatMessage> Messages, ChatResponse ModelResponse)> GetAstronomyConversationAsync(
         IChatClient chatClient,
         string astronomyQuestion)
     {
@@ -154,8 +153,8 @@ public partial class ReportingExamples
                 ResponseFormat = ChatResponseFormat.Text
             };
 
-        ChatResponse completion = await chatClient.GetResponseAsync(messages, chatOptions);
-        return (messages, ModelResponse: completion.Message);
+        ChatResponse response = await chatClient.GetResponseAsync(messages, chatOptions);
+        return (messages, response);
     }
 
     /// <summary>
@@ -174,34 +173,34 @@ public partial class ReportingExamples
         /// Retrieve the score for relevance from the <see cref="EvaluationResult"/>.
         NumericMetric relevance =
             result.Get<NumericMetric>(RelevanceTruthAndCompletenessEvaluator.RelevanceMetricName);
-        relevance.Interpretation!.Failed.Should().NotBe(true);
+        relevance.Interpretation!.Failed.Should().BeFalse();
         relevance.Interpretation.Rating.Should().BeOneOf(EvaluationRating.Good, EvaluationRating.Exceptional);
-        relevance.Value.Should().BeGreaterThanOrEqualTo(3);
+        relevance.Value.Should().BeGreaterThanOrEqualTo(3, because: relevance.Reason);
 
         /// Retrieve the score for truth from the <see cref="EvaluationResult"/>.
         NumericMetric truth = result.Get<NumericMetric>(RelevanceTruthAndCompletenessEvaluator.TruthMetricName);
-        truth.Interpretation!.Failed.Should().NotBe(true);
+        truth.Interpretation!.Failed.Should().BeFalse();
         truth.Interpretation.Rating.Should().BeOneOf(EvaluationRating.Good, EvaluationRating.Exceptional);
-        truth.Value.Should().BeGreaterThanOrEqualTo(3);
+        truth.Value.Should().BeGreaterThanOrEqualTo(3, because: truth.Reason);
 
         /// Retrieve the score for completeness from the <see cref="EvaluationResult"/>.
         NumericMetric completeness =
             result.Get<NumericMetric>(RelevanceTruthAndCompletenessEvaluator.CompletenessMetricName);
-        completeness.Interpretation!.Failed.Should().NotBe(true);
+        completeness.Interpretation!.Failed.Should().BeFalse();
         completeness.Interpretation.Rating.Should().BeOneOf(EvaluationRating.Good, EvaluationRating.Exceptional);
-        completeness.Value.Should().BeGreaterThanOrEqualTo(3);
+        completeness.Value.Should().BeGreaterThanOrEqualTo(3, because: completeness.Reason);
 
         /// Retrieve the measurement system from the <see cref="EvaluationResult"/>.
         StringMetric measurementSystem =
             result.Get<StringMetric>(MeasurementSystemEvaluator.MeasurementSystemMetricName);
-        measurementSystem.Interpretation!.Failed.Should().NotBe(true);
+        measurementSystem.Interpretation!.Failed.Should().BeFalse();
         measurementSystem.Interpretation.Rating.Should().BeOneOf(EvaluationRating.Good, EvaluationRating.Exceptional);
         measurementSystem.ContainsDiagnostics().Should().BeFalse();
         measurementSystem.Value.Should().Be(nameof(MeasurementSystemEvaluator.MeasurementSystem.Imperial));
 
         /// Retrieve the word count from the <see cref="EvaluationResult"/>.
         NumericMetric wordCount = result.Get<NumericMetric>(WordCountEvaluator.WordCountMetricName);
-        wordCount.Interpretation!.Failed.Should().NotBe(true);
+        wordCount.Interpretation!.Failed.Should().BeFalse();
         wordCount.Interpretation.Rating.Should().BeOneOf(EvaluationRating.Good, EvaluationRating.Exceptional);
         wordCount.ContainsDiagnostics().Should().BeFalse();
         wordCount.Value.Should().BeLessThanOrEqualTo(100);

@@ -58,14 +58,14 @@ public partial class EvaluationExamples
 
         /// Retrieve the score for equivalence from the <see cref="EvaluationResult"/>.
         NumericMetric equivalence = result.Get<NumericMetric>(EquivalenceEvaluator.EquivalenceMetricName);
-        equivalence.Interpretation!.Failed.Should().NotBe(true);
+        equivalence.Interpretation!.Failed.Should().BeFalse();
         equivalence.Interpretation.Rating.Should().BeOneOf(EvaluationRating.Good, EvaluationRating.Exceptional);
         equivalence.ContainsDiagnostics().Should().BeFalse();
         equivalence.Value.Should().BeGreaterThanOrEqualTo(3);
 
         /// Retrieve the score for groundedness from the <see cref="EvaluationResult"/>.
         NumericMetric groundedness = result.Get<NumericMetric>(GroundednessEvaluator.GroundednessMetricName);
-        groundedness.Interpretation!.Failed.Should().NotBe(true);
+        groundedness.Interpretation!.Failed.Should().BeFalse();
         groundedness.Interpretation.Rating.Should().BeOneOf(EvaluationRating.Good, EvaluationRating.Exceptional);
         groundedness.ContainsDiagnostics().Should().BeFalse();
         groundedness.Value.Should().BeGreaterThanOrEqualTo(3);

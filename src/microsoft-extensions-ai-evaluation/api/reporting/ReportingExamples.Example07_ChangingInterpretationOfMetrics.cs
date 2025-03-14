@@ -75,7 +75,7 @@ public partial class ReportingExamples
             return new EvaluationMetricInterpretation(
                 EvaluationRating.Unacceptable,
                 failed: true,
-                reason: "The response was empty");
+                reason: "The response was empty.");
         }
 
         return wordCount.Value switch
@@ -84,26 +84,26 @@ public partial class ReportingExamples
                 new EvaluationMetricInterpretation(
                     EvaluationRating.Unacceptable,
                     failed: true,
-                    reason: "The response was empty"),
+                    reason: "The response was empty."),
             <= 20 =>
                 new EvaluationMetricInterpretation(
                     EvaluationRating.Poor,
                     failed: true,
-                    reason: "The response was too short"),
+                    reason: "The response was too short."),
             <= 100 =>
                 new EvaluationMetricInterpretation(
                     EvaluationRating.Good,
-                    reason: "The response was of an acceptable length"),
+                    reason: "The response was of an acceptable length."),
             <= 200 =>
                 new EvaluationMetricInterpretation(
                     EvaluationRating.Poor,
                     failed: true,
-                    reason: "The response was long"),
+                    reason: "The response was long."),
             _ =>
                 new EvaluationMetricInterpretation(
                     EvaluationRating.Unacceptable,
                     failed: true,
-                    reason: "The response was too long")
+                    reason: "The response was too long.")
         };
     }
 }

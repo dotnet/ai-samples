@@ -34,14 +34,14 @@ public partial class EvaluationExamples
         /// Retrieve the detected measurement system from the <see cref="EvaluationResult"/>.
         StringMetric measurementSystem =
             result.Get<StringMetric>(MeasurementSystemEvaluator.MeasurementSystemMetricName);
-        measurementSystem.Interpretation!.Failed.Should().NotBe(true);
+        measurementSystem.Interpretation!.Failed.Should().BeFalse();
         measurementSystem.Interpretation.Rating.Should().BeOneOf(EvaluationRating.Good, EvaluationRating.Exceptional);
         measurementSystem.ContainsDiagnostics().Should().BeFalse();
         measurementSystem.Value.Should().Be(nameof(MeasurementSystemEvaluator.MeasurementSystem.Imperial));
 
         /// Retrieve the word count from the <see cref="EvaluationResult"/>.
         NumericMetric wordCount = result.Get<NumericMetric>(WordCountEvaluator.WordCountMetricName);
-        wordCount.Interpretation!.Failed.Should().NotBe(true);
+        wordCount.Interpretation!.Failed.Should().BeFalse();
         wordCount.Interpretation.Rating.Should().BeOneOf(EvaluationRating.Good, EvaluationRating.Exceptional);
         wordCount.ContainsDiagnostics().Should().BeFalse();
         wordCount.Value.Should().BeLessThanOrEqualTo(100);
