@@ -16,7 +16,7 @@ public class SampleChatClient : IChatClient
     }
 
     public async Task<ChatResponse> GetResponseAsync(
-        IList<ChatMessage> chatMessages,
+        IEnumerable<ChatMessage> chatMessages,
         ChatOptions? options = null,
         CancellationToken cancellationToken = default)
     {
@@ -39,24 +39,16 @@ public class SampleChatClient : IChatClient
     }
 
     public async IAsyncEnumerable<ChatResponseUpdate> GetStreamingResponseAsync(
-        IList<ChatMessage> chatMessages,
+        IEnumerable<ChatMessage> chatMessages,
         ChatOptions? options = null,
         [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
         // Simulate streaming by yielding messages one by one
-        yield return new()
-        {
-            Role = ChatRole.Assistant,
-            Text = "This is the first part of the stream.",
-        };
+        yield return new(ChatRole.Assistant, "This is the first part of the stream.");
 
         await Task.Delay(300, cancellationToken);
 
-        yield return new()
-        {
-            Role = ChatRole.Assistant,
-            Text = "This is the second part of the stream.",
-        };
+        yield return new(ChatRole.Assistant, "This is the second part of the stream.");
     }
 
     public object? GetService(Type serviceType, object? key = null) =>
