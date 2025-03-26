@@ -17,7 +17,7 @@ public partial class ReportingExamples
         /// <see cref="s_sqliteReportingConfiguration"/>.
 
         await using ScenarioRun scenarioRun =
-            await s_sqliteReportingConfiguration.CreateScenarioRunAsync(this.ScenarioName);
+            await s_sqliteReportingConfiguration.CreateScenarioRunAsync(this.ScenarioName, additionalTags: ["Pluto"]);
 
         var (messages, modelResponse) = await GetAstronomyConversationAsync(
             chatClient: scenarioRun.ChatConfiguration!.ChatClient,

@@ -15,7 +15,7 @@ public partial class ReportingExamples
         /// Use <see cref="s_defaultReportingConfiguration"/> to create a <see cref="ScenarioRun"/> with
         /// <see cref="ScenarioRun.ScenarioName"/> set to the fully qualified name of the current test method.
         await using ScenarioRun scenarioRun =
-            await s_defaultReportingConfiguration.CreateScenarioRunAsync(this.ScenarioName);
+            await s_defaultReportingConfiguration.CreateScenarioRunAsync(this.ScenarioName, additionalTags: ["Moon"]);
 
         /// Get an LLM response to be evaluated. Note that we use the <see cref="IChatClient"/> that is included in the
         /// <see cref="ScenarioRun.ChatConfiguration"/> to get this response. Since the <see cref="scenarioRun"/> was

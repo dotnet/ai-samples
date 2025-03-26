@@ -15,9 +15,10 @@ public partial class ReportingExamples
         DiskBasedReportingConfiguration.Create(
             storageRootPath: EnvironmentVariables.StorageRootPath,
             evaluators: GetEvaluators(),
-            chatConfiguration: TestSetup.GetChatConfiguration(),
+            chatConfiguration: s_chatConfiguration,
             enableResponseCaching: false,
-            executionName: ExecutionName);
+            executionName: ExecutionName,
+            tags: GetTags());
 
     [TestMethod]
     public async Task Example04_DisablingResponseCaching()
@@ -33,7 +34,9 @@ public partial class ReportingExamples
         /// current project, all of which leverage response caching to speed up subsequent runs).
 
         await using ScenarioRun scenarioRun =
-            await s_reportingConfigurationWithCachingDisabled.CreateScenarioRunAsync(this.ScenarioName);
+            await s_reportingConfigurationWithCachingDisabled.CreateScenarioRunAsync(
+                this.ScenarioName,
+                additionalTags: ["Mercury"]);
 
         var (messages, modelResponse) = await GetAstronomyConversationAsync(
             chatClient: scenarioRun.ChatConfiguration!.ChatClient,
