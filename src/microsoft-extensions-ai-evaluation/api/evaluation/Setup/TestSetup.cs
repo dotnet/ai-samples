@@ -60,7 +60,7 @@ public class TestSetup
             new ChatCompletionsClient(
                 new Uri(EnvironmentVariables.AzureAIInferenceEndpoint),
                 new AzureKeyCredential(EnvironmentVariables.AzureAIInferenceAPIKey))
-                    .AsChatClient(modelId: EnvironmentVariables.AzureAIInferenceModel);
+                    .AsIChatClient(modelId: EnvironmentVariables.AzureAIInferenceModel);
 
         IEvaluationTokenCounter? tokenCounter = null;
         if (EnvironmentVariables.AzureAIInferenceModelInputTokenLimit.HasValue)
@@ -72,7 +72,7 @@ public class TestSetup
             /// model (by wrapping any other tokenizer API that that supports the selected model) and pass this
             /// <see cref="IEvaluationTokenCounter"/> down to the <see cref="ChatConfiguration"/> created below.
             tokenCounter =
-            TiktokenTokenizer.CreateForModel(EnvironmentVariables.AzureAIInferenceModel)
+                TiktokenTokenizer.CreateForModel(EnvironmentVariables.AzureAIInferenceModel)
                     .ToTokenCounter(EnvironmentVariables.AzureAIInferenceModelInputTokenLimit.Value);
         }
 
@@ -88,7 +88,8 @@ public class TestSetup
         /// endpoint.
         IChatClient client =
             new AzureOpenAIClient(new Uri(EnvironmentVariables.AzureOpenAIEndpoint), new DefaultAzureCredential())
-                .AsChatClient(modelId: EnvironmentVariables.AzureOpenAIModel);
+                .GetChatClient(EnvironmentVariables.AzureOpenAIModel)
+                .AsIChatClient();
 
         IEvaluationTokenCounter? tokenCounter = null;
         if (EnvironmentVariables.AzureOpenAIModelInputTokenLimit.HasValue)
@@ -100,7 +101,7 @@ public class TestSetup
             /// model (by wrapping any other tokenizer API that that supports the selected model) and pass this
             /// <see cref="IEvaluationTokenCounter"/> down to the <see cref="ChatConfiguration"/> created below.
             tokenCounter =
-            TiktokenTokenizer.CreateForModel(EnvironmentVariables.AzureOpenAIModel)
+                TiktokenTokenizer.CreateForModel(EnvironmentVariables.AzureOpenAIModel)
                     .ToTokenCounter(EnvironmentVariables.AzureOpenAIModelInputTokenLimit.Value);
         }
 
@@ -129,7 +130,7 @@ public class TestSetup
             /// model (by wrapping any other tokenizer API that that supports the selected model) and pass this
             /// <see cref="IEvaluationTokenCounter"/> down to the <see cref="ChatConfiguration"/> created below.
             tokenCounter =
-            TiktokenTokenizer.CreateForModel(EnvironmentVariables.OllamaModel)
+                TiktokenTokenizer.CreateForModel(EnvironmentVariables.OllamaModel)
                     .ToTokenCounter(EnvironmentVariables.OllamaModelInputTokenLimit.Value);
         }
 
@@ -145,7 +146,8 @@ public class TestSetup
         /// endpoint.
         IChatClient client =
             new OpenAIClient(EnvironmentVariables.OpenAIAPIKey)
-                .AsChatClient(modelId: EnvironmentVariables.OpenAIModel);
+                .GetChatClient(EnvironmentVariables.OpenAIModel)
+                .AsIChatClient();
 
         IEvaluationTokenCounter? tokenCounter = null;
         if (EnvironmentVariables.OpenAIModelInputTokenLimit.HasValue)
@@ -157,7 +159,7 @@ public class TestSetup
             /// model (by wrapping any other tokenizer API that that supports the selected model) and pass this
             /// <see cref="IEvaluationTokenCounter"/> down to the <see cref="ChatConfiguration"/> created below.
             tokenCounter =
-            TiktokenTokenizer.CreateForModel(EnvironmentVariables.OpenAIModel)
+                TiktokenTokenizer.CreateForModel(EnvironmentVariables.OpenAIModel)
                     .ToTokenCounter(EnvironmentVariables.OpenAIModelInputTokenLimit.Value);
         }
 

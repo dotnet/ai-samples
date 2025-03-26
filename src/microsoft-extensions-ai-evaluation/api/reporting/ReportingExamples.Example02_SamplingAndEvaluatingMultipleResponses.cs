@@ -32,7 +32,10 @@ public partial class ReportingExamples
         /// <see cref="ScenarioRun.ScenarioName"/> set to the fully qualified name of the current test method and
         /// see <see cref="ScenarioRun.IterationName"/> set to the number representing the current iteration.
         await using ScenarioRun scenarioRun =
-            await s_defaultReportingConfiguration.CreateScenarioRunAsync(this.ScenarioName, iterationName);
+            await s_defaultReportingConfiguration.CreateScenarioRunAsync(
+                this.ScenarioName,
+                iterationName,
+                additionalTags: ["Jupiter"]);
 
         /// Get an LLM response to be evaluated for the current iteration. As previously explained in the comments in
         /// <see cref="Example01_SamplingAndEvaluatingSingleResponse"/>, the response to be evaluated will be fetched

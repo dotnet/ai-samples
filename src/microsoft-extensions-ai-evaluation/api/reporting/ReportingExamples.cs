@@ -28,7 +28,7 @@ public partial class ReportingExamples
     /// results across different runs.
     /// 
     /// For the current sample where all the evaluation tests (and <see cref="ReportingConfiguration"/>s) that need the
-    /// evaluation name live in the same assembly, we use a timestamp (that is computed once and stored in a static
+    /// execution name live in the same assembly, we use a timestamp (that is computed once and stored in a static
     /// variable) as the execution name. To ensure that results are grouped correctly, we make sure to use the same
     /// execution name in all <see cref="ReportingConfiguration"/>s used across the tests in the current project
     /// (including <see cref="s_defaultReportingConfiguration"/>,
@@ -84,6 +84,10 @@ public partial class ReportingExamples
 
     private string ScenarioName => $"{TestContext!.FullyQualifiedTestClassName}.{TestContext.TestName}";
 
+    /// The below <see cref="ChatConfiguration"/> identifies the LLM endpoint that should be used for all evaluations
+    /// performed in the current sample project.
+    private static readonly ChatConfiguration s_chatConfiguration = TestSetup.GetChatConfiguration();
+
     /// A <see cref="ReportingConfiguration"/> identifies:
     /// - the set of evaluators that should be invoked for each <see cref="ScenarioRun"/> that is created by calling
     ///   <see cref="ReportingConfiguration.CreateScenarioRunAsync(string, string, IEnumerable{string}?, CancellationToken)"/>
@@ -103,9 +107,10 @@ public partial class ReportingExamples
         DiskBasedReportingConfiguration.Create(
             storageRootPath: EnvironmentVariables.StorageRootPath,
             evaluators: GetEvaluators(),
-            chatConfiguration: TestSetup.GetChatConfiguration(),
+            chatConfiguration: s_chatConfiguration,
             enableResponseCaching: true,
-            executionName: ExecutionName);
+            executionName: ExecutionName,
+            tags: GetTags());
 
     /// Most sample tests in the current project run the following 3 evaluators to evaluate LLM responses
     /// for a variety of astronomy questions related to distances between planets. Some tests (such as
@@ -115,10 +120,29 @@ public partial class ReportingExamples
     private static IEnumerable<IEvaluator> GetEvaluators()
     {
         IEvaluator rtcEvaluator = new RelevanceTruthAndCompletenessEvaluator();
-        IEvaluator measurementSystemEvaluator = new MeasurementSystemEvaluator();
-        IEvaluator wordCountEvaluator = new WordCountEvaluator();
+        yield return rtcEvaluator;
 
-        return [rtcEvaluator, measurementSystemEvaluator, wordCountEvaluator];
+        IEvaluator measurementSystemEvaluator = new MeasurementSystemEvaluator();
+        yield return measurementSystemEvaluator;
+
+        IEvaluator wordCountEvaluator = new WordCountEvaluator();
+        yield return wordCountEvaluator;
+    }
+
+    /// We create tag strings for provider name, model name etc. below that we then pass to the
+    /// <see cref="ReportingConfiguration"/> constructor above. Tags are can be useful when it comes to viewing high
+    /// level information about the evaluation run in the generated report. They can also be useful for easily
+    /// filtering the results in the generated report.
+
+    private static IEnumerable<string> GetTags(string storageKind = "Disk")
+    {
+        yield return $"Execution: {ExecutionName}";
+
+        ChatClientMetadata? metadata = s_chatConfiguration.ChatClient.GetService<ChatClientMetadata>();
+
+        yield return $"Provider: {metadata?.ProviderName ?? "Unknown"}";
+        yield return $"Model: {metadata?.DefaultModelId ?? "Unknown"}";
+        yield return $"Storage: {storageKind}";
     }
 
     /// All sample tests in the current project evaluate the LLM's response to a different
