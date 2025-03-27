@@ -18,9 +18,10 @@ public partial class ReportingExamples
         DiskBasedReportingConfiguration.Create(
             storageRootPath: EnvironmentVariables.StorageRootPath,
             evaluators: [new EquivalenceEvaluator(), new GroundednessEvaluator()],
-            chatConfiguration: TestSetup.GetChatConfiguration(),
+            chatConfiguration: s_chatConfiguration,
             enableResponseCaching: true,
-            executionName: ExecutionName);
+            executionName: ExecutionName,
+            tags: GetTags());
 
     [TestMethod]
     public async Task Example05_InvokingEvaluatorsThatNeedAdditionalContext()
@@ -31,7 +32,9 @@ public partial class ReportingExamples
         /// (<see cref="s_reportingConfigurationWithEquivalenceAndGroundedness"/> above).
 
         await using ScenarioRun scenarioRun =
-            await s_reportingConfigurationWithEquivalenceAndGroundedness.CreateScenarioRunAsync(this.ScenarioName);
+            await s_reportingConfigurationWithEquivalenceAndGroundedness.CreateScenarioRunAsync(
+                this.ScenarioName,
+                additionalTags: ["Venus"]);
 
         var (messages, modelResponse) = await GetAstronomyConversationAsync(
             chatClient: scenarioRun.ChatConfiguration!.ChatClient,

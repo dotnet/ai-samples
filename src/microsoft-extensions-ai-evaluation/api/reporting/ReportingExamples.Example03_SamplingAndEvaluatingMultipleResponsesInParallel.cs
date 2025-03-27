@@ -25,7 +25,10 @@ public partial class ReportingExamples
         await Parallel.ForAsync(1, 4, async (i, _) =>
         {
             await using ScenarioRun scenarioRun =
-                await s_defaultReportingConfiguration.CreateScenarioRunAsync(this.ScenarioName, iterationName: i.ToString());
+                await s_defaultReportingConfiguration.CreateScenarioRunAsync(
+                    this.ScenarioName,
+                    iterationName: i.ToString(),
+                    additionalTags: ["Mars"]);
 
             var (messages, modelResponse) = await GetAstronomyConversationAsync(
                 chatClient: scenarioRun.ChatConfiguration!.ChatClient,
