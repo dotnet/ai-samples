@@ -12,7 +12,7 @@ public partial class AzureAIInferenceSamples
         var credential = new AzureKeyCredential(Environment.GetEnvironmentVariable("GH_TOKEN"));
 
         IChatClient client =
-            new ChatCompletionsClient(endpoint, credential).AsChatClient(modelId);
+            new ChatCompletionsClient(endpoint, credential).AsIChatClient(modelId);
 
         List<ChatMessage> conversation =
         [

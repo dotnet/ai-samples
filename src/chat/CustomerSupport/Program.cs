@@ -12,7 +12,8 @@ var useManagedIdentity = true;
 IChatClient chatClient =
     useOpenAIChat ?
     Utils.CreateAzureOpenAIClient(openAIEndpoint, useManagedIdentity)
-        .AsChatClient("chat")
+        .GetChatClient("chat")
+        .AsIChatClient()
     : new OllamaApiClient(new Uri(ollamaEndpoint), "llama3.2");
 
 IEmbeddingGenerator<string, Embedding<float>> embeddingGenerator =

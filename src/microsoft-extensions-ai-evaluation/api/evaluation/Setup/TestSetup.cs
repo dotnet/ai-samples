@@ -60,7 +60,7 @@ public class TestSetup
             new ChatCompletionsClient(
                 new Uri(EnvironmentVariables.AzureAIInferenceEndpoint),
                 new AzureKeyCredential(EnvironmentVariables.AzureAIInferenceAPIKey))
-                    .AsChatClient(modelId: EnvironmentVariables.AzureAIInferenceModel);
+                    .AsIChatClient(modelId: EnvironmentVariables.AzureAIInferenceModel);
 
         IEvaluationTokenCounter? tokenCounter = null;
         if (EnvironmentVariables.AzureAIInferenceModelInputTokenLimit.HasValue)
@@ -88,7 +88,8 @@ public class TestSetup
         /// endpoint.
         IChatClient client =
             new AzureOpenAIClient(new Uri(EnvironmentVariables.AzureOpenAIEndpoint), new DefaultAzureCredential())
-                .AsChatClient(modelId: EnvironmentVariables.AzureOpenAIModel);
+                .GetChatClient(EnvironmentVariables.AzureOpenAIModel)
+                .AsIChatClient();
 
         IEvaluationTokenCounter? tokenCounter = null;
         if (EnvironmentVariables.AzureOpenAIModelInputTokenLimit.HasValue)
@@ -145,7 +146,8 @@ public class TestSetup
         /// endpoint.
         IChatClient client =
             new OpenAIClient(EnvironmentVariables.OpenAIAPIKey)
-                .AsChatClient(modelId: EnvironmentVariables.OpenAIModel);
+                .GetChatClient(EnvironmentVariables.OpenAIModel)
+                .AsIChatClient();
 
         IEvaluationTokenCounter? tokenCounter = null;
         if (EnvironmentVariables.OpenAIModelInputTokenLimit.HasValue)

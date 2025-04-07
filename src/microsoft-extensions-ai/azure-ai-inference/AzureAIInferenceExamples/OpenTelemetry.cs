@@ -23,7 +23,7 @@ public partial class AzureAIInferenceSamples
 
         IChatClient aiInferenceClient =
             new ChatCompletionsClient(endpoint, credential)
-                .AsChatClient(modelId);
+                .AsIChatClient(modelId);
 
         IChatClient client = aiInferenceClient
             .AsBuilder()
