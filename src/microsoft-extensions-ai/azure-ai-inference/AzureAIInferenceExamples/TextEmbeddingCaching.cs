@@ -18,7 +18,7 @@ public partial class AzureAIInferenceSamples
         var credential = new AzureKeyCredential(Environment.GetEnvironmentVariable("GH_TOKEN"));
 
         IEmbeddingGenerator<string, Embedding<float>> generator =
-            new EmbeddingsClient(endpoint, credential).AsEmbeddingGenerator(modelId)
+            new EmbeddingsClient(endpoint, credential).AsIEmbeddingGenerator(modelId)
             .AsBuilder()
             .UseDistributedCache(cache)
             .Build();

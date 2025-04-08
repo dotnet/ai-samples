@@ -17,7 +17,7 @@ public partial class AzureAIInferenceSamples
 
         builder.Services.AddDistributedMemoryCache();
         builder.Services.AddChatClient(services => services.GetRequiredService<ChatCompletionsClient>()
-                .AsChatClient("gpt-4o-mini"))
+                .AsIChatClient("gpt-4o-mini"))
             .UseDistributedCache()
             .Build();
 
