@@ -24,9 +24,10 @@ public partial class ReportingExamples
         new ReportingConfiguration(
             evaluators: GetEvaluators(),
             resultStore: new SqliteResultStore(s_sqliteResultsFilePath),
-            chatConfiguration: TestSetup.GetChatConfiguration(),
+            chatConfiguration: s_chatConfiguration,
             responseCacheProvider: new SqliteResponseCache.Provider(s_sqliteCacheFilePath),
-            executionName: ExecutionName);
+            executionName: ExecutionName,
+            tags: GetTags(storageKind: "SQLite"));
 
     [TestMethod]
     public async Task Example08_UsingCustomStorage_01()
@@ -39,7 +40,7 @@ public partial class ReportingExamples
         /// <see cref="SqliteResponseCache.Provider"/> are defined within the current project.
 
         await using ScenarioRun scenarioRun =
-            await s_sqliteReportingConfiguration.CreateScenarioRunAsync(this.ScenarioName);
+            await s_sqliteReportingConfiguration.CreateScenarioRunAsync(this.ScenarioName, additionalTags: ["Saturn"]);
 
         var (messages, modelResponse) = await GetAstronomyConversationAsync(
             chatClient: scenarioRun.ChatConfiguration!.ChatClient,

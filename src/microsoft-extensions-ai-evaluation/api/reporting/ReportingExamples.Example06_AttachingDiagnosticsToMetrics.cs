@@ -16,7 +16,9 @@ public partial class ReportingExamples
     public async Task Example06_AttachingDiagnosticsToMetrics()
     {
         await using ScenarioRun scenarioRun =
-            await s_defaultReportingConfiguration.CreateScenarioRunAsync(this.ScenarioName);
+            await s_defaultReportingConfiguration.CreateScenarioRunAsync(
+                this.ScenarioName,
+                additionalTags: ["Neptune"]);
 
         var (messages, modelResponse) = await GetAstronomyConversationAsync(
             chatClient: scenarioRun.ChatConfiguration!.ChatClient,
