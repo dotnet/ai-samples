@@ -10,9 +10,9 @@ namespace Reporting;
 public partial class ReportingExamples
 {
     [TestMethod]
-    public async Task Example09_UsingCustomStorage_02()
+    public async Task Example13_UsingCustomStorage_02()
     {
-        /// This is another example similar to the previous one in <see cref="Example08_UsingCustomStorage_01"/> that
+        /// This is another example similar to the previous one in <see cref="Example12_UsingCustomStorage_01"/> that
         /// stores evaluation results and caches LLM responses to the same SQLite databases defined in
         /// <see cref="s_sqliteReportingConfiguration"/>.
 

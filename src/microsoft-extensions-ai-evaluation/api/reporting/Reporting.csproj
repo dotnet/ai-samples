@@ -19,6 +19,8 @@
     <PackageReference Include="Microsoft.Extensions.AI.Evaluation" Version="9.4.0-preview.1.25207.5" />
     <PackageReference Include="Microsoft.Extensions.AI.Evaluation.Quality" Version="9.4.0-preview.1.25207.5" />
     <PackageReference Include="Microsoft.Extensions.AI.Evaluation.Reporting" Version="9.4.0-preview.1.25207.5" />
+	<PackageReference Include="Microsoft.Extensions.AI.Evaluation.Reporting.Azure" Version="9.4.0-preview.1.25207.5" />
+	<PackageReference Include="Microsoft.Extensions.AI.Evaluation.Safety" Version="9.4.0-preview.1.25207.5" />
     <PackageReference Include="Microsoft.Extensions.AI.Ollama" Version="9.4.0-preview.1.25207.5" />
     <PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="9.4.0-preview.1.25207.5" />
     <PackageReference Include="Microsoft.ML.Tokenizers.Data.O200kBase" Version="1.0.1" />

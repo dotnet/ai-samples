@@ -13,14 +13,17 @@ namespace Reporting;
 public partial class ReportingExamples
 {
     [TestMethod]
-    public async Task Example10_GeneratingReportProgrammatically()
+    public async Task Example15_GeneratingReportProgrammaticallyFromAzureStorage()
     {
+        SkipTestIfAzureStorageNotConfigured();
+
         /// This example demonstrates how to generate an evaluation report programmatically using the results stored in
-        /// the disk-based result store present under the directory that you specified via the
-        /// 'EVAL_SAMPLE_STORAGE_ROOT_PATH' environment variable.
+        /// the Azure Storage result store that stores results for the examples present in
+        /// <see cref="Example10_UsingAzureStorage_01"/> and <see cref="Example11_UsingAzureStorage_02"/>.
+
 
         var results = new List<ScenarioRunResult>();
-        IResultStore resultStore = new DiskBasedResultStore(EnvironmentVariables.StorageRootPath);
+        IResultStore resultStore = new AzureStorageResultStore(s_dataLakeDirectoryClient);
 
         /// Use the <see cref="resultStore"/> object above to read all results for the 'latest' execution.
         await foreach (string executionName in resultStore.GetLatestExecutionNamesAsync(count: 1))
@@ -31,7 +34,7 @@ public partial class ReportingExamples
             }
         }
 
-        string reportFilePath = Path.Combine(EnvironmentVariables.StorageRootPath, "report.html");
+        string reportFilePath = Path.Combine(EnvironmentVariables.StorageRootPath, "report_azure_storage.html");
         IEvaluationReportWriter reportWriter = new HtmlReportWriter(reportFilePath);
 
         /// Generate a report containing the results read from the <see cref="resultStore"/> above.
@@ -50,7 +53,7 @@ public partial class ReportingExamples
         /// to the current (latest) execution in this case). In other words, the report generation code above will only
         /// work when you run all unit tests in this project as part of a single execution.
 
-        /// Note that as described in the README.md file for this project, you can also generate the same report using
-        /// the 'aieval' dotnet tool from the command line.
+        /// Note that as described in the INSTRUCTIONS.md file, you can also generate the same report using the
+        /// 'aieval' dotnet tool from the command line.
     }
 }
