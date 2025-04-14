@@ -9,15 +9,25 @@
 
 All examples are included in [Examples.sln](./Examples.sln) and are structured as unit tests.
 
-* If you plan to run the examples against an LLM endpoint hosted on Azure Open AI, you can read the
-  [quick version](#quick-version) of the instructions below to get started quickly.
+1. If you plan to run the examples against an LLM endpoint hosted on Azure Open AI, you can read the
+   [quick version](#quick-version) of the instructions below to get started quickly.
 
-* Read the [long version](#long-version) of the instructions if you plan to use an LLM endpoint hosted on Azure AI
-  Inference, Ollama or Open AI instead. The [long version](#long-version) also contains some additional details and
-  clarifications that you may find useful.
+2. Read the [long version](#long-version) of the instructions if you plan to use an LLM endpoint hosted on Azure AI
+   Inference, Ollama or Open AI instead. The [long version](#long-version) also contains some additional details and
+   clarifications that you may find useful.
 
-Then read on to learn
-[how to generate reports using the `aieval` dotnet tool](#generating-reports-using-the-aieval-dotnet-tool).
+3. [Optional] To run the examples that demonstrate how to use the Azure Content Safety evaluators, see
+   [Running Content Safety evaluation examples](#running-content-safety-evaluation-examples). These examples
+   are skipped by default and are only enabled after the corresponding environment variables that configure the Azure
+   Content Safety service have been set.
+
+4. [Optional] To run the examples that demonstrate how to use the Azure storage providers to store evaluation results
+   and cached LLM responses, see [Running Azure storage examples](#running-azure-storage-examples). These examples are
+   skipped by default and are only enabled after the corresponding environment variables that configure Azure
+   storage have been set.
+
+5. Then read on to learn
+   [how to generate reports using the `aieval` dotnet tool](#generating-reports-using-the-aieval-dotnet-tool).
 
 **Note:** The examples included in this solution have been primarily tested against the GPT-4o model. The prompts
 present within the examples directly, as well as the prompts present within the evaluators included as part of the
@@ -112,14 +122,59 @@ The following step is required to run the [Reporting API Examples](./reporting/R
    report. When the examples are executed one at a time, each result is considered part of a different (previous)
    execution, and the results from these older executions will not be included in the generated report.
 
+## Running Content Safety evaluation examples
+Follow the below steps to run the included examples that demonstrate how to use the evaluators available as part of the
+`Microsoft.Extensions.AI.Evaluation.Safety` NuGet package to evaluate responses for presence of harmful or protected
+content. These evaluators leverage the Azure AI Content Safety service and require some special setup. The
+corresponding examples are skipped by default and can be enabled by setting the following environment variables.
+
+1. Firstly, you need an [Azure subscription](https://azure.microsoft.com/).
+2. Within this subscription, create a
+   [resource group](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal)
+   within one of the
+   [Azure regions that support Azure Content Safety evaluations](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/develop/evaluate-sdk#region-support).
+3. Next create an [Azure AI hub](https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/ai-resources) within the
+   same resource group and region.
+4. Finally, create an [Azure AI project](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/create-projects?tabs=ai-studio)
+   within this hub.
+5. Once you have created the above artifacts, set the following environment variables to configure the examples to use
+   the Azure AI Content Safety service from the above AI project.
+
+```
+set EVAL_SAMPLE_AZURE_SUBSCRIPTION_ID=<The ID of the above Azure subscription>
+set EVAL_SAMPLE_AZURE_RESOURCE_GROUP=<The name of the above Azure resource group>
+set EVAL_SAMPLE_AZURE_AI_PROJECT=<The name of the above Azure AI project>
+```
+
+## Running Azure storage examples
+Follow the below steps to run the included examples that demonstrate how to use the Azure storage providers available
+as part of the `Microsoft.Extensions.AI.Evaluation.Reporting.Azure` NuGet package to store evaluation results and
+cached LLM responses. These examples are skipped by default and can be enabled by setting the following environment
+variables.
+
+1. Firstly, you need an [Azure subscription](https://azure.microsoft.com/).
+2. Within this subscription, create a
+   [resource group](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal).
+3. Then create an [Azure storage account](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create)
+   within the above resource group. Make sure to select the 'hierarchical namespace' option when creating the storage
+   account. This is required to enable the use of the
+   [Azure Data Lake Storage Gen2](https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction)
+   APIs that the storage providers used in the above examples require.
+4. Finally, create a storage container within the above storage account.
+5. Once you have created the above artifacts, set the following environment variables to configure the examples to use
+   the storage container created above.
+
+```
+set EVAL_SAMPLE_AZURE_STORAGE_ACCOUNT_ENDPOINT=<The endpoint url of the above Azure storage account>
+set EVAL_SAMPLE_AZURE_STORAGE_CONTAINER=<The name of the above Azure storage container>
+```
+
 ## Generating reports using the `aieval` dotnet tool
 
 You can also use the command line based `aieval` dotnet tool that ships as part of the
 [Microsoft.Extensions.AI.Evaluation.Console](https://www.nuget.org/packages/Microsoft.Extensions.AI.Evaluation.Console)
 NuGet package to generate and view reports. In fact, the recommended way to generate reports as part of your CI builds
 is to run this tool in your CI/CD pipeline.
-
-**Note:** The `aieval` dotnet tool only supports the disk-based result storage at the moment.
 
 To generate a report using the `aieval` dotnet tool,
 

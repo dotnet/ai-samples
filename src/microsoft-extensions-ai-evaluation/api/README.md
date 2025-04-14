@@ -1,15 +1,21 @@
 # Microsoft.Extensions.AI.Evaluation - API Usage Examples
 
 [Examples.sln](./Examples.sln) contains a set of examples that demonstrate various concepts and APIs that are included
-in the following three NuGet packages:
-- [Microsoft.Extensions.AI.Evaluation](https://www.nuget.org/packages/Microsoft.Extensions.AI.Evaluation):
-  Defines the core abstractions and types for supporting evaluation.
-- [Microsoft.Extensions.AI.Evaluation.Quality](https://www.nuget.org/packages/Microsoft.Extensions.AI.Evaluation.Quality):
-  Contains evaluators that can be used to evaluate the quality of LLM responses in your applications including Relevance,
+in the following NuGet packages:
+* [Microsoft.Extensions.AI.Evaluation](https://www.nuget.org/packages/Microsoft.Extensions.AI.Evaluation):
+  Defines core abstractions and types for supporting evaluation.
+* [Microsoft.Extensions.AI.Evaluation.Quality](https://www.nuget.org/packages/Microsoft.Extensions.AI.Evaluation.Quality):
+  Contains evaluators that can be used to evaluate the quality of AI responses in your projects including Relevance,
   Truth, Completeness, Fluency, Coherence, Equivalence and Groundedness.
-- [Microsoft.Extensions.AI.Evaluation.Reporting](https://www.nuget.org/packages/Microsoft.Extensions.AI.Evaluation.Reporting):
-  Contains support for caching LLM responses, storing the results of evaluations and generating reports from the stored
-  data.
+* [Microsoft.Extensions.AI.Evaluation.Safety](https://www.nuget.org/packages/Microsoft.Extensions.AI.Evaluation.Safety):
+  Contains a set of evaluators that are built atop the Azure AI Content Safety service that can be used to evaluate the
+  content safety of AI responses in your projects including Protected Material, Groundedness Pro, Ungrounded
+  Attributes, Hate and Unfairness, Self Harm, Violence, Sexual, Code Vulnerability and Indirect Attack.
+* [Microsoft.Extensions.AI.Evaluation.Reporting](https://www.nuget.org/packages/Microsoft.Extensions.AI.Evaluation.Reporting):
+  Contains support for caching LLM responses, storing the results of evaluations and generating reports from that data.
+* [Microsoft.Extensions.AI.Evaluation.Reporting.Azure](https://www.nuget.org/packages/Microsoft.Extensions.AI.Evaluation.Reporting.Azure):
+  Supports the `Microsoft.Extensions.AI.Evaluation.Reporting` library with an implementation for caching LLM responses
+  and storing the evaluation results in an Azure Storage container.
 
 ## Sample Structure
 

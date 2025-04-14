@@ -27,10 +27,10 @@ public partial class ReportingExamples
             chatConfiguration: s_chatConfiguration,
             responseCacheProvider: new SqliteResponseCache.Provider(s_sqliteCacheFilePath),
             executionName: ExecutionName,
-            tags: GetTags(storageKind: "SQLite"));
+            tags: GetTags(storageKind: "Storage: SQLite"));
 
     [TestMethod]
-    public async Task Example08_UsingCustomStorage_01()
+    public async Task Example12_UsingCustomStorage_01()
     {
         /// This example demonstrates how to create and use a custom <see cref="ReportingConfiguration"/>
         /// (see <see cref="s_sqliteReportingConfiguration"/> above) that uses SQLite databases for storing evaluation

@@ -108,6 +108,26 @@ public class EnvironmentVariables
             : null;
     #endregion
 
+    #region Azure AI Foundry (for Content Safety Evaluators)
+    public const string AzureSubscriptionIdVariableName = "EVAL_SAMPLE_AZURE_SUBSCRIPTION_ID";
+    public static string? AzureSubscriptionId =>
+        TryGetEnvironmentVariable(AzureSubscriptionIdVariableName, out string? value)
+            ? value
+            : null;
+
+    public const string AzureResourceGroupVariableName = "EVAL_SAMPLE_AZURE_RESOURCE_GROUP";
+    public static string? AzureResourceGroup =>
+        TryGetEnvironmentVariable(AzureResourceGroupVariableName, out string? value)
+            ? value
+            : null;
+
+    public const string AzureAIProjectVariableName = "EVAL_SAMPLE_AZURE_AI_PROJECT";
+    public static string? AzureAIProject =>
+        TryGetEnvironmentVariable(AzureAIProjectVariableName, out string? value)
+            ? value
+            : null;
+    #endregion
+
     public static string StorageRootPath
     {
         get
@@ -118,4 +138,18 @@ public class EnvironmentVariables
             return storageRootPath;
         }
     }
+
+    #region Azure Storage
+    public const string AzureStorageAccountEndpointVariableName = "EVAL_SAMPLE_AZURE_STORAGE_ACCOUNT_ENDPOINT";
+    public static string? AzureStorageAccountEndpoint =>
+        TryGetEnvironmentVariable(AzureStorageAccountEndpointVariableName, out string? value)
+            ? value
+            : null;
+
+    public const string AzureStorageContainerVariableName = "EVAL_SAMPLE_AZURE_STORAGE_CONTAINER";
+    public static string? AzureStorageContainer =>
+        TryGetEnvironmentVariable(AzureStorageContainerVariableName, out string? value)
+            ? value
+            : null;
+    #endregion
 }
