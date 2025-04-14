@@ -44,7 +44,7 @@ Documentation for the libraries is available on
 
 ## Feedback & Contributing
 
-We welcome your feedback and contributions! Head to the [dotnet/extensions](https://github.com/dotnet/ex(tensions) repo
+We welcome your feedback and contributions! Head to the [dotnet/extensions](https://github.com/dotnet/extensions) repo
 to provide feedback or contribute to the project. Existing issues for the Microsoft.Extensions.AI.Evaluation libraries
 can be viewed
 [here](https://github.com/dotnet/extensions/issues?q=is%3Aissue%20state%3Aopen%20label%3Aarea-ai-eval). We also welcome
