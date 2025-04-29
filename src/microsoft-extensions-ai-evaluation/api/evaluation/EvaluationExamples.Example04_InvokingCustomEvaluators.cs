@@ -31,19 +31,21 @@ public partial class EvaluationExamples
 
         using var _ = new AssertionScope();
 
+        EvaluationRating[] expectedRatings = [EvaluationRating.Good, EvaluationRating.Exceptional];
+
         /// Retrieve the detected measurement system from the <see cref="EvaluationResult"/>.
         StringMetric measurementSystem =
             result.Get<StringMetric>(MeasurementSystemEvaluator.MeasurementSystemMetricName);
-        measurementSystem.Interpretation!.Failed.Should().BeFalse();
-        measurementSystem.Interpretation.Rating.Should().BeOneOf(EvaluationRating.Good, EvaluationRating.Exceptional);
-        measurementSystem.ContainsDiagnostics().Should().BeFalse();
+        measurementSystem.Interpretation!.Failed.Should().BeFalse(because: measurementSystem.Interpretation.Reason);
+        measurementSystem.Interpretation.Rating.Should().BeOneOf(expectedRatings, because: measurementSystem.Reason);
+        measurementSystem.ContainsDiagnostics(d => d.Severity >= EvaluationDiagnosticSeverity.Warning).Should().BeFalse();
         measurementSystem.Value.Should().Be(nameof(MeasurementSystemEvaluator.MeasurementSystem.Imperial));
 
         /// Retrieve the word count from the <see cref="EvaluationResult"/>.
         NumericMetric wordCount = result.Get<NumericMetric>(WordCountEvaluator.WordCountMetricName);
-        wordCount.Interpretation!.Failed.Should().BeFalse();
-        wordCount.Interpretation.Rating.Should().BeOneOf(EvaluationRating.Good, EvaluationRating.Exceptional);
-        wordCount.ContainsDiagnostics().Should().BeFalse();
+        wordCount.Interpretation!.Failed.Should().BeFalse(because: wordCount.Interpretation.Reason);
+        wordCount.Interpretation.Rating.Should().BeOneOf(expectedRatings, because: wordCount.Reason);
+        wordCount.ContainsDiagnostics(d => d.Severity >= EvaluationDiagnosticSeverity.Warning).Should().BeFalse();
         wordCount.Value.Should().BeLessThanOrEqualTo(100);
     }
 }

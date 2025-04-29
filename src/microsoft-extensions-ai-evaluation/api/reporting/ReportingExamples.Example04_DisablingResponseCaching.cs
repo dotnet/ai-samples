@@ -3,6 +3,7 @@
 // See the LICENSE file in the project root for more information.
 
 using Evaluation.Setup;
+using Microsoft.Extensions.AI;
 using Microsoft.Extensions.AI.Evaluation;
 using Microsoft.Extensions.AI.Evaluation.Reporting;
 using Microsoft.Extensions.AI.Evaluation.Reporting.Storage;
@@ -38,9 +39,10 @@ public partial class ReportingExamples
                 this.ScenarioName,
                 additionalTags: ["Mercury"]);
 
-        var (messages, modelResponse) = await GetAstronomyConversationAsync(
-            chatClient: scenarioRun.ChatConfiguration!.ChatClient,
-            astronomyQuestion: "How far is the planet Mercury from the Earth at its closest and furthest points?");
+        (IList<ChatMessage> messages, ChatResponse modelResponse) =
+            await GetAstronomyConversationAsync(
+                chatClient: scenarioRun.ChatConfiguration!.ChatClient,
+                astronomyQuestion: "How far is the planet Mercury from the Earth at its closest and furthest points?");
 
         EvaluationResult result = await scenarioRun.EvaluateAsync(messages, modelResponse);
 

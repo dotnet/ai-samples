@@ -38,9 +38,8 @@ public partial class EvaluationExamples
         /// Microsoft.Extensions.AI.Evaluation.Reporting NuGet package.
         wordCount.Interpretation = InterpretWordCount(wordCount);
 
-        wordCount.Interpretation!.Failed.Should().BeFalse();
+        wordCount.Interpretation!.Failed.Should().BeFalse(because: wordCount.Interpretation.Reason);
     }
-
 
     private static EvaluationMetricInterpretation? InterpretWordCount(NumericMetric metric)
     {

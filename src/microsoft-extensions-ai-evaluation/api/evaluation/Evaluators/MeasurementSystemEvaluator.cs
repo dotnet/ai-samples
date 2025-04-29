@@ -175,45 +175,26 @@ public class MeasurementSystemEvaluator : IEvaluator
         /// Set up the prompt that we will use for performing the evaluation below.
         string evaluationPrompt = GetEvaluationPrompt(modelResponse.Text);
 
-        if (chatConfiguration.TokenCounter is not null)
-        {
-            /// If an input token limit is specified as part of the <see cref="chatConfiguration"/>, check to make sure
-            /// that the total number of tokens present in the <see cref="evaluationPrompt"/> and the
-            /// <see cref="EvaluationSystemPrompt"/> does not exceed this limit.
-            int systemPromptTokenCount = chatConfiguration.TokenCounter.CountTokens(EvaluationSystemPrompt);
-            int evaluationPromptTokenCount = chatConfiguration.TokenCounter.CountTokens(evaluationPrompt);
-
-            /// Early out with a diagnostic if the token limit is exceeded. Note that we omit setting the
-            /// <see cref="StringMetric.Value"/> for the <see cref="metric"/> in this case. However, we report an error
-            /// on the <see cref="metric"/> by calling
-            /// <see cref="EvaluationMetric{T}.AddDiagnostic(EvaluationDiagnostic)"/>.
-            if (systemPromptTokenCount + evaluationPromptTokenCount > chatConfiguration.TokenCounter.InputTokenLimit)
-            {
-                metric.AddDiagnostic(
-                    EvaluationDiagnostic.Error(
-                        $"Limit of {chatConfiguration.TokenCounter.InputTokenLimit} input tokens was exceeded."));
-
-                return new EvaluationResult(metric);
-            }
-        }
-
         /// Invoke the LLM with the above <see cref="evaluationPrompt"/> to determine the measurement system that is
         /// used in the supplied response.
         ChatMessage[] evaluationMessages = [
             new ChatMessage(ChatRole.System, EvaluationSystemPrompt),
             new ChatMessage(ChatRole.User, evaluationPrompt)];
 
+        var chatOptions =
+            new ChatOptions
+            {
+                Temperature = 0.0f,
+                TopP = 1.0f,
+                PresencePenalty = 0.0f,
+                FrequencyPenalty = 0.0f,
+                ResponseFormat = ChatResponseFormat.Text
+            };
+
         ChatResponse evaluationResponse =
             await chatConfiguration.ChatClient.GetResponseAsync(
                 evaluationMessages,
-                new ChatOptions
-                {
-                    Temperature = 0.0f,
-                    TopP = 1.0f,
-                    PresencePenalty = 0.0f,
-                    FrequencyPenalty = 0.0f,
-                    ResponseFormat = ChatResponseFormat.Text
-                },
+                chatOptions,
                 cancellationToken);
 
         /// Set the value of the <see cref="StringMetric"> (that we will return as part of the
@@ -233,6 +214,16 @@ public class MeasurementSystemEvaluator : IEvaluator
         /// the caller if needed as demonstrated in
         /// <see cref="EvaluationExamples.Example06_ChangingInterpretationOfMetrics"/>.
         Interpret(metric);
+
+        /// Record metadata such as token counts and model name present within the <see cref="ChatResponse"/> within
+        /// the <see cref="EvaluationMetric.Metadata"/>.
+        metric.AddOrUpdateChatMetadata(evaluationResponse);
+
+        /// <see cref="EvaluationMetric.Metadata"/> can be used to record any metadata relevant to the metric (such as
+        /// the value of the <see cref="ChatOptions.Temperature"/> setting that was used in the below case). All
+        /// included metadata for a given metric can be viewed by clicking on the metric's card in the generated
+        /// evaluation report.
+        metric.AddOrUpdateMetadata(name: "temperature-setting", value: $"{chatOptions.Temperature}");
 
         /// Return an <see cref="EvaluationResult"/> that contains the metric.
         return new EvaluationResult(metric);

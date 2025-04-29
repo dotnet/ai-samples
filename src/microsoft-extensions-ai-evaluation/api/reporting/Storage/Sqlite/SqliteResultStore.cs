@@ -124,7 +124,7 @@ public class SqliteResultStore : IResultStore
 
         try
         {
-            foreach (var result in results)
+            foreach (ScenarioRunResult result in results)
             {
                 cancellationToken.ThrowIfCancellationRequested();
 

@@ -79,7 +79,7 @@ public class WordCountEvaluator : IEvaluator
         /// Count the number of words in the supplied <see cref="modelResponse"/>.
         int wordCount = CountWords(modelResponse.Text);
 
-        var reason =
+        string reason =
             $"This {WordCountMetricName} metric has value {wordCount} because the evaluated model response contained {wordCount} words.";
 
         /// Create a <see cref="NumericMetric"/> with value set to the word count. Also include a reason that provides

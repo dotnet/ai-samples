@@ -6,35 +6,33 @@ using System.Diagnostics;
 using Evaluation.Setup;
 using Microsoft.Extensions.AI.Evaluation.Reporting;
 using Microsoft.Extensions.AI.Evaluation.Reporting.Formats.Html;
-using Microsoft.Extensions.AI.Evaluation.Reporting.Storage;
+using Reporting.Storage.Sqlite;
 
 namespace Reporting;
 
 public partial class ReportingExamples
 {
     [TestMethod]
-    public async Task Example15_GeneratingReportProgrammaticallyFromAzureStorage()
+    public async Task Example17_GeneratingReportProgrammaticallyFromCustomStorage()
     {
-        SkipTestIfAzureStorageNotConfigured();
-
         /// This example demonstrates how to generate an evaluation report programmatically using the results stored in
-        /// the Azure Storage result store that stores results for the examples present in
-        /// <see cref="Example10_UsingAzureStorage_01"/> and <see cref="Example11_UsingAzureStorage_02"/>.
-
+        /// the SQLite-based result store present under the directory that you specified via the
+        /// 'EVAL_SAMPLE_STORAGE_ROOT_PATH' environment variable (and that stores results for the examples present in
+        /// <see cref="Example13_UsingCustomStorage_01"/> and <see cref="Example14_UsingCustomStorage_02"/>).
 
         var results = new List<ScenarioRunResult>();
-        IResultStore resultStore = new AzureStorageResultStore(s_dataLakeDirectoryClient);
+        IResultStore sqliteResultStore = new SqliteResultStore(s_sqliteResultsFilePath);
 
         /// Use the <see cref="resultStore"/> object above to read all results for the 'latest' execution.
-        await foreach (string executionName in resultStore.GetLatestExecutionNamesAsync(count: 1))
+        await foreach (string executionName in sqliteResultStore.GetLatestExecutionNamesAsync(count: 1))
         {
-            await foreach (ScenarioRunResult result in resultStore.ReadResultsAsync(ExecutionName))
+            await foreach (ScenarioRunResult result in sqliteResultStore.ReadResultsAsync(executionName))
             {
                 results.Add(result);
             }
         }
 
-        string reportFilePath = Path.Combine(EnvironmentVariables.StorageRootPath, "report_azure_storage.html");
+        string reportFilePath = Path.Combine(EnvironmentVariables.StorageRootPath, "report_sqlite.html");
         IEvaluationReportWriter reportWriter = new HtmlReportWriter(reportFilePath);
 
         /// Generate a report containing the results read from the <see cref="resultStore"/> above.
@@ -52,8 +50,5 @@ public partial class ReportingExamples
         /// a time (since each such result will then be considered part of a different (previous) execution as opposed
         /// to the current (latest) execution in this case). In other words, the report generation code above will only
         /// work when you run all unit tests in this project as part of a single execution.
-
-        /// Note that as described in the INSTRUCTIONS.md file, you can also generate the same report using the
-        /// 'aieval' dotnet tool from the command line.
     }
 }

@@ -39,20 +39,6 @@ public class EnvironmentVariables
         return value is not null;
     }
 
-    private static bool TryGetInputTokenLimit(string variableName, [NotNullWhen(true)] out int? limit)
-    {
-        if (TryGetEnvironmentVariable(variableName, out string? value) && int.TryParse(value, out int valueInteger))
-        {
-            limit = valueInteger;
-            return true;
-        }
-        else
-        {
-            limit = null;
-            return false;
-        }
-    }
-
     #region Azure AI Inference
     public static string AzureAIInferenceEndpoint
         => GetEnvironmentVariable("EVAL_SAMPLE_AZURE_AI_INFERENCE_ENDPOINT");
@@ -62,11 +48,6 @@ public class EnvironmentVariables
 
     public static string AzureAIInferenceModel
         => GetEnvironmentVariable("EVAL_SAMPLE_AZURE_AI_INFERENCE_MODEL");
-
-    public static int? AzureAIInferenceModelInputTokenLimit =>
-        TryGetInputTokenLimit("EVAL_SAMPLE_AZURE_AI_INFERENCE_MODEL_INPUT_TOKEN_LIMIT", out int? limit)
-            ? limit
-            : null;
     #endregion
 
     #region Azure OpenAI
@@ -75,11 +56,6 @@ public class EnvironmentVariables
 
     public static string AzureOpenAIModel
         => GetEnvironmentVariable("EVAL_SAMPLE_AZURE_OPENAI_MODEL");
-
-    public static int? AzureOpenAIModelInputTokenLimit =>
-        TryGetInputTokenLimit("EVAL_SAMPLE_AZURE_OPENAI_MODEL_INPUT_TOKEN_LIMIT", out int? limit)
-            ? limit
-            : null;
     #endregion
 
     #region Ollama
@@ -88,11 +64,6 @@ public class EnvironmentVariables
 
     public static string OllamaModel
         => GetEnvironmentVariable("EVAL_SAMPLE_OLLAMA_MODEL");
-
-    public static int? OllamaModelInputTokenLimit =>
-        TryGetInputTokenLimit("EVAL_SAMPLE_OLLAMA_MODEL_INPUT_TOKEN_LIMIT", out int? limit)
-            ? limit
-            : null;
     #endregion
 
     #region OpenAI
@@ -101,11 +72,6 @@ public class EnvironmentVariables
 
     public static string OpenAIModel
         => GetEnvironmentVariable("EVAL_SAMPLE_OPENAI_MODEL");
-
-    public static int? OpenAIModelInputTokenLimit =>
-        TryGetInputTokenLimit("EVAL_SAMPLE_OPENAI_MODEL_INPUT_TOKEN_LIMIT", out int? limit)
-            ? limit
-            : null;
     #endregion
 
     #region Azure AI Foundry (for Content Safety Evaluators)

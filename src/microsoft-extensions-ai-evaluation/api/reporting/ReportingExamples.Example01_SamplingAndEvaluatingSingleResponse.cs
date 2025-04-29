@@ -2,6 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using Microsoft.Extensions.AI;
 using Microsoft.Extensions.AI.Evaluation;
 using Microsoft.Extensions.AI.Evaluation.Reporting;
 
@@ -27,9 +28,10 @@ public partial class ReportingExamples
         /// - from the (disk-based) response cache that was configured in <see cref="s_defaultReportingConfiguration"/>
         ///   in every subsequent run of the test, until the cached entry expires (in 14 days by default) and ends up
         ///   being refreshed
-        var (messages, modelResponse) = await GetAstronomyConversationAsync(
-            chatClient: scenarioRun.ChatConfiguration!.ChatClient,
-            astronomyQuestion: "How far is the Moon from the Earth at its closest and furthest points?");
+        (IList<ChatMessage> messages, ChatResponse modelResponse) =
+            await GetAstronomyConversationAsync(
+                chatClient: scenarioRun.ChatConfiguration!.ChatClient,
+                astronomyQuestion: "How far is the Moon from the Earth at its closest and furthest points?");
 
         /// Run the evaluators configured in <see cref="s_defaultReportingConfiguration"/> against the response. Since
         /// the <see cref="scenarioRun"/> was created using <see cref="s_defaultReportingConfiguration"/>, and since
