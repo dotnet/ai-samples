@@ -33,9 +33,9 @@ public partial class EvaluationExamples
         ///
         /// Diagnostics are typically logged by <see cref="IEvaluator"/>s during evaluation. However, they can also be
         /// logged after the fact as demonstrated below.
-        wordCount.AddDiagnostic(EvaluationDiagnostic.Error("An error diagnostic."));
-        wordCount.AddDiagnostic(EvaluationDiagnostic.Warning("A warning diagnostic."));
-        wordCount.AddDiagnostic(EvaluationDiagnostic.Informational("An informational diagnostic."));
+        wordCount.AddDiagnostics(EvaluationDiagnostic.Error("An error diagnostic."));
+        wordCount.AddDiagnostics(EvaluationDiagnostic.Warning("A warning diagnostic."));
+        wordCount.AddDiagnostics(EvaluationDiagnostic.Informational("An informational diagnostic."));
 
         wordCount.ContainsDiagnostics().Should().BeTrue();
         wordCount.ContainsDiagnostics(d => d.Severity is EvaluationDiagnosticSeverity.Error).Should().BeTrue();

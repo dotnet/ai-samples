@@ -2,6 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using Microsoft.Extensions.AI;
 using Microsoft.Extensions.AI.Evaluation;
 using Microsoft.Extensions.AI.Evaluation.Reporting;
 
@@ -30,9 +31,10 @@ public partial class ReportingExamples
                     iterationName: i.ToString(),
                     additionalTags: ["Mars"]);
 
-            var (messages, modelResponse) = await GetAstronomyConversationAsync(
-                chatClient: scenarioRun.ChatConfiguration!.ChatClient,
-                astronomyQuestion: "How far is the planet Mars from the Earth at its closest and furthest points?");
+            (IList<ChatMessage> messages, ChatResponse modelResponse) =
+                await GetAstronomyConversationAsync(
+                    chatClient: scenarioRun.ChatConfiguration!.ChatClient,
+                    astronomyQuestion: "How far is the planet Mars from the Earth at its closest and furthest points?");
 
             EvaluationResult result = await scenarioRun.EvaluateAsync(messages, modelResponse);
 

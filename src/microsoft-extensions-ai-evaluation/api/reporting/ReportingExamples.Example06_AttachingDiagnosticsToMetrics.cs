@@ -5,6 +5,7 @@
 using Evaluation.Evaluators;
 using FluentAssertions;
 using FluentAssertions.Execution;
+using Microsoft.Extensions.AI;
 using Microsoft.Extensions.AI.Evaluation;
 using Microsoft.Extensions.AI.Evaluation.Reporting;
 
@@ -20,9 +21,10 @@ public partial class ReportingExamples
                 this.ScenarioName,
                 additionalTags: ["Neptune"]);
 
-        var (messages, modelResponse) = await GetAstronomyConversationAsync(
-            chatClient: scenarioRun.ChatConfiguration!.ChatClient,
-            astronomyQuestion: "How far is the planet Neptune from the Earth at its closest and furthest points?");
+        (IList<ChatMessage> messages, ChatResponse modelResponse) =
+            await GetAstronomyConversationAsync(
+                chatClient: scenarioRun.ChatConfiguration!.ChatClient,
+                astronomyQuestion: "How far is the planet Neptune from the Earth at its closest and furthest points?");
 
         EvaluationResult result = await scenarioRun.EvaluateAsync(messages, modelResponse);
 
@@ -41,15 +43,15 @@ public partial class ReportingExamples
         /// attach some diagnostics to this <see cref="StringMetric"/>.
         StringMetric measurementSystem =
             result.Get<StringMetric>(MeasurementSystemEvaluator.MeasurementSystemMetricName);
-        measurementSystem.AddDiagnostic(EvaluationDiagnostic.Informational("An informational diagnostic."));
-        measurementSystem.AddDiagnostic(EvaluationDiagnostic.Warning("A warning diagnostic."));
+        measurementSystem.AddDiagnostics(EvaluationDiagnostic.Informational("An informational diagnostic."));
+        measurementSystem.AddDiagnostics(EvaluationDiagnostic.Warning("A warning diagnostic."));
 
         /// Retrieve the word count <see cref="NumericMetric"/> from the <see cref="EvaluationResult"/> and attach some
         /// diagnostics to this <see cref="NumericMetric"/>.
         NumericMetric wordCount = result.Get<NumericMetric>(WordCountEvaluator.WordCountMetricName);
-        wordCount.AddDiagnostic(EvaluationDiagnostic.Error("An error diagnostic."));
-        wordCount.AddDiagnostic(EvaluationDiagnostic.Warning("A warning diagnostic."));
-        wordCount.AddDiagnostic(EvaluationDiagnostic.Informational("An informational diagnostic."));
+        wordCount.AddDiagnostics(EvaluationDiagnostic.Error("An error diagnostic."));
+        wordCount.AddDiagnostics(EvaluationDiagnostic.Warning("A warning diagnostic."));
+        wordCount.AddDiagnostics(EvaluationDiagnostic.Informational("An informational diagnostic."));
 
         /// Validate that the diagnostics attached above are available on the corresponding metrics.
         measurementSystem.ContainsDiagnostics().Should().BeTrue();

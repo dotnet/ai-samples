@@ -46,8 +46,9 @@ public partial class ReportingExamples
     /// compare results across different product versions.
     /// 
     /// Note that because we use a timestamp as the execution name below, generated reports (such as the ones generated
-    /// in <see cref="Example10_GeneratingReportProgrammatically"/> and
-    /// <see cref="Example11_GeneratingReportProgrammaticallyFromCustomStorage"/>) will include evaluation results from
+    /// in <see cref="Example15_GeneratingReportProgrammatically"/>,
+    /// <see cref="Example16_GeneratingReportProgrammaticallyFromAzureStorage"/> and
+    /// <see cref="Example17_GeneratingReportProgrammaticallyFromCustomStorage"/>) will include evaluation results from
     /// all tests in the current project only if these tests are all executed together as part of the same test run. If
     /// the tests are executed one at a time instead (using the IDE's test runner for example), the generated report
     /// will only include the results from the single test that was executed last.
@@ -99,9 +100,9 @@ public partial class ReportingExamples
     /// The following (disk-based) <see cref="ReportingConfiguration"/> is used by most sample tests in the current
     /// project. A few tests also use other <see cref="ReportingConfiguration"/>s (such as
     /// <see cref="s_reportingConfigurationWithCachingDisabled"/>,
-    /// <see cref="s_reportingConfigurationWithEquivalenceAndGroundedness"/> and
-    /// <see cref="s_sqliteReportingConfiguration"/> all defined within the corresponding test files) to demonstrate
-    /// other concepts.
+    /// <see cref="s_reportingConfigurationWithEquivalenceAndGroundedness"/>,
+    /// <see cref="s_sqliteReportingConfiguration"/>, <see cref="s_safetyReportingConfiguration"/> etc., all defined
+    /// within the corresponding test files) to demonstrate other concepts.
 
     private static readonly ReportingConfiguration s_defaultReportingConfiguration =
         DiskBasedReportingConfiguration.Create(
@@ -112,15 +113,18 @@ public partial class ReportingExamples
             executionName: ExecutionName,
             tags: GetTags());
 
-    /// Most sample tests in the current project run the following 3 evaluators to evaluate LLM responses
-    /// for a variety of astronomy questions related to distances between planets. Some tests (such as
-    /// <see cref="Example05_InvokingEvaluatorsThatNeedAdditionalContext"/>) run other evaluators to demonstrate
-    /// other concepts.
+    /// Most sample tests in the current project run the following evaluators to evaluate LLM responses for a variety
+    /// of astronomy questions related to distances between planets. Some tests (such as
+    /// <see cref="Example05_InvokingEvaluatorsThatNeedAdditionalContext"/>,
+    /// <see cref="Example08_RunningSafetyEvaluators"/> etc.) run other evaluators to demonstrate other concepts.
 
     private static IEnumerable<IEvaluator> GetEvaluators()
     {
-        IEvaluator rtcEvaluator = new RelevanceTruthAndCompletenessEvaluator();
-        yield return rtcEvaluator;
+        IEvaluator coherenceEvaluator = new CoherenceEvaluator();
+        yield return coherenceEvaluator;
+
+        IEvaluator relevanceEvaluator = new RelevanceEvaluator();
+        yield return relevanceEvaluator;
 
         IEvaluator measurementSystemEvaluator = new MeasurementSystemEvaluator();
         yield return measurementSystemEvaluator;
@@ -188,45 +192,35 @@ public partial class ReportingExamples
     {
         using var _ = new AssertionScope();
 
-        /// Note that since we said 'includeReasoning: true' when creating the
-        /// <see cref="RelevanceTruthAndCompletenessEvaluator"/> inside <see cref="GetEvaluators"/> above, the
-        /// 'relevance', 'truth' and 'completeness' metrics will will each include a single informational diagnostic
-        /// explaining the reasoning for the score. This diagnostic is included in the generated report and can be
-        /// viewed by hovering over the corresponding metric's card in the report.
+        EvaluationRating[] expectedRatings = [EvaluationRating.Good, EvaluationRating.Exceptional];
+
+        /// Retrieve the score for coherence from the <see cref="EvaluationResult"/>.
+        NumericMetric coherence = result.Get<NumericMetric>(CoherenceEvaluator.CoherenceMetricName);
+        coherence.Interpretation!.Failed.Should().BeFalse(because: coherence.Interpretation.Reason);
+        coherence.Interpretation.Rating.Should().BeOneOf(expectedRatings, because: coherence.Reason);
+        coherence.ContainsDiagnostics(d => d.Severity >= EvaluationDiagnosticSeverity.Warning).Should().BeFalse();
+        coherence.Value.Should().BeGreaterThanOrEqualTo(4, because: coherence.Reason);
 
         /// Retrieve the score for relevance from the <see cref="EvaluationResult"/>.
-        NumericMetric relevance =
-            result.Get<NumericMetric>(RelevanceTruthAndCompletenessEvaluator.RelevanceMetricName);
-        relevance.Interpretation!.Failed.Should().BeFalse();
-        relevance.Interpretation.Rating.Should().BeOneOf(EvaluationRating.Good, EvaluationRating.Exceptional);
-        relevance.Value.Should().BeGreaterThanOrEqualTo(3, because: relevance.Reason);
-
-        /// Retrieve the score for truth from the <see cref="EvaluationResult"/>.
-        NumericMetric truth = result.Get<NumericMetric>(RelevanceTruthAndCompletenessEvaluator.TruthMetricName);
-        truth.Interpretation!.Failed.Should().BeFalse();
-        truth.Interpretation.Rating.Should().BeOneOf(EvaluationRating.Good, EvaluationRating.Exceptional);
-        truth.Value.Should().BeGreaterThanOrEqualTo(3, because: truth.Reason);
-
-        /// Retrieve the score for completeness from the <see cref="EvaluationResult"/>.
-        NumericMetric completeness =
-            result.Get<NumericMetric>(RelevanceTruthAndCompletenessEvaluator.CompletenessMetricName);
-        completeness.Interpretation!.Failed.Should().BeFalse();
-        completeness.Interpretation.Rating.Should().BeOneOf(EvaluationRating.Good, EvaluationRating.Exceptional);
-        completeness.Value.Should().BeGreaterThanOrEqualTo(3, because: completeness.Reason);
+        NumericMetric relevance = result.Get<NumericMetric>(RelevanceEvaluator.RelevanceMetricName);
+        relevance.Interpretation!.Failed.Should().BeFalse(because: relevance.Interpretation.Reason);
+        relevance.Interpretation.Rating.Should().BeOneOf(expectedRatings, because: relevance.Reason);
+        relevance.ContainsDiagnostics(d => d.Severity >= EvaluationDiagnosticSeverity.Warning).Should().BeFalse();
+        relevance.Value.Should().BeGreaterThanOrEqualTo(4, because: relevance.Reason);
 
         /// Retrieve the measurement system from the <see cref="EvaluationResult"/>.
         StringMetric measurementSystem =
             result.Get<StringMetric>(MeasurementSystemEvaluator.MeasurementSystemMetricName);
-        measurementSystem.Interpretation!.Failed.Should().BeFalse();
-        measurementSystem.Interpretation.Rating.Should().BeOneOf(EvaluationRating.Good, EvaluationRating.Exceptional);
-        measurementSystem.ContainsDiagnostics().Should().BeFalse();
+        measurementSystem.Interpretation!.Failed.Should().BeFalse(because: measurementSystem.Interpretation.Reason);
+        measurementSystem.Interpretation.Rating.Should().BeOneOf(expectedRatings, because: measurementSystem.Reason);
+        measurementSystem.ContainsDiagnostics(d => d.Severity >= EvaluationDiagnosticSeverity.Warning).Should().BeFalse();
         measurementSystem.Value.Should().Be(nameof(MeasurementSystemEvaluator.MeasurementSystem.Imperial));
 
         /// Retrieve the word count from the <see cref="EvaluationResult"/>.
         NumericMetric wordCount = result.Get<NumericMetric>(WordCountEvaluator.WordCountMetricName);
-        wordCount.Interpretation!.Failed.Should().BeFalse();
-        wordCount.Interpretation.Rating.Should().BeOneOf(EvaluationRating.Good, EvaluationRating.Exceptional);
-        wordCount.ContainsDiagnostics().Should().BeFalse();
+        wordCount.Interpretation!.Failed.Should().BeFalse(because: wordCount.Interpretation.Reason);
+        wordCount.Interpretation.Rating.Should().BeOneOf(expectedRatings, because: wordCount.Reason);
+        wordCount.ContainsDiagnostics(d => d.Severity >= EvaluationDiagnosticSeverity.Warning).Should().BeFalse();
         wordCount.Value.Should().BeLessThanOrEqualTo(100);
     }
 }

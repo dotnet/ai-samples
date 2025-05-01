@@ -7,6 +7,7 @@ using Azure.Identity;
 using Azure.Storage.Files.DataLake;
 using Evaluation.Setup;
 using FluentAssertions;
+using Microsoft.Extensions.AI;
 using Microsoft.Extensions.AI.Evaluation;
 using Microsoft.Extensions.AI.Evaluation.Reporting;
 using Microsoft.Extensions.AI.Evaluation.Reporting.Storage;
@@ -36,7 +37,7 @@ public partial class ReportingExamples
                 tags: GetTags(storageKind: "Storage: Azure Storage"));
 
     [TestMethod]
-    public async Task Example10_UsingAzureStorage_01()
+    public async Task Example11_UsingAzureStorage_01()
     {
         /// This test requires additional environment variables to be set in order to use Azure storage. The test is
         /// skipped if these environment variables are not set.
@@ -48,9 +49,10 @@ public partial class ReportingExamples
         await using ScenarioRun scenarioRun =
             await s_azureStorageReportingConfiguration.CreateScenarioRunAsync(this.ScenarioName, additionalTags: ["Saturn"]);
 
-        var (messages, modelResponse) = await GetAstronomyConversationAsync(
-            chatClient: scenarioRun.ChatConfiguration!.ChatClient,
-            astronomyQuestion: "How far is the planet Saturn from the Earth at its closest and furthest points?");
+        (IList<ChatMessage> messages, ChatResponse modelResponse) =
+            await GetAstronomyConversationAsync(
+                chatClient: scenarioRun.ChatConfiguration!.ChatClient,
+                astronomyQuestion: "How far is the planet Saturn from the Earth at its closest and furthest points?");
 
         EvaluationResult result = await scenarioRun.EvaluateAsync(messages, modelResponse);
 

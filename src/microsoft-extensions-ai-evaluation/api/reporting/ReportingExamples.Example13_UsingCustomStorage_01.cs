@@ -3,6 +3,7 @@
 // See the LICENSE file in the project root for more information.
 
 using Evaluation.Setup;
+using Microsoft.Extensions.AI;
 using Microsoft.Extensions.AI.Evaluation;
 using Microsoft.Extensions.AI.Evaluation.Reporting;
 using Reporting.Storage.Sqlite;
@@ -30,7 +31,7 @@ public partial class ReportingExamples
             tags: GetTags(storageKind: "Storage: SQLite"));
 
     [TestMethod]
-    public async Task Example12_UsingCustomStorage_01()
+    public async Task Example13_UsingCustomStorage_01()
     {
         /// This example demonstrates how to create and use a custom <see cref="ReportingConfiguration"/>
         /// (see <see cref="s_sqliteReportingConfiguration"/> above) that uses SQLite databases for storing evaluation
@@ -42,9 +43,10 @@ public partial class ReportingExamples
         await using ScenarioRun scenarioRun =
             await s_sqliteReportingConfiguration.CreateScenarioRunAsync(this.ScenarioName, additionalTags: ["Saturn"]);
 
-        var (messages, modelResponse) = await GetAstronomyConversationAsync(
-            chatClient: scenarioRun.ChatConfiguration!.ChatClient,
-            astronomyQuestion: "How far is the planet Saturn from the Earth at its closest and furthest points?");
+        (IList<ChatMessage> messages, ChatResponse modelResponse) =
+            await GetAstronomyConversationAsync(
+                chatClient: scenarioRun.ChatConfiguration!.ChatClient,
+                astronomyQuestion: "How far is the planet Saturn from the Earth at its closest and furthest points?");
 
         EvaluationResult result = await scenarioRun.EvaluateAsync(messages, modelResponse);
 

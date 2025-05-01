@@ -42,6 +42,7 @@ public partial class EvaluationExamples
                 """
                 Distance between Venus and Earth at inferior conjunction: About 23.6 million miles.
                 Distance between Venus and Earth at superior conjunction: About 162 million miles.
+                The exact distances can vary due to the specific orbital positions of the planets at any given time.
                 """);
 
         /// Invoke the <see cref="CompositeEvaluator"/> to evaluate the equivalence and groundedness of the response in
@@ -56,18 +57,20 @@ public partial class EvaluationExamples
 
         using var _ = new AssertionScope();
 
+        EvaluationRating[] expectedRatings = [EvaluationRating.Good, EvaluationRating.Exceptional];
+
         /// Retrieve the score for equivalence from the <see cref="EvaluationResult"/>.
         NumericMetric equivalence = result.Get<NumericMetric>(EquivalenceEvaluator.EquivalenceMetricName);
-        equivalence.Interpretation!.Failed.Should().BeFalse();
-        equivalence.Interpretation.Rating.Should().BeOneOf(EvaluationRating.Good, EvaluationRating.Exceptional);
-        equivalence.ContainsDiagnostics().Should().BeFalse();
-        equivalence.Value.Should().BeGreaterThanOrEqualTo(3);
+        equivalence.Interpretation!.Failed.Should().BeFalse(because: equivalence.Interpretation.Reason);
+        equivalence.Interpretation.Rating.Should().BeOneOf(expectedRatings, because: equivalence.Reason);
+        equivalence.ContainsDiagnostics(d => d.Severity >= EvaluationDiagnosticSeverity.Warning).Should().BeFalse();
+        equivalence.Value.Should().BeGreaterThanOrEqualTo(4, because: equivalence.Reason);
 
         /// Retrieve the score for groundedness from the <see cref="EvaluationResult"/>.
         NumericMetric groundedness = result.Get<NumericMetric>(GroundednessEvaluator.GroundednessMetricName);
-        groundedness.Interpretation!.Failed.Should().BeFalse();
-        groundedness.Interpretation.Rating.Should().BeOneOf(EvaluationRating.Good, EvaluationRating.Exceptional);
-        groundedness.ContainsDiagnostics().Should().BeFalse();
-        groundedness.Value.Should().BeGreaterThanOrEqualTo(3);
+        groundedness.Interpretation!.Failed.Should().BeFalse(because: groundedness.Interpretation.Reason);
+        groundedness.Interpretation.Rating.Should().BeOneOf(expectedRatings, because: groundedness.Reason);
+        groundedness.ContainsDiagnostics(d => d.Severity >= EvaluationDiagnosticSeverity.Warning).Should().BeFalse();
+        groundedness.Value.Should().BeGreaterThanOrEqualTo(4, because: groundedness.Reason);
     }
 }

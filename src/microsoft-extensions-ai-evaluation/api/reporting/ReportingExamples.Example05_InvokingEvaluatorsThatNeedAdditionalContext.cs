@@ -5,6 +5,7 @@
 using Evaluation.Setup;
 using FluentAssertions;
 using FluentAssertions.Execution;
+using Microsoft.Extensions.AI;
 using Microsoft.Extensions.AI.Evaluation;
 using Microsoft.Extensions.AI.Evaluation.Quality;
 using Microsoft.Extensions.AI.Evaluation.Reporting;
@@ -36,9 +37,10 @@ public partial class ReportingExamples
                 this.ScenarioName,
                 additionalTags: ["Venus"]);
 
-        var (messages, modelResponse) = await GetAstronomyConversationAsync(
-            chatClient: scenarioRun.ChatConfiguration!.ChatClient,
-            astronomyQuestion: "How far is the planet Venus from the Earth at its closest and furthest points?");
+        (IList<ChatMessage> messages, ChatResponse modelResponse) =
+            await GetAstronomyConversationAsync(
+                chatClient: scenarioRun.ChatConfiguration!.ChatClient,
+                astronomyQuestion: "How far is the planet Venus from the Earth at its closest and furthest points?");
 
         /// Create an instance of <see cref="EquivalenceEvaluatorContext"/> that contains a baseline response against
         /// which the <see cref="EquivalenceEvaluator"/> should compare <see cref="modelResponse"/> in order to
@@ -62,6 +64,7 @@ public partial class ReportingExamples
                 """
                 Distance between Venus and Earth at inferior conjunction: About 23.6 million miles.
                 Distance between Venus and Earth at superior conjunction: About 162 million miles.
+                The exact distances can vary due to the specific orbital positions of the planets at any given time.
                 """);
 
         /// Run the evaluators against the above response.
@@ -73,18 +76,20 @@ public partial class ReportingExamples
 
         using var _ = new AssertionScope();
 
+        EvaluationRating[] expectedRatings = [EvaluationRating.Good, EvaluationRating.Exceptional];
+
         /// Retrieve the score for equivalence from the <see cref="EvaluationResult"/>.
         NumericMetric equivalence = result.Get<NumericMetric>(EquivalenceEvaluator.EquivalenceMetricName);
-        equivalence.Interpretation!.Failed.Should().BeFalse();
-        equivalence.Interpretation.Rating.Should().BeOneOf(EvaluationRating.Good, EvaluationRating.Exceptional);
-        equivalence.ContainsDiagnostics().Should().BeFalse();
-        equivalence.Value.Should().BeGreaterThanOrEqualTo(3);
+        equivalence.Interpretation!.Failed.Should().BeFalse(because: equivalence.Interpretation.Reason);
+        equivalence.Interpretation.Rating.Should().BeOneOf(expectedRatings, because: equivalence.Reason);
+        equivalence.ContainsDiagnostics(d => d.Severity >= EvaluationDiagnosticSeverity.Warning).Should().BeFalse();
+        equivalence.Value.Should().BeGreaterThanOrEqualTo(4, because: equivalence.Reason);
 
         /// Retrieve the score for groundedness from the <see cref="EvaluationResult"/>.
         NumericMetric groundedness = result.Get<NumericMetric>(GroundednessEvaluator.GroundednessMetricName);
-        groundedness.Interpretation!.Failed.Should().BeFalse();
-        groundedness.Interpretation.Rating.Should().BeOneOf(EvaluationRating.Good, EvaluationRating.Exceptional);
-        groundedness.ContainsDiagnostics().Should().BeFalse();
-        groundedness.Value.Should().BeGreaterThanOrEqualTo(3);
+        groundedness.Interpretation!.Failed.Should().BeFalse(because: groundedness.Interpretation.Reason);
+        groundedness.Interpretation.Rating.Should().BeOneOf(expectedRatings, because: groundedness.Reason);
+        groundedness.ContainsDiagnostics(d => d.Severity >= EvaluationDiagnosticSeverity.Warning).Should().BeFalse();
+        groundedness.Value.Should().BeGreaterThanOrEqualTo(4, because: groundedness.Reason);
     }
 }

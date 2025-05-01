@@ -2,6 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using Microsoft.Extensions.AI;
 using Microsoft.Extensions.AI.Evaluation;
 using Microsoft.Extensions.AI.Evaluation.Reporting;
 
@@ -42,9 +43,10 @@ public partial class ReportingExamples
         /// directly from the LLM in the very first run of each individual iteration, and from the (disk-based)
         /// response cache in every subsequent run of the same iteration until the cached entries expire (in 14 days
         /// by default).
-        var (messages, modelResponse) = await GetAstronomyConversationAsync(
-            chatClient: scenarioRun.ChatConfiguration!.ChatClient,
-            astronomyQuestion: "How far is the planet Jupiter from the Earth at its closest and furthest points?");
+        (IList<ChatMessage> messages, ChatResponse modelResponse) =
+            await GetAstronomyConversationAsync(
+                chatClient: scenarioRun.ChatConfiguration!.ChatClient,
+                astronomyQuestion: "How far is the planet Jupiter from the Earth at its closest and furthest points?");
 
         /// Run the evaluators configured in <see cref="s_defaultReportingConfiguration"/> against the response. Again,
         /// the evaluation will be performed using the the LLM in the very first run of each individual iteration, and

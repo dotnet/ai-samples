@@ -17,10 +17,6 @@ public partial class ReportingExamples
         /// service. The test is skipped if these environment variables are not set.
         SkipTestIfSafetyEvaluatorsAreNotConfigured();
 
-        /// Note that response caching does not work at the moment for the Content Safety evaluators in this example.
-        /// This is a known issue and will be fixed in a future release.
-        /// See https://github.com/dotnet/extensions/issues/6260.
-
         await using ScenarioRun scenarioRun =
             await s_safetyReportingConfiguration.CreateScenarioRunAsync(this.ScenarioName);
 

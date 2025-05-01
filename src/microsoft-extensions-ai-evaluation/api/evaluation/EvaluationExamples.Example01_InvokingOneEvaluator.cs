@@ -42,16 +42,18 @@ public partial class EvaluationExamples
         /// interpretation can also be changed after the fact to suit your specific requirements if needed.
         /// 
         /// Validate the default interpretation for the returned coherence metric.
-        coherence.Interpretation!.Failed.Should().BeFalse();
-        coherence.Interpretation.Rating.Should().BeOneOf(EvaluationRating.Good, EvaluationRating.Exceptional);
+        coherence.Interpretation!.Failed.Should().BeFalse(because: coherence.Interpretation.Reason);
+
+        EvaluationRating[] expectedRatings = [EvaluationRating.Good, EvaluationRating.Exceptional];
+        coherence.Interpretation.Rating.Should().BeOneOf(expectedRatings, because: coherence.Reason);
 
         /// Evaluators such as <see cref="CoherenceEvaluator"/> above can include diagnostics on the metrics they
-        /// return to indicate errors, warnings, or other exceptional conditions encountered during evaluation. As
+        /// return to indicate informational, warning and error conditions encountered during evaluation. As
         /// demonstrated in <see cref="Example05_AttachingDiagnosticsToMetrics"/>, diagnostics can also be attached
         /// after the fact if needed.
         /// 
-        /// Validate that no diagnostics are present on the returned coherence metric.
-        coherence.ContainsDiagnostics().Should().BeFalse();
+        /// Validate that no warning or error diagnostics are present on the returned coherence metric.
+        coherence.ContainsDiagnostics(d => d.Severity >= EvaluationDiagnosticSeverity.Warning).Should().BeFalse();
 
         /// The coherence score returned by the evaluator is be a number between 1, and 5 with 1 representing a poor
         /// score, and 5 representing an excellent score. While it is possible to validate the returned value like
@@ -59,7 +61,7 @@ public partial class EvaluationExamples
         /// standard mechanism to determine how 'good' the metric is considered and whether it is considered 'pass' or
         /// 'fail'.
         /// 
-        /// Validate that the returned coherence score is greater than 3.
-        coherence.Value.Should().BeGreaterThanOrEqualTo(3);
+        /// Validate that the returned coherence score is greater than 4.
+        coherence.Value.Should().BeGreaterThanOrEqualTo(4, because: coherence.Reason);
     }
 }

@@ -5,6 +5,7 @@
 using Evaluation.Evaluators;
 using FluentAssertions;
 using FluentAssertions.Execution;
+using Microsoft.Extensions.AI;
 using Microsoft.Extensions.AI.Evaluation;
 using Microsoft.Extensions.AI.Evaluation.Reporting;
 
@@ -20,9 +21,10 @@ public partial class ReportingExamples
                 this.ScenarioName,
                 additionalTags: ["Uranus"]);
 
-        var (messages, modelResponse) = await GetAstronomyConversationAsync(
-            chatClient: scenarioRun.ChatConfiguration!.ChatClient,
-            astronomyQuestion: "How far is the planet Uranus from the Earth at its closest and furthest points?");
+        (IList<ChatMessage> messages, ChatResponse modelResponse) =
+            await GetAstronomyConversationAsync(
+                chatClient: scenarioRun.ChatConfiguration!.ChatClient,
+                astronomyQuestion: "How far is the planet Uranus from the Earth at its closest and furthest points?");
 
         EvaluationResult result = await scenarioRun.EvaluateAsync(messages, modelResponse);
 
@@ -55,7 +57,7 @@ public partial class ReportingExamples
         /// Retrieve the word count from the <see cref="EvaluationResult"/>.
         NumericMetric wordCount = result.Get<NumericMetric>(WordCountEvaluator.WordCountMetricName);
 
-        wordCount.Interpretation!.Failed.Should().BeFalse();
+        wordCount.Interpretation!.Failed.Should().BeFalse(because: wordCount.Interpretation.Reason);
 
         /// After running all tests, inspect the generated report to understand how the interpretation changes applied
         /// to the above metrics are surfaced in the report for the current test.

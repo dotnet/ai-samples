@@ -32,9 +32,9 @@ All examples are included in [Examples.sln](./Examples.sln) and are structured a
 **Note:** The examples included in this solution have been primarily tested against the GPT-4o model. The prompts
 present within the examples directly, as well as the prompts present within the evaluators included as part of the
 [Microsoft.Extensions.AI.Evaluation.Quality](https://www.nuget.org/packages/Microsoft.Extensions.AI.Evaluation.Quality)
-NuGet package (such as `CoherenceEvaluator`, `RelevanceTruthAndCompletenessEvaluator`, etc.) perform well against
-GPT-4o. However, they may not perform as well against other models. So, the evaluations performed in the examples may
-produce poor results against some other models.
+NuGet package (such as `CoherenceEvaluator`, `RelevanceEvaluator`, etc.) perform well against GPT-4o. However, they may
+not perform as well against other models. So, the evaluations performed in the examples may produce poor results
+against some other models.
 
 That said, it can still be an interesting exercise to try out the examples against other models to understand how
 different models perform (i.e., how quickly or slowly are they able to perform the evaluations, how accurately can they
@@ -87,10 +87,6 @@ The following setup steps are required to set up the LLM connection / endpoint t
    respectively:
    `EVAL_SAMPLE_OPENAI_API_KEY` and `EVAL_SAMPLE_OPENAI_MODEL`.
 
-   **Note:** If the model or provider you selected enforces an input token limit, you can also set the corresponding
-   `EVAL_SAMPLE_*_INPUT_TOKEN_LIMIT` environment variable to specify the limit. However, specifying token limit is
-   strictly optional.
-
    **Note:** If you plan to run the example unit tests using Visual Studio or Visual Studio Code, the most convenient
    option may be to set the above environment variables globally for your user / machine. This will ensure that the
    environment variables are always available to your IDE's test runner (and to all test runner child processes)
@@ -110,7 +106,7 @@ The following step is required to run the [Reporting API Examples](./reporting/R
    Alternatively, if you have the solution open in Visual Studio or Visual Studio Code, build and run all the unit
    tests using the IDE's test runner.
 
-6. The last couple of unit tests in the [Reporting API Examples](./reporting/README.md) project demonstrate how to
+6. The last few unit tests in the [Reporting API Examples](./reporting/README.md) project demonstrate how to
    programmatically generate reports containing the results for all evaluations performed in previously executed tests.
    The reports should be automatically opened in your default browser after the tests complete running. Inspect each
    report to understand how the different concepts demonstrated in the examples are surfaced in the report.
