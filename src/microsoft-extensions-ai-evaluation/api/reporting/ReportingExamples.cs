@@ -185,11 +185,17 @@ public partial class ReportingExamples
         return (messages, response);
     }
 
-    /// <summary>
-    /// Runs some basic validation on the supplied <see cref="EvaluationResult"/>.
-    /// </summary>
     private static void Validate(EvaluationResult result)
     {
+        /// Note: The below validation is mainly for demonstration purposes. In real-world evaluations, you may not
+        /// want to validate individual results since the LLM responses and evaluation scores can jump around a bit
+        /// over time as your product (and the models used) evolve. You may not want individual evaluation tests to
+        /// 'fail' and block builds in your CI/CD pipelines when this happens. Instead, in such cases, it may be better
+        /// to rely on the generated report and track the overall trends for evaluation scores across different
+        /// scenarios over time (and only fail individual builds in your CI/CD pipelines when there is a significant
+        /// drop in evaluation scores across multiple different tests). That said, there is some nuance here and the
+        /// choice of whether to validate individual results or not can vary depending on the specific use case.
+
         using var _ = new AssertionScope();
 
         EvaluationRating[] expectedRatings = [EvaluationRating.Good, EvaluationRating.Exceptional];
@@ -213,7 +219,8 @@ public partial class ReportingExamples
             result.Get<StringMetric>(MeasurementSystemEvaluator.MeasurementSystemMetricName);
         measurementSystem.Interpretation!.Failed.Should().BeFalse(because: measurementSystem.Interpretation.Reason);
         measurementSystem.Interpretation.Rating.Should().BeOneOf(expectedRatings, because: measurementSystem.Reason);
-        measurementSystem.ContainsDiagnostics(d => d.Severity >= EvaluationDiagnosticSeverity.Warning).Should().BeFalse();
+        measurementSystem.ContainsDiagnostics(
+            d => d.Severity >= EvaluationDiagnosticSeverity.Warning).Should().BeFalse();
         measurementSystem.Value.Should().Be(nameof(MeasurementSystemEvaluator.MeasurementSystem.Imperial));
 
         /// Retrieve the word count from the <see cref="EvaluationResult"/>.

@@ -44,7 +44,7 @@ public partial class ReportingExamples
         EvaluationResult result = await scenarioRun.EvaluateAsync(messages, modelResponse);
 
         /// Run some basic validation on the evaluation result.
-        /// 
+        ///
         /// Note: This step is optional and mainly for demonstration purposes. In real-world evaluations, you may not
         /// want to validate individual results since the LLM responses and evaluation scores can jump around a bit
         /// over time as your product (and the models used) evolve. You may not want individual evaluation tests to
