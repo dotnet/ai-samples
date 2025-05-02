@@ -40,8 +40,8 @@ public partial class EvaluationExamples
         GroundednessEvaluatorContext groundingContextForGroundednessEvaluator =
             new GroundednessEvaluatorContext(
                 """
-                Distance between Venus and Earth at inferior conjunction: About 23.6 million miles.
-                Distance between Venus and Earth at superior conjunction: About 162 million miles.
+                Distance between Venus and Earth at inferior conjunction: Between 23 and 25 million miles approximately.
+                Distance between Venus and Earth at superior conjunction: Between 160 and 164 million miles approximately.
                 The exact distances can vary due to the specific orbital positions of the planets at any given time.
                 """);
 

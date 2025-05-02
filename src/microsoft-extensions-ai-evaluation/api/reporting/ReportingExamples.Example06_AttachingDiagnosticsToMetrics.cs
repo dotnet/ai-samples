@@ -55,9 +55,12 @@ public partial class ReportingExamples
 
         /// Validate that the diagnostics attached above are available on the corresponding metrics.
         measurementSystem.ContainsDiagnostics().Should().BeTrue();
-        measurementSystem.ContainsDiagnostics(d => d.Severity is EvaluationDiagnosticSeverity.Error).Should().BeFalse();
-        measurementSystem.ContainsDiagnostics(d => d.Severity is EvaluationDiagnosticSeverity.Warning).Should().BeTrue();
-        measurementSystem.ContainsDiagnostics(d => d.Severity is EvaluationDiagnosticSeverity.Informational).Should().BeTrue();
+        measurementSystem.ContainsDiagnostics(
+            d => d.Severity is EvaluationDiagnosticSeverity.Error).Should().BeFalse();
+        measurementSystem.ContainsDiagnostics(
+            d => d.Severity is EvaluationDiagnosticSeverity.Warning).Should().BeTrue();
+        measurementSystem.ContainsDiagnostics(
+            d => d.Severity is EvaluationDiagnosticSeverity.Informational).Should().BeTrue();
 
         wordCount.ContainsDiagnostics().Should().BeTrue();
         wordCount.ContainsDiagnostics(d => d.Severity is EvaluationDiagnosticSeverity.Error).Should().BeTrue();

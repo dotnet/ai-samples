@@ -16,10 +16,12 @@ All examples are included in [Examples.sln](./Examples.sln) and are structured a
    Inference, Ollama or Open AI instead. The [long version](#long-version) also contains some additional details and
    clarifications that you may find useful.
 
-3. [Optional] To run the examples that demonstrate how to use the Azure Content Safety evaluators, see
-   [Running Content Safety evaluation examples](#running-content-safety-evaluation-examples). These examples
+3. [Optional] To run the examples that demonstrate how to use the evaluators included as part of the
+   [Microsoft.Extensions.AI.Evaluation.Safety](https://www.nuget.org/packages/Microsoft.Extensions.AI.Evaluation.Safety)
+   NuGet package (such as `ProtectedMaterialEvaluator`, `IndirectAttackEvaluator`, `ViolenceEvaluator`, etc.), see
+   [Running content safety evaluation examples](#running-content-safety-evaluation-examples). These examples
    are skipped by default and are only enabled after the corresponding environment variables that configure the Azure
-   Content Safety service have been set.
+   AI Foundry Evaluation service have been set.
 
 4. [Optional] To run the examples that demonstrate how to use the Azure storage providers to store evaluation results
    and cached LLM responses, see [Running Azure storage examples](#running-azure-storage-examples). These examples are
@@ -118,23 +120,24 @@ The following step is required to run the [Reporting API Examples](./reporting/R
    report. When the examples are executed one at a time, each result is considered part of a different (previous)
    execution, and the results from these older executions will not be included in the generated report.
 
-## Running Content Safety evaluation examples
+## Running content safety evaluation examples
 Follow the below steps to run the included examples that demonstrate how to use the evaluators available as part of the
-`Microsoft.Extensions.AI.Evaluation.Safety` NuGet package to evaluate responses for presence of harmful or protected
-content. These evaluators leverage the Azure AI Content Safety service and require some special setup. The
-corresponding examples are skipped by default and can be enabled by setting the following environment variables.
+[Microsoft.Extensions.AI.Evaluation.Safety](https://www.nuget.org/packages/Microsoft.Extensions.AI.Evaluation.Safety)
+NuGet package to evaluate responses for presence of harmful or protected content. These evaluators leverage the Azure
+AI Foundry Evaluation service and require some special setup. The corresponding examples are skipped by default and can
+be enabled by setting the following environment variables.
 
 1. Firstly, you need an [Azure subscription](https://azure.microsoft.com/).
 2. Within this subscription, create a
    [resource group](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal)
    within one of the
-   [Azure regions that support Azure Content Safety evaluations](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/develop/evaluate-sdk#region-support).
+   [Azure regions that support Azure AI Foundry Evaluation service](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/develop/evaluate-sdk#region-support).
 3. Next create an [Azure AI hub](https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/ai-resources) within the
    same resource group and region.
 4. Finally, create an [Azure AI project](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/create-projects?tabs=ai-studio)
    within this hub.
 5. Once you have created the above artifacts, set the following environment variables to configure the examples to use
-   the Azure AI Content Safety service from the above AI project.
+   the Azure AI Foundry Evaluation service from the above AI project.
 
 ```
 set EVAL_SAMPLE_AZURE_SUBSCRIPTION_ID=<The ID of the above Azure subscription>

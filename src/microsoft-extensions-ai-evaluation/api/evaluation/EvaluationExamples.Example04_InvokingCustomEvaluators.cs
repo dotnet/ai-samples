@@ -38,7 +38,8 @@ public partial class EvaluationExamples
             result.Get<StringMetric>(MeasurementSystemEvaluator.MeasurementSystemMetricName);
         measurementSystem.Interpretation!.Failed.Should().BeFalse(because: measurementSystem.Interpretation.Reason);
         measurementSystem.Interpretation.Rating.Should().BeOneOf(expectedRatings, because: measurementSystem.Reason);
-        measurementSystem.ContainsDiagnostics(d => d.Severity >= EvaluationDiagnosticSeverity.Warning).Should().BeFalse();
+        measurementSystem.ContainsDiagnostics(
+            d => d.Severity >= EvaluationDiagnosticSeverity.Warning).Should().BeFalse();
         measurementSystem.Value.Should().Be(nameof(MeasurementSystemEvaluator.MeasurementSystem.Imperial));
 
         /// Retrieve the word count from the <see cref="EvaluationResult"/>.

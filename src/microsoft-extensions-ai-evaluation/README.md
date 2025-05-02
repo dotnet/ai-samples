@@ -9,8 +9,8 @@ the tooling necessary to evaluate the quality and efficacy of LLM responses in y
   Contains evaluators that can be used to evaluate the quality of AI responses in your projects including Relevance,
   Truth, Completeness, Fluency, Coherence, Retrieval, Equivalence and Groundedness.
 * [Microsoft.Extensions.AI.Evaluation.Safety](https://www.nuget.org/packages/Microsoft.Extensions.AI.Evaluation.Safety):
-  Contains a set of evaluators that are built atop the Azure AI Content Safety service that can be used to evaluate the
-  content safety of AI responses in your projects including Protected Material, Groundedness Pro, Ungrounded
+  Contains a set of evaluators that are built atop the Azure AI Foundry Evaluation service that can be used to evaluate
+  the content safety of AI responses in your projects including Protected Material, Groundedness Pro, Ungrounded
   Attributes, Hate and Unfairness, Self Harm, Violence, Sexual, Code Vulnerability and Indirect Attack.
 * [Microsoft.Extensions.AI.Evaluation.Reporting](https://www.nuget.org/packages/Microsoft.Extensions.AI.Evaluation.Reporting):
   Contains support for caching LLM responses, storing the results of evaluations and generating reports from that data.

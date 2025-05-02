@@ -74,7 +74,7 @@ public class EnvironmentVariables
         => GetEnvironmentVariable("EVAL_SAMPLE_OPENAI_MODEL");
     #endregion
 
-    #region Azure AI Foundry (for Content Safety Evaluators)
+    #region Azure AI Foundry (for content safety evaluation examples)
     public const string AzureSubscriptionIdVariableName = "EVAL_SAMPLE_AZURE_SUBSCRIPTION_ID";
     public static string? AzureSubscriptionId =>
         TryGetEnvironmentVariable(AzureSubscriptionIdVariableName, out string? value)
