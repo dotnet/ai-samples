@@ -13,7 +13,7 @@ public partial class OpenAISamples
                     .GetEmbeddingClient("text-embedding-3-small")
                     .AsIEmbeddingGenerator();
 
-        var embedding = await generator.GenerateEmbeddingVectorAsync("What is AI?");
+        var embedding = await generator.GenerateVectorAsync("What is AI?");
 
         Console.WriteLine(string.Join(", ", embedding.ToArray()));
     }    

@@ -30,6 +30,6 @@ app.MapPost("/chat", async (IChatClient client, [FromBody] string message) =>
     await client.GetResponseAsync(message, cancellationToken: default));
 
 app.MapPost("/embedding", async (IEmbeddingGenerator<string, Embedding<float>> client, [FromBody] string message) =>
-    await client.GenerateEmbeddingAsync(message));
+    await client.GenerateAsync(message));
 
 app.Run();

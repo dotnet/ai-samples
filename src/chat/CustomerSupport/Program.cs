@@ -19,7 +19,8 @@ IChatClient chatClient =
 IEmbeddingGenerator<string, Embedding<float>> embeddingGenerator =
     useOpenAIEmbeddings ?
         Utils.CreateAzureOpenAIClient(openAIEndpoint, useManagedIdentity)
-            .AsEmbeddingGenerator("embeddingsmall") :
+            .GetEmbeddingClient("embeddingsmall")
+            .AsIEmbeddingGenerator() :
                 new OllamaApiClient(new Uri(ollamaEndpoint), "all-minilm");
 
 // Configure product manual service

@@ -13,7 +13,7 @@ public partial class AzureAIInferenceSamples
         IEmbeddingGenerator<string, Embedding<float>> generator =
             new EmbeddingsClient(endpoint, credential).AsIEmbeddingGenerator(modelId);
 
-        var embedding = await generator.GenerateEmbeddingVectorAsync("What is AI?");
+        var embedding = await generator.GenerateVectorAsync("What is AI?");
 
         Console.WriteLine(string.Join(", ", embedding.ToArray()));
     }    

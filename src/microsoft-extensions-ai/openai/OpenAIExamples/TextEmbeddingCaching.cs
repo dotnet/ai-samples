@@ -26,7 +26,7 @@ public partial class OpenAISamples
 
         foreach (var prompt in prompts)
         {
-            var embedding = await generator.GenerateEmbeddingVectorAsync(prompt);
+            var embedding = await generator.GenerateVectorAsync(prompt);
 
             Console.WriteLine(string.Join(", ", embedding.ToArray()));
         }
