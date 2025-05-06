@@ -16,7 +16,7 @@ public partial class AzureAIInferenceSamples
         var endpoint = new Uri("https://models.inference.ai.azure.com");
         var credential = new AzureKeyCredential(Environment.GetEnvironmentVariable("GH_TOKEN"));
 
-        IChatClient client = new ChatCompletionsClient(endpoint, credential).AsChatClient("gpt-4o-mini")
+        IChatClient client = new ChatCompletionsClient(endpoint, credential).AsIChatClient("gpt-4o-mini")
             .AsBuilder()
             .UseDistributedCache(cache)
             .Build();

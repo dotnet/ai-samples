@@ -17,7 +17,8 @@ public partial class OpenAISamples
             new AzureOpenAIClient(
                 new Uri(Environment.GetEnvironmentVariable("AZURE_OPENAI_ENDPOINT")),
                 new DefaultAzureCredential())
-                    .AsEmbeddingGenerator("text-embedding-3-small");
+                    .GetEmbeddingClient("text-embedding-3-small")
+                    .AsIEmbeddingGenerator();
 
         IEmbeddingGenerator<string, Embedding<float>> generator = azureOpenAIGenerator
             .AsBuilder()

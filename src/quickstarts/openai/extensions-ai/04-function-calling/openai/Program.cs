@@ -1,4 +1,8 @@
-﻿using Microsoft.Extensions.AI;
+﻿// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Configuration;
 using OpenAI;
 
@@ -7,7 +11,7 @@ string? model = config["ModelName"];
 string? key = config["OpenAIKey"];
 
 IChatClient client =
-    new ChatClientBuilder(new OpenAIClient(key).AsChatClient(model ?? "gpt-4o"))
+    new ChatClientBuilder(new OpenAIClient(key).GetChatClient(model ?? "gpt-4o").AsIChatClient())
     .UseFunctionInvocation()
     .Build();
 
@@ -34,5 +38,5 @@ chatHistory.Add(new ChatMessage(ChatRole.User,
 Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last()}");
 
 var response = await client.GetResponseAsync(chatHistory, chatOptions);
-chatHistory.Add(new ChatMessage(ChatRole.Assistant, response.Message.Contents));
+chatHistory.Add(new ChatMessage(ChatRole.Assistant, response.Text));
 Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last()}");

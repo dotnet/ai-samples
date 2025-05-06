@@ -16,7 +16,7 @@ builder.Services.AddSingleton(
         new AzureKeyCredential(builder.Configuration["AI:AzureAIInference:Key"])));
 
 builder.Services.AddChatClient(services => services.GetRequiredService<ChatCompletionsClient>()
-    .AsChatClient(builder.Configuration["AI:AzureAIInference:Chat:ModelId"]));
+    .AsIChatClient(builder.Configuration["AI:AzureAIInference:Chat:ModelId"]));
 
 var app = builder.Build();
 

@@ -7,7 +7,8 @@ public partial class OpenAISamples
     {
         IEmbeddingGenerator<string,Embedding<float>> generator =
             new OpenAIClient(Environment.GetEnvironmentVariable("OPENAI_API_KEY"))
-                .AsEmbeddingGenerator("text-embedding-3-small");
+                .GetEmbeddingClient("text-embedding-3-small")
+                .AsIEmbeddingGenerator();
 
         var embedding = await generator.GenerateEmbeddingVectorAsync("What is AI?");
 

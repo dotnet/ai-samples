@@ -12,7 +12,7 @@ string endpoint = config["AZURE_OPENAI_ENDPOINT"];
 string deployment = config["AZURE_OPENAI_GPT_NAME"];
 
 IChatClient client =
-    new ChatClientBuilder(new AzureOpenAIClient(new Uri(endpoint), new DefaultAzureCredential()).AsChatClient(deployment))
+    new ChatClientBuilder(new AzureOpenAIClient(new Uri(endpoint), new DefaultAzureCredential()).GetChatClient(deployment).AsIChatClient())
     .UseFunctionInvocation()
     .Build();
 
@@ -39,5 +39,5 @@ chatHistory.Add(new ChatMessage(ChatRole.User,
 Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last()}");
 
 var response = await client.GetResponseAsync(chatHistory, chatOptions);
-chatHistory.Add(new ChatMessage(ChatRole.Assistant, response.Message.Contents));
+chatHistory.Add(new ChatMessage(ChatRole.Assistant, response.Text));
 Console.WriteLine($"{chatHistory.Last().Role} >>> {chatHistory.Last()}");

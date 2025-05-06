@@ -10,7 +10,7 @@ public partial class AzureAIInferenceSamples
         var modelId = "gpt-4o-mini";
         var credential = new AzureKeyCredential(Environment.GetEnvironmentVariable("GH_TOKEN"));
 
-        IChatClient client = new ChatCompletionsClient(endpoint, credential).AsChatClient(modelId);
+        IChatClient client = new ChatCompletionsClient(endpoint, credential).AsIChatClient(modelId);
 
         await foreach (var update in client.GetStreamingResponseAsync("What is AI?"))
         {

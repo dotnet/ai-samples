@@ -11,7 +11,7 @@ public partial class OpenAISamples
 
         builder.Services.AddSingleton(new OpenAIClient(Environment.GetEnvironmentVariable("OPENAI_API_KEY")));
         builder.Services.AddDistributedMemoryCache();
-        builder.Services.AddChatClient(services => services.GetRequiredService<OpenAIClient>().AsChatClient("gpt-4o-mini"))
+        builder.Services.AddChatClient(services => services.GetRequiredService<OpenAIClient>().GetChatClient("gpt-4o-mini").AsIChatClient())
             .UseDistributedCache();
         
         var app = builder.Build();

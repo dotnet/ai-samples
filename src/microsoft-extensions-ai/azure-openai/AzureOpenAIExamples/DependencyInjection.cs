@@ -16,7 +16,7 @@ public partial class OpenAISamples
                 new Uri(Environment.GetEnvironmentVariable("AZURE_OPENAI_ENDPOINT")),
                 new DefaultAzureCredential()));
         builder.Services.AddDistributedMemoryCache();
-        builder.Services.AddChatClient(services => services.GetRequiredService<OpenAIClient>().AsChatClient("gpt-4o-mini"))
+        builder.Services.AddChatClient(services => services.GetRequiredService<OpenAIClient>().GetChatClient("gpt-4o-mini").AsIChatClient())
             .UseDistributedCache();
 
         var app = builder.Build();

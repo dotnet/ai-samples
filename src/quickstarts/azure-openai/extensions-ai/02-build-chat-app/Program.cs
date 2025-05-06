@@ -13,7 +13,8 @@ string deployment = config["AZURE_OPENAI_GPT_NAME"];
 
 IChatClient chatClient =
     new AzureOpenAIClient(new Uri(endpoint), new DefaultAzureCredential())
-        .AsChatClient(deployment);
+        .GetChatClient(deployment)
+        .AsIChatClient();
 
 // Start the conversation with context for the AI model
 List<ChatMessage> chatHistory = new()

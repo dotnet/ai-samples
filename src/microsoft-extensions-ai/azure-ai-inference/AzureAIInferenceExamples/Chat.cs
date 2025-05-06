@@ -12,7 +12,7 @@ public partial class AzureAIInferenceSamples
 
         IChatClient client =
             new ChatCompletionsClient(endpoint, credential)
-                .AsChatClient(modelId);
+                .AsIChatClient(modelId);
 
         Console.WriteLine(await client.GetResponseAsync("What is AI?"));
     }    

@@ -10,7 +10,8 @@ public partial class OpenAISamples
             new AzureOpenAIClient(
                 new Uri(Environment.GetEnvironmentVariable("AZURE_OPENAI_ENDPOINT")),
                 new DefaultAzureCredential())
-                .AsChatClient(modelId: "gpt-4o-mini");
+                .GetChatClient("gpt-4o-mini")
+                .AsIChatClient();
 
         Console.WriteLine(await client.GetResponseAsync("What is AI?"));
     }    
