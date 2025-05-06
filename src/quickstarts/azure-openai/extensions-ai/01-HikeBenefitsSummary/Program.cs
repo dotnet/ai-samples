@@ -17,7 +17,8 @@ string deployment = config["AZURE_OPENAI_GPT_NAME"];
 
 IChatClient client =
     new AzureOpenAIClient(new Uri(endpoint), new DefaultAzureCredential(new DefaultAzureCredentialOptions()))
-        .AsChatClient(deployment);
+        .GetChatClient(deployment)
+        .AsIChatClient();
 
 // Create and print out the prompt
 string prompt = $"""

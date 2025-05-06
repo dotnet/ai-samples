@@ -17,10 +17,12 @@ builder.Services.AddSingleton(
     ));
 
 builder.Services.AddChatClient(services => services.GetRequiredService<AzureOpenAIClient>()
-    .AsChatClient(builder.Configuration["AI:AzureOpenAI:Chat:ModelId"] ?? "gpt-4o-mini"));
+    .GetChatClient(builder.Configuration["AI:AzureOpenAI:Chat:ModelId"] ?? "gpt-4o-mini")
+    .AsIChatClient());
 
 builder.Services.AddEmbeddingGenerator(services => services.GetRequiredService<AzureOpenAIClient>()
-    .AsEmbeddingGenerator(builder.Configuration["AI:AzureOpenAI:Embedding:ModelId"] ?? "text-embedding-3-small"));
+    .GetEmbeddingClient(builder.Configuration["AI:AzureOpenAI:Embedding:ModelId"] ?? "text-embedding-3-small")
+    .AsIEmbeddingGenerator());
 
 var app = builder.Build();
 
@@ -28,6 +30,6 @@ app.MapPost("/chat", async (IChatClient client, [FromBody] string message) =>
     await client.GetResponseAsync(message, cancellationToken: default));
 
 app.MapPost("/embedding", async (IEmbeddingGenerator<string, Embedding<float>> client, [FromBody] string message) =>
-    await client.GenerateEmbeddingAsync(message));
+    await client.GenerateAsync(message));
 
 app.Run();

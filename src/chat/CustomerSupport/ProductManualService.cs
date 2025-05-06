@@ -26,7 +26,7 @@
     public async Task<VectorSearchResults<ManualChunk>> GetManualChunksAsync(string query, int? productId, int? limit = 5)
     {
 
-        var queryEmbedding = await _embeddingGenerator.GenerateEmbeddingVectorAsync(query);
+        var queryEmbedding = await _embeddingGenerator.GenerateVectorAsync(query);
 
         var filter =
             new VectorSearchFilter()

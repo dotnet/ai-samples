@@ -9,7 +9,7 @@ public partial class OllamaSamples
 
         IEmbeddingGenerator<string,Embedding<float>> generator = new OllamaEmbeddingGenerator(endpoint, modelId: modelId);
 
-        var embedding = await generator.GenerateEmbeddingVectorAsync("What is AI?");
+        var embedding = await generator.GenerateVectorAsync("What is AI?");
 
         Console.WriteLine(string.Join(", ", embedding.ToArray()));
     }    

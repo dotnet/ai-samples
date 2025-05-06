@@ -17,7 +17,8 @@ public partial class OpenAISamples
             new AzureOpenAIClient(
                 new Uri(Environment.GetEnvironmentVariable("AZURE_OPENAI_ENDPOINT")),
                 new DefaultAzureCredential())
-                    .AsEmbeddingGenerator("text-embedding-3-small");
+                    .GetEmbeddingClient("text-embedding-3-small")
+                    .AsIEmbeddingGenerator();
 
         IEmbeddingGenerator<string, Embedding<float>> generator = azureOpenAIGenerator
             .AsBuilder()
@@ -28,7 +29,7 @@ public partial class OpenAISamples
 
         foreach (var prompt in prompts)
         {
-            var embedding = await generator.GenerateEmbeddingVectorAsync(prompt);
+            var embedding = await generator.GenerateVectorAsync(prompt);
 
             Console.WriteLine(string.Join(", ", embedding.ToArray()));
         }
