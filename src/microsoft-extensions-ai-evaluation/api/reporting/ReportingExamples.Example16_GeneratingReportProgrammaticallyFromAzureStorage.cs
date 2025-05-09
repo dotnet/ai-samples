@@ -22,7 +22,7 @@ public partial class ReportingExamples
         /// <see cref="Example11_UsingAzureStorage_01"/> and <see cref="Example12_UsingAzureStorage_02"/>.
 
         var results = new List<ScenarioRunResult>();
-        IResultStore resultStore = new AzureStorageResultStore(s_dataLakeDirectoryClient);
+        IEvaluationResultStore resultStore = new AzureStorageResultStore(s_dataLakeDirectoryClient);
 
         /// Use the <see cref="resultStore"/> object above to read all results for the 'latest' execution.
         await foreach (string executionName in resultStore.GetLatestExecutionNamesAsync(count: 1))
