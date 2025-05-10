@@ -20,7 +20,7 @@ public partial class ReportingExamples
         /// 'EVAL_SAMPLE_STORAGE_ROOT_PATH' environment variable.
 
         var results = new List<ScenarioRunResult>();
-        IResultStore resultStore = new DiskBasedResultStore(EnvironmentVariables.StorageRootPath);
+        IEvaluationResultStore resultStore = new DiskBasedResultStore(EnvironmentVariables.StorageRootPath);
 
         /// Use the <see cref="resultStore"/> object above to read all results for the 'latest' execution.
         await foreach (string executionName in resultStore.GetLatestExecutionNamesAsync(count: 1))

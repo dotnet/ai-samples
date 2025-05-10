@@ -21,7 +21,7 @@ public partial class ReportingExamples
         /// <see cref="Example13_UsingCustomStorage_01"/> and <see cref="Example14_UsingCustomStorage_02"/>).
 
         var results = new List<ScenarioRunResult>();
-        IResultStore sqliteResultStore = new SqliteResultStore(s_sqliteResultsFilePath);
+        IEvaluationResultStore sqliteResultStore = new SqliteResultStore(s_sqliteResultsFilePath);
 
         /// Use the <see cref="resultStore"/> object above to read all results for the 'latest' execution.
         await foreach (string executionName in sqliteResultStore.GetLatestExecutionNamesAsync(count: 1))
