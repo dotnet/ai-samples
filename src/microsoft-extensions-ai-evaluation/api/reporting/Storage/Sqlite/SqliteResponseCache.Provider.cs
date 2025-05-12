@@ -11,9 +11,10 @@ namespace Reporting.Storage.Sqlite;
 public partial class SqliteResponseCache
 {
     /// <summary>
-    /// An implementation of <see cref="IResponseCacheProvider"/> that uses a SQLite database to cache LLM responses.
+    /// An implementation of <see cref="IEvaluationResponseCacheProvider"/> that uses a SQLite database to cache LLM
+    /// responses.
     /// </summary>
-    public class Provider : IResponseCacheProvider
+    public class Provider : IEvaluationResponseCacheProvider
     {
         private readonly string _connectionString;
         private readonly uint _timeToLiveInDays;
