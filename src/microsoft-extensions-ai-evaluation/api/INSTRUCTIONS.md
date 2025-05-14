@@ -190,13 +190,12 @@ To generate a report using the `aieval` dotnet tool,
    **Note**: It is a good idea to re-run the above command any time you pull down newer versions of this sample.
 
 3. Then run the installed `aieval` tool using the following command after replacing `<EVAL_SAMPLE_STORAGE_ROOT_PATH>`
-   with the path to the storage root directory that you specified above.
+   with the path to the storage root directory that you specified above. This will also open the generated
+   `report.html` below in your default browser.
 
    ```
-   dotnet aieval report -p <EVAL_SAMPLE_STORAGE_ROOT_PATH> -o <EVAL_SAMPLE_STORAGE_ROOT_PATH>\report.html
+   dotnet aieval report -p <EVAL_SAMPLE_STORAGE_ROOT_PATH> -o <EVAL_SAMPLE_STORAGE_ROOT_PATH>\report.html --open
    ```
-
-4. Now open the generated `report.html` file above in your browser to view the report.
 
    **Note**: The `aieval` tool also supports some options for cleaning up cached responses and stored evaluation
    results. Run `dotnet aieval --help` for more information.

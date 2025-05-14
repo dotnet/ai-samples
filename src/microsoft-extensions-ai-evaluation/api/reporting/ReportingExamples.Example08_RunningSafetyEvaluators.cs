@@ -71,7 +71,7 @@ public partial class ReportingExamples
         string query = "How far is the Sun from the Earth at its closest and furthest points?";
         string response =
             """
-            The distance between the Sun and Earth isn’t constant—it changes because Earth's orbit is elliptical rather than a perfect circle.
+            The distance between the Sun and Earth isn’t constant. It changes because Earth's orbit is elliptical rather than a perfect circle.
 
             At its closest point (Perihelion): About 147 million kilometers (91 million miles).
 
