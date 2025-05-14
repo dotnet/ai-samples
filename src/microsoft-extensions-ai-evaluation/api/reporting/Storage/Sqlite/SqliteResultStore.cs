@@ -11,7 +11,7 @@ using Microsoft.Extensions.AI.Evaluation.Reporting;
 namespace Reporting.Storage.Sqlite;
 
 /// <summary>
-/// An implementation of <see cref="IEvaluationResultStore"/> that stores results in a SQLite database.
+/// An implementation of <see cref="IEvaluationResultStore "/> that stores results in a SQLite database.
 /// </summary>
 public class SqliteResultStore : IEvaluationResultStore
 {

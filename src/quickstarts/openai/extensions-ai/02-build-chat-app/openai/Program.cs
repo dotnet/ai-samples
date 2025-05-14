@@ -1,4 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.AI;
 using OpenAI;
 
@@ -8,7 +12,7 @@ string? key = config["OpenAIKey"];
 
 // Create the IChatClient
 IChatClient chatClient =
-    new OpenAIClient(key).AsChatClient(model ?? "gpt-4o");
+    new OpenAIClient(key).GetChatClient(model ?? "gpt-4o").AsIChatClient();
 
 // Start the conversation with context for the AI model
 List<ChatMessage> chatHistory = new()

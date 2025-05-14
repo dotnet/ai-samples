@@ -3,7 +3,7 @@
   "isRoot": true,
   "tools": {
     "microsoft.extensions.ai.evaluation.console": {
-      "version": "9.4.4-preview.1.25259.16",
+      "version": "9.5.0-preview.1.25262.9",
       "commands": [
         "aieval"
       ],

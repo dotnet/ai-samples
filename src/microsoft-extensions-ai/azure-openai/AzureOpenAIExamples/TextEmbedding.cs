@@ -10,9 +10,10 @@ public partial class OpenAISamples
             new AzureOpenAIClient(
                 new Uri(Environment.GetEnvironmentVariable("AZURE_OPENAI_ENDPOINT")),
                 new DefaultAzureCredential())
-                    .AsEmbeddingGenerator("text-embedding-3-small");
+                    .GetEmbeddingClient("text-embedding-3-small")
+                    .AsIEmbeddingGenerator();
 
-        var embedding = await generator.GenerateEmbeddingVectorAsync("What is AI?");
+        var embedding = await generator.GenerateVectorAsync("What is AI?");
 
         Console.WriteLine(string.Join(", ", embedding.ToArray()));
     }    
