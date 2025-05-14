@@ -30,7 +30,7 @@ public partial class ReportingExamples
     /// <see cref="ContentSafetyServiceConfigurationExtensions.ToChatConfiguration(ContentSafetyServiceConfiguration, ChatConfiguration?)"/>
     /// below, we get back a <see cref="ChatConfiguration"/> that can be used both by LLM-based evaluators such as the
     /// ones included in the Microsoft.Extensions.AI.Evaluation.Quality NuGet package, as well as by the evaluators
-    /// included in the Microsoft.Extensions.AI.Evaluation.Quality NuGet package.
+    /// included in the Microsoft.Extensions.AI.Evaluation.Safety NuGet package.
     /// 
     /// Note that the response caching functionality is supported and works the same way regardless of whether the
     /// included evaluators talk to an LLM (as is the case for the evaluators that are part of the
