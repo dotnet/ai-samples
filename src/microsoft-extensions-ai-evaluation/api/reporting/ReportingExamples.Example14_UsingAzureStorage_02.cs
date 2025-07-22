@@ -11,13 +11,13 @@ namespace Reporting;
 public partial class ReportingExamples
 {
     [TestMethod]
-    public async Task Example12_UsingAzureStorage_02()
+    public async Task Example14_UsingAzureStorage_02()
     {
         /// This test requires additional environment variables to be set in order to use Azure storage. The test is
         /// skipped if these environment variables are not set.
         SkipTestIfAzureStorageNotConfigured();
 
-        /// This is another example similar to the previous one in <see cref="Example11_UsingAzureStorage_01"/> that
+        /// This is another example similar to the previous one in <see cref="Example13_UsingAzureStorage_01"/> that
         /// stores evaluation results and caches LLM responses in the same Azure Storage container defined in
         /// <see cref="s_azureStorageReportingConfiguration"/>.
 

@@ -31,7 +31,7 @@ public partial class ReportingExamples
             tags: GetTags(storageKind: "Storage: SQLite"));
 
     [TestMethod]
-    public async Task Example13_UsingCustomStorage_01()
+    public async Task Example15_UsingCustomStorage_01()
     {
         /// This example demonstrates how to create and use a custom <see cref="ReportingConfiguration"/>
         /// (see <see cref="s_sqliteReportingConfiguration"/> above) that uses SQLite databases for storing evaluation

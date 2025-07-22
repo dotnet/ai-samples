@@ -13,12 +13,12 @@ namespace Reporting;
 public partial class ReportingExamples
 {
     [TestMethod]
-    public async Task Example17_GeneratingReportProgrammaticallyFromCustomStorage()
+    public async Task Example19_GeneratingReportProgrammaticallyFromCustomStorage()
     {
         /// This example demonstrates how to generate an evaluation report programmatically using the results stored in
         /// the SQLite-based result store present under the directory that you specified via the
         /// 'EVAL_SAMPLE_STORAGE_ROOT_PATH' environment variable (and that stores results for the examples present in
-        /// <see cref="Example13_UsingCustomStorage_01"/> and <see cref="Example14_UsingCustomStorage_02"/>).
+        /// <see cref="Example15_UsingCustomStorage_01"/> and <see cref="Example16_UsingCustomStorage_02"/>).
 
         var results = new List<ScenarioRunResult>();
         IEvaluationResultStore sqliteResultStore = new SqliteResultStore(s_sqliteResultsFilePath);

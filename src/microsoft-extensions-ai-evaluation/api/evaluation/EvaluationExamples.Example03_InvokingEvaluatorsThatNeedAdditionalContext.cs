@@ -23,7 +23,7 @@ public partial class EvaluationExamples
         /// Create an instance of <see cref="EquivalenceEvaluatorContext"/> that contains a baseline response against
         /// which the <see cref="EquivalenceEvaluator"/> should compare <see cref="s_response"/> in order to
         /// generate an 'equivalence' score.
-        EquivalenceEvaluatorContext baselineResponseForEquivalenceEvaluator =
+        var baselineResponseForEquivalence =
             new EquivalenceEvaluatorContext(
                 """
                 The distance between Earth and Venus varies significantly due to the elliptical orbits of both planets
@@ -37,7 +37,7 @@ public partial class EvaluationExamples
         /// the <see cref="GroundednessEvaluator"/> should use. The <see cref="GroundednessEvaluator"/> will produce a
         /// 'groundedness' score which indicates how well <see cref="s_response"/> is grounded in the supplied
         /// grounding context.
-        GroundednessEvaluatorContext groundingContextForGroundednessEvaluator =
+        var groundingContextForGroundedness =
             new GroundednessEvaluatorContext(
                 """
                 Distance between Venus and Earth at inferior conjunction: Between 23 and 25 million miles approximately.
@@ -53,7 +53,7 @@ public partial class EvaluationExamples
                 s_messages,
                 s_response,
                 s_chatConfiguration,
-                [baselineResponseForEquivalenceEvaluator, groundingContextForGroundednessEvaluator]);
+                additionalContext: [baselineResponseForEquivalence, groundingContextForGroundedness]);
 
         using var _ = new AssertionScope();
 

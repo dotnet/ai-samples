@@ -13,14 +13,16 @@ namespace Reporting;
 public partial class ReportingExamples
 {
     [TestMethod]
-    public async Task Example15_GeneratingReportProgrammatically()
+    public async Task Example18_GeneratingReportProgrammaticallyFromAzureStorage()
     {
+        SkipTestIfAzureStorageNotConfigured();
+
         /// This example demonstrates how to generate an evaluation report programmatically using the results stored in
-        /// the disk-based result store present under the directory that you specified via the
-        /// 'EVAL_SAMPLE_STORAGE_ROOT_PATH' environment variable.
+        /// the Azure Storage result store that stores results for the examples present in
+        /// <see cref="Example13_UsingAzureStorage_01"/> and <see cref="Example14_UsingAzureStorage_02"/>.
 
         var results = new List<ScenarioRunResult>();
-        IEvaluationResultStore resultStore = new DiskBasedResultStore(EnvironmentVariables.StorageRootPath);
+        IEvaluationResultStore resultStore = new AzureStorageResultStore(s_dataLakeDirectoryClient);
 
         /// Use the <see cref="resultStore"/> object above to read all results for the 'latest' execution.
         await foreach (string executionName in resultStore.GetLatestExecutionNamesAsync(count: 1))
@@ -31,7 +33,7 @@ public partial class ReportingExamples
             }
         }
 
-        string reportFilePath = Path.Combine(EnvironmentVariables.StorageRootPath, "report.html");
+        string reportFilePath = Path.Combine(EnvironmentVariables.StorageRootPath, "report_azure_storage.html");
         IEvaluationReportWriter reportWriter = new HtmlReportWriter(reportFilePath);
 
         /// Generate a report containing the results read from the <see cref="resultStore"/> above.

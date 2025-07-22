@@ -46,9 +46,9 @@ public partial class ReportingExamples
     /// compare results across different product versions.
     /// 
     /// Note that because we use a timestamp as the execution name below, generated reports (such as the ones generated
-    /// in <see cref="Example15_GeneratingReportProgrammatically"/>,
-    /// <see cref="Example16_GeneratingReportProgrammaticallyFromAzureStorage"/> and
-    /// <see cref="Example17_GeneratingReportProgrammaticallyFromCustomStorage"/>) will include evaluation results from
+    /// in <see cref="Example17_GeneratingReportProgrammatically"/>,
+    /// <see cref="Example18_GeneratingReportProgrammaticallyFromAzureStorage"/> and
+    /// <see cref="Example19_GeneratingReportProgrammaticallyFromCustomStorage"/>) will include evaluation results from
     /// all tests in the current project only if these tests are all executed together as part of the same test run. If
     /// the tests are executed one at a time instead (using the IDE's test runner for example), the generated report
     /// will only include the results from the single test that was executed last.
@@ -140,12 +140,20 @@ public partial class ReportingExamples
 
     private static IEnumerable<string> GetTags(string storageKind = "Disk")
     {
-        yield return $"Execution: {ExecutionName}";
+        foreach (string tag in GetGlobalTags(storageKind))
+        {
+            yield return tag;
+        }
 
         ChatClientMetadata? metadata = s_chatConfiguration.ChatClient.GetService<ChatClientMetadata>();
 
         yield return $"Provider: {metadata?.ProviderName ?? "Unknown"}";
         yield return $"Model: {metadata?.DefaultModelId ?? "Unknown"}";
+    }
+
+    private static IEnumerable<string> GetGlobalTags(string storageKind = "Disk")
+    {
+        yield return $"Execution: {ExecutionName}";
         yield return $"Storage: {storageKind}";
     }
 

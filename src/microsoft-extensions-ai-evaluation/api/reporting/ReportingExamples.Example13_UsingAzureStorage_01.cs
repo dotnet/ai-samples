@@ -37,7 +37,7 @@ public partial class ReportingExamples
                 tags: GetTags(storageKind: "Storage: Azure Storage"));
 
     [TestMethod]
-    public async Task Example11_UsingAzureStorage_01()
+    public async Task Example13_UsingAzureStorage_01()
     {
         /// This test requires additional environment variables to be set in order to use Azure storage. The test is
         /// skipped if these environment variables are not set.
