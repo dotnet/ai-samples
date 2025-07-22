@@ -37,7 +37,7 @@ For more details, see the [Introducing Microsoft.Extensions.AI Preview blog post
 | Abstraction implementations | [GitHub Link](./src/microsoft-extensions-ai/abstraction-implementations/README.md) |
 | Azure OpenAI | [GitHub Link](./src/microsoft-extensions-ai/azure-openai/README.md) | 
 | OpenAI | [GitHub Link](./src/microsoft-extensions-ai/openai/README.md) |
-| Azure AI Inference | [GitHub Link](./src/microsoft-extensions-ai/azure-ai-inference/.md) |
+| Azure AI Inference | [GitHub Link](./src/microsoft-extensions-ai/azure-ai-inference/README.md) |
 | Ollama | [GitHub Link](./src/microsoft-extensions-ai/ollama/README.md) |
 
 ### Microsoft.Extensions.AI.Evaluation (preview)

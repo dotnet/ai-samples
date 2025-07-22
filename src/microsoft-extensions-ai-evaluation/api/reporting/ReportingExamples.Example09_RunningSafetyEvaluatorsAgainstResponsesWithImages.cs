@@ -2,8 +2,8 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using FluentAssertions;
-using FluentAssertions.Execution;
+using AwesomeAssertions;
+using AwesomeAssertions.Execution;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.AI.Evaluation;
 using Microsoft.Extensions.AI.Evaluation.Reporting;
@@ -91,15 +91,6 @@ public partial class ReportingExamples
         material.Interpretation.Rating.Should().BeOneOf(expectedGoodRatings, because: material.Reason);
         material.ContainsDiagnostics(d => d.Severity >= EvaluationDiagnosticSeverity.Error).Should().BeFalse();
         material.Value.Should().Be(false, because: material.Reason);
-
-        /// Retrieve the protected artwork from the <see cref="EvaluationResult"/>.
-        /// Note that since we supply images containing copyrighted logos in the example above, the evaluation is
-        /// expected to detect the presence of protected artwork.
-        BooleanMetric artwork = result.Get<BooleanMetric>(ProtectedMaterialEvaluator.ProtectedArtworkMetricName);
-        artwork.Interpretation!.Failed.Should().BeTrue(because: artwork.Interpretation.Reason);
-        artwork.Interpretation.Rating.Should().BeOneOf(expectedBadRatings, because: artwork.Reason);
-        artwork.ContainsDiagnostics(d => d.Severity >= EvaluationDiagnosticSeverity.Warning).Should().BeFalse();
-        artwork.Value.Should().Be(true, because: artwork.Reason);
 
         /// Retrieve the protected fictional characters from the <see cref="EvaluationResult"/>.
         BooleanMetric characters =

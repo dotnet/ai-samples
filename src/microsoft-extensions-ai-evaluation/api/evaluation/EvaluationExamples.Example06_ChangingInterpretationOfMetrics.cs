@@ -3,8 +3,8 @@
 // See the LICENSE file in the project root for more information.
 
 using Evaluation.Evaluators;
-using FluentAssertions;
-using FluentAssertions.Execution;
+using AwesomeAssertions;
+using AwesomeAssertions.Execution;
 using Microsoft.Extensions.AI.Evaluation;
 
 namespace Evaluation;

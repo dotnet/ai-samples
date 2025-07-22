@@ -25,7 +25,7 @@ public partial class ReportingExamples
         /// Use the <see cref="resultStore"/> object above to read all results for the 'latest' execution.
         await foreach (string executionName in resultStore.GetLatestExecutionNamesAsync(count: 1))
         {
-            await foreach (ScenarioRunResult result in resultStore.ReadResultsAsync(ExecutionName))
+            await foreach (ScenarioRunResult result in resultStore.ReadResultsAsync(executionName))
             {
                 results.Add(result);
             }
