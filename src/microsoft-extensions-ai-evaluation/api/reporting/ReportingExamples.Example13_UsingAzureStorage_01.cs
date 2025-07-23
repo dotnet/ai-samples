@@ -6,7 +6,7 @@ using System.Diagnostics.CodeAnalysis;
 using Azure.Identity;
 using Azure.Storage.Files.DataLake;
 using Evaluation.Setup;
-using FluentAssertions;
+using AwesomeAssertions;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.AI.Evaluation;
 using Microsoft.Extensions.AI.Evaluation.Reporting;
@@ -37,7 +37,7 @@ public partial class ReportingExamples
                 tags: GetTags(storageKind: "Storage: Azure Storage"));
 
     [TestMethod]
-    public async Task Example11_UsingAzureStorage_01()
+    public async Task Example13_UsingAzureStorage_01()
     {
         /// This test requires additional environment variables to be set in order to use Azure storage. The test is
         /// skipped if these environment variables are not set.

@@ -8,6 +8,7 @@ using Azure.AI.OpenAI;
 using Azure.Identity;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.AI.Evaluation;
+using OllamaSharp;
 using OpenAI;
 
 namespace Evaluation.Setup;
@@ -88,9 +89,9 @@ public class TestSetup
         /// Get an instance of Microsoft.Extensions.AI's <see cref="IChatClient"/> interface for the selected LLM
         /// endpoint.
         IChatClient client =
-            new OllamaChatClient(
+            new OllamaApiClient(
                 new Uri(EnvironmentVariables.OllamaEndpoint),
-                modelId: EnvironmentVariables.OllamaModel);
+                defaultModel: EnvironmentVariables.OllamaModel);
 
         /// Create an instance of Microsoft.Extensions.AI.Evaluation's <see cref="ChatConfiguration"/>. All the
         /// evaluations performed in the included examples will use this <see cref="ChatConfiguration"/> to communicate

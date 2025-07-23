@@ -108,7 +108,7 @@ public class MeasurementSystemEvaluator : IEvaluator
 
     private static string GetEvaluationPrompt(string? modelResponse) =>
         $"""
-        Consider the following response to a user question. What measurement system is being used in the answer?
+        What measurement system is being used in the following answer?
 
         Answer: {modelResponse}
         Measurement System:

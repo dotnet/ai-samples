@@ -3,8 +3,8 @@
 // See the LICENSE file in the project root for more information.
 
 using Evaluation.Setup;
-using FluentAssertions;
-using FluentAssertions.Execution;
+using AwesomeAssertions;
+using AwesomeAssertions.Execution;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.AI.Evaluation;
 using Microsoft.Extensions.AI.Evaluation.Quality;
@@ -45,7 +45,7 @@ public partial class ReportingExamples
         /// Create an instance of <see cref="EquivalenceEvaluatorContext"/> that contains a baseline response against
         /// which the <see cref="EquivalenceEvaluator"/> should compare <see cref="modelResponse"/> in order to
         /// generate an 'equivalence' score.
-        EquivalenceEvaluatorContext baselineResponseForEquivalenceEvaluator =
+        var baselineResponseForEquivalence =
             new EquivalenceEvaluatorContext(
                 """
                 The distance between Earth and Venus varies significantly due to the elliptical orbits of both planets
@@ -59,7 +59,7 @@ public partial class ReportingExamples
         /// the <see cref="GroundednessEvaluator"/> should use. The <see cref="GroundednessEvaluator"/> will produce a
         /// 'groundedness' score which indicates how well <see cref="modelResponse"/> is grounded in the supplied
         /// grounding context.
-        GroundednessEvaluatorContext groundingContextForGroundednessEvaluator =
+        var groundingContextForGroundedness =
             new GroundednessEvaluatorContext(
                 """
                 Distance between Venus and Earth at inferior conjunction: Between 23 and 25 million miles approximately.
@@ -72,7 +72,7 @@ public partial class ReportingExamples
             await scenarioRun.EvaluateAsync(
                 messages,
                 modelResponse,
-                [baselineResponseForEquivalenceEvaluator, groundingContextForGroundednessEvaluator]);
+                additionalContext: [baselineResponseForEquivalence, groundingContextForGroundedness]);
 
         using var _ = new AssertionScope();
 
