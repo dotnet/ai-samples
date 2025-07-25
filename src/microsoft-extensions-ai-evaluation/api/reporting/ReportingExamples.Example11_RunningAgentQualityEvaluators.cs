@@ -101,9 +101,6 @@ public partial class ReportingExamples
                 Tools = toolDefinitions
             };
 
-        /// Get an <see cref="IChatClient"/> with function calling enabled.
-        chatClient = chatClient.AsBuilder().UseFunctionInvocation().Build();
-
         ChatResponse response = await chatClient.GetResponseAsync(messages, chatOptions);
         return (messages, response, toolDefinitions);
     }
