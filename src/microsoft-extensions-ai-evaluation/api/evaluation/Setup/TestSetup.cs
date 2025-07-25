@@ -63,6 +63,9 @@ public class TestSetup
                 new AzureKeyCredential(EnvironmentVariables.AzureAIInferenceAPIKey))
                     .AsIChatClient(modelId: EnvironmentVariables.AzureAIInferenceModel);
 
+        /// Enable function invocation support.
+        client = client.AsBuilder().UseFunctionInvocation().Build();
+
         /// Create an instance of Microsoft.Extensions.AI.Evaluation's <see cref="ChatConfiguration"/>. All the
         /// evaluations performed in the included examples will use this <see cref="ChatConfiguration"/> to communicate
         /// with the LLM.
@@ -77,6 +80,9 @@ public class TestSetup
             new AzureOpenAIClient(new Uri(EnvironmentVariables.AzureOpenAIEndpoint), new DefaultAzureCredential())
                 .GetChatClient(EnvironmentVariables.AzureOpenAIModel)
                 .AsIChatClient();
+
+        /// Enable function invocation support.
+        client = client.AsBuilder().UseFunctionInvocation().Build();
 
         /// Create an instance of Microsoft.Extensions.AI.Evaluation's <see cref="ChatConfiguration"/>. All the
         /// evaluations performed in the included examples will use this <see cref="ChatConfiguration"/> to communicate
@@ -93,6 +99,9 @@ public class TestSetup
                 new Uri(EnvironmentVariables.OllamaEndpoint),
                 defaultModel: EnvironmentVariables.OllamaModel);
 
+        /// Enable function invocation support.
+        client = client.AsBuilder().UseFunctionInvocation().Build();
+
         /// Create an instance of Microsoft.Extensions.AI.Evaluation's <see cref="ChatConfiguration"/>. All the
         /// evaluations performed in the included examples will use this <see cref="ChatConfiguration"/> to communicate
         /// with the LLM.
@@ -107,6 +116,9 @@ public class TestSetup
             new OpenAIClient(EnvironmentVariables.OpenAIAPIKey)
                 .GetChatClient(EnvironmentVariables.OpenAIModel)
                 .AsIChatClient();
+
+        /// Enable function invocation support.
+        client = client.AsBuilder().UseFunctionInvocation().Build();
 
         /// Create an instance of Microsoft.Extensions.AI.Evaluation's <see cref="ChatConfiguration"/>. All the
         /// evaluations performed in the included examples will use this <see cref="ChatConfiguration"/> to communicate
