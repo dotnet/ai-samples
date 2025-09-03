@@ -128,21 +128,22 @@ AI Foundry Evaluation service and require some special setup. The corresponding 
 be enabled by setting the following environment variables.
 
 1. Firstly, you need an [Azure subscription](https://azure.microsoft.com/).
-2. Within this subscription, create a
-   [resource group](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal)
-   within one of the
-   [Azure regions that support Azure AI Foundry Evaluation service](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/develop/evaluate-sdk#region-support).
-3. Next create an [Azure AI hub](https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/ai-resources) within the
-   same resource group and region.
-4. Finally, create an [Azure AI project](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/create-projects?tabs=ai-studio)
-   within this hub.
-5. Once you have created the above artifacts, set the following environment variables to configure the examples to use
-   the Azure AI Foundry Evaluation service from the above AI project.
+2. Within this subscription, create an [Azure AI Foundry project](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/create-projects?tabs=ai-foundry&pivots=fdp-project).
+3. Finally, copy the endpoint URL for the above Azure AI Foundry project and set the following environment variable.
+   This will configure the examples to use the Azure AI Foundry Evaluation service from the above Azure AI Foundry
+   project.
 
 ```
-set EVAL_SAMPLE_AZURE_SUBSCRIPTION_ID=<The ID of the above Azure subscription>
-set EVAL_SAMPLE_AZURE_RESOURCE_GROUP=<The name of the above Azure resource group>
-set EVAL_SAMPLE_AZURE_AI_PROJECT=<The name of the above Azure AI project>
+set EVAL_SAMPLE_AZURE_AI_PROJECT_ENDPOINT=<The endpoint URL for the above Azure AI Foundry project>
+```
+
+**Note:** If you are using an older [hub-based Azure AI Foundry project](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/create-projects?tabs=ai-foundry&pivots=hub-project),
+set the following environment variables instead.
+
+```
+set EVAL_SAMPLE_AZURE_SUBSCRIPTION_ID=<The ID of the Azure subscription containing your hub-based Azure AI Foundry project>
+set EVAL_SAMPLE_AZURE_RESOURCE_GROUP=<The name of the Azure resource group containing your hub-based Azure AI Foundry project>
+set EVAL_SAMPLE_AZURE_AI_PROJECT=<The name of the your hub-based Azure AI Foundry project>
 ```
 
 ## Running Azure storage examples
@@ -164,7 +165,7 @@ variables.
    the storage container created above.
 
 ```
-set EVAL_SAMPLE_AZURE_STORAGE_ACCOUNT_ENDPOINT=<The endpoint url of the above Azure storage account>
+set EVAL_SAMPLE_AZURE_STORAGE_ACCOUNT_ENDPOINT=<The endpoint URL of the above Azure storage account>
 set EVAL_SAMPLE_AZURE_STORAGE_CONTAINER=<The name of the above Azure storage container>
 ```
 

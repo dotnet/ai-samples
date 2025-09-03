@@ -3,15 +3,14 @@
 // See the LICENSE file in the project root for more information.
 
 using System.Diagnostics.CodeAnalysis;
-using Azure.Identity;
-using Evaluation.Setup;
 using AwesomeAssertions;
 using AwesomeAssertions.Execution;
+using Azure.Identity;
+using Evaluation.Setup;
 using Microsoft.Extensions.AI.Evaluation;
 using Microsoft.Extensions.AI.Evaluation.Reporting;
 using Microsoft.Extensions.AI.Evaluation.Reporting.Storage;
 using Microsoft.Extensions.AI.Evaluation.Safety;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 
 namespace Reporting;
 
@@ -23,15 +22,34 @@ public partial class ReportingExamples
     /// need in order to communicate with the Azure AI Foundry Evaluation service.
 
     private static readonly ContentSafetyServiceConfiguration? s_safetyServiceConfiguration =
-        EnvironmentVariables.AzureSubscriptionId is null ||
-        EnvironmentVariables.AzureResourceGroup is null ||
-        EnvironmentVariables.AzureAIProject is null
-            ? null
-            : new ContentSafetyServiceConfiguration(
+        GetSafetyServiceConfiguration();
+
+    private static ContentSafetyServiceConfiguration? GetSafetyServiceConfiguration()
+    {
+        if (EnvironmentVariables.AzureAIProjectEndpoint is null)
+        {
+            if (EnvironmentVariables.AzureSubscriptionId is null ||
+                EnvironmentVariables.AzureResourceGroup is null ||
+                EnvironmentVariables.AzureAIProject is null)
+            {
+                return null;
+            }
+            else
+            {
+                return new ContentSafetyServiceConfiguration(
+                    credential: new DefaultAzureCredential(),
+                    subscriptionId: EnvironmentVariables.AzureSubscriptionId,
+                    resourceGroupName: EnvironmentVariables.AzureResourceGroup,
+                    projectName: EnvironmentVariables.AzureAIProject);
+            }
+        }
+        else
+        {
+            return new ContentSafetyServiceConfiguration(
                 credential: new DefaultAzureCredential(),
-                subscriptionId: EnvironmentVariables.AzureSubscriptionId,
-                resourceGroupName: EnvironmentVariables.AzureResourceGroup,
-                projectName: EnvironmentVariables.AzureAIProject);
+                endpoint: new Uri(EnvironmentVariables.AzureAIProjectEndpoint));
+        }
+    }
 
     /// The <see cref="ContentSafetyServiceConfiguration"/> configured above can then be converted to a
     /// <see cref="ChatConfiguration"/> by calling
@@ -156,10 +174,13 @@ public partial class ReportingExamples
         {
             Assert.Inconclusive(
                 $"""
-                The test was skipped since the following environment variables were not set. Set these variables to configure the Azure AI Foundry Evaluation service for use in this test:
-                set {EnvironmentVariables.AzureSubscriptionIdVariableName}=<The subscription ID of the Azure account that contains the below Azure AI project>
-                set {EnvironmentVariables.AzureResourceGroupVariableName}=<The name of the Azure resource group under the above subscription that contains the below Azure AI project>
-                set {EnvironmentVariables.AzureAIProjectVariableName}=<The name of the Azure AI project under which the content safety evaluations are to be executed>
+                The test was skipped since the following environment variable was not set. Set this variable to configure the Azure AI Foundry Evaluation service for use in this test:
+                set {EnvironmentVariables.AzureAIProjectEndpointVariableName}=<The endpoint URL of the Azure AI Foundry project under which the content safety evaluations are to be executed>
+                
+                Note: If you are using an older hub-based Azure AI Foundry project, set the following three environment variables instead:
+                set {EnvironmentVariables.AzureSubscriptionIdVariableName}=<The subscription ID of the Azure account that contains the below hub-based Azure AI Foundry project>
+                set {EnvironmentVariables.AzureResourceGroupVariableName}=<The name of the Azure resource group under the above subscription that contains the below hub-based Azure AI Foundry project>
+                set {EnvironmentVariables.AzureAIProjectVariableName}=<The name of the hub-based Azure AI Foundry project under which the content safety evaluations are to be executed>
                 """);
         }
 

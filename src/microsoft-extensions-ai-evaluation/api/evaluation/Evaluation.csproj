@@ -11,18 +11,18 @@
 
   <ItemGroup>
     <PackageReference Include="Azure.AI.OpenAI" Version="2.1.0" />
-    <PackageReference Include="Azure.Identity" Version="1.14.2" />
+    <PackageReference Include="Azure.Identity" Version="1.15.0" />
     <PackageReference Include="AwesomeAssertions" Version="9.1.0" />
-    <PackageReference Include="Microsoft.Extensions.AI" Version="9.7.1" />
-    <PackageReference Include="Microsoft.Extensions.AI.Abstractions" Version="9.7.1" />
-    <PackageReference Include="Microsoft.Extensions.AI.AzureAIInference" Version="9.7.1-preview.1.25365.4" />
-    <PackageReference Include="Microsoft.Extensions.AI.Evaluation" Version="9.7.0" />
-    <PackageReference Include="Microsoft.Extensions.AI.Evaluation.Quality" Version="9.7.0" />
-    <PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="9.7.1-preview.1.25365.4" />
+    <PackageReference Include="Microsoft.Extensions.AI" Version="9.8.0" />
+    <PackageReference Include="Microsoft.Extensions.AI.Abstractions" Version="9.8.0" />
+    <PackageReference Include="Microsoft.Extensions.AI.AzureAIInference" Version="9.8.0-preview.1.25412.6" />
+    <PackageReference Include="Microsoft.Extensions.AI.Evaluation" Version="9.8.0" />
+    <PackageReference Include="Microsoft.Extensions.AI.Evaluation.Quality" Version="9.8.0" />
+    <PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="9.8.0-preview.1.25412.6" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
-    <PackageReference Include="MSTest.TestAdapter" Version="3.9.3" />
-    <PackageReference Include="MSTest.TestFramework" Version="3.9.3" />
-    <PackageReference Include="OllamaSharp" Version="5.3.1" />
+    <PackageReference Include="MSTest.TestAdapter" Version="3.10.4" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.10.4" />
+    <PackageReference Include="OllamaSharp" Version="5.3.6" />
   </ItemGroup>
 
   <ItemGroup>

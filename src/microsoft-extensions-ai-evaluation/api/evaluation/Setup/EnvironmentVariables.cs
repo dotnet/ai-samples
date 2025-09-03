@@ -75,6 +75,12 @@ public class EnvironmentVariables
     #endregion
 
     #region Azure AI Foundry (for content safety evaluation examples)
+    public const string AzureAIProjectEndpointVariableName = "EVAL_SAMPLE_AZURE_AI_PROJECT_ENDPOINT";
+    public static string? AzureAIProjectEndpoint =>
+        TryGetEnvironmentVariable(AzureAIProjectEndpointVariableName, out string? value)
+            ? value
+            : null;
+
     public const string AzureSubscriptionIdVariableName = "EVAL_SAMPLE_AZURE_SUBSCRIPTION_ID";
     public static string? AzureSubscriptionId =>
         TryGetEnvironmentVariable(AzureSubscriptionIdVariableName, out string? value)
