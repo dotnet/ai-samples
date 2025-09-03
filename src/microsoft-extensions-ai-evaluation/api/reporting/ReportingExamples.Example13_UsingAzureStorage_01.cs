@@ -72,7 +72,7 @@ public partial class ReportingExamples
             Assert.Inconclusive(
                 $"""
                 The test was skipped since the following environment variables were not set. Set these variables to configure the Azure storage for use in this test:
-                set {EnvironmentVariables.AzureStorageAccountEndpoint}=<The endpoint url that identifies the Azure Data Lake Gen2 enabled storage account that contains the below storage container>
+                set {EnvironmentVariables.AzureStorageAccountEndpoint}=<The endpoint URL that identifies the Azure Data Lake Gen2 enabled storage account that contains the below storage container>
                 set {EnvironmentVariables.AzureStorageContainer}=<The name of the Azure storage container>
                 """);
         }
