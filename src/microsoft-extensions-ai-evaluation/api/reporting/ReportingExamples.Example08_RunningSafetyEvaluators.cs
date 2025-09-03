@@ -3,15 +3,14 @@
 // See the LICENSE file in the project root for more information.
 
 using System.Diagnostics.CodeAnalysis;
-using Azure.Identity;
-using Evaluation.Setup;
 using AwesomeAssertions;
 using AwesomeAssertions.Execution;
+using Azure.Identity;
+using Evaluation.Setup;
 using Microsoft.Extensions.AI.Evaluation;
 using Microsoft.Extensions.AI.Evaluation.Reporting;
 using Microsoft.Extensions.AI.Evaluation.Reporting.Storage;
 using Microsoft.Extensions.AI.Evaluation.Safety;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 
 namespace Reporting;
 
