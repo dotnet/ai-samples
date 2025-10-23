@@ -10,23 +10,24 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.AI.OpenAI" Version="2.1.0" />
-    <PackageReference Include="Azure.Identity" Version="1.15.0" />
-    <PackageReference Include="AwesomeAssertions" Version="9.1.0" />
-    <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.9" />
-    <PackageReference Include="Microsoft.Extensions.AI.Abstractions" Version="9.9.0" />
-    <PackageReference Include="Microsoft.Extensions.AI.AzureAIInference" Version="9.9.0-preview.1.25458.4" />
-    <PackageReference Include="Microsoft.Extensions.AI.Evaluation" Version="9.9.0" />
-    <PackageReference Include="Microsoft.Extensions.AI.Evaluation.NLP" Version="9.9.0-preview.1.25458.4" />
-    <PackageReference Include="Microsoft.Extensions.AI.Evaluation.Quality" Version="9.9.0" />
-    <PackageReference Include="Microsoft.Extensions.AI.Evaluation.Reporting" Version="9.9.0" />
-    <PackageReference Include="Microsoft.Extensions.AI.Evaluation.Reporting.Azure" Version="9.9.0" />
-    <PackageReference Include="Microsoft.Extensions.AI.Evaluation.Safety" Version="9.9.0-preview.1.25458.4" />
-    <PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="9.9.0-preview.1.25458.4" />
+    <PackageReference Include="Azure.Core" Version="1.49.0" />
+    <PackageReference Include="Azure.Identity" Version="1.17.0" />
+    <PackageReference Include="AwesomeAssertions" Version="9.2.1" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.10" />
+    <PackageReference Include="Microsoft.Extensions.AI.Abstractions" Version="9.10.1" />
+    <PackageReference Include="Microsoft.Extensions.AI.AzureAIInference" Version="9.10.0-preview.1.25513.3" />
+    <PackageReference Include="Microsoft.Extensions.AI.Evaluation" Version="9.10.0" />
+    <PackageReference Include="Microsoft.Extensions.AI.Evaluation.NLP" Version="9.10.0-preview.1.25513.3" />
+    <PackageReference Include="Microsoft.Extensions.AI.Evaluation.Quality" Version="9.10.0" />
+    <PackageReference Include="Microsoft.Extensions.AI.Evaluation.Reporting" Version="9.10.0" />
+    <PackageReference Include="Microsoft.Extensions.AI.Evaluation.Reporting.Azure" Version="9.10.0" />
+    <PackageReference Include="Microsoft.Extensions.AI.Evaluation.Safety" Version="9.10.0-preview.1.25513.3" />
+    <PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="9.10.1-preview.1.25521.4" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
-    <PackageReference Include="MSTest.TestAdapter" Version="3.10.4" />
-    <PackageReference Include="MSTest.TestFramework" Version="3.10.4" />
-    <PackageReference Include="OllamaSharp" Version="5.3.6" />
+    <PackageReference Include="MSTest.TestAdapter" Version="3.11.0" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.11.0" />
+    <PackageReference Include="OllamaSharp" Version="5.4.8" />
+    <PackageReference Include="OpenAI" Version="2.5.0" />
   </ItemGroup>
 
   <ItemGroup>

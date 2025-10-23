@@ -2,9 +2,10 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System.ClientModel;
+using System.ClientModel.Primitives;
 using Azure;
 using Azure.AI.Inference;
-using Azure.AI.OpenAI;
 using Azure.Identity;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.AI.Evaluation;
@@ -76,10 +77,22 @@ public class TestSetup
     {
         /// Get an instance of Microsoft.Extensions.AI's <see cref="IChatClient"/> interface for the selected LLM
         /// endpoint.
+
+        /// Append /openai/v1 suffix.
+        /// See https://learn.microsoft.com/en-us/azure/developer/ai/how-to/switching-endpoints?tabs=openai&pivots=dotnet#microsoft-entra-authentication-1.
+        var endpoint = new Uri(new Uri(EnvironmentVariables.AzureOpenAIEndpoint), "/openai/v1");
+        var options = new OpenAIClientOptions { Endpoint = endpoint };
+
+#pragma warning disable OPENAI001
+        /// OPENAI001: The APIs used below are experimental and subject to change or removal in future updates.
+        var policy =
+            new BearerTokenPolicy(tokenProvider: new DefaultAzureCredential(), scope: "https://ai.azure.com/.default");
+
         IChatClient client =
-            new AzureOpenAIClient(new Uri(EnvironmentVariables.AzureOpenAIEndpoint), new DefaultAzureCredential())
+            new OpenAIClient(policy, options)
                 .GetChatClient(EnvironmentVariables.AzureOpenAIModel)
                 .AsIChatClient();
+#pragma warning restore OPENAI001
 
         /// Enable function invocation support.
         client = client.AsBuilder().UseFunctionInvocation().Build();
@@ -112,10 +125,13 @@ public class TestSetup
     {
         /// Get an instance of Microsoft.Extensions.AI's <see cref="IChatClient"/> interface for the selected LLM
         /// endpoint.
+#pragma warning disable OPENAI001
+        /// OPENAI001: The APIs used below are experimental and subject to change or removal in future updates.
         IChatClient client =
-            new OpenAIClient(EnvironmentVariables.OpenAIAPIKey)
+            new OpenAIClient(new ApiKeyCredential(EnvironmentVariables.OpenAIAPIKey))
                 .GetChatClient(EnvironmentVariables.OpenAIModel)
                 .AsIChatClient();
+#pragma warning restore OPENAI001
 
         /// Enable function invocation support.
         client = client.AsBuilder().UseFunctionInvocation().Build();
