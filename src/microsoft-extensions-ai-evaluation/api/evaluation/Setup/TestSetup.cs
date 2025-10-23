@@ -77,7 +77,7 @@ public class TestSetup
     {
         /// Get an instance of Microsoft.Extensions.AI's <see cref="IChatClient"/> interface for the selected LLM
         /// endpoint.
-        
+
         // Append /openai/v1 suffix.
         // See https://learn.microsoft.com/en-us/azure/developer/ai/how-to/switching-endpoints?tabs=openai&pivots=dotnet#microsoft-entra-authentication-1.
         var endpoint = new Uri(new Uri(EnvironmentVariables.AzureOpenAIEndpoint), "/openai/v1");
