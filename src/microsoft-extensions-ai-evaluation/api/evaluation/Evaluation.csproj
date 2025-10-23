@@ -7,11 +7,12 @@
 
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
+    <NoWarn>$(NoWarn);OPENAI001</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.AI.OpenAI" Version="2.1.0" />
-    <PackageReference Include="Azure.Identity" Version="1.15.0" />
+    <PackageReference Include="Azure.Core" Version="1.49.0" />
+    <PackageReference Include="Azure.Identity" Version="1.16.0" />
     <PackageReference Include="AwesomeAssertions" Version="9.1.0" />
     <PackageReference Include="Microsoft.Extensions.AI" Version="9.9.0" />
     <PackageReference Include="Microsoft.Extensions.AI.Abstractions" Version="9.9.0" />
@@ -23,6 +24,7 @@
     <PackageReference Include="MSTest.TestAdapter" Version="3.10.4" />
     <PackageReference Include="MSTest.TestFramework" Version="3.10.4" />
     <PackageReference Include="OllamaSharp" Version="5.3.6" />
+    <PackageReference Include="OpenAI" Version="2.4.0" />
   </ItemGroup>
 
   <ItemGroup>
