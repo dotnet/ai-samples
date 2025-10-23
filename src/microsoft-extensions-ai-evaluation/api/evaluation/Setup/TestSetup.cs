@@ -82,7 +82,8 @@ public class TestSetup
         var endpoint = new Uri(new Uri(EnvironmentVariables.AzureOpenAIEndpoint), "/openai/v1");
         var options = new OpenAIClientOptions { Endpoint = endpoint };
 
-#pragma warning disable OPENAI001 // OpenAIClient(AuthenticationPolicy, OpenAIClientOptions) and GetChatClient(string) are experimental and subject to change or removal in future updates.
+#pragma warning disable OPENAI001
+        // OPENAI001: The APIs used below are experimental and subject to change or removal in future updates.
         var policy = new BearerTokenPolicy(new DefaultAzureCredential(), "https://ai.azure.com/.default");
         var openAIClient = new OpenAIClient(policy, options);
 
@@ -120,7 +121,8 @@ public class TestSetup
     {
         /// Get an instance of Microsoft.Extensions.AI's <see cref="IChatClient"/> interface for the selected LLM
         /// endpoint.
-#pragma warning disable OPENAI001 // GetChatClient(string) is experimental and subject to change or removal in future updates.
+#pragma warning disable OPENAI001
+        // OPENAI001: The APIs used below are experimental and subject to change or removal in future updates.
         IChatClient client =
             new OpenAIClient(new ApiKeyCredential(EnvironmentVariables.OpenAIAPIKey))
                 .GetChatClient(EnvironmentVariables.OpenAIModel)
