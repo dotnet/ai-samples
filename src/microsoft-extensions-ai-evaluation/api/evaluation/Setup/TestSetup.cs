@@ -78,11 +78,9 @@ public class TestSetup
         /// Get an instance of Microsoft.Extensions.AI's <see cref="IChatClient"/> interface for the selected LLM
         /// endpoint.
         
-        // Use Azure endpoint with /openai/v1 suffix
-        var options = new OpenAIClientOptions
-        {
-            Endpoint = new Uri(new Uri(EnvironmentVariables.AzureOpenAIEndpoint), "/openai/v1")
-        };
+        // Append /openai/v1 suffix.
+        var endpoint = new Uri(new Uri(EnvironmentVariables.AzureOpenAIEndpoint), "/openai/v1");
+        var options = new OpenAIClientOptions { Endpoint = endpoint };
 
 #pragma warning disable OPENAI001 // OpenAIClient(AuthenticationPolicy, OpenAIClientOptions) and GetChatClient(string) are experimental and subject to change or removal in future updates.
         var openAIClient = new OpenAIClient(
