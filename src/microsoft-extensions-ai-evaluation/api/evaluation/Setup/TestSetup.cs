@@ -86,9 +86,7 @@ public class TestSetup
         var policy = new BearerTokenPolicy(new DefaultAzureCredential(), "https://ai.azure.com/.default");
         var openAIClient = new OpenAIClient(policy, options);
 
-        IChatClient client = openAIClient
-            .GetChatClient(EnvironmentVariables.AzureOpenAIModel)
-            .AsIChatClient();
+        IChatClient client = openAIClient.GetChatClient(EnvironmentVariables.AzureOpenAIModel).AsIChatClient();
 #pragma warning restore OPENAI001
 
         /// Enable function invocation support.
