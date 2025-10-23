@@ -83,11 +83,8 @@ public class TestSetup
         var options = new OpenAIClientOptions { Endpoint = endpoint };
 
 #pragma warning disable OPENAI001 // OpenAIClient(AuthenticationPolicy, OpenAIClientOptions) and GetChatClient(string) are experimental and subject to change or removal in future updates.
-        var openAIClient = new OpenAIClient(
-            new BearerTokenPolicy(
-                new DefaultAzureCredential(),
-                "https://ai.azure.com/.default"),
-            options);
+        var policy = new BearerTokenPolicy(new DefaultAzureCredential(), "https://ai.azure.com/.default");
+        var openAIClient = new OpenAIClient(policy, options);
 
         IChatClient client = openAIClient
             .GetChatClient(EnvironmentVariables.AzureOpenAIModel)
