@@ -85,9 +85,11 @@ public class TestSetup
 #pragma warning disable OPENAI001
         // OPENAI001: The APIs used below are experimental and subject to change or removal in future updates.
         var policy = new BearerTokenPolicy(new DefaultAzureCredential(), "https://ai.azure.com/.default");
-        var openAIClient = new OpenAIClient(policy, options);
 
-        IChatClient client = openAIClient.GetChatClient(EnvironmentVariables.AzureOpenAIModel).AsIChatClient();
+        IChatClient client =
+            new OpenAIClient(policy, options)
+                .GetChatClient(EnvironmentVariables.AzureOpenAIModel)
+                .AsIChatClient();
 #pragma warning restore OPENAI001
 
         /// Enable function invocation support.
