@@ -1,10 +1,20 @@
+---
+page_type: sample
+languages:
+- csharp
+products:
+- dotnet
+name: Evaluation with reporting examples
+urlFragment: meai-evaluation-reporting
+---
+
 # Microsoft.Extensions.AI.Evaluation - Reporting API Examples
 
 This project contains a set of examples that demonstrate how concepts and evaluators that are included in the
 [Microsoft.Extensions.AI.Evaluation](https://www.nuget.org/packages/Microsoft.Extensions.AI.Evaluation),
 [Microsoft.Extensions.AI.Evaluation.Quality](https://www.nuget.org/packages/Microsoft.Extensions.AI.Evaluation.Quality),
 and [Microsoft.Extensions.AI.Evaluation.Safety](https://www.nuget.org/packages/Microsoft.Extensions.AI.Evaluation.Safety)
-NuGet packages can be used in conjunction with concepts (such as response caching, result storage and report
+NuGet packages can be used in conjunction with concepts (such as response caching, result storage, and report
 generation) that are available in the
 [Microsoft.Extensions.AI.Evaluation.Reporting](https://www.nuget.org/packages/Microsoft.Extensions.AI.Evaluation.Reporting),
 and [Microsoft.Extensions.AI.Evaluation.Reporting.Azure](https://www.nuget.org/packages/Microsoft.Extensions.AI.Evaluation.Reporting.Azure)

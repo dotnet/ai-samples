@@ -1,3 +1,13 @@
+---
+page_type: sample
+languages:
+- csharp
+products:
+- dotnet
+name: Azure AI inference
+urlFragment: meai-azure-ai-inference
+---
+
 # Microsoft.Extensions.AI - Azure AI Inference Examples
 
 This project contains a set of samples that show how to use the Azure AI Inference reference implementation in the [Microsoft.Extensions.AI.AzureAIInference NuGet package](https://aka.ms/meai-azaiinference-nuget).
@@ -24,7 +34,7 @@ This project contains a set of samples that show how to use the Azure AI Inferen
 
 1. Open your terminal
 1. Navigate to the *AzureAIInferenceExamples* project directory
-1. Run the applicaton using `dotnet run`
+1. Run the application using `dotnet run`
 
     ```dotnetcli
     dotnet run
@@ -33,7 +43,7 @@ This project contains a set of samples that show how to use the Azure AI Inferen
 ## Test your application
 
 1. When the application starts, select **Choose sample**.
-1. Select one of the samples from the dropdown to run it. 
+1. Select one of the samples from the dropdown to run it.
 1. After the selected sample runs, you can choose to run another sample or select **Quit** to stop the application.
 
 ## Examples
@@ -41,10 +51,10 @@ This project contains a set of samples that show how to use the Azure AI Inferen
 | Example | Description |
 | --- | --- |
 | [Chat](./Chat.cs) | Use `IChatClient` to send and receive chat messages |
-| [Chat + Conversation History](./ConversationHistory.cs) | Use `IChatClient` alongside conversation history to send and receive chat messages |  
-| [Streaming](./Streaming.cs) | Use `IChatClient` to send and receive a stream of chat messages | 
+| [Chat + Conversation History](./ConversationHistory.cs) | Use `IChatClient` alongside conversation history to send and receive chat messages |
+| [Streaming](./Streaming.cs) | Use `IChatClient` to send and receive a stream of chat messages |
 | [Caching](./Caching.cs) | Use prompt caching middleware |
-| [OpenTelemetry](./OpenTelemetry.cs) | Use OpenTelemetry middleware | 
-| [Tool Calling](./ToolCalling.cs) | Use tool calling middleware | 
-| [Middleware](./Middleware.cs) | Use prompt caching, OpenTelemetry and tool calling middleware | 
+| [OpenTelemetry](./OpenTelemetry.cs) | Use OpenTelemetry middleware |
+| [Tool Calling](./ToolCalling.cs) | Use tool calling middleware |
+| [Middleware](./Middleware.cs) | Use prompt caching, OpenTelemetry and tool calling middleware |
 | [Dependency Injection](./DependencyInjection.cs) | Register an `IChatClient` and middleware using Dependency Injection |

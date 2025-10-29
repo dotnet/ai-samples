@@ -1,3 +1,13 @@
+---
+page_type: sample
+languages:
+- csharp
+products:
+- dotnet
+name: OpenAI example
+urlFragment: meai-openai
+---
+
 # Microsoft.Extensions.AI - OpenAI Examples
 
 This project contains a set of samples that show how to use the OpenAI reference implementation in the [Microsoft.Extensions.AI.OpenAI NuGet package](https://aka.ms/meai-openai-nuget).
@@ -24,28 +34,29 @@ This project contains a set of samples that show how to use the OpenAI reference
 
 1. Open your terminal
 1. Navigate to the *OpenAIExamples* project directory
-1. Run the applicaton using `dotnet run`
+1. Run the application using `dotnet run`
 
     ```dotnetcli
     dotnet run
     ```
+
 ## Test your application
 
 1. When the application starts, select **Choose sample**.
-1. Select one of the samples from the dropdown to run it. 
+1. Select one of the samples from the dropdown to run it.
 1. After the selected sample runs, you can choose to run another sample or select **Quit** to stop the application.
 
 ## Examples
 
 | Example | Description |
 | --- | --- |
-| [Chat](./Chat.cs) | Use `IChatClient` to send and receive chat messages | [GitHub Link](../OpenAIExamples/Chat.cs) |
-| [Chat + Conversation History](./ConversationHistory.cs) | Use `IChatClient` alongside conversation history to send and receive chat messages |  
-| [Streaming](./Streaming.cs) | Use `IChatClient` to send and receive a stream of chat messages | 
+| [Chat](./Chat.cs) | Use `IChatClient` to send and receive chat messages |
+| [Chat + Conversation History](./ConversationHistory.cs) | Use `IChatClient` alongside conversation history to send and receive chat messages |
+| [Streaming](./Streaming.cs) | Use `IChatClient` to send and receive a stream of chat messages |
 | [Caching](./Caching.cs) | Use prompt caching middleware |
-| [OpenTelemetry](./OpenTelemetry.cs) | Use OpenTelemetry middleware | 
-| [Tool Calling](./ToolCalling.cs) | Use tool calling middleware | 
-| [Middleware](./Middleware.cs) | Use prompt caching, OpenTelemetry and tool calling middleware | 
+| [OpenTelemetry](./OpenTelemetry.cs) | Use OpenTelemetry middleware |
+| [Tool Calling](./ToolCalling.cs) | Use tool calling middleware |
+| [Middleware](./Middleware.cs) | Use prompt caching, OpenTelemetry and tool calling middleware |
 | [Dependency Injection](./DependencyInjection.cs) | Register an `IChatClient` and middleware using Dependency Injection |
 | [Text Embedding](./TextEmbedding.cs) | Use text embedding generator |
-| [Text Embedding + Caching](./TextEmbeddingCaching.cs) | Use text embedding generator with caching middleware | 
+| [Text Embedding + Caching](./TextEmbeddingCaching.cs) | Use text embedding generator with caching middleware |

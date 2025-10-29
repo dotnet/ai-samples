@@ -55,7 +55,7 @@ This project contains a minimal Web API that show how to use the Ollama referenc
 
 1. Open your terminal
 1. Navigate to the *OllamaWebAPI* project directory
-1. Run the applicaton using `dotnet run`
+1. Run the application using `dotnet run`
 
     ```dotnetcli
     dotnet run

@@ -36,6 +36,7 @@ Check out the following .NET Live talk on YouTube:
 [![.NET AI Community Standup: Evaluate the Quality of Your AI Applications](https://img.youtube.com/vi/kFdUpu9TdlY/maxresdefault.jpg)](https://youtu.be/kFdUpu9TdlY)
 
 Also check out the following blog posts:
+
 - [Evaluate the quality of your AI applications with ease](https://devblogs.microsoft.com/dotnet/evaluate-the-quality-of-your-ai-applications-with-ease/)
 - [Unlock new possibilities for AI Evaluations for .NET](https://devblogs.microsoft.com/dotnet/start-using-the-microsoft-ai-evaluations-library-today/)
 

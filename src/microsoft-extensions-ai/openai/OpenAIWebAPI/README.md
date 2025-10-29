@@ -1,3 +1,13 @@
+---
+page_type: sample
+languages:
+- csharp
+products:
+- dotnet
+name: OpenAI web API example
+urlFragment: meai-openai-web-api
+---
+
 # Microsoft.Extensions.AI - OpenAI Web API Example
 
 This project contains a minimal Web API that show how to use the OpenAI reference implementation in the [Microsoft.Extensions.AI.OpenAI NuGet package](https://aka.ms/meai-openai-nuget).
@@ -49,7 +59,7 @@ This project contains a minimal Web API that show how to use the OpenAI referenc
 
 1. Open your terminal
 1. Navigate to the *OpenAIWebAPI* project directory
-1. Run the applicaton using `dotnet run`
+1. Run the application using `dotnet run`
 
     ```dotnetcli
     dotnet run
@@ -59,7 +69,7 @@ This project contains a minimal Web API that show how to use the OpenAI referenc
 
 ### PowerShell
 
-##### Chat
+#### Chat
 
 ```powershell
 $response = Invoke-RestMethod -Uri 'http://localhost:5208/chat' -Method Post -Headers @{'Content-Type'='application/json'} -Body '"What is AI?"'; $response.message.contents.text

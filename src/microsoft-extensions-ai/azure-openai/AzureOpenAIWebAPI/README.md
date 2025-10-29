@@ -1,3 +1,13 @@
+---
+page_type: sample
+languages:
+- csharp
+products:
+- dotnet
+name: Azure OpenAI web API
+urlFragment: meai-azure-openai-web-api
+---
+
 # Microsoft.Extensions.AI - Azure OpenAI Web API Example
 
 This project contains a minimal Web API that show how to use the OpenAI reference implementation in the [Microsoft.Extensions.AI.OpenAI NuGet package](https://aka.ms/meai-openai-nuget) with the Azure OpenAI service.
@@ -35,7 +45,7 @@ This project contains a minimal Web API that show how to use the OpenAI referenc
     }
     ```
 
-1. Replace the value of the `Endpoint` with your Azure OpenAI API endpoint. For more details on where to find your Azure OpenAI endpoint, see the [Azure OpenAI documentation](https://learn.microsoft.com/azure/ai-services/openai/chatgpt-quickstart?tabs=command-line%2Ctypescript%2Cpython-new&pivots=programming-language-csharp#retrieve-key-and-endpoint). 
+1. Replace the value of the `Endpoint` with your Azure OpenAI API endpoint. For more details on where to find your Azure OpenAI endpoint, see the [Azure OpenAI documentation](https://learn.microsoft.com/azure/ai-services/openai/chatgpt-quickstart?tabs=command-line%2Ctypescript%2Cpython-new&pivots=programming-language-csharp#retrieve-key-and-endpoint).
 
 ## Quick Start
 
@@ -49,7 +59,7 @@ This project contains a minimal Web API that show how to use the OpenAI referenc
 
 1. Open your terminal
 1. Navigate to the *AzureOpenAIWebAPI* project directory
-1. Run the applicaton using `dotnet run`
+1. Run the application using `dotnet run`
 
     ```dotnetcli
     dotnet run

@@ -11,9 +11,9 @@ Core benefits:
 
 For more details, see the [Introducing Microsoft.Extensions.AI Preview blog post](https://aka.ms/meai-preview-blog).
 
-|Topic | GitHub Link | Description | 
-| --- | --- | --- |
- Abstraction implementations | [GitHub Link](./abstraction-implementations/README.md) | Samples containing reference implementations of Microsoft.Extensions.AI.Abstractions |
+| Topic | GitHub Link | Description |
+|-------|-------------|-------------|
+| Abstraction implementations | [GitHub Link](./abstraction-implementations/README.md) | Samples containing reference implementations of Microsoft.Extensions.AI.Abstractions |
 | OpenAI | [GitHub Link](./openai/README.md) | Samples showcasing Microsoft.Extensions.AI.OpenAI reference implementation |
 | Azure AI Inference | [GitHub Link](./azure-ai-inference/README.md) | Samples showcasing Microsoft.Extensions.AI.AzureAIInference reference implementation |
-| Ollama | [GitHub Link](./ollama/README.md) | Samples showcasing Microsoft.Extensions.AI.Ollama reference implementation | 
+| Ollama | [GitHub Link](./ollama/README.md) | Samples showcasing Microsoft.Extensions.AI.Ollama reference implementation |
