@@ -2,12 +2,12 @@
 
 This repo contains a sample on how to use a Phi-3 or Llama 3 models with Semantic Kernel.
 
-## Using Local LLMs like Phi-3 or Llama 3
+## Using Local LLMs like Phi-3 or Llama 3 
 
-Local LLMs like Phi-3 and Llama3 represent a significant shift towards more efficient and compact AI models.
+Local LLMs like Phi-3 and Llama3 represent a significant shift towards more efficient and compact AI models. 
 
 - [**Phi-3**](https://azure.microsoft.com/blog/introducing-phi-3-redefining-whats-possible-with-slms/), developed by Microsoft, uses advanced training techniques like quantization to maximize efficiency, making it ideal for deployment on a wide range of devices.
-- [**Llama3**](https://llama.meta.com/llama3/), with its Mixture-of-Experts (MoE) architecture, offers specialized neural networks for different tasks, providing high-quality outputs with a smaller parameter count.
+- [**Llama3**](https://llama.meta.com/llama3/), with its Mixture-of-Experts (MoE) architecture, offers specialized neural networks for different tasks, providing high-quality outputs with a smaller parameter count. 
 The use of local LLMs offers several advantages:
 
 - **Reduced Latency**: Local models eliminate network latency associated with cloud-based solutions.
@@ -18,10 +18,10 @@ The use of local LLMs offers several advantages:
 
 To run Phi-3 or Llama3 model on your local machine, the following prerequisites are required:
 
-- [Install ollama](https://ollama.com/download). Ollama can be installed in macOS, Linux or Windows.
-- Download and run a LLM.
-    [Ollama library](https://ollama.com/library) provides different types of open source models.
-
+- [Install ollama](https://ollama.com/download). Ollama can be installed in macOS, Linux or Windows. 
+- Download and run a LLM. 
+    [Ollama library](https://ollama.com/library) provides different types of open source models. 
+    
     To install Phi-3, run the command:
 
     ```bash
@@ -38,11 +38,12 @@ To run Phi-3 or Llama3 model on your local machine, the following prerequisites 
 
     ![Image Description](img/10ollamarunllama3.png)
 
-***Tip**: To see the Ollama service journal in real time, you can run the command:*
+***Tip**: To see the ollama service journal in realtime, you can run the command:*
 
 ```bash
 journalctl -u ollama -f
 ```
+
 
 ## Quick Start
 
@@ -50,7 +51,7 @@ Once the model is running locally, we can now run some prompts using C# and Sema
 
 ### Step 1: Run the model
 
-The file `src/local-models/phi3-llama3/Program.cs` shows an example on how to use Semantic Kernel to use the local model. When adding the OpenAI Chat Completion service to the kernel, we must specify the modelId, endpoint, and apikey (usually an empty string).
+The file `src/local-models/phi3-llama3/Program.cs` shows an example on how to use Semantic Kernel to use the local model. When adding the OpenAI Chat Completion service to the kernel, we must specify the modelId, endpoint and apikey (usually an empty string).
 
 ### Chat Completion
 
@@ -119,7 +120,6 @@ So, the skier's speed at the bottom of the frictionless slope is approximately 2
 ```
 
 ### Code Format
-
 ```csharp
 var codePrompt = @"Complete the following code
 ```python
@@ -130,7 +130,6 @@ Console.WriteLine(response.GetValue<string>());
 ```
 
 #### Output
-
 ```
 Here's how you could do it:
 

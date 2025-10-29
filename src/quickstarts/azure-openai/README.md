@@ -1,8 +1,9 @@
 # Quickstarts
 
-These samples demonstrates how to use Azure OpenAI with a `gpt-35-turbo` and `dall-e-3` models, from a simple .NET 8.0 console application. It consists of a simple console applications, running locally, that will send request to an Azure OpenAI service deployed in your Azure subscription.
+These samples demonstrates how to use Azure OpenAI with a `gpt-35-turbo` and `dall-e-3` models, from a simple .NET 8.0 console application. It consists of a simple console applications, running locally, that will send request to an Azure OpenAI service deployed in your Azure subscription. 
 
 Everything will be deployed automatically using the Azure Developer CLI.
+
 
 ## Prerequisites
 
@@ -16,17 +17,16 @@ Everything will be deployed automatically using the Azure Developer CLI.
 
 Ensure that you follow the [Prerequisites](#prerequisites) to have access to Azure OpenAI Service as well as the Azure Developer CLI, and then follow the following guide to set started with the sample application.
 
-1. Clone/ Download the repository.
-
+1. Clone/ Download the repository
+   
 2. From a terminal or command prompt, navigate to the `src\quickstarts\azure-openai` directory (`src/quickstarts/azure-openai` on macOS or Linux).
 
-3. Create the Azure resources (Azure OpenAI service, gpt-35-turbo and dall-e-3 models) using the Azure Developer CLI. Only the regions that support the Azure OpenAI service with the models will be displayed.
+3. Create the Azure resources (Azure OpenAI service, gpt-35-turbo and dall-e-3 models) using the Azure Developer CLI. Only the regions that support the Azure OpenAI service with the models will be displayed. 
+	```bash
+	azd up
+	```
 
-   ```bash
-   azd up
-   ```
-
-   > 💡 If you already have an Azure OpenAI service available, you can skip the deployment and use hardcoded value in the `program.cs`.
+	> 💡 If you already have an Azure OpenAI service available, you can skip the deployment and use hardcoded value in the `program.cs`.
 
 ## Semantic Kernel (SK)
 
