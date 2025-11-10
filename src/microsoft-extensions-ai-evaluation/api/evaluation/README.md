@@ -1,7 +1,17 @@
+---
+page_type: sample
+languages:
+- csharp
+products:
+- dotnet
+name: Evaluation examples
+urlFragment: meai-evaluation
+---
+
 # Microsoft.Extensions.AI.Evaluation - Evaluation API Examples
 
 This project contains a set of examples that demonstrate core concepts (such as evaluators, evaluation results,
-diagnostics and result interpretation) that are included in the
+diagnostics, and result interpretation) that are included in the
 [Microsoft.Extensions.AI.Evaluation](https://www.nuget.org/packages/Microsoft.Extensions.AI.Evaluation) and
 [Microsoft.Extensions.AI.Evaluation.Quality](https://www.nuget.org/packages/Microsoft.Extensions.AI.Evaluation.Quality)
 NuGet packages.

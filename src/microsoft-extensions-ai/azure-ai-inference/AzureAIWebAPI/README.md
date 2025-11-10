@@ -1,6 +1,16 @@
+---
+page_type: sample
+languages:
+- csharp
+products:
+- dotnet
+name: Azure AI inference web API
+urlFragment: meai-azure-ai-inference-web-api
+---
+
 # Microsoft.Extensions.AI - Azure AI Inference Web API Example
 
-This project contains a minimal Web API that show how to use the Azure AI Inference reference implementation in the [Microsoft.Extensions.AI.AzureAIInference NuGet package](https://aka.ms/meai-azaiinference-nuget).
+This project contains a minimal Web API that uses the Azure AI Inference reference implementation in the [Microsoft.Extensions.AI.AzureAIInference NuGet package](https://aka.ms/meai-azaiinference-nuget).
 
 ## Prerequisites
 
@@ -39,7 +49,7 @@ This project contains a minimal Web API that show how to use the Azure AI Infere
 
 ### Visual Studio
 
-1. Open the *AzureAIInferenceExamples.sln* solution
+1. Open the *AzureAIInferenceExamples.sln* solution.
 1. Set *AzureAIInferenceWebAPI* as the startup project.
 1. Press <kbd>F5</kbd>.
 
@@ -47,7 +57,7 @@ This project contains a minimal Web API that show how to use the Azure AI Infere
 
 1. Open your terminal
 1. Navigate to the *AzureAIInferenceWebAPI* project directory
-1. Run the applicaton using `dotnet run`
+1. Run the application using `dotnet run`
 
     ```dotnetcli
     dotnet run
@@ -57,7 +67,7 @@ This project contains a minimal Web API that show how to use the Azure AI Infere
 
 ### PowerShell
 
-##### Chat
+#### Chat
 
 ```powershell
 $response = Invoke-RestMethod -Uri 'http://localhost:5093/chat' -Method Post -Headers @{'Content-Type'='application/json'} -Body '"What is AI?"'; $response.message.contents.text
