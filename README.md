@@ -17,6 +17,9 @@ description: .NET samples demonstrating how to use AI in your .NET applications.
 
 # AI Samples for .NET
 
+> [!IMPORTANT]<br>
+> This repository is archived and no longer maintained. For the latest .NET AI documentation and samples, visit [https://learn.microsoft.com/dotnet/ai/](https://learn.microsoft.com/dotnet/ai/).
+
 Welcome to the official home for .NET samples demonstrating how to use AI in your .NET applications. If you're new to AI, start at the top and work your way down. Otherwise, jump in wherever suits your interests.
 
 ### Microsoft.Extensions.AI (preview)
