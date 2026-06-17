@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.2
+# Reference: https://github.com/microsoft/winget-create#building-the-client
+# WinGet Configure file
+
+properties:
+  resources:
+  - resource: Microsoft.WinGet.DSC/WinGetPackage
+    directives:
+      description: Installing Microsoft.Azd
+      allowPrerelease: true
+    settings:
+      id: "Microsoft.Azd"
+      source: winget
+    id: Microsoft.Azd
+  - resource: Microsoft.WinGet.DSC/WinGetPackage
+    directives:
+      description: Installing Microsoft.DotNet.SDK.8
+      allowPrerelease: true
+    settings:
+      id: "Microsoft.DotNet.SDK.8"
+      source: winget
+    id: Microsoft.DotNet.SDK.8
+  configurationVersion: 0.2.0
